@@ -13,7 +13,12 @@
   "scripts": {
     "start": "node server/index.js",
     "dev": "concurrently  \"npm start\" \"cd client && npm start\"",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "postinstall": "npm install --prefix server"
+  },
+  "engines": {
+    "node": "10.x",
+    "npm": "6.4.x"
   },
   "repository": {
     "type": "git",
