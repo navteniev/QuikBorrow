@@ -1,12 +1,12 @@
 const express = require('express')
 const db = require('./database')
 const app = express()
-const port = 8081
+const port = process.env.PORT || 8081
 
-app.get('/', (req, res) => {
-    res.send('Hello World!')
+app.get("/", (req, res) => {
+  res.send("Hello World!")
 })
 
 app.listen(port, () => {
-    console.log(`Example app listening on port ${port}!`)
+  console.log(`Example app listening on port ${port}!`)
 })
