@@ -4,6 +4,8 @@
   "private": true,
   "proxy": "http://localhost:8081",
   "dependencies": {
+    "primeicons": "^2.0.0",
+    "primereact": "^3.3.2",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
     "react-scripts": "3.2.0"
