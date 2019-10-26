@@ -1,1 +1,4 @@
 # QuickBorrow
+
+## Inspiration and Purpose
+As college students, we often need certain textbooks or class materials for only a semester and this may cost a lot of money. For students who purchased these matariels, what do they do with these items afterwards? In addition, there are times where students are in need for certain tools like a de2 board, lab goggles, calculators, and other school materials, and they have no idea where to get them within a short period of time. This is where QuickBorrow comes in play. QuickBorrow is an allow that allow user to easily find an item to borrow as well as to lend an item within their school area. This app plays as a platform for students to save money by allowing them to just borrow from another student. Furthermore, when students are in need of certain materials, they can quickly search it up and get in contact with the user who listed up the item. 
