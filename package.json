@@ -7,9 +7,12 @@
     "test": "test"
   },
   "dependencies": {},
-  "devDependencies": {},
+  "devDependencies": {
+    "concurrently": "^5.0.0"
+  },
   "scripts": {
     "start": "node server/index.js",
+    "dev": "concurrently  \"npm start\" \"cd client && npm start\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
