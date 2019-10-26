@@ -10,18 +10,11 @@ const Test_Schema = new Schema({
 
 const test = mongoose.model('tests', Test_Schema);
 //test query
-router.get('/testquery', (req, res) => {
-  test.find({}, function(err, test_res) {
-    if(err) {
-      console.log('Failure to retrieve');
-      return 'Fail';
-    }
-    else {
-      console.log(test_res);
-      return test_res;
-    }
-    res.redirect('/');
-  });
+router.get('/testquery', (req, res, next) => {
+  test.find({}).then(test_res => {
+    console.log(test_res);
+    res.json(test_res);
+  }).catch(next)
 });
 
 module.exports = router;
