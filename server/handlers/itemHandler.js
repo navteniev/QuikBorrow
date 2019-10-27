@@ -1,4 +1,4 @@
-const Item = require('../models/items');
+const Item = require('../database/models/items');
 
 const createItem = (req, res) => {
   let iteminst = new Item({
