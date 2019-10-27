@@ -4,11 +4,14 @@
   "private": true,
   "proxy": "http://localhost:8081",
   "dependencies": {
+    "classnames": "^2.2.6",
     "primeicons": "^2.0.0",
     "primereact": "^3.3.2",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
-    "react-scripts": "3.2.0"
+    "react-scripts": "3.2.0",
+    "react-transition-group": "^4.3.0",
+    "styled-components": "^4.4.0"
   },
   "scripts": {
     "start": "react-scripts start",
