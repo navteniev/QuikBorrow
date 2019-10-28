@@ -1,7 +1,29 @@
-import React from "react";
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import * as actions from "../../actions";
 
-const ProductList = props => {
-  return <div>ProductList</div>;
-};
+import ProductCard from "./ProductCard";
 
-export default ProductList;
+class ProductList extends Component {
+  componentDidMount() {
+    // Fetch products when component gets mounted
+    this.props.fetchProducts();
+  }
+
+  renderProducts() {
+    // Returns an array of products
+  }
+
+  render() {
+    return <div>{this.renderProducts()}</div>;
+  }
+}
+
+function mapStateToProps(state) {
+  return { products: state.products };
+}
+
+export default connect(
+  mapStateToProps,
+  actions
+)(ProductList);
