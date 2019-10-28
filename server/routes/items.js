@@ -4,6 +4,6 @@ const itemHandler = require('../handlers/itemHandler');
 
 router.post('/create', itemHandler.createItem);
 router.post('/retrieve', itemHandler.retrieveItem);
-router.post('/retrieveall', itemHandler.retrieveItemList);
+router.get('/retrieveall', itemHandler.retrieveItemList);
 
 module.exports = router;
