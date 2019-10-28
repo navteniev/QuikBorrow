@@ -14,7 +14,7 @@
     "start": "node server/index.js",
     "dev": "concurrently  \"npm start\" \"cd client && npm start\"",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "postinstall": "npm install --prefix server"
+    "postinstall": "cd server && npm install"
   },
   "engines": {
     "node": "10.x",
