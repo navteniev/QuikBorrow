@@ -14,7 +14,8 @@
     "start": "node server/index.js",
     "dev": "concurrently  \"npm start\" \"cd client && npm start\"",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "postinstall": "cd server && npm install"
+    "postinstall": "cd server && npm install",
+	"lint": "eslint ."
   },
   "engines": {
     "node": "10.x",
