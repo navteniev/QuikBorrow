@@ -1,6 +1,6 @@
 import { FETCH_PRODUCTS } from "../actions/types";
 
-const initState = {};
+const initState = [];
 
 const productsReducer = (state = initState, action) => {
   switch (action.type) {
