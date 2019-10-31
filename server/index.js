@@ -2,19 +2,14 @@ const express = require('express')
 const db = require('./database')
 const basicroute = require('./routes/basicroute')
 const mongoose = require("mongoose")
-const bodyParser = require("body-parser")
 const passport = require("passport")
 const app = express()
 const port = process.env.PORT || 8081 // process.env.port is Heroku's port
 const users = require("./routes/api/users")
 
 // Bodyparser middleware
-app.use(
-  bodyParser.urlencoded({
-    extended: false
-  })
-)
-app.use(bodyParser.json())
+app.use(express.urlencoded({ extended: false }))
+app.use(express.json())
   
 // Passport middleware
 app.use(passport.initialize())
