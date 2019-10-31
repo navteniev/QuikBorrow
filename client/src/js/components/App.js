@@ -30,7 +30,7 @@ function App() {
     }
     dispatch(actions.fetchProducts())
     setFetched(true)
-  }, [ fetched, actions, dispatch ])
+  }, [ fetched, dispatch ])
 
   switch (page) {
     case 0:
