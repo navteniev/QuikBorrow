@@ -13,7 +13,9 @@
   "scripts": {
     "start": "node server/index.js",
     "dev": "concurrently  \"npm start\" \"cd client && npm start\"",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test-client": "cd client && npm test",
+    "test-server": "cd server && npm test",
+    "test": "npm run test-server && npm run test-client",
     "postinstall": "cd server && npm install"
   },
   "engines": {
