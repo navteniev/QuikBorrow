@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from "react";
 import styled from 'styled-components'
-import "../../css/App.css";
 import { useSelector, useDispatch } from "react-redux";
 import * as actions from "../actions";
+import "../../css/App.css";
+import 'primereact/resources/themes/nova-light/theme.css';
+import 'primereact/resources/primereact.min.css';
+import 'primeicons/primeicons.css';
 
 import Homepage from "./Homepage/Homepage";
 import Register from "./Register/Register";
@@ -49,7 +52,9 @@ function App() {
         <button onClick={e => setPage(0)}>Homepage</button>
         <button onClick={e => setPage(1)}>Register</button>
         <button onClick={e => setPage(2)}>Login</button>
-        {products.length}
+      </Centered>
+      <Centered>
+      Product Length: {products.length}
       </Centered>
       {toRender}
     </div>
