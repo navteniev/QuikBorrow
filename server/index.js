@@ -1,10 +1,10 @@
-const express = require('express')
-const db = require('./database')
+const express = require("express");
+const db = require("./database");
+const router = require("./routes");
+const app = express();
+const port = process.env.PORT || 8081;
 const basicroute = require('./routes/basicroute')
-const mongoose = require("mongoose")
 const passport = require("passport")
-const app = express()
-const port = process.env.PORT || 8081 // process.env.port is Heroku's port
 const users = require("./routes/api/users")
 
 // Bodyparser middleware
@@ -19,12 +19,14 @@ require("./config/passport")(passport)
 app.use("/api/users", users)
 
 app.get("/", (req, res) => {
-  res.send("Hello World!")
-})
+  res.send("Hello World!");
+});
+
+app.use("/server", router);
 
 //use this to test if you can connect to database will remove later
 app.use("/api", basicroute);
 
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}!`)
-})
+  console.log(`Example app listening on port ${port}!`);
+});
