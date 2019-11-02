@@ -1,6 +1,6 @@
 const app = require('../index')
 const supertest = require('supertest')
-const request = supertest('app')
+const request = supertest(app)
 const mongoose = require('mongoose')
 const keys = require("../config/keys")
 
@@ -14,12 +14,18 @@ describe('Post Endpoints', () => {
         });
   });
   
-  it('should respond with hello world', async done => {
-    const res = await request.get('/')
-    expect(res.status).toBe(200);
-	expect(res.body.message).toBe('Hello World');
-	done();
+  it('should respond with hello world', done => {
+    request.get('/')
+      .expect(200)
+      .end((err, res) => {
+        if (err) {
+          return done(err)
+        }
+        expect(res.text).toEqual('Hello World!')
+        done()
+      })
   })
+
   afterAll( async () =>{
       await mongoose.connection.close()
   })
