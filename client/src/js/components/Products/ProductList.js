@@ -12,6 +12,18 @@ class ProductList extends Component {
 
   renderProducts() {
     // Returns an array of products
+    console.log(this.props.products);
+    return this.props.products.map(product => {
+      return (
+        <ProductCard
+          id={product._id}
+          name={product.name}
+          user={product.user}
+          description={product.description}
+          availability={product.availability}
+        />
+      );
+    });
   }
 
   render() {
