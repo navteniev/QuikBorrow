@@ -11,12 +11,13 @@
     "concurrently": "^5.0.0"
   },
   "scripts": {
-    "start": "node server/index.js",
+    "start": "cd server && npm start",
     "dev": "concurrently  \"npm start\" \"cd client && npm start\"",
     "test-client": "cd client && npm test",
     "test-server": "cd server && npm test",
     "test": "npm run test-server && npm run test-client",
-    "postinstall": "cd server && npm install"
+    "postinstall": "cd server && npm install",
+    "lint": "eslint ."
   },
   "engines": {
     "node": "10.x",
