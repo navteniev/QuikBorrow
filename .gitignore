@@ -22,6 +22,7 @@
 !.travis.yml
 !.eslintrc.yaml
 !.cpplint
+!/client/.eslintrc.json
 
 # === Rules for root dir ===
 /core
