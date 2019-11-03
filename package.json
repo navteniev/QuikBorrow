@@ -11,7 +11,9 @@
     "concurrently": "^5.0.0"
   },
   "scripts": {
-    "postinstall": "(cd server && npm install); (cd client && npm install);",
+    "install-server": "cd server && npm ci",
+    "install-client": "cd client && npm ci",
+    "postinstall": "npm run install-server && npm run install-client",
     "start": "cd server && npm start",
     "dev": "concurrently  \"npm start\" \"cd client && npm start\"",
     "test-client": "cd client && npm test",
