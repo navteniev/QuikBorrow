@@ -5,12 +5,11 @@ on: [push]
 jobs:
   # Testing server
   test-server:
+    name: Server Tests
     runs-on: ubuntu-latest
-
     strategy:
       matrix:
         node-version: [12.x]
-
     steps:
     - uses: actions/checkout@v1
     - name: Use Node.js ${{ matrix.node-version }}
@@ -23,14 +22,14 @@ jobs:
         npm run test-server
       env:
         CI: true
+
   # Testing client
   test-client:
+    name: Client Tests
     runs-on: ubuntu-latest
-
     strategy:
       matrix:
         node-version: [12.x]
-
     steps:
     - uses: actions/checkout@v1
     - name: Use Node.js ${{ matrix.node-version }}
@@ -43,14 +42,14 @@ jobs:
         npm run test-client
       env:
         CI: true
+
   # Linting server
   lint-server:
+    name: Server ESLint
     runs-on: ubuntu-latest
-
     strategy:
       matrix:
         node-version: [12.x]
-
     steps:
     - uses: actions/checkout@v1
     - name: Use Node.js ${{ matrix.node-version }}
@@ -63,14 +62,14 @@ jobs:
         npm run lint-server
       env:
         CI: true
+
   # Lint client
   lint-client:
+    name: Client ESLint
     runs-on: ubuntu-latest
-
     strategy:
       matrix:
         node-version: [12.x]
-
     steps:
     - uses: actions/checkout@v1
     - name: Use Node.js ${{ matrix.node-version }}
