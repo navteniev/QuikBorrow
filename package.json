@@ -17,7 +17,9 @@
     "test-server": "cd server && npm test",
     "test": "npm run test-server && npm run test-client",
     "postinstall": "cd server && npm install",
-    "lint": "eslint ."
+    "lint-client": "cd client && npm run lint",
+    "lint-server": "cd server && npm run lint",
+    "lint": "npm run lint-client && npm run lint-server"
   },
   "engines": {
     "node": "10.x",
