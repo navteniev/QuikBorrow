@@ -11,11 +11,17 @@
     "concurrently": "^5.0.0"
   },
   "scripts": {
+    "install-server": "cd server && npm ci",
+    "install-client": "cd client && npm ci",
+    "postinstall": "npm run install-server && npm run install-client",
     "start": "cd server && npm start",
     "dev": "concurrently  \"npm start\" \"cd client && npm start\"",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "postinstall": "cd server && npm install",
-    "lint": "eslint ."
+    "test-client": "cd client && npm test",
+    "test-server": "cd server && npm test",
+    "test": "npm run test-server && npm run test-client",
+    "lint-client": "cd client && npm run lint",
+    "lint-server": "cd server && npm run lint",
+    "lint": "npm run lint-client && npm run lint-server"
   },
   "engines": {
     "node": "10.x",

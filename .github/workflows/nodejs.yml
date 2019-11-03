@@ -1,0 +1,84 @@
+name: Node CI
+
+on: [push]
+
+jobs:
+  # Testing server
+  test-server:
+    name: Server Tests
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [12.x]
+    steps:
+    - uses: actions/checkout@v1
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+    - name: npm install, build, and test
+      run: |
+        npm run install-server
+        npm run test-server
+      env:
+        CI: true
+
+  # Testing client
+  test-client:
+    name: Client Tests
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [12.x]
+    steps:
+    - uses: actions/checkout@v1
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+    - name: npm install, build, and test
+      run: |
+        npm run install-client
+        npm run test-client
+      env:
+        CI: true
+
+  # Linting server
+  lint-server:
+    name: Server ESLint
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [12.x]
+    steps:
+    - uses: actions/checkout@v1
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+    - name: npm install, build, and lint
+      run: |
+        npm run install-server
+        npm run lint-server
+      env:
+        CI: true
+
+  # Lint client
+  lint-client:
+    name: Client ESLint
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [12.x]
+    steps:
+    - uses: actions/checkout@v1
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+    - name: npm install, build, and lint
+      run: |
+        npm run install-client
+        npm run lint-client
+      env:
+        CI: true
