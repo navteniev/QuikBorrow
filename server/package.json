@@ -7,8 +7,7 @@
     "test": "jest --detectOpenHandles --forceExit",
     "start": "node index.js",
     "server": "nodemon index.js",
-    "lint": "eslint .",
-    "lint-fix": "eslint . --fix"
+    "lint": "eslint ."
   },
   "author": "",
   "license": "ISC",
