@@ -1,5 +1,5 @@
-const express = require('express')
-const router = express.Router();
+const express = require('express');
+const router = new express.Router();
 const itemHandler = require('../handlers/itemHandler');
 
 router.post('/create', itemHandler.createItem);
