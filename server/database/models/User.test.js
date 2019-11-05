@@ -39,7 +39,7 @@ describe('User Model Test', () => {
     let err;
     try {
       const saved = await userWithoutRequiredField.save();
-       error = saved;
+      error = saved;
     } catch (error) {
       err = error;
     }
