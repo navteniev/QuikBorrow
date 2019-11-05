@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const UserModel = require('./User');
 const userData = {name: 'Test', email: 'test@test.com', password: 'password'};
-const keys = require('../../../config/keys');
+const keys = require('../../config/keys');
 const MONGODB_OPTIONS = {
   useNewUrlParser: true,
   useCreateIndex: true,
@@ -39,7 +39,7 @@ describe('User Model Test', () => {
     let err;
     try {
       const saved = await userWithoutRequiredField.save();
-      error = saved;
+       error = saved;
     } catch (error) {
       err = error;
     }
