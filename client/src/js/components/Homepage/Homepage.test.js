@@ -1,7 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 import { MemoryRouter } from 'react-router-dom';
-import Homepage from '../../js/components/Homepage/Homepage';
+import Homepage from './Homepage';
 
 describe('Homepage', () => {
 	test('renders', () => {

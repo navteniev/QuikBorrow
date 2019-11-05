@@ -1,0 +1,93 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Register renders 1`] = `
+<div>
+  <a
+    href="/"
+    onClick={[Function]}
+  >
+     Back to home
+  </a>
+  <div>
+    <h4>
+      <b>
+        Register
+      </b>
+       below
+    </h4>
+    <p>
+      Already have an account? 
+      <a
+        href="/login"
+        onClick={[Function]}
+      >
+        Log in
+      </a>
+    </p>
+  </div>
+  <form
+    noValidate={true}
+    onSubmit={[Function]}
+  >
+    <div>
+      <input
+        id="name"
+        onChange={[Function]}
+        type="text"
+        value=""
+      />
+      <label
+        htmlFor="name"
+      >
+        Name
+      </label>
+    </div>
+    <div>
+      <input
+        id="email"
+        onChange={[Function]}
+        type="email"
+        value=""
+      />
+      <label
+        htmlFor="email"
+      >
+        Email
+      </label>
+    </div>
+    <div>
+      <input
+        id="password"
+        onChange={[Function]}
+        type="password"
+        value=""
+      />
+      <label
+        htmlFor="password"
+      >
+        Password
+      </label>
+    </div>
+    <div>
+      <input
+        id="password2"
+        onChange={[Function]}
+        type="password"
+        value=""
+      />
+      <label
+        htmlFor="password2"
+      >
+        Confirm Password
+      </label>
+    </div>
+    <div>
+      <button
+        type="submit"
+      >
+        Sign up
+      </button>
+    </div>
+  </form>
+</div>
+`;
