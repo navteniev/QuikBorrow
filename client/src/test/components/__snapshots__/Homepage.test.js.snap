@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Homepage renders 1`] = `
+<div>
+  <div>
+    <h4>
+      quiKBorrow
+    </h4>
+    <div>
+      <a
+        href="/register"
+        onClick={[Function]}
+      >
+        Register
+      </a>
+      <a
+        href="/login"
+        onClick={[Function]}
+      >
+        Log In
+      </a>
+    </div>
+  </div>
+</div>
+`;
