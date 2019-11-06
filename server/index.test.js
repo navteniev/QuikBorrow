@@ -1,8 +1,8 @@
-const app = require('../index');
+const app = require('./index');
 const supertest = require('supertest');
 const request = supertest(app);
 const mongoose = require('mongoose');
-const keys = require('../config/keys');
+const keys = require('./config/keys');
 const MONGODB_OPTIONS = {
   useNewUrlParser: true,
   useCreateIndex: true,

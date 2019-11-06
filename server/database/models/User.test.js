@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
-const UserModel = require('../../../database/models/User');
+const UserModel = require('./User');
 const userData = {name: 'Test', email: 'test@test.com', password: 'password'};
-const keys = require('../../../config/keys');
+const keys = require('../../config/keys');
 const MONGODB_OPTIONS = {
   useNewUrlParser: true,
   useCreateIndex: true,
