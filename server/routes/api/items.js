@@ -1,6 +1,6 @@
 const express = require('express');
 const router = new express.Router();
-const Item = require('../database/models/Item');
+const Item = require('../../database/models/Item');
 const {param, validationResult} = require('express-validator');
 
 const middleware = {
@@ -37,12 +37,12 @@ const routes = {
   },
 };
 
-router.post('/', postItem);
-router.get('/', getItems);
+router.post('/', routes.postItem);
+router.get('/', routes.getItems);
 router.get('/:itemId', [
   param('itemId').isInt(),
   middleware.validationErrors,
-], getItem);
+], routes.getItem);
 
 module.exports = {
   router,
