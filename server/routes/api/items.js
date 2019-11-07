@@ -1,10 +1,19 @@
+/**
+ * @module api/items
+ * */
+
 const express = require('express');
 const router = new express.Router();
 const Item = require('../../database/models/Item');
 const {param, validationResult} = require('express-validator');
 
+/**
+ * Object of middleware functions
+ * @type {Object<string, express.RequestHandler>}
+ * @private
+ */
 const middleware = {
-  validationErrors(req, res, next) {
+  validationErrors: (req, res, next) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res.status(422).json({errors: errors.array()});
@@ -13,6 +22,11 @@ const middleware = {
   },
 };
 
+/**
+ * Object of route handlers
+ * @type {Object.<string, express.RequestHandler>}
+ * @private
+ */
 const routes = {
   postItem(req, res, next) {
     const item = new Item({
@@ -37,8 +51,25 @@ const routes = {
   },
 };
 
+/**
+ * Create an item
+ * @name POST /
+ * @memberof module:api/items
+ */
 router.post('/', routes.postItem);
+
+/**
+ * Get all items
+ * @name GET /
+ * @memberof module:api/items
+ */
 router.get('/', routes.getItems);
+
+/**
+ * Get an item
+ * @name GET /:itemId
+ * @memberof module:api/items
+ */
 router.get('/:itemId', [
   param('itemId').isInt(),
   middleware.validationErrors,

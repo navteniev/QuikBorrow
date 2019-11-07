@@ -1,7 +1,7 @@
-const itemsRoute = require('../../../routes/api/items');
-const Item = require('../../../database/models/Item');
+const itemsRoute = require('./items');
+const Item = require('../../database/models/Item');
 
-jest.mock('../../../database/models/Item');
+jest.mock('../../database/models/Item');
 
 describe('Unit::/api/items', function() {
   describe('GET /', function() {
