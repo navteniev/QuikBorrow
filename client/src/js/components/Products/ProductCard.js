@@ -18,7 +18,7 @@ const ProductCard = props => {
       title={name}
       subTitle={user}
       className="ui-card-shadow"
-      style={{ width: "360px" }}
+      style={{ width: "700px" }}
       header={header}
       footer={footer}
     >
