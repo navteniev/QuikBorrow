@@ -10,7 +10,7 @@ describe('Unit::/api/items', function() {
       const items = [{a: 'b', hoo: 'dinkle'}];
       Item.find.mockImplementationOnce(() => Promise.resolve(items));
       await itemsRoute.routes.getItems({}, response);
-      expect(response.json).toHaveBeenCalled();
+      expect(response.json).toHaveBeenCalledWith(items);
     });
   });
   describe('GET /:itemId', function() {
