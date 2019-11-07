@@ -15,13 +15,13 @@ const middleware = {
 
 const routes = {
   postItem(req, res, next) {
-    const iteminst = new Item({
+    const item = new Item({
       name: req.body.name,
       description: req.body.description,
     });
-    iteminst.save().then(() => {
+    item.save().then(() => {
       console.log('Successfully created item.');
-      res.status(200).json({msg: 'Item Created.'});
+      res.json(item);
     }).catch(next);
   },
   getItems(req, res, next) {
