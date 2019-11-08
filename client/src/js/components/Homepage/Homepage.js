@@ -16,10 +16,10 @@ class Homepage extends Component {
 				<img src={quikLogo}/>
 					<div>
 						<Link to="/register">
-							<Button label="Register" className = "p-button raised p-button-rounded" />
+						<Button label="Register" className = "p-button raised p-button-rounded" />
 						</Link>
 						<Link to="/login">
-							<Button label="Log In" className= "p-button raised p-button-rounded"/>
+						<Button label="Log In" className= "p-button raised p-button-rounded"/>
 						</Link>
 					</div>
 				</Center>
