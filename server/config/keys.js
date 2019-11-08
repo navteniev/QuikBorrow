@@ -1,4 +1,4 @@
 module.exports = {
-  mongoURI: 'mongodb://localhost:27017',
+  mongoURI: 'mongodb+srv://QuikBorrowDev:QuikDev@quikborrow-yyzmu.mongodb.net/test?retryWrites=true&w=majority',
   secretOrKey: 'secret', // verify token signature
 };
