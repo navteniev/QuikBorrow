@@ -1,14 +1,14 @@
 const mongoose = require('mongoose');
+const keys = require('../config/keys');
 
 // connection to mongodb
-const uri = 'mongodb+srv://QuikBorrowDev:QuikDev@quikborrow-yyzmu.mongodb.net/test?retryWrites=true&w=majority';
 const options = {
   useUnifiedTopology: true,
   useNewUrlParser: true,
   dbName: 'QuikBorrow',
 };
 
-mongoose.connect(uri, options)
+mongoose.connect(keys.mongoURI, options)
     .then(() => console.log('Successfully connected to database'))
     .catch((err) => console.log('Database Connection error', err));
 
