@@ -3,7 +3,7 @@ const User = require('../models/User');
 
 const findUserByEmail = (email) => {
   return User.find({email}).exec();
-}
+};
 
 const createUser = async (data) => {
   const newUser = new User({
