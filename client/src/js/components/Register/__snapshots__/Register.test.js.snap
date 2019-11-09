@@ -31,11 +31,13 @@ exports[`Register renders 1`] = `
   >
     <div>
       <input
+        className=""
         id="name"
         onChange={[Function]}
         type="text"
         value=""
       />
+      <span />
       <label
         htmlFor="name"
       >
@@ -44,11 +46,13 @@ exports[`Register renders 1`] = `
     </div>
     <div>
       <input
+        className=""
         id="email"
         onChange={[Function]}
         type="email"
         value=""
       />
+      <span />
       <label
         htmlFor="email"
       >
@@ -57,11 +61,13 @@ exports[`Register renders 1`] = `
     </div>
     <div>
       <input
+        className=""
         id="password"
         onChange={[Function]}
         type="password"
         value=""
       />
+      <span />
       <label
         htmlFor="password"
       >
@@ -70,11 +76,13 @@ exports[`Register renders 1`] = `
     </div>
     <div>
       <input
+        className=""
         id="password2"
         onChange={[Function]}
         type="password"
         value=""
       />
+      <span />
       <label
         htmlFor="password2"
       >
