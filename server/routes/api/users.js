@@ -7,7 +7,7 @@ const keys = require('../../config/keys');
 const {check, validationResult} = require('express-validator');
 
 // Load User model
-const User = require('../../database/models/User');
+const User = require('../../models/User');
 
 // @route POST api/users/register
 // @desc Register user
