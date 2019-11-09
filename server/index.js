@@ -4,7 +4,7 @@ const port = process.env.PORT || 8081;
 const basicroute = require('./routes/basicroute');
 const passport = require('passport');
 const apiRoutes = require('./routes/api/index');
-require('./database');
+require('./services/mongodbConnect');
 
 // Bodyparser middleware
 app.use(express.urlencoded({extended: false}));
