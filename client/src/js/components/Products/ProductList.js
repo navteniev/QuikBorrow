@@ -16,6 +16,7 @@ class ProductList extends Component {
     return this.props.products.map(product => {
       return (
         <ProductCard
+          key={product._id}
           id={product._id}
           name={product.name}
           user={product.user}

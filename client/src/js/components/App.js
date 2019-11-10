@@ -10,6 +10,7 @@ import Homepage from "./Homepage/Homepage";
 import Register from "./Register/Register";
 import Login from "./Login/Login";
 import ProductList from "./Products/ProductList";
+import ProductDetail from './Products/ProductDetail';
 
 class App extends Component {
   render() {
@@ -21,6 +22,7 @@ class App extends Component {
             <Route exact path="/register" component={Register} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/products" component={ProductList} />
+            <Route exact path="/products/:productId" component={ProductDetail} />
           </div>
         </BrowserRouter>
       </div>
