@@ -13,9 +13,7 @@ export const fetchProducts = () => {
 // Get one product
 export const fetchProduct = itemId => {
   return async function(dispatch) {
-    const res = await axios.get("/api/item", {
-      itemId: itemId
-    });
+    const res = await axios.get(`/api/item/${itemId}`);
     dispatch({ type: FETCH_PRODUCT, payload: res.data });
   };
 };
