@@ -20,7 +20,7 @@ class Homepage extends Component {
 		return (
 			<div>
 				<Center>
-				<img src={quikLogo}/>
+				<img src={quikLogo} alt = "logo"/>
 					<div>
 						<Link to="/register">
 						<Button> Register </Button>
