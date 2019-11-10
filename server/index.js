@@ -25,7 +25,7 @@ app.use('/basicroute', basicroute);
 
 app.once('ready', () => {
   app.listen(port, () => {
-    console.log(`Database connected. App listening on port ${port}!`)
+    console.log(`Database connected. App listening on port ${port}!`);
   });
 });
 
