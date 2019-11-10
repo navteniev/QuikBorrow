@@ -36,7 +36,14 @@ const register = async (req, res, next) => {
   }
 };
 
+const get = (req, res, next) => {
+  userServices.findUser(req.params.userId)
+      .then((user) => res.json(user))
+      .catch(next);
+};
+
 module.exports = {
   login,
   register,
+  get,
 };

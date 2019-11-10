@@ -5,7 +5,7 @@ const router = new express.Router();
 const userController = require('../../controllers/users');
 const userMiddleware = require('../../middleware/users');
 const validationErrors = require('../../middleware/shared/validatorErrors');
-const {check} = require('express-validator');
+const {check, param} = require('express-validator');
 
 /**
  * Register user
@@ -44,5 +44,10 @@ router.post('/login', [
       .custom(userMiddleware.expressValidator.passwordMatchesHash),
   validationErrors,
 ], userController.login);
+
+router.get('/:userId', [
+  param('userId', 'Invalid UserId')
+      .isAlphanumeric(),
+], userController.get);
 
 module.exports = router;

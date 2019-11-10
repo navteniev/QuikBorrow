@@ -5,6 +5,10 @@ const findUserByEmail = (email) => {
   return User.find({email}).exec();
 };
 
+const findUser = async (id) => {
+  return await User.findById(id);
+};
+
 const createUser = async (data) => {
   const newUser = new User({
     name: req.body.name,
@@ -25,4 +29,5 @@ module.exports = {
   createUser,
   generateHash,
   findUserByEmail,
+  findUser,
 };
