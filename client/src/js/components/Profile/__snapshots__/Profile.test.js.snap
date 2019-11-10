@@ -1,0 +1,88 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Profile should render a mock Profile 1`] = `
+<div
+  className="sc-bdVaJa eqLaYz"
+>
+  <div
+    className="p-card p-component ui-card-shadow"
+    style={
+      Object {
+        "width": "360px",
+      }
+    }
+  >
+    <div
+      className="p-card-header"
+    >
+      <img
+        alt="profile_image"
+        src="https://via.placeholder.com/500"
+      />
+    </div>
+    <div
+      className="p-card-body"
+    >
+      <div
+        className="p-card-title"
+      >
+        Tester2
+      </div>
+      <div
+        className="p-card-subtitle"
+      >
+        City College of New York
+      </div>
+      <div
+        className="p-card-content"
+      >
+         
+        <p>
+          21
+           years old
+        </p>
+        <p>
+          Currently a student looking for a full time job
+        </p>
+        <ul>
+          <h2>
+             Lending
+          </h2>
+          <li>
+            <h3>
+              Pencil
+            </h3>
+            <p>
+              It is a nice muji pencil
+            </p>
+          </li>
+          <li>
+            <h3>
+              Phone
+            </h3>
+            <p>
+              Sparkling new apple phone
+            </p>
+          </li>
+        </ul>
+        <ul>
+          <h2>
+             Wishlist 
+          </h2>
+          <li>
+            <h3>
+              pokemon cards
+            </h3>
+          </li>
+          <li>
+            <h3>
+              calculator
+            </h3>
+          </li>
+        </ul>
+         
+      </div>
+    </div>
+  </div>
+</div>
+`;
