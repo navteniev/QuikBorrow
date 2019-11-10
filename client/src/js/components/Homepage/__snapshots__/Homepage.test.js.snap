@@ -14,13 +14,9 @@ exports[`Homepage renders 1`] = `
         onClick={[Function]}
       >
         <button
-          className="p-button p-component p-button raised p-button-rounded p-button-text-only"
+          className="sc-bwzfXH bsfzSS"
         >
-          <span
-            className="p-button-text p-c"
-          >
-            Register
-          </span>
+           Register 
         </button>
       </a>
       <a
@@ -28,13 +24,9 @@ exports[`Homepage renders 1`] = `
         onClick={[Function]}
       >
         <button
-          className="p-button p-component p-button raised p-button-rounded p-button-text-only"
+          className="sc-bwzfXH bsfzSS"
         >
-          <span
-            className="p-button-text p-c"
-          >
-            Log In
-          </span>
+           Log In 
         </button>
       </a>
     </div>

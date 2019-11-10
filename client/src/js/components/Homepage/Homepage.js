@@ -1,11 +1,18 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import {Button} from 'primereact/button';
 import styled from 'styled-components';
 import quikLogo from './quikLogo.png';
 
 const Center = styled.div`
 	text-align: center;
+`
+const Button = styled.button`
+  font-size: 2em;
+  margin: 1em;
+  padding: 0.35em 2.5em;
+  border-radius: 5px;
+  background: royalblue;
+  color: white;
 `
 
 class Homepage extends Component {
@@ -16,10 +23,10 @@ class Homepage extends Component {
 				<img src={quikLogo}/>
 					<div>
 						<Link to="/register">
-						<Button label="Register" className = "p-button raised p-button-rounded" />
+						<Button> Register </Button>
 						</Link>
 						<Link to="/login">
-						<Button label="Log In" className= "p-button raised p-button-rounded"/>
+						<Button> Log In </Button>
 						</Link>
 					</div>
 				</Center>
