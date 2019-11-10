@@ -6,7 +6,11 @@ import { Button } from "primereact/button";
 const ProductCard = props => {
   const { id, name, user, description, availability } = props;
 
-  const header = <img alt="product_image" src="image/path/goes/here" />;
+  const header = (
+    <Link to={`/products/${id}`}>
+      <img alt="product_image" src="image/path/goes/here" />
+    </Link>
+  );
 
   const footer = (
     <span>

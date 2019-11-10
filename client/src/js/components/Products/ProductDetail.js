@@ -7,30 +7,26 @@ class ProductDetail extends Component {
         this.props.fetchProduct(this.props.match.params.productId);
     }
 
+    // Just some initial rendering to make sure it works before styling
     renderDetail() {
-        return this.props.product.map(prod => {
-            return (
-              <div>
-                <h3>{prod._id}</h3>
-                <h3>{prod.name}</h3>
-                <h3>{prod.user}</h3>
-                <h3>{prod.description}</h3>
-                <h3>{prod.availability}</h3>
-              </div>
-            );
-          });
+        return (
+            <div>
+                <h3>{this.props.product.name}</h3>
+                <h3>{this.props.product.description}</h3>
+                <h3>{this.props.product._id}</h3>
+                <h3>{this.props.product.availability ? 'true' : 'false'}</h3>
+                <h3>{this.props.product.user}</h3>
+            </div>
+        )
     }
     
     render() {
-        return (
-        <div>
-            {this.renderDetail()}
-        </div>
-        )
+        return <div>{this.renderDetail()}</div>
     }
 }
 
 function mapStateToProps(state) {
+    console.log(state);
     return { product : state.product }
 }
 
