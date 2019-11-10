@@ -9,7 +9,7 @@ const Center = styled.div`
 const Button = styled.button`
   font-size: 2em;
   margin: 1em;
-  padding: 0.35em 2.5em;
+  padding: 0.35em 2.6em;
   border-radius: 5px;
   background: royalblue;
   color: white;
