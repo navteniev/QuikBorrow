@@ -15,7 +15,7 @@ exports[`Homepage renders 1`] = `
         onClick={[Function]}
       >
         <button
-          className="sc-bwzfXH bsfzSS"
+          className="sc-bwzfXH fgVXMY"
         >
            Register 
         </button>
@@ -25,7 +25,7 @@ exports[`Homepage renders 1`] = `
         onClick={[Function]}
       >
         <button
-          className="sc-bwzfXH bsfzSS"
+          className="sc-bwzfXH fgVXMY"
         >
            Log In 
         </button>
