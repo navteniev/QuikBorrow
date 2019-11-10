@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { BrowserRouter, Route } from "react-router-dom";
 import * as actions from "../actions";
 import "../../css/App.css";
-import "primereact/resources/themes/nova-light/theme.css";
+import "primereact/resources/themes/nova-dark/theme.css";
 import "primereact/resources/primereact.min.css";
 import "primeicons/primeicons.css";
 
@@ -10,6 +10,8 @@ import Homepage from "./Homepage/Homepage";
 import Register from "./Register/Register";
 import Login from "./Login/Login";
 import ProductList from "./Products/ProductList";
+
+import Profile from "./Profile/Profile";
 
 class App extends Component {
   render() {
@@ -21,6 +23,7 @@ class App extends Component {
             <Route exact path="/register" component={Register} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/products" component={ProductList} />
+            <Route exact path="/profile" component={Profile} />
           </div>
         </BrowserRouter>
       </div>
