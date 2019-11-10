@@ -6,6 +6,7 @@ const ItemSchema = new Schema({
   description: {type: String, default: ''},
   user: {type: Schema.Types.ObjectId},
   availability: {type: Boolean, default: false},
+  image: {type: Buffer},
 });
 
 const Item = mongoose.model('Item', ItemSchema);

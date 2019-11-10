@@ -14,8 +14,16 @@ const findAllItems = async () => {
   return await Item.find({});
 };
 
+const rentItem = async (id) => {
+  const item = await Item.findById(id);
+  item.availability = false;
+  await item.save();
+  return item;
+};
+
 module.exports = {
   createItem,
   findItem,
   findAllItems,
+  rentItem,
 };

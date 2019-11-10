@@ -4,6 +4,7 @@ const create = async (req, res, next) => {
   const data = {
     name: req.body.name,
     description: req.body.description,
+    image: req.body.image
   };
   itemServices.createItem(data)
       .then((item) => {
@@ -28,8 +29,18 @@ const getAll = (req, res, next) => {
       .catch(next);
 };
 
+const rent = async (req, res, next) => {
+  itemServices.rentItem(req.params.itemId)
+      .then((item) => {
+        console.log(item);
+	res.json(item);
+      })
+      .catch(next);
+};
+
 module.exports = {
   create,
   get,
   getAll,
+  rent,
 };
