@@ -23,7 +23,7 @@ router.get('/', itemController.getAll);
  * @name GET /:itemId
  */
 router.get('/:itemId', [
-  param('itemId').isInt(),
+  param('itemId').isAlphanumeric(),
   validatorErrors,
 ], itemController.get);
 
