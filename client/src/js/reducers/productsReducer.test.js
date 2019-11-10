@@ -8,23 +8,17 @@ describe('productsReducer', () => {
 
     it('should handle FETCH_PRODUCTS', () => {
         expect(
+            const payload = {
+	            availability: true,
+	            description: "test description",
+	            name: "test name",
+	            user: "5dbcedbc2f01110000da8ac8",
+	            _id: "5dbcedae1c9d4400009df4a5" 
+            }
             productsReducer([], {
                 type: types.FETCH_PRODUCTS,
-                payload: [{
-                    availability: true,
-                    description: "test description",
-                    name: "test name",
-                    user: "5dbcedbc2f01110000da8ac8",
-                    _id: "5dbcedae1c9d4400009df4a5"
-                }]
-            })).toEqual([
-                {
-                    availability: true,
-                    description: "test description",
-                    name: "test name",
-                    user: "5dbcedbc2f01110000da8ac8",
-                    _id: "5dbcedae1c9d4400009df4a5" 
-                }
-            ])
+                payload: [{ ...payload }]
+            })
+        ).toEqual([payload])
     })
 })
