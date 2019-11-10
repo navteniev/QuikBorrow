@@ -23,7 +23,7 @@ describe('Auth Reducer', () => {
 		}
 		const newState = authReducer(initialState, {
 			type: SET_CURRENT_USER,
-			payload: user
+			payload: { ...user }
 		})
 		expect(newState.user).toEqual(user)
 	})
