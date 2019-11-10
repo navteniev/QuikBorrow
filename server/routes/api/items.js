@@ -32,7 +32,7 @@ router.get('/:itemId', [
  * @name POST /rent
  */
 router.get('/rent/:itemId', [
-  param('itemId').isInt(),
+  param('itemId').isAlphanumeric(),
   validatorErrors,
 ], itemController.rent);
 
