@@ -6,6 +6,7 @@ exports[`Homepage renders 1`] = `
     className="sc-bdVaJa cFeHto"
   >
     <img
+      alt="logo"
       src="quikLogo.png"
     />
     <div>
