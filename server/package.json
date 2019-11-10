@@ -5,9 +5,12 @@
   "main": "index.js",
   "scripts": {
     "test": "jest --detectOpenHandles --forceExit",
+    "test-unit": "jest unit\\.test\\.js$ --detectOpenHandles --forceExit",
+    "test-int": "jest int\\.test\\.js$ --detectOpenHandles --forceExit",
     "start": "node index.js",
     "server": "nodemon index.js",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "lint-fix": "eslint . --fix"
   },
   "author": "",
   "license": "ISC",

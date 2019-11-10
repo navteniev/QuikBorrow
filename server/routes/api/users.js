@@ -4,10 +4,11 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const keys = require('../../config/keys');
 
-const {check, validationResult} = require('express-validator');
+const {check, param, validationResult} = require('express-validator');
 
 // Load User model
-const User = require('../../database/models/User');
+const User = require('../../models/User');
+const userController = require('../../controllers/users');
 
 // @route POST api/users/register
 // @desc Register user
@@ -100,5 +101,10 @@ router.post('/login', [
     });
   });
 });
+
+router.get('/:userId', [
+  param('userId', 'Invalid UserId')
+      .isNumeric(),
+], userController.get);
 
 module.exports = router;
