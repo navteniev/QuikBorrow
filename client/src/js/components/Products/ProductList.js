@@ -1,8 +1,14 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import * as actions from "../../actions";
+import styled from 'styled-components';
 
 import ProductCard from "./ProductCard";
+
+const Center = styled.div`
+  display: flex;
+  justify-content: space-evenly;
+`
 
 class ProductList extends Component {
   componentDidMount() {
@@ -12,7 +18,6 @@ class ProductList extends Component {
 
   renderProducts() {
     // Returns an array of products
-    console.log(this.props.products);
     return this.props.products.map(product => {
       return (
         <ProductCard
@@ -28,7 +33,7 @@ class ProductList extends Component {
   }
 
   render() {
-    return <div>{this.renderProducts()}</div>;
+    return <Center>{this.renderProducts()}</Center>;
   }
 }
 

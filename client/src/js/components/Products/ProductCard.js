@@ -8,7 +8,7 @@ const ProductCard = props => {
 
   const header = (
     <Link to={`/products/${id}`}>
-      <img alt="product_image" src="image/path/goes/here" />
+      <img alt="product_image" src="https://via.placeholder.com/150" />
     </Link>
   );
 
@@ -21,10 +21,11 @@ const ProductCard = props => {
   );
 
   return (
+    <div className="p-col">
       <Card
         title={name}
         subTitle={user}
-        className="ui-card-shadow"
+        className="ui-card-shadow box"
         style={{ width: "360px" }}
         header={header}
         footer={footer}
@@ -32,6 +33,7 @@ const ProductCard = props => {
         <div>{description}</div>
         <div>{availability ? "available" : "not available"}</div>
       </Card>
+    </div>
   );
 };
 
