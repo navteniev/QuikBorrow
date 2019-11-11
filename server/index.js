@@ -4,7 +4,7 @@ const port = process.env.PORT || 8081;
 const basicroute = require('./routes/basicroute');
 const passport = require('passport');
 const apiRoutes = require('./routes/api/index');
-require('./services/mongodbConnect');
+require('./services/mongodbConnect')(app);
 
 // Bodyparser middleware
 app.use(express.urlencoded({extended: false}));
@@ -23,8 +23,10 @@ app.get('/', (req, res) => {
 app.use('/api', apiRoutes);
 app.use('/basicroute', basicroute);
 
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}!`);
+app.once('ready', () => {
+  app.listen(port, () => {
+    console.log(`Database connected. App listening on port ${port}!`);
+  });
 });
 
 module.exports = app;
