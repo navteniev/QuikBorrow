@@ -29,9 +29,9 @@ router.get('/:itemId', [
 
 /**
  * @memberof module:api/items
- * @name POST /rent
+ * @name GET /rent
  */
-router.get('/rent/:itemId', [
+router.get('/rent/:itemId/:borrowerId/:duration', [
   param('itemId').isAlphanumeric(),
   validatorErrors,
 ], itemController.rent);

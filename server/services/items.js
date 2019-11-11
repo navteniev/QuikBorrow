@@ -14,9 +14,11 @@ const findAllItems = async () => {
   return await Item.find({});
 };
 
-const rentItem = async (id) => {
+const rentItem = async (id, borrowerId, duration) => {
   const item = await Item.findById(id);
   item.availability = false;
+  item.borrower = borrowerId;
+  item.returnDate = new Date((new Date()).getTime() + Number(duration));
   await item.save();
   return item;
 };
