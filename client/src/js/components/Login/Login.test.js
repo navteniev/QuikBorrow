@@ -7,6 +7,7 @@ import { Login } from './Login';
 import { loginUser } from "../../actions/index";
 
 Enzyme.configure({ adapter: new Adapter() });
+jest.mock('../../actions/index');
 
 describe('Login', () => {
 	const params = {
