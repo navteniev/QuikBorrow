@@ -19,7 +19,6 @@ describe('Login', () => {
 		},
 		errors: {}
 	}
-	let wrapper = shallow(<Login loginUser = {params.loginUser} auth = {params.auth} errors = {params.errors} />);
 	test('renders', () => {
 		const component = renderer.create(
 			<MemoryRouter>
@@ -31,11 +30,13 @@ describe('Login', () => {
 	});
 
 	test('email entry', () => {
+		let wrapper = shallow(<Login loginUser = {params.loginUser} auth = {params.auth} errors = {params.errors} />);
 		wrapper.find('input[type="email"]').simulate('change', {target: {id: 'email', value: 'test@test.com'}});
 		expect(wrapper.state('email')).toEqual('test@test.com');
 	});
 
 	test('password entry', () => {
+		let wrapper = shallow(<Login loginUser = {params.loginUser} auth = {params.auth} errors = {params.errors} />);
 		wrapper.find('input[type="password"]').simulate('change', {target: {id: 'password', value: 'password'}});
 		expect(wrapper.state('password')).toEqual('password');
 	});
