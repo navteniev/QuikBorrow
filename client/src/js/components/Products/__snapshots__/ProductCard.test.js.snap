@@ -1,0 +1,54 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProductCard should render a ProductCard 1`] = `
+<div
+  className="p-card p-component ui-card-shadow"
+  style={
+    Object {
+      "width": "360px",
+    }
+  }
+>
+  <div
+    className="p-card-header"
+  >
+    <img
+      alt="product_image"
+      src="image/path/goes/here"
+    />
+  </div>
+  <div
+    className="p-card-body"
+  >
+    <div
+      className="p-card-content"
+    >
+       
+      <div />
+      <div>
+        not available
+      </div>
+       
+    </div>
+    <div
+      className="p-card-footer"
+    >
+       
+      <span>
+        <button
+          className="p-button p-component p-button-text-icon-left"
+        >
+          <span
+            className="pi pi-check p-c p-button-icon-left"
+          />
+          <span
+            className="p-button-text p-c"
+          >
+            Borrow
+          </span>
+        </button>
+      </span>
+    </div>
+  </div>
+</div>
+`;
