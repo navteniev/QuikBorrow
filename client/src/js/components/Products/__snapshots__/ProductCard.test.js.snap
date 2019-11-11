@@ -5,7 +5,7 @@ exports[`ProductCard should render a ProductCard 1`] = `
   className="p-card p-component ui-card-shadow"
   style={
     Object {
-      "width": "360px",
+      "width": "700px",
     }
   }
 >
