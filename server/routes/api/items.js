@@ -27,4 +27,13 @@ router.get('/:itemId', [
   validatorErrors,
 ], itemController.get);
 
+/**
+ * @memberof module:api/items
+ * @name POST /rent
+ */
+router.get('/rent/:itemId', [
+  param('itemId').isAlphanumeric(),
+  validatorErrors,
+], itemController.rent);
+
 module.exports = router;
