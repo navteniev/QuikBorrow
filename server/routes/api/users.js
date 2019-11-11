@@ -106,7 +106,7 @@ router.post('/login', [
 //
 router.get('/:userId', [
   param('userId', 'Invalid UserId')
-      .isNumeric(),
+      .isAlphanumeric(),
   validatorErrors,
 ], userController.get);
 
