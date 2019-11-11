@@ -2,22 +2,33 @@
 
 exports[`Homepage renders 1`] = `
 <div>
-  <div>
-    <h4>
-      quiKBorrow
-    </h4>
+  <div
+    className="sc-bdVaJa cFeHto"
+  >
+    <img
+      alt="logo"
+      src="quikLogo.png"
+    />
     <div>
       <a
         href="/register"
         onClick={[Function]}
       >
-        Register
+        <button
+          className="sc-bwzfXH fgVXMY"
+        >
+           Register 
+        </button>
       </a>
       <a
         href="/login"
         onClick={[Function]}
       >
-        Log In
+        <button
+          className="sc-bwzfXH fgVXMY"
+        >
+           Log In 
+        </button>
       </a>
     </div>
   </div>
