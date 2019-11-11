@@ -5,6 +5,7 @@ const jwt = require('jsonwebtoken');
 const keys = require('../../config/keys');
 
 const {check, param, validationResult} = require('express-validator');
+const validatorErrors = require('../../middleware/shared/validatorErrors');
 
 // Load User model
 const User = require('../../models/User');
@@ -102,9 +103,18 @@ router.post('/login', [
   });
 });
 
+//
 router.get('/:userId', [
   param('userId', 'Invalid UserId')
       .isNumeric(),
+  validatorErrors,
 ], userController.get);
+
+
+router.patch('/:userId', [
+  param('userId', 'Invalid userID')
+      .isAlphanumeric(),
+  validatorErrors,
+], userController.edit);
 
 module.exports = router;
