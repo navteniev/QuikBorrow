@@ -16,14 +16,13 @@ router.post('/register', [
   check('name', 'Username field required')
       .exists(),
   check('email', 'Invalid email')
-      .exists()
+      .exists().withMessage('Email field required')
       .bail()
-      .isEmail()
+      .isEmail().withMessage('Not an email')
       .bail()
       .custom(userMiddleware.expressValidator.emailShouldExist(false)),
-  check('password', 'Password must be >6 chars')
-      .isLength({min: 6})
-      .bail()
+  check('password')
+      .isLength({min: 6}).withMessage('Password must be >6 characters')
       .custom(userMiddleware.expressValidator.matches),
   validationErrors,
 ], userController.register);
@@ -34,10 +33,10 @@ router.post('/register', [
  * @name POST /login
  */
 router.post('/login', [
-  check('email', 'Invalid email')
-      .exists()
+  check('email')
+      .exists().withMessage('Email field required')
       .bail()
-      .isEmail()
+      .isEmail().withMessage('Not an email')
       .bail()
       .custom(userMiddleware.expressValidator.emailShouldExist(true)),
   check('password')
