@@ -4,7 +4,7 @@ const userServices = require('../services/users');
 jest.mock('jsonwebtoken');
 jest.mock('../services/users');
 
-describe('controller/users', function() {
+describe('Unit::controller/users', function() {
   describe('login', function() {
     it('returns auth token', async function() {
       const request = {user: {}};

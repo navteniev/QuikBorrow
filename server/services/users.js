@@ -15,7 +15,7 @@ const getJwtToken = (payload) => {
 };
 
 const findUserByEmail = (email) => {
-  return User.findOne({email}).exec();
+  return User.findOne({email});
 };
 
 const findUser = async (id) => {
@@ -34,7 +34,7 @@ const createUser = async (data) => {
 
 const generateHash = async (value) => {
   const salt = await bcrypt.genSalt(10);
-  const hash = bcrypt.hash(value, salt);
+  const hash = await bcrypt.hash(value, salt);
   return hash;
 };
 
