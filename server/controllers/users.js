@@ -30,7 +30,8 @@ const register = async (req, res, next) => {
   try {
     const hashedPassword = await userServices.generateHash(password);
     const user = {name, email, password: hashedPassword};
-    await userServices.createUser(user);
+    const createdUser = await userServices.createUser(user);
+    res.json(createdUser);
   } catch (err) {
     next(err);
   }

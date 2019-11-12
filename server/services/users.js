@@ -2,7 +2,7 @@ const bcrypt = require('bcryptjs');
 const User = require('../models/User');
 
 const findUserByEmail = (email) => {
-  return User.find({email}).exec();
+  return User.findOne({email}).exec();
 };
 
 const findUser = async (id) => {
@@ -11,9 +11,9 @@ const findUser = async (id) => {
 
 const createUser = async (data) => {
   const newUser = new User({
-    name: req.body.name,
-    email: req.body.email,
-    password: req.body.password,
+    name: data.name,
+    email: data.email,
+    password: data.password,
   });
   await newUser.save();
   return newUser;
