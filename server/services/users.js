@@ -1,5 +1,18 @@
 const bcrypt = require('bcryptjs');
+const keys = require('../config/keys');
+const jwt = require('jsonwebtoken');
 const User = require('../models/User');
+const JWT_OPTIONS = {
+  expiresIn: 31556926,
+};
+
+const getJwtToken = (payload) => {
+  return new Promise((resolve, reject) => {
+    jwt.sign(payload, keys.secretOrKey, JWT_OPTIONS, (err, token) => {
+      return err ? reject(err) : resolve(token);
+    });
+  });
+};
 
 const findUserByEmail = (email) => {
   return User.findOne({email}).exec();
@@ -26,6 +39,7 @@ const generateHash = async (value) => {
 };
 
 module.exports = {
+  getJwtToken,
   createUser,
   generateHash,
   findUserByEmail,
