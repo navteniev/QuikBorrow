@@ -26,10 +26,10 @@ export class Login extends Component {
       		this.props.history.push("/dashboard"); // push user to dashboard when they login
     	}
 		if (nextProps.errors) {
-      		this.setState({
-        		errors: nextProps.errors
-      		});
-    	}
+      			this.setState({
+        			errors: nextProps.errors
+      			});
+    		}
   	}
 	onChange = e => {
 		this.setState({ [e.target.id]: e.target.value });
