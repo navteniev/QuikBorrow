@@ -30,7 +30,7 @@ const getAll = (req, res, next) => {
 };
 
 const rent = async (req, res, next) => {
-  itemServices.rentItem(req.params.itemId, 
+  itemServices.rentItem(req.params.itemId,
       req.params.borrowerId, req.params.duration)
       .then((item) => {
         console.log(item);
