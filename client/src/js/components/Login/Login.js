@@ -44,7 +44,7 @@ export class Login extends Component {
 	};
 	getErrors = e => {
 		const { errors } = this.state;
-		if(errors.errors === undefined || errors.errors.find(x => x.param === e) === undefined)
+		if (errors.errors === undefined || errors.errors.find(x => x.param === e) === undefined)
 		{
 			return "";
 		}
