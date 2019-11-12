@@ -21,7 +21,7 @@ const expressValidator = {
   /** @type {import('express-validator').CustomValidator} */
   passwordMatchesHash: async (value, {req}) => {
     // req.user is attached in emailShouldExist middleware
-    const matched = bcrypt.compare(value, req.user.password);
+    const matched = await bcrypt.compare(value, req.user.password);
     if (!matched) {
       throw new Error('Incorrect password');
     }
