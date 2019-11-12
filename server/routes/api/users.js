@@ -14,9 +14,9 @@ const {check, param} = require('express-validator');
  */
 router.post('/register', [
   check('name', 'Username field required')
-      .exists(),
+      .isLength({min: 1}),
   check('email', 'Invalid email')
-      .exists().withMessage('Email field required')
+      .isLength({min: 1}).withMessage('Email field required')
       .bail()
       .isEmail().withMessage('Not an email')
       .bail()
@@ -34,7 +34,7 @@ router.post('/register', [
  */
 router.post('/login', [
   check('email')
-      .exists().withMessage('Email field required')
+      .isLength({min: 1}).withMessage('Email field required')
       .bail()
       .isEmail().withMessage('Not an email')
       .bail()

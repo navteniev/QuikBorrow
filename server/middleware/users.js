@@ -21,7 +21,7 @@ const expressValidator = {
   /** @type {import('express-validator').CustomValidator} */
   passwordMatchesHash: async (value, {req}) => {
     // req.user is attached in emailShouldExist middleware
-    const matched = bcrypt.compare(value, req.user.password);
+    const matched = await bcrypt.compare(value, req.user.password);
     if (!matched) {
       throw new Error('Incorrect password');
     }
@@ -29,7 +29,7 @@ const expressValidator = {
   // eslint-disable-next-line valid-jsdoc
   /** @type {import('express-validator').CustomValidator} */
   matches: (value, {req}) => {
-    if (value !== req.body.password) {
+    if (value !== req.body.password2) {
       throw new Error('Passwords don\'t match');
     }
     return true;
