@@ -44,8 +44,18 @@ export class Register extends Component {
 		};
 		this.props.registerUser(newUser, this.props.history); 
 	};
-	render() {
+	getErrors = e => {
 		const { errors } = this.state;
+		if(errors.errors === undefined || errors.errors.find(x => x.param === e) === undefined)
+		{
+			return "";
+		}
+		else
+		{
+			return errors.errors.find(x => x.param === e).msg;
+		}
+	};
+	render() {
 		return (
 			<div>
 				<Link to="/"> Back to home</Link>
@@ -58,56 +68,55 @@ export class Register extends Component {
 					<input
 						onChange={this.onChange}
 						value={this.state.name}
-						error={errors.name}
+						error={this.getErrors('name')}
 						id="name"
 						type="text"
 						className={classnames("", {
-		                    invalid: errors.name
+		                    invalid: this.getErrors('name')
 		                })}
 					/>
-					<span>{errors.name}</span>
+					<span>{this.getErrors('name')}</span>
 					<label htmlFor="name">Name</label>
 					</div>
 					<div>
 					<input
 						onChange={this.onChange}
 						value={this.state.email}
-						error={errors.email}
+						error={this.getErrors('email')}
 						id="email"
 						type="email"
 						className={classnames("", {
-                    		invalid: errors.email
+                    		invalid: this.getErrors('email')
                   		})}
 					/>
-					<span>{errors.email}</span>
+					<span>{this.getErrors('email')}</span>
 					<label htmlFor="email">Email</label>
 					</div>
 					<div>
 					<input
 						onChange={this.onChange}
 						value={this.state.password}
-						error={errors.password}
+						error={this.getErrors('password')}
 						id="password"
 						type="password"
 						className={classnames("", {
-                    		invalid: errors.password
+                    		invalid: this.getErrors('password')
                   		})}
 					/>
-					<span>{errors.password}</span>
+					<span>{this.getErrors('password')}</span>
 					<label htmlFor="password">Password</label>
 					</div>
 					<div>
 					<input
 						onChange={this.onChange}
 						value={this.state.password2}
-						error={errors.password2}
+						error={this.getErrors('password')}
 						id="password2"
 						type="password"
 						className={classnames("", {
-                    		invalid: errors.password2
+                    		invalid: this.getErrors('password')
                   		})}
 					/>
-					<span>{errors.password2}</span>
 					<label htmlFor="password2">Confirm Password</label>
 					</div>
 					<div>
