@@ -29,7 +29,7 @@ const expressValidator = {
   // eslint-disable-next-line valid-jsdoc
   /** @type {import('express-validator').CustomValidator} */
   matches: (value, {req}) => {
-    if (value !== req.body.password) {
+    if (value !== req.body.password2) {
       throw new Error('Passwords don\'t match');
     }
     return true;
