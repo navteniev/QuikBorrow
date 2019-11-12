@@ -1,3 +1,4 @@
+const mongoose = require('mongoose');
 const Item = require('../models/Item');
 
 const createItem = async (data) => {
@@ -17,7 +18,7 @@ const findAllItems = async () => {
 const rentItem = async (id, borrowerId, duration) => {
   const item = await Item.findById(id);
   item.availability = false;
-  item.borrower = borrowerId;
+  item.borrower = new mongoose.Types.ObjectId(borrowerId);
   item.returnDate = new Date((new Date()).getTime() + Number(duration));
   await item.save();
   return item;
