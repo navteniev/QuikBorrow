@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logoutUser } from "../../actions/index";
 
-class Dashboard extends Component {
+export class Dashboard extends Component {
   componentDidMount () {
     if (this.props.auth.isAuthenticated !== true) {
       this.props.history.push('/login')
