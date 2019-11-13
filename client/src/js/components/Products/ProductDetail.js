@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import * as actions from "../../actions";
 
-class ProductDetail extends Component {
+export class ProductDetail extends Component {
     componentDidMount() {
         this.props.fetchProduct(this.props.match.params.productId);
     }
@@ -26,7 +26,6 @@ class ProductDetail extends Component {
 }
 
 function mapStateToProps(state) {
-    console.log(state);
     return { product : state.product }
 }
 
