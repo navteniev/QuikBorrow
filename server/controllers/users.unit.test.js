@@ -1,7 +1,6 @@
 const userController = require('./users');
 const userServices = require('../services/users');
 
-jest.mock('jsonwebtoken');
 jest.mock('../services/users');
 
 describe('Unit::controller/users', function() {
