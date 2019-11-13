@@ -32,12 +32,15 @@ exports[`Register renders 1`] = `
     <div>
       <input
         className=""
+        error=""
         id="name"
         onChange={[Function]}
         type="text"
         value=""
       />
-      <span />
+      <span>
+        
+      </span>
       <label
         htmlFor="name"
       >
@@ -47,12 +50,15 @@ exports[`Register renders 1`] = `
     <div>
       <input
         className=""
+        error=""
         id="email"
         onChange={[Function]}
         type="email"
         value=""
       />
-      <span />
+      <span>
+        
+      </span>
       <label
         htmlFor="email"
       >
@@ -62,12 +68,15 @@ exports[`Register renders 1`] = `
     <div>
       <input
         className=""
+        error=""
         id="password"
         onChange={[Function]}
         type="password"
         value=""
       />
-      <span />
+      <span>
+        
+      </span>
       <label
         htmlFor="password"
       >
@@ -77,12 +86,12 @@ exports[`Register renders 1`] = `
     <div>
       <input
         className=""
+        error=""
         id="password2"
         onChange={[Function]}
         type="password"
         value=""
       />
-      <span />
       <label
         htmlFor="password2"
       >

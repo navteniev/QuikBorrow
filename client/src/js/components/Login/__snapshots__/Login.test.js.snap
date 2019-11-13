@@ -32,12 +32,15 @@ exports[`Login renders 1`] = `
     <div>
       <input
         className=""
+        error=""
         id="email"
         onChange={[Function]}
         type="email"
         value=""
       />
-      <span />
+      <span>
+        
+      </span>
       <label
         htmlFor="email"
       >
@@ -47,14 +50,15 @@ exports[`Login renders 1`] = `
     <div>
       <input
         className=""
+        error=""
         id="password"
         onChange={[Function]}
         type="password"
         value=""
       />
-      <span
-        className="red-text"
-      />
+      <span>
+        
+      </span>
       <label
         htmlFor="password"
       >
