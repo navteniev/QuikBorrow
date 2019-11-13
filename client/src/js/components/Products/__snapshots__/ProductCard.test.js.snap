@@ -2,52 +2,66 @@
 
 exports[`ProductCard should render a ProductCard 1`] = `
 <div
-  className="p-card p-component ui-card-shadow"
-  style={
-    Object {
-      "width": "700px",
-    }
-  }
+  className="p-col"
 >
   <div
-    className="p-card-header"
-  >
-    <img
-      alt="product_image"
-      src="image/path/goes/here"
-    />
-  </div>
-  <div
-    className="p-card-body"
+    className="p-card p-component ui-card-shadow box"
+    style={
+      Object {
+        "width": "360px",
+      }
+    }
   >
     <div
-      className="p-card-content"
+      className="p-card-header"
     >
-       
-      <div />
-      <div>
-        not available
-      </div>
-       
+      <a
+        href="/products/undefined"
+        onClick={[Function]}
+      >
+        <img
+          alt="product_image"
+          src="https://via.placeholder.com/150"
+        />
+      </a>
     </div>
     <div
-      className="p-card-footer"
+      className="p-card-body"
     >
-       
-      <span>
-        <button
-          className="p-button p-component p-button-text-icon-left"
-        >
-          <span
-            className="pi pi-check p-c p-button-icon-left"
-          />
-          <span
-            className="p-button-text p-c"
+      <div
+        className="p-card-content"
+      >
+         
+        <div />
+        <div>
+          not available
+        </div>
+         
+      </div>
+      <div
+        className="p-card-footer"
+      >
+         
+        <span>
+          <a
+            href="/products/undefined"
+            onClick={[Function]}
           >
-            Borrow
-          </span>
-        </button>
-      </span>
+            <button
+              className="p-button p-component p-button-text-icon-left"
+            >
+              <span
+                className="pi pi-check p-c p-button-icon-left"
+              />
+              <span
+                className="p-button-text p-c"
+              >
+                Borrow
+              </span>
+            </button>
+          </a>
+        </span>
+      </div>
     </div>
   </div>
 </div>
