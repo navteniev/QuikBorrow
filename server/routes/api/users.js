@@ -59,9 +59,9 @@ router.patch('/:userId', [
 ], userController.edit);
 /**
  *  @memberof module:api/users
- * @name GET /lending
+ * @name GET /:userId/items
  */
-router.get('/lending/:userId/items', [
+router.get('/:userId/items', [
   param('userId', 'invalid UserId').isAlphanumeric(),
   validationErrors,
 ], userController.getLendingList);
