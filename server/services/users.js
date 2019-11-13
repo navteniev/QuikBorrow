@@ -13,6 +13,8 @@ const getJwtToken = (payload) => {
     });
   });
 };
+const mongoose = require('mongoose');
+const Item = require('../models/Item');
 
 const findUserByEmail = (email) => {
   return User.findOne({email});
@@ -43,6 +45,14 @@ const generateHash = async (value) => {
   return hash;
 };
 
+const getLendingList = async (userId) => {
+  // const user = await User.findById(userId);
+  const casted = new mongoose.Types.ObjectId(userId);
+  const lendingList = await Item.find({'user': casted});
+  return lendingList;
+};
+
+
 module.exports = {
   getJwtToken,
   createUser,
@@ -50,4 +60,5 @@ module.exports = {
   findUserByEmail,
   findUser,
   editUser,
+  getLendingList,
 };

@@ -39,6 +39,7 @@ const rent = async (req, res, next) => {
       .catch(next);
 };
 
+
 module.exports = {
   create,
   get,
