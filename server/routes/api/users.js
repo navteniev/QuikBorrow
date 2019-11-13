@@ -57,5 +57,14 @@ router.patch('/:userId', [
       .isAlphanumeric(),
   validationErrors,
 ], userController.edit);
+/**
+ *  @memberof module:api/users
+ * @name GET /lending
+ */
+router.get('/lending/:userId/items', [
+  param('userId', 'invalid UserId').isAlphanumeric(),
+  validationErrors,
+], userController.getLendingList);
+
 
 module.exports = router;
