@@ -5,15 +5,16 @@ import { connect } from 'react-redux';
 import SignedIn from './SignedIn';
 import SignedOut from './SignedOut';
 
-const Navbar = (props) => {
-    return (
-        <nav className="nav-wrapper light-blue">
-            <div className="container">
-                <Link to='/' className="brand-logo">QuikBorrow</Link>
-                {props.auth.isAuthenticated ? <SignedIn name={props.auth.user.name} /> : <SignedOut />}
-            </div>
-        </nav>
-    )
+class Navbar extends React.Component {
+    render() {
+        return (
+            <nav className="nav-wrapper light-blue">
+                <div className="container">
+                    <Link to='/' className="brand-logo">QuikBorrow</Link>
+                </div>
+            </nav>
+        )
+    }
 }
 
 function mapStateToProps(state) {
@@ -21,6 +22,5 @@ function mapStateToProps(state) {
 }
 
 export default connect(
-    mapStateToProps, 
-    null
+    mapStateToProps
 )(Navbar);
