@@ -48,14 +48,14 @@ router.post('/login', [
 router.get('/:userId', [
   param('userId', 'Invalid UserId')
       .isAlphanumeric(),
-  validatorErrors,
+  validationErrors,
 ], userController.get);
 
 
 router.patch('/:userId', [
   param('userId', 'Invalid userID')
       .isAlphanumeric(),
-  validatorErrors,
+  validationErrors,
 ], userController.edit);
 
 module.exports = router;
