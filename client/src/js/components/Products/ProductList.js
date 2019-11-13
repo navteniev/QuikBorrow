@@ -1,8 +1,14 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import * as actions from "../../actions";
+import styled from 'styled-components';
 
 import ProductCard from "./ProductCard";
+
+const Center = styled.div`
+  display: flex;
+  justify-content: space-evenly;
+`
 
 class ProductList extends Component {
   componentDidMount() {
@@ -16,6 +22,7 @@ class ProductList extends Component {
       return (
         <ProductCard
           key={product._id}
+          id={product._id}
           name={product.name}
           user={product.user}
           description={product.description}
@@ -26,7 +33,7 @@ class ProductList extends Component {
   }
 
   render() {
-    return <div>{this.renderProducts()}</div>;
+    return <Center>{this.renderProducts()}</Center>;
   }
 }
 
