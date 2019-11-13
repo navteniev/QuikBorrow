@@ -18,12 +18,6 @@ describe('Post Endpoints', () => {
     });
   });
 
-  it('should respond with hello world', async () => {
-    const result = await request.get('/');
-    expect(result.status).toEqual(200);
-    expect(result.text).toEqual('Hello World!');
-  });
-
   afterAll(async () => {
     await mongoose.connection.close();
   });
