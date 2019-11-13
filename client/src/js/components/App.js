@@ -11,7 +11,7 @@ import Register from "./Register/Register";
 import Login from "./Login/Login";
 import Dashboard from "./Dashboard/Dashboard";
 import ProductList from "./Products/ProductList";
-
+import Navbar from './Navbar/Navbar';
 import Profile from "./Profile/Profile";
 
 class App extends Component {
@@ -19,6 +19,7 @@ class App extends Component {
     return (
       <div>
         <BrowserRouter>
+          <Navbar />
           <div>
             <Route exact path="/" component={Homepage} />
             <Route exact path="/register" component={Register} />
