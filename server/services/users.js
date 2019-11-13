@@ -25,6 +25,7 @@ const findUser = async (id) => {
 const editUser = async (id, updated) =>{
   return await User.findByIdAndUpdate(id,
       {name: updated.name, email: updated.email}, {new: true});
+};
 
 const createUser = async (data) => {
   const newUser = new User({
