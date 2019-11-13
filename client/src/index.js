@@ -3,7 +3,6 @@ import ReactDOM from "react-dom";
 import "./css/index.css";
 import App from "./js/components/App.js";
 import * as serviceWorker from "./serviceWorker";
-import { Provider } from "react-redux";
 import { createStore, applyMiddleware } from "redux";
 import reduxThunk from "redux-thunk";
 import jwt_decode from "jwt-decode";
@@ -34,9 +33,7 @@ if (localStorage.jwtToken) {
 }
 
 ReactDOM.render(
-  <Provider store={store}>
-    <App />
-  </Provider>,
+    <App />,
   document.getElementById("root")
 );
 
