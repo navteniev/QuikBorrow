@@ -4,7 +4,23 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { loginUser } from "../../actions/index";
 import classnames from "classnames";
+import styled from 'styled-components';
+import {InputText} from 'primereact/inputtext';
+import {Button} from 'primereact/button';
+import quikLogo from '../../components/quikLogo.png';
 
+const LoginForm = styled.div`
+	margin: 0 auto;
+    max-width: 320px;
+	outline: 1px solid #CCC;
+	box-shadow: 5px #CCC;
+    background-color: white;
+	padding:1.5em;
+	box-shadow: inset 0 1.5px 2px rgba(190, 190, 190, .4), 0 0 0 5px #f5f7f8;
+`
+const Center = styled.div`
+	text-align: center;
+`
 export class Login extends Component {
 	constructor() {
 		super();
@@ -56,44 +72,51 @@ export class Login extends Component {
 	render() {
 		return (
 			<div>
-				<Link to="/"> Back to home</Link>
-				<div>
-					<h4><b>Login</b> below</h4>
-					<p>Dont have an account? <Link to="/register">Register</Link></p>
-				</div>
-				<form noValidate onSubmit={this.onSubmit}>
+				<Link to="/"> Back to home</Link><br/>
+				<Center>
+				<img src={quikLogo} width="275" height= "180" alt = "logo"/>
+				</Center>
+				<LoginForm>
 					<div>
-						<input
+						<h2>Login</h2>
+					</div>
+				<form noValidate onSubmit={this.onSubmit}>
+					<span className="p-float-label">
+						<InputText
 							onChange={this.onChange}
 							value={this.state.email}
 							error={this.getErrors('email')}
 							id="email"
 							type="email"
+							size="35"
 							className={classnames("", {
                     			invalid: this.getErrors('email')
                   			})}
 						/>
 						<span>{this.getErrors('email')}</span>
 						<label htmlFor="email">Email</label>
-					</div>
-					<div>
-						<input
+					</span><br/>
+					<span className="p-float-label">
+						<InputText
 							onChange={this.onChange}
 							value={this.state.password}
 							error={this.getErrors('password')}
 							id="password"
 							type="password"
+							size="35"
 							className={classnames("", {
                     			invalid: this.getErrors('password')
                   			})}
 						/>
 						<span>{this.getErrors('password')}</span>
 						<label htmlFor="password">Password</label>
-					</div>
+					</span>
+					<p>Dont have an account? <Link to="/register">Register</Link></p>
 					<div>
-						<button type="submit">Login</button>
+						<Button label="Login" className="p-button-rounded" type="submit"/>
 					</div>
 				</form>
+				</LoginForm>
 			</div>
 		);
 	}
