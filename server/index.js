@@ -4,6 +4,7 @@ const port = process.env.PORT || 8081;
 const basicroute = require('./routes/basicroute');
 const passport = require('passport');
 const apiRoutes = require('./routes/api/index');
+const path = require('path');
 require('./services/mongodbConnect')(app);
 
 // Bodyparser middleware
@@ -15,13 +16,15 @@ app.use(passport.initialize());
 // Passport config
 require('./config/passport')(passport);
 
-app.get('/', (req, res) => {
-  res.send('Hello World!');
-});
 
 // Routes
 app.use('/api', apiRoutes);
 app.use('/basicroute', basicroute);
+
+app.use(express.static('../client/build'));
+app.get('*', (req, res) => {
+  res.sendFile(path.resolve(__dirname, '../client/build', 'index.html'));
+});
 
 app.once('ready', () => {
   app.listen(port, () => {
