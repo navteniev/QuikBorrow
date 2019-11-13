@@ -11,6 +11,7 @@ class Navbar extends React.Component {
             <nav className="nav-wrapper light-blue">
                 <div className="container">
                     <Link to='/' className="brand-logo">QuikBorrow</Link>
+                    {props.auth.isAuthenticated ? <SignedIn name={props.auth.user.name} /> : <SignedOut />}
                 </div>
             </nav>
         )
