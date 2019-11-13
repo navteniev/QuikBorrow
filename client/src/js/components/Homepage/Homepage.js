@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import styled from 'styled-components';
-import quikLogo from './quikLogo.png';
+import quikLogo from '../../components/quikLogo.png';
 
 const Center = styled.div`
-	text-align: center;
+  text-align: center;
 `
 const Button = styled.button`
   font-size: 2em;
@@ -13,6 +13,10 @@ const Button = styled.button`
   border-radius: 5px;
   background: royalblue;
   color: white;
+
+  &:hover {
+    background-color: blue; 
+  } 
 `
 
 class Homepage extends Component {
