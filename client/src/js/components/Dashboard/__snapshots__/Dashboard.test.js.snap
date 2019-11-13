@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Dashboard renders 1`] = `
+<div>
+  <h4>
+    <b>
+      Welcome
+    </b>
+    . You are logged in.
+  </h4>
+  <button
+    onClick={[Function]}
+  >
+    Logout
+  </button>
+</div>
+`;

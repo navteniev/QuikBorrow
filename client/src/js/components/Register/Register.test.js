@@ -64,6 +64,28 @@ describe('Register', () => {
 		expect(wrapper.instance().props.registerUser).toHaveBeenCalled()
 	});
 
+	test('redirect to dashboard if authenticated', () => {
+		const isAuth = {
+			isAuthenticated: true,
+			user: {},
+			loading: false,
+		}
+		const historyMock = { push: jest.fn() };
+		let wrapper = shallow(<Register registerUser = {params.registerUser} auth = {isAuth} errors = {params.errors} history = {historyMock} />);
+		expect(historyMock.push.mock.calls[0]).toEqual(['/dashboard']);
+	});
+
+	test('errors', () => {
+		const fakeErr = {
+			errors: [{
+				'name': 'Invalid name'
+			}]
+		}
+		let wrapper = shallow(<Register registerUser = {params.registerUser} auth = {params.auth} errors = {params.errors} />);
+		wrapper.setProps({ errors: fakeErr });
+		expect(wrapper.state('errors')).toEqual(fakeErr);
+	});
+
 	afterEach(() => {
 		jest.resetAllMocks();
 	});
