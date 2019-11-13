@@ -2,8 +2,6 @@
 
 const express = require('express');
 const router = new express.Router();
-const {check, param, validationResult} = require('express-validator');
-const validatorErrors = require('../../middleware/shared/validatorErrors');
 const userController = require('../../controllers/users');
 const userMiddleware = require('../../middleware/users');
 const validationErrors = require('../../middleware/shared/validatorErrors');
