@@ -7,6 +7,8 @@ const ItemSchema = new Schema({
   user: {type: Schema.Types.ObjectId, ref: 'User'},
   availability: {type: Boolean, default: false},
   image: {type: Buffer},
+  borrower: {type: Schema.Types.ObjectId},
+  returnDate: {type: Date, default: Date.now},
 });
 
 const Item = mongoose.model('Item', ItemSchema);

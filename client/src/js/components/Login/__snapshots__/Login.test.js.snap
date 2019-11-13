@@ -8,60 +8,98 @@ exports[`Login renders 1`] = `
   >
      Back to home
   </a>
-  <div>
-    <h4>
-      <b>
-        Login
-      </b>
-       below
-    </h4>
-    <p>
-      Dont have an account? 
-      <a
-        href="/register"
-        onClick={[Function]}
-      >
-        Register
-      </a>
-    </p>
+  <br />
+  <div
+    className="sc-bwzfXH gZvuZl"
+  >
+    <img
+      alt="logo"
+      height="180"
+      src="quikLogo.png"
+      width="275"
+    />
   </div>
-  <form
-    noValidate={true}
-    onSubmit={[Function]}
+  <div
+    className="sc-bdVaJa fKOCmO"
   >
     <div>
-      <input
-        id="email"
-        onChange={[Function]}
-        type="email"
-        value=""
-      />
-      <label
-        htmlFor="email"
-      >
-        Email
-      </label>
-    </div>
-    <div>
-      <input
-        id="password"
-        onChange={[Function]}
-        type="password"
-        value=""
-      />
-      <label
-        htmlFor="password"
-      >
-        Password
-      </label>
-    </div>
-    <div>
-      <button
-        type="submit"
-      >
+      <h2>
         Login
-      </button>
+      </h2>
     </div>
-  </form>
+    <form
+      noValidate={true}
+      onSubmit={[Function]}
+    >
+      <span
+        className="p-float-label"
+      >
+        <input
+          className="p-inputtext p-component"
+          error=""
+          id="email"
+          onChange={[Function]}
+          onInput={[Function]}
+          onKeyPress={[Function]}
+          size="35"
+          type="email"
+          value=""
+        />
+        <span>
+          
+        </span>
+        <label
+          htmlFor="email"
+        >
+          Email
+        </label>
+      </span>
+      <br />
+      <span
+        className="p-float-label"
+      >
+        <input
+          className="p-inputtext p-component"
+          error=""
+          id="password"
+          onChange={[Function]}
+          onInput={[Function]}
+          onKeyPress={[Function]}
+          size="35"
+          type="password"
+          value=""
+        />
+        <span>
+          
+        </span>
+        <label
+          htmlFor="password"
+        >
+          Password
+        </label>
+      </span>
+      <p>
+        Dont have an account? 
+        <a
+          href="/register"
+          onClick={[Function]}
+        >
+          Register
+        </a>
+      </p>
+      <div>
+        <button
+          className="p-button p-component p-button-rounded p-button-text-only"
+          type="submit"
+        >
+          <span
+            className="p-button-text p-c"
+          >
+            Login
+          </span>
+        </button>
+      </div>
+    </form>
+  </div>
 </div>
 `;

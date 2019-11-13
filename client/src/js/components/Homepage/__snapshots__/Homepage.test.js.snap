@@ -3,7 +3,7 @@
 exports[`Homepage renders 1`] = `
 <div>
   <div
-    className="sc-bdVaJa cFeHto"
+    className="sc-bdVaJa khUSez"
   >
     <img
       alt="logo"
@@ -15,7 +15,7 @@ exports[`Homepage renders 1`] = `
         onClick={[Function]}
       >
         <button
-          className="sc-bwzfXH fgVXMY"
+          className="sc-bwzfXH kufQqT"
         >
            Register 
         </button>
@@ -25,7 +25,7 @@ exports[`Homepage renders 1`] = `
         onClick={[Function]}
       >
         <button
-          className="sc-bwzfXH fgVXMY"
+          className="sc-bwzfXH kufQqT"
         >
            Log In 
         </button>

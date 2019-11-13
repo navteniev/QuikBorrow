@@ -29,10 +29,12 @@ router.get('/:itemId', [
 
 /**
  * @memberof module:api/items
- * @name POST /rent
+ * @name GET /rent
  */
-router.get('/rent/:itemId', [
+router.get('/:itemId/rent/:borrowerId/:duration', [
   param('itemId').isAlphanumeric(),
+  param('borrowerId').isAlphanumeric(),
+  param('duration').isInt(),
   validatorErrors,
 ], itemController.rent);
 
