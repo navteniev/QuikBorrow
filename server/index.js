@@ -1,7 +1,6 @@
 const express = require('express');
 const app = express();
 const port = process.env.PORT || 8081;
-const basicroute = require('./routes/basicroute');
 const passport = require('passport');
 const apiRoutes = require('./routes/api/index');
 require('./services/mongodbConnect')(app);
@@ -21,7 +20,6 @@ app.get('/', (req, res) => {
 
 // Routes
 app.use('/api', apiRoutes);
-app.use('/basicroute', basicroute);
 
 app.once('ready', () => {
   app.listen(port, () => {
