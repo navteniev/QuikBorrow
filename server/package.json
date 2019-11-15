@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest --detectOpenHandles --forceExit",
+    "test": "jest --detectOpenHandles --forceExit --coverageReporters=text-lcov | coveralls",
     "test-unit": "jest unit\\.test\\.js$ --detectOpenHandles --forceExit",
     "test-int": "jest int\\.test\\.js$ --detectOpenHandles --forceExit",
     "start": "node index.js",
@@ -26,6 +26,7 @@
   "devDependencies": {
     "@shelf/jest-mongodb": "^1.1.3",
     "@types/jest": "^24.0.21",
+    "coveralls": "^3.0.7",
     "eslint": "^6.6.0",
     "eslint-config-google": "^0.14.0",
     "jest": "^24.9.0",
