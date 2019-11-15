@@ -43,27 +43,30 @@ describe('Unit::middleware/users', function() {
       });
     });
     describe('passwordMatchesHash', function() {
+      const {passwordMatchesHash} = usersMiddleware.expressValidator;
       it(`throws error if password is wrong`, function() {
         bcrypt.compare.mockResolvedValueOnce(false);
-        return expect(usersMiddleware.expressValidator.passwordMatchesHash(1, {req: {user: {}}}))
+        const data = {req: {user: {}}};
+        return expect(passwordMatchesHash(1, data))
             .rejects.toThrowError();
       });
       it(`returns true if passwords is right`, function() {
         bcrypt.compare.mockResolvedValueOnce(true);
-        return expect(usersMiddleware.expressValidator.passwordMatchesHash(1, {req: {user: {}}}))
+        return expect(passwordMatchesHash(1, {req: {user: {}}}))
             .resolves.toEqual(true);
       });
     });
     describe('matches', function() {
+      const {matches} = usersMiddleware.expressValidator;
       it(`throws error if passwords don't match`, function() {
         const password2 = '3r';
         const data = {req: {body: {password2: password2 + 1}}};
-        expect(() => usersMiddleware.expressValidator.matches(password2, data)).toThrowError();
+        expect(() => matches(password2, data)).toThrowError();
       });
       it(`returns true if passwords match`, function() {
         const password2 = '3r';
         const data = {req: {body: {password2}}};
-        expect(usersMiddleware.expressValidator.matches(password2, data)).toEqual(true);
+        expect(matches(password2, data)).toEqual(true);
       });
     });
   });
