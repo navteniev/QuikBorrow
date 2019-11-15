@@ -5,6 +5,7 @@ const router = new express.Router();
 const {param} = require('express-validator');
 const itemController = require('../../controllers/items');
 const validatorErrors = require('../../middleware/shared/validatorErrors');
+const isObjectId = require('../../middleware/shared/validators/isObjectId');
 
 /**
  * @memberof module:api/items
@@ -23,7 +24,7 @@ router.get('/', itemController.getAll);
  * @name GET /:itemId
  */
 router.get('/:itemId', [
-  param('itemId').isAlphanumeric(),
+  param('itemId').custom(isObjectId),
   validatorErrors,
 ], itemController.get);
 
@@ -32,8 +33,8 @@ router.get('/:itemId', [
  * @name GET /rent
  */
 router.get('/:itemId/rent/:borrowerId/:duration', [
-  param('itemId').isAlphanumeric(),
-  param('borrowerId').isAlphanumeric(),
+  param('itemId').custom(isObjectId),
+  param('borrowerId').custom(isObjectId),
   param('duration').isInt(),
   validatorErrors,
 ], itemController.rent);
