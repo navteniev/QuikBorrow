@@ -8,13 +8,23 @@ exports[`Register renders 1`] = `
   >
      Back to home
   </a>
-  <div>
-    <h4>
-      <b>
-        Register
-      </b>
-       below
-    </h4>
+  <br />
+  <div
+    className="sc-bwzfXH gZvuZl"
+  >
+    <img
+      alt="logo"
+      height="180"
+      src="quikLogo.png"
+      width="275"
+    />
+  </div>
+  <div
+    className="sc-bdVaJa fKOCmO"
+  >
+    <h2>
+      New User? Register below:
+    </h2>
     <p>
       Already have an account? 
       <a
@@ -24,78 +34,116 @@ exports[`Register renders 1`] = `
         Log in
       </a>
     </p>
+    <form
+      noValidate={true}
+      onSubmit={[Function]}
+    >
+      <span
+        className="p-float-label"
+      >
+        <input
+          className="p-inputtext p-component"
+          error=""
+          id="name"
+          onChange={[Function]}
+          onInput={[Function]}
+          onKeyPress={[Function]}
+          size="35"
+          type="text"
+          value=""
+        />
+        <span>
+          
+        </span>
+        <label
+          htmlFor="name"
+        >
+          Name
+        </label>
+      </span>
+      <br />
+      <span
+        className="p-float-label"
+      >
+        <input
+          className="p-inputtext p-component"
+          error=""
+          id="email"
+          onChange={[Function]}
+          onInput={[Function]}
+          onKeyPress={[Function]}
+          size="35"
+          type="email"
+          value=""
+        />
+        <span>
+          
+        </span>
+        <label
+          htmlFor="email"
+        >
+          Email
+        </label>
+      </span>
+      <br />
+      <span
+        className="p-float-label"
+      >
+        <input
+          className="p-inputtext p-component"
+          error=""
+          id="password"
+          onChange={[Function]}
+          onInput={[Function]}
+          onKeyPress={[Function]}
+          size="35"
+          type="password"
+          value=""
+        />
+        <span>
+          
+        </span>
+        <label
+          htmlFor="password"
+        >
+          Password
+        </label>
+      </span>
+      <br />
+      <span
+        className="p-float-label"
+      >
+        <input
+          className="p-inputtext p-component"
+          error=""
+          id="password2"
+          onChange={[Function]}
+          onInput={[Function]}
+          onKeyPress={[Function]}
+          size="35"
+          type="password"
+          value=""
+        />
+        <label
+          htmlFor="password2"
+        >
+          Confirm Password
+        </label>
+      </span>
+      <br />
+      <div>
+        <button
+          className="p-button p-component p-button-rounded p-button-text-only"
+          type="submit"
+        >
+          <span
+            className="p-button-text p-c"
+          >
+            Sign Up
+          </span>
+        </button>
+      </div>
+    </form>
   </div>
-  <form
-    noValidate={true}
-    onSubmit={[Function]}
-  >
-    <div>
-      <input
-        className=""
-        id="name"
-        onChange={[Function]}
-        type="text"
-        value=""
-      />
-      <span />
-      <label
-        htmlFor="name"
-      >
-        Name
-      </label>
-    </div>
-    <div>
-      <input
-        className=""
-        id="email"
-        onChange={[Function]}
-        type="email"
-        value=""
-      />
-      <span />
-      <label
-        htmlFor="email"
-      >
-        Email
-      </label>
-    </div>
-    <div>
-      <input
-        className=""
-        id="password"
-        onChange={[Function]}
-        type="password"
-        value=""
-      />
-      <span />
-      <label
-        htmlFor="password"
-      >
-        Password
-      </label>
-    </div>
-    <div>
-      <input
-        className=""
-        id="password2"
-        onChange={[Function]}
-        type="password"
-        value=""
-      />
-      <span />
-      <label
-        htmlFor="password2"
-      >
-        Confirm Password
-      </label>
-    </div>
-    <div>
-      <button
-        type="submit"
-      >
-        Sign up
-      </button>
-    </div>
-  </form>
 </div>
 `;

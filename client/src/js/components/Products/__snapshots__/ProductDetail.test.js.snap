@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Product Detail renders 1`] = `
+<div>
+  <div>
+    <h3>
+      test
+    </h3>
+    <h3>
+      desc
+    </h3>
+    <h3>
+      0
+    </h3>
+    <h3>
+      false
+    </h3>
+    <h3>
+      user
+    </h3>
+  </div>
+</div>
+`;

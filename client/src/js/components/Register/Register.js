@@ -4,7 +4,23 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { registerUser } from "../../actions/index";
 import classnames from "classnames";
+import styled from 'styled-components';
+import {InputText} from 'primereact/inputtext';
+import {Button} from 'primereact/button';
+import quikLogo from '../../components/quikLogo.png';
 
+const LoginForm = styled.div`
+	margin: 0 auto;
+    max-width: 320px;
+	outline: 1px solid #CCC;
+	box-shadow: 5px #CCC;
+    background-color: white;
+	padding:1.5em;
+	box-shadow: inset 0 1.5px 2px rgba(190, 190, 190, .4), 0 0 0 5px #f5f7f8;
+`
+const Center = styled.div`
+	text-align: center;
+`
 export class Register extends Component {
 	constructor() {
 		super();
@@ -44,76 +60,92 @@ export class Register extends Component {
 		};
 		this.props.registerUser(newUser, this.props.history); 
 	};
-	render() {
+	getErrors = e => {
 		const { errors } = this.state;
+		if(errors.errors === undefined || errors.errors.find(x => x.param === e) === undefined)
+		{
+			return "";
+		}
+		else
+		{
+			return errors.errors.find(x => x.param === e).msg;
+		}
+	};
+	render() {
 		return (
 			<div>
-				<Link to="/"> Back to home</Link>
-				<div>
-					<h4><b>Register</b> below</h4>
+				<Link to="/"> Back to home</Link><br/>
+				<Center>
+					<img src={quikLogo} width="275" height= "180" alt = "logo"/>
+				</Center>
+				<LoginForm>
+					<h2>New User? Register below:</h2>
 					<p>Already have an account? <Link to="/login">Log in</Link></p>
-				</div>
 				<form noValidate onSubmit={this.onSubmit}>
-					<div>
-					<input
+					<span className="p-float-label">
+					<InputText
 						onChange={this.onChange}
 						value={this.state.name}
-						error={errors.name}
+						error={this.getErrors('name')}
 						id="name"
 						type="text"
+						size="35"
 						className={classnames("", {
-		                    invalid: errors.name
+		                    invalid: this.getErrors('name')
 		                })}
 					/>
-					<span>{errors.name}</span>
+					<span>{this.getErrors('name')}</span>
 					<label htmlFor="name">Name</label>
-					</div>
-					<div>
-					<input
+					</span><br/>
+					<span className="p-float-label">
+					<InputText
 						onChange={this.onChange}
 						value={this.state.email}
-						error={errors.email}
+						error={this.getErrors('email')}
 						id="email"
 						type="email"
+						size="35"
 						className={classnames("", {
-                    		invalid: errors.email
+                    		invalid: this.getErrors('email')
                   		})}
 					/>
-					<span>{errors.email}</span>
+					<span>{this.getErrors('email')}</span>
 					<label htmlFor="email">Email</label>
-					</div>
-					<div>
-					<input
+					</span><br/>
+					<span className="p-float-label">
+					<InputText
 						onChange={this.onChange}
 						value={this.state.password}
-						error={errors.password}
+						error={this.getErrors('password')}
 						id="password"
 						type="password"
+						size="35"
 						className={classnames("", {
-                    		invalid: errors.password
+                    		invalid: this.getErrors('password')
                   		})}
 					/>
-					<span>{errors.password}</span>
+					<span>{this.getErrors('password')}</span>
 					<label htmlFor="password">Password</label>
-					</div>
-					<div>
-					<input
+					</span><br/>
+					<span className="p-float-label">
+					<InputText
 						onChange={this.onChange}
 						value={this.state.password2}
-						error={errors.password2}
+						error={this.getErrors('password')}
 						id="password2"
 						type="password"
+						size="35"
 						className={classnames("", {
-                    		invalid: errors.password2
+                    		invalid: this.getErrors('password')
                   		})}
 					/>
-					<span>{errors.password2}</span>
 					<label htmlFor="password2">Confirm Password</label>
-					</div>
+					</span><br/>
 					<div>
-						<button type="submit">Sign up</button>
+						<Button label="Sign Up" className="p-button-rounded" type="submit"/>
 					</div>
 				</form>
+				</LoginForm>
 			</div>
 		);
 	}

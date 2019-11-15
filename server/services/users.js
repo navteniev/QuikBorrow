@@ -1,12 +1,32 @@
 const bcrypt = require('bcryptjs');
+const keys = require('../config/keys');
+const jwt = require('jsonwebtoken');
 const User = require('../models/User');
+const JWT_OPTIONS = {
+  expiresIn: 31556926,
+};
+
+const getJwtToken = (payload) => {
+  return new Promise((resolve, reject) => {
+    jwt.sign(payload, keys.secretOrKey, JWT_OPTIONS, (err, token) => {
+      return err ? reject(err) : resolve(token);
+    });
+  });
+};
+const mongoose = require('mongoose');
+const Item = require('../models/Item');
 
 const findUserByEmail = (email) => {
-  return User.findOne({email}).exec();
+  return User.findOne({email});
 };
 
 const findUser = async (id) => {
   return await User.findById(id);
+};
+
+const editUser = async (id, updated) =>{
+  return await User.findByIdAndUpdate(id,
+      {name: updated.name, email: updated.email}, {new: true});
 };
 
 const createUser = async (data) => {
@@ -21,13 +41,24 @@ const createUser = async (data) => {
 
 const generateHash = async (value) => {
   const salt = await bcrypt.genSalt(10);
-  const hash = bcrypt.hash(value, salt);
+  const hash = await bcrypt.hash(value, salt);
   return hash;
 };
 
+const getLendingList = async (userId) => {
+  // const user = await User.findById(userId);
+  const casted = new mongoose.Types.ObjectId(userId);
+  const lendingList = await Item.find({'user': casted});
+  return lendingList;
+};
+
+
 module.exports = {
+  getJwtToken,
   createUser,
   generateHash,
   findUserByEmail,
   findUser,
+  editUser,
+  getLendingList,
 };

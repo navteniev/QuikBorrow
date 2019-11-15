@@ -1,5 +1,3 @@
-const jwt = require('jsonwebtoken');
-const keys = require('../config/keys');
 const userServices = require('../services/users');
 
 // eslint-disable-next-line valid-jsdoc
@@ -10,17 +8,9 @@ const login = (req, res, next) => {
     name: req.user.name,
   };
 
-  const options = {
-    expiresIn: 31556926,
-  };
-
-  // Sign token, expires in 1 year
-  jwt.sign(payload, keys.secretOrKey, options, (err, token) => {
-    if (err) {
-      return next(err);
-    }
-    res.json({success: true, token: 'Bearer ' + token});
-  });
+  return userServices.getJwtToken(payload)
+      .then((token) => res.json({success: true, token: 'Bearer ' + token}))
+      .catch(next);
 };
 
 // eslint-disable-next-line valid-jsdoc
@@ -38,8 +28,26 @@ const register = async (req, res, next) => {
 };
 
 const get = (req, res, next) => {
-  userServices.findUser(req.params.userId)
+  return userServices.findUser(req.params.userId)
       .then((user) => res.json(user))
+      .catch(next);
+};
+
+const edit = (req, res, next) => {
+  const name = req.body.name;
+  const email = req.body.email;
+  userServices.editUser(req.params.userId, {email: email, name: name})
+      .then((user) => res.json(user))
+      .catch(next);
+};
+
+
+const getLendingList = async (req, res, next) => {
+  userServices.getLendingList(req.params.userId)
+      .then((lendingList) => {
+        console.log(lendingList);
+        res.json(lendingList);
+      })
       .catch(next);
 };
 
@@ -47,4 +55,6 @@ module.exports = {
   login,
   register,
   get,
+  edit,
+  getLendingList,
 };

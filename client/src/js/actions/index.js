@@ -15,14 +15,14 @@ export const fetchProducts = () => {
 // Get one product
 export const fetchProduct = itemId => {
   return async function(dispatch) {
-    const res = await axios.get(`/api/item/${itemId}`);
+    const res = await axios.get(`/api/items/${itemId}`);
     dispatch({ type: FETCH_PRODUCT, payload: res.data });
   };
 };
 
 // Register User
 export const registerUser = (userData, history) => dispatch => {
-  axios
+  return axios
     .post("/api/users/register", userData)
     .then(res => history.push("/login")) // re-direct to login on successful register
     .catch(err =>
@@ -35,7 +35,7 @@ export const registerUser = (userData, history) => dispatch => {
 
 // Login - get user token
 export const loginUser = userData => dispatch => {
-  axios
+  return axios
     .post("/api/users/login", userData)
     .then(res => {
       // Save to localStorage

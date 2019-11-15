@@ -44,9 +44,27 @@ router.post('/login', [
   validationErrors,
 ], userController.login);
 
+//
 router.get('/:userId', [
   param('userId', 'Invalid UserId')
       .isAlphanumeric(),
+  validationErrors,
 ], userController.get);
+
+
+router.patch('/:userId', [
+  param('userId', 'Invalid userID')
+      .isAlphanumeric(),
+  validationErrors,
+], userController.edit);
+/**
+ *  @memberof module:api/users
+ * @name GET /:userId/items
+ */
+router.get('/:userId/items', [
+  param('userId', 'invalid UserId').isAlphanumeric(),
+  validationErrors,
+], userController.getLendingList);
+
 
 module.exports = router;
