@@ -28,7 +28,6 @@ async function rentTo(borrowerId, duration) {
  * Stop renting an item
  */
 async function endRent() {
-  this.availability = true;
   this.set({
     availability: false,
     borrower: undefined,
