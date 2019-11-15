@@ -29,7 +29,7 @@ async function rentTo(borrowerId, duration) {
  */
 async function endRent() {
   this.set({
-    availability: false,
+    availability: true,
     borrower: undefined,
   });
   await this.save();
