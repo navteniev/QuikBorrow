@@ -39,4 +39,13 @@ router.get('/:itemId/rent/:borrowerId/:duration', [
   validatorErrors,
 ], itemController.rent);
 
+/**
+ * @memberof module:api/items
+ * @name GET /:itemId/endrent
+ */
+router.get('/:itemId/endrent', [
+  param('itemId').isAlphanumeric(),
+  validatorErrors,
+], itemController.endRent);
+
 module.exports = router;
