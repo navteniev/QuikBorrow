@@ -4,7 +4,8 @@ const express = require('express');
 const router = new express.Router();
 const userController = require('../../controllers/users');
 const userMiddleware = require('../../middleware/users');
-const validationErrors = require('../../middleware/shared/validatorErrors');
+const validatorErrors = require('../../middleware/shared/validatorErrors');
+const validObjectId = require('../../middleware/shared/validators/isObjectId');
 const {check, param} = require('express-validator');
 
 /**
@@ -24,7 +25,7 @@ router.post('/register', [
   check('password')
       .isLength({min: 6}).withMessage('Password must be >6 characters')
       .custom(userMiddleware.expressValidator.matches),
-  validationErrors,
+  validatorErrors,
 ], userController.register);
 
 /**
@@ -41,21 +42,21 @@ router.post('/login', [
       .custom(userMiddleware.expressValidator.emailShouldExist(true)),
   check('password')
       .custom(userMiddleware.expressValidator.passwordMatchesHash),
-  validationErrors,
+  validatorErrors,
 ], userController.login);
 
 //
 router.get('/:userId', [
   param('userId', 'Invalid UserId')
-      .isAlphanumeric(),
-  validationErrors,
+      .custom(validObjectId),
+  validatorErrors,
 ], userController.get);
 
 
 router.patch('/:userId', [
-  param('userId', 'Invalid userID')
-      .isAlphanumeric(),
-  validationErrors,
+  param('userId')
+      .custom(validObjectId),
+  validatorErrors,
 ], userController.edit);
 /**
  *  @memberof module:api/users
@@ -63,7 +64,7 @@ router.patch('/:userId', [
  */
 router.get('/:userId/items', [
   param('userId', 'invalid UserId').isAlphanumeric(),
-  validationErrors,
+  validatorErrors,
 ], userController.getLendingList);
 
 
