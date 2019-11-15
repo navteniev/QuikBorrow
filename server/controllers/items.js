@@ -41,10 +41,7 @@ const rent = async (req, res, next) => {
 
 const endRent = async (req, res, next) => {
   itemServices.endRent(req.params.itemId)
-      .then((item) => {
-        console.log(item);
-        res.json(item);
-      })
+      .then((item) => res.json(item))
       .catch(next);
 };
 
