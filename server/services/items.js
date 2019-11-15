@@ -1,4 +1,3 @@
-const mongoose = require('mongoose');
 const Item = require('../models/Item');
 
 const createItem = async (data) => {
@@ -17,16 +16,20 @@ const findAllItems = async () => {
 
 const rentItem = async (id, borrowerId, duration) => {
   const item = await Item.findById(id);
-  item.availability = false;
-  item.borrower = new mongoose.Types.ObjectId(borrowerId);
-  item.returnDate = new Date((new Date()).getTime() + Number(duration));
-  await item.save();
-  return item;
+  const updated = await item.rentTo(borrowerId, duration);
+  return updated;
 };
+
+const endRent = async (id) => {
+  const item = await Item.findById(id);
+  const updated = await item.endRent();
+  return updated;
+}
 
 module.exports = {
   createItem,
   findItem,
   findAllItems,
   rentItem,
+  endRent,
 };
