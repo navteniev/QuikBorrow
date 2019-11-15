@@ -14,7 +14,9 @@ const expressValidator = {
     } else if (!shouldExist && user) {
       throw new Error('Email exists');
     }
-    req.user = user;
+    if (user) {
+      req.user = user;
+    }
     return true;
   },
   // eslint-disable-next-line valid-jsdoc
@@ -25,6 +27,7 @@ const expressValidator = {
     if (!matched) {
       throw new Error('Incorrect password');
     }
+    return true;
   },
   // eslint-disable-next-line valid-jsdoc
   /** @type {import('express-validator').CustomValidator} */

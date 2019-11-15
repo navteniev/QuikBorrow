@@ -1,7 +1,6 @@
 const express = require('express');
 const app = express();
 const port = process.env.PORT || 8081;
-const basicroute = require('./routes/basicroute');
 const passport = require('passport');
 const apiRoutes = require('./routes/api/index');
 const path = require('path');
@@ -19,7 +18,6 @@ require('./config/passport')(passport);
 
 // Routes
 app.use('/api', apiRoutes);
-app.use('/basicroute', basicroute);
 
 app.use(express.static('../client/build'));
 app.get('*', (req, res) => {
