@@ -24,7 +24,7 @@ const endRent = async (id) => {
   const item = await Item.findById(id);
   const updated = await item.endRent();
   return updated;
-}
+};
 
 module.exports = {
   createItem,
