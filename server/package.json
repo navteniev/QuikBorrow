@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest --detectOpenHandles --forceExit --coverage --coverageReporters=text-lcov | coveralls",
+    "test": "jest --detectOpenHandles --forceExit",
     "test-unit": "jest unit\\.test\\.js$ --detectOpenHandles --forceExit",
     "test-int": "jest int\\.test\\.js$ --detectOpenHandles --forceExit",
     "start": "node index.js",
