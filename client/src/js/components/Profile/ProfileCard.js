@@ -7,9 +7,8 @@ import Typography from '@material-ui/core/Typography';
 
 const StyledDiv = styled.div`
   text-align:center;
-  margin-top: 10px;
-  };
-`
+  margin-top:10px;
+  `
 
 const ProfileCard = props => {
     const { name, age, college , products, bio, wishlist } = props;

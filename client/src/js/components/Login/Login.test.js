@@ -5,6 +5,7 @@ import Enzyme, { shallow } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import { Login } from './Login';
 import { loginUser } from "../../actions/index";
+import { TextField } from "@material-ui/core";
 
 Enzyme.configure({ adapter: new Adapter() });
 jest.mock('../../actions/index');
@@ -31,20 +32,20 @@ describe('Login', () => {
 
 	test('email entry', () => {
 		let wrapper = shallow(<Login loginUser = {params.loginUser} auth = {params.auth} errors = {params.errors} />);
-		wrapper.find('TextField[type="email"]').simulate('change', {target: {id: 'email', value: 'test@test.com'}});
+		wrapper.find('#email').simulate('change', {target: {id: 'email', value: 'test@test.com'}});
 		expect(wrapper.state('email')).toEqual('test@test.com');
 	});
 
 	test('password entry', () => {
 		let wrapper = shallow(<Login loginUser = {params.loginUser} auth = {params.auth} errors = {params.errors} />);
-		wrapper.find('TextField[type="password"]').simulate('change', {target: {id: 'password', value: 'password'}});
+		wrapper.find('#password').simulate('change', {target: {id: 'password', value: 'password'}});
 		expect(wrapper.state('password')).toEqual('password');
 	});
 
 	test('successful login', () => {
 		let wrapper = shallow(<Login loginUser = {params.loginUser} auth = {params.auth} errors = {params.errors} />);
-		wrapper.find('TextField[type="email"]').simulate('change', {target: {id: 'email', value: 'test@test.com'}});
-		wrapper.find('TextField[type="password"]').simulate('change', {target: {id: 'password', value: 'password'}});
+		wrapper.find('#email').simulate('change', {target: {id: 'email', value: 'test@test.com'}});
+		wrapper.find('#password').simulate('change', {target: {id: 'password', value: 'password'}});
 		wrapper.find('form').simulate('submit', {preventDefault() {}});
 		expect(wrapper.instance().props.loginUser).toHaveBeenCalled()
 	});

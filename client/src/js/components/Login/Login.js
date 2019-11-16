@@ -63,11 +63,12 @@ export class Login extends Component {
 		const { errors } = this.state;
 		if (errors.errors === undefined || errors.errors.find(x => x.param === e) === undefined)
 		{
-			return "";
+			return true;
 		}
 		else
 		{
-			return errors.errors.find(x => x.param === e).msg;
+			// return errors.errors.find(x => x.param === e).msg;
+			return false;
 		}
 	};
 	render() {
@@ -81,7 +82,7 @@ export class Login extends Component {
 					<div>
 						<h4>Login</h4>
 					</div>
-				<form noValidate onSubmit={this.onSubmit}>
+					<form noValidate onSubmit={this.onSubmit}>
 						<TextField
 							onChange={this.onChange}
 							value={this.state.email}
@@ -94,7 +95,7 @@ export class Login extends Component {
                   			})}
 						/>
 						<span>{this.getErrors('email')}</span>
-					<br/>
+						<br/>
 						<TextField
 							onChange={this.onChange}
 							value={this.state.password}

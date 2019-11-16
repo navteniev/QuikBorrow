@@ -65,11 +65,12 @@ export class Register extends Component {
 		const { errors } = this.state;
 		if(errors.errors === undefined || errors.errors.find(x => x.param === e) === undefined)
 		{
-			return "";
+			return true;
 		}
 		else
 		{
-			return errors.errors.find(x => x.param === e).msg;
+			// return errors.errors.find(x => x.param === e).msg;
+			return false;
 		}
 	};
 	render() {
