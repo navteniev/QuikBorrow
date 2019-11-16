@@ -2,66 +2,138 @@
 
 exports[`ProductCard should render a ProductCard 1`] = `
 <div
-  className="p-col"
+  className="MuiPaper-root MuiPaper-elevation1 MuiCard-root sc-htpNat eDgLaq MuiPaper-rounded"
 >
   <div
-    className="p-card p-component ui-card-shadow box"
+    className="MuiCardMedia-root sc-bxivhb gVKxpq"
     style={
       Object {
-        "width": "360px",
+        "backgroundImage": "url(\\"https://via.placeholder.com/200\\")",
       }
     }
+    title="image"
+  />
+  <div
+    className="MuiCardContent-root sc-ifAKCX hCIaTb"
   >
-    <div
-      className="p-card-header"
-    >
-      <a
-        href="/products/undefined"
-        onClick={[Function]}
+    <div>
+      <div
+        className="sc-bdVaJa hPftyW"
       >
-        <img
-          alt="product_image"
-          src="https://via.placeholder.com/150"
+        <h6
+          className="MuiTypography-root MuiTypography-h6"
         />
-      </a>
-    </div>
-    <div
-      className="p-card-body"
-    >
-      <div
-        className="p-card-content"
-      >
-         
-        <div />
-        <div>
-          not available
-        </div>
-         
-      </div>
-      <div
-        className="p-card-footer"
-      >
-         
-        <span>
-          <a
-            href="/products/undefined"
-            onClick={[Function]}
-          >
-            <button
-              className="p-button p-component p-button-text-icon-left"
-            >
-              <span
-                className="pi pi-check p-c p-button-icon-left"
-              />
-              <span
-                className="p-button-text p-c"
-              >
-                Borrow
-              </span>
-            </button>
-          </a>
+        <span
+          style={
+            Object {
+              "color": "gray",
+            }
+          }
+        >
+          User: 
+          unknown
         </span>
       </div>
+      <p
+        className="sc-bwzfXH qHaOC"
+      />
+    </div>
+    <div
+      className="sc-bdVaJa hPftyW"
+    >
+      <div
+        className="MuiButtonGroup-root"
+        role="group"
+      >
+        <button
+          className="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButtonGroup-grouped MuiButtonGroup-groupedOutlined MuiButtonGroup-groupedOutlined"
+          disabled={false}
+          onBlur={[Function]}
+          onClick={[Function]}
+          onDragLeave={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          tabIndex={0}
+          type="button"
+        >
+          <span
+            className="MuiButton-label"
+          >
+            Details
+          </span>
+          <span
+            className="MuiTouchRipple-root"
+          />
+        </button>
+        <button
+          className="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButtonGroup-grouped MuiButtonGroup-groupedOutlined MuiButtonGroup-groupedOutlined"
+          disabled={false}
+          onBlur={[Function]}
+          onDragLeave={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          tabIndex={0}
+          type="button"
+        >
+          <span
+            className="MuiButton-label"
+          >
+            Get Notified
+          </span>
+          <span
+            className="MuiTouchRipple-root"
+          />
+        </button>
+      </div>
+      <span
+        aria-describedby={null}
+        className=""
+        onBlur={[Function]}
+        onFocus={[Function]}
+        onMouseLeave={[Function]}
+        onMouseOver={[Function]}
+        onTouchEnd={[Function]}
+        onTouchStart={[Function]}
+        title="Unavailable"
+      >
+        <button
+          className="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary Mui-disabled Mui-disabled"
+          disabled={true}
+          onBlur={[Function]}
+          onDragLeave={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          tabIndex={-1}
+          type="button"
+        >
+          <span
+            className="MuiButton-label"
+          >
+            Request
+          </span>
+        </button>
+      </span>
     </div>
   </div>
 </div>

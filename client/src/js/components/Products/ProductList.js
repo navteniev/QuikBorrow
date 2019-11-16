@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import * as actions from "../../actions";
 import styled from 'styled-components';
 import ProductCard from "./ProductCard";
-import { Typography, Button, IconButton } from "@material-ui/core";
+import { Typography, Button, IconButton, ButtonGroup } from "@material-ui/core";
 import { ArrowBack, ArrowForward } from '@material-ui/icons'
 
 const List = styled.ul`
@@ -82,13 +82,15 @@ class ProductList extends Component {
     // Calculate pages
     const pages = []
     let currentPage = []
-    products.forEach(item => {
-      if (currentPage.length === ProductList.ITEMS_PER_PAGE) {
-        pages.push(currentPage)
-        currentPage = []
-      }
-      currentPage.push(item)
-    })
+    if (products) {
+      products.forEach(item => {
+        if (currentPage.length === ProductList.ITEMS_PER_PAGE) {
+          pages.push(currentPage)
+          currentPage = []
+        }
+        currentPage.push(item)
+      })
+    }
     if (currentPage.length > 0) {
       pages.push(currentPage)
     }
@@ -100,19 +102,19 @@ class ProductList extends Component {
         <div style={{maxWidth: '1000px', width: '100%'}}>
           <ListTop>
             <Typography component='h4' variant='h4'>
-              {products.length} Products
+              {products ? products.length : 0} Products
             </Typography>
-            <div>
-              <IconButton>
-                <ArrowBack onClick={e => this.prevPage()} disabled={this.state.page <= 0} />
+            <ButtonGroup>
+              <IconButton onClick={e => this.prevPage()} disabled={this.state.page <= 0}>
+                <ArrowBack />
               </IconButton>
               <Button disabled variant='text'>
                 {this.state.page + 1}/{pages.length}
               </Button>
-              <IconButton>
-                <ArrowForward onClick={e => this.nextPage()} disabled={this.state.page === pages.length - 1} />
+              <IconButton onClick={e => this.nextPage()} disabled={this.state.page === pages.length - 1}>
+                <ArrowForward />
               </IconButton>
-            </div>
+            </ButtonGroup>
           </ListTop>
           <List>
             {items}
