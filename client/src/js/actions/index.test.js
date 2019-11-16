@@ -1,11 +1,6 @@
 import axios from 'axios';
 import * as actions from './index';
 
-const mockResponse = {
-	success: true,
-	token: "Bearer eyJhbGciOiJIUzI.eyJpZCI6IjVjN.1Tn8FLJEGGE8"
-};
-
 describe('actions', () => {
 	let mock;
 	beforeEach(() => {
