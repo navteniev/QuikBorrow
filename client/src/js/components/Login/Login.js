@@ -5,9 +5,9 @@ import { connect } from "react-redux";
 import { loginUser } from "../../actions/index";
 import classnames from "classnames";
 import styled from 'styled-components';
-import {InputText} from 'primereact/inputtext';
-import {Button} from 'primereact/button';
 import quikLogo from '../../components/quikLogo.png';
+import { TextField } from "@material-ui/core";
+import Button from '@material-ui/core/Button';
 
 const LoginForm = styled.div`
 	margin: 0 auto;
@@ -21,6 +21,7 @@ const LoginForm = styled.div`
 const Center = styled.div`
 	text-align: center;
 `
+
 export class Login extends Component {
 	constructor() {
 		super();
@@ -78,42 +79,39 @@ export class Login extends Component {
 				</Center>
 				<LoginForm>
 					<div>
-						<h2>Login</h2>
+						<h4>Login</h4>
 					</div>
 				<form noValidate onSubmit={this.onSubmit}>
-					<span className="p-float-label">
-						<InputText
+						<TextField
 							onChange={this.onChange}
 							value={this.state.email}
 							error={this.getErrors('email')}
 							id="email"
 							type="email"
-							size="35"
+							label="Email"
 							className={classnames("", {
                     			invalid: this.getErrors('email')
                   			})}
 						/>
 						<span>{this.getErrors('email')}</span>
-						<label htmlFor="email">Email</label>
-					</span><br/>
-					<span className="p-float-label">
-						<InputText
+					<br/>
+						<TextField
 							onChange={this.onChange}
 							value={this.state.password}
 							error={this.getErrors('password')}
 							id="password"
 							type="password"
-							size="35"
+							label="Password"
 							className={classnames("", {
                     			invalid: this.getErrors('password')
                   			})}
 						/>
 						<span>{this.getErrors('password')}</span>
-						<label htmlFor="password">Password</label>
-					</span>
 					<p>Dont have an account? <Link to="/register">Register</Link></p>
 					<div>
-						<Button label="Login" className="p-button-rounded" type="submit"/>
+					<Button variant="contained" color="primary" type="submit">
+        			Login
+      				</Button>
 					</div>
 				</form>
 				</LoginForm>
