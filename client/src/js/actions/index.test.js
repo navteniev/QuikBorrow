@@ -1,6 +1,11 @@
 import axios from 'axios';
 import * as actions from './index';
 
+const mockResponse = {
+	success: true,
+	token: "Bearer eyJhbGciOiJIUzI.eyJpZCI6IjVjN.1Tn8FLJEGGE8"
+};
+
 describe('actions', () => {
 	let mock;
 	beforeEach(() => {
@@ -22,16 +27,22 @@ describe('actions', () => {
 	    expect(history.push).toHaveBeenCalledWith('/login');
 	});
 
-	/*test('loginUser', async () => {
+	test('loginUser', async () => {
 	    const dispatch = jest.fn();
 	    const userData = {
 	    	email: 'test@test.com',
 	    	password: 'password'
 	    }
-	    mock.mockResolvedValue();  // mock axios.post to resolve
+	    const mockedError = {
+	    	response: {
+	    		data: 'test error'
+	    	}
+	    }
+	    mock.mockResolvedValue().mockRejectedValueOnce(mockedError);  // mock axios.post to resolve
 	    await actions.loginUser(userData)(dispatch);
 	    expect(mock).toHaveBeenCalledWith('/api/users/login', userData);  // Success!
-	});*/
+
+	});
 
 	test('setCurrentUser', () => {
 		const setUser = actions.setCurrentUser('decoded');
