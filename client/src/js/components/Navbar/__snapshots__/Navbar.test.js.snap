@@ -1,0 +1,121 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Navbar should render a navbar 1`] = `
+<nav
+  className="nav-wrapper light-blue"
+>
+  <div
+    className="container"
+  >
+    <a
+      className="brand-logo"
+      href="/"
+      onClick={[Function]}
+    >
+      QuikBorrow
+    </a>
+    <ul
+      className="right"
+    >
+      <li>
+        <a
+          aria-current={null}
+          href="/login"
+          onClick={[Function]}
+        >
+          Login
+        </a>
+      </li>
+      <li>
+        <a
+          aria-current={null}
+          href="/register"
+          onClick={[Function]}
+        >
+          Register
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>
+`;
+
+exports[`Navbar should render a navbar with SignedIn links 1`] = `
+<nav
+  className="nav-wrapper light-blue"
+>
+  <div
+    className="container"
+  >
+    <a
+      className="brand-logo"
+      href="/"
+      onClick={[Function]}
+    >
+      QuikBorrow
+    </a>
+    <ul
+      className="right"
+    >
+      <li>
+        <a
+          aria-current={null}
+          href="/login"
+          onClick={[Function]}
+        >
+          Login
+        </a>
+      </li>
+      <li>
+        <a
+          aria-current={null}
+          href="/register"
+          onClick={[Function]}
+        >
+          Register
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>
+`;
+
+exports[`Navbar should render a navbar with SignedOut links 1`] = `
+<nav
+  className="nav-wrapper light-blue"
+>
+  <div
+    className="container"
+  >
+    <a
+      className="brand-logo"
+      href="/"
+      onClick={[Function]}
+    >
+      QuikBorrow
+    </a>
+    <ul
+      className="right"
+    >
+      <li>
+        <a
+          aria-current={null}
+          href="/login"
+          onClick={[Function]}
+        >
+          Login
+        </a>
+      </li>
+      <li>
+        <a
+          aria-current={null}
+          href="/register"
+          onClick={[Function]}
+        >
+          Register
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>
+`;
