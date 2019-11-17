@@ -1,19 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ProductCard should render a ProductCard 1`] = `
-<div
-  className="p-col"
->
+<div>
   <div
-    className="p-card p-component ui-card-shadow box"
-    style={
-      Object {
-        "width": "360px",
-      }
-    }
+    className="MuiPaper-root MuiPaper-elevation1 MuiCard-root MuiPaper-rounded"
   >
     <div
-      className="p-card-header"
+      className="MuiCardMedia-root"
     >
       <a
         href="/products/undefined"
@@ -26,42 +19,52 @@ exports[`ProductCard should render a ProductCard 1`] = `
       </a>
     </div>
     <div
-      className="p-card-body"
+      className="MuiCardContent-root"
     >
-      <div
-        className="p-card-content"
+      <h2
+        className="MuiTypography-root MuiTypography-h5 MuiTypography-gutterBottom"
+      />
+      <p
+        className="MuiTypography-root MuiTypography-body2 MuiTypography-colorTextSecondary"
       >
          
-        <div />
-        <div>
-          not available
-        </div>
-         
-      </div>
-      <div
-        className="p-card-footer"
+        <br />
+        <br />
+        not available
+        <br />
+      </p>
+    </div>
+    <div
+      className="MuiCardActions-root MuiCardActions-spacing"
+    >
+      <a
+        href="/products/undefined"
+        onClick={[Function]}
       >
-         
-        <span>
-          <a
-            href="/products/undefined"
-            onClick={[Function]}
+        <button
+          className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary"
+          disabled={false}
+          onBlur={[Function]}
+          onDragLeave={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          tabIndex={0}
+          type="button"
+        >
+          <span
+            className="MuiButton-label"
           >
-            <button
-              className="p-button p-component p-button-text-icon-left"
-            >
-              <span
-                className="pi pi-check p-c p-button-icon-left"
-              />
-              <span
-                className="p-button-text p-c"
-              >
-                Borrow
-              </span>
-            </button>
-          </a>
-        </span>
-      </div>
+            Borrow
+          </span>
+        </button>
+      </a>
     </div>
   </div>
 </div>
