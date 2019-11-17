@@ -36,30 +36,30 @@ describe('Register', () => {
 	});
 	
 	test('username entry', () => {
-		wrapper.find('InputText[type="text"]').simulate('change', {target: {id: 'name', value: 'test'}});
+		wrapper.find('#name').simulate('change', {target: {id: 'name', value: 'test'}});
 		expect(wrapper.state('name')).toEqual('test');
 	});
 
 	test('email entry', () => {
-		wrapper.find('InputText[type="text"]').simulate('change', {target: {id: 'email', value: 'test@test.com'}});
+		wrapper.find('#email').simulate('change', {target: {id: 'email', value: 'test@test.com'}});
 		expect(wrapper.state('email')).toEqual('test@test.com');
 	});
 
 	test('password entry', () => {
-		wrapper.find('InputText[type="text"]').simulate('change', {target: {id: 'password', value: 'password'}});
+		wrapper.find('#password').simulate('change', {target: {id: 'password', value: 'password'}});
 		expect(wrapper.state('password')).toEqual('password');
 	});
 
 	test('password confirmation entry', () => {
-		wrapper.find('InputText[type="text"]').simulate('change', {target: {id: 'password2', value: 'password'}});
+		wrapper.find('#password2').simulate('change', {target: {id: 'password2', value: 'password'}});
 		expect(wrapper.state('password2')).toEqual('password');
 	});
 
 	test('successful registration', () => {
-		wrapper.find('InputText[type="text"]').simulate('change', {target: {id: 'name', value: 'test'}});
-		wrapper.find('InputText[type="text"]').simulate('change', {target: {id: 'email', value: 'email@email.com'}});
-		wrapper.find('InputText[type="text"]').simulate('change', {target: {id: 'password', value: 'password'}});
-		wrapper.find('InputText[type="text"]').simulate('change', {target: {id: 'password2', value: 'password'}});
+		wrapper.find('#name').simulate('change', {target: {id: 'name', value: 'test'}});
+		wrapper.find('#email').simulate('change', {target: {id: 'email', value: 'email@email.com'}});
+		wrapper.find('#password').simulate('change', {target: {id: 'password', value: 'password'}});
+		wrapper.find('#password2').simulate('change', {target: {id: 'password2', value: 'password'}});
 		wrapper.find('form').simulate('submit', {preventDefault() {}});
 		expect(wrapper.instance().props.registerUser).toHaveBeenCalled()
 	});
