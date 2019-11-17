@@ -27,18 +27,6 @@ const ListTop = styled.div`
   justify-content: space-between;
 `
 
-const dummyProducts = [{
-  name: 'Textbook 1',
-  description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus tristique interdum pellentesque. Quisque dolor orci, vulputate in posuere nec, rhoncus in eros. Quisque rutrum, lacus id semper tempor, ligula velit lacinia magna, at vulputate ipsum nibh et nunc. Integer ac magna eget est facilisis facilisis id vel lorem. Mauris dapibus efficitur magna eu volutpat. Ut vitae nulla rhoncus, posuere elit sed, blandit dui. Mauris id eros ornare, pellentesque mauris non, mollis arcu. Quisque a pharetra nisl. Suspendisse rhoncus leo non dui tristique egestas. Aenean scelerisque quis sem ac efficitur. Suspendisse rhoncus tortor non nunc aliquam ullamcorper. Vestibulum pharetra congue augue id sollicitudin. Nam eleifend augue a ultricies auctor. Vestibulum ut tristique ligula. ',
-  image: 'https://via.placeholder.com/200',
-  user: 'author name'
-}]
-
-for (let i = 0; i < 10; ++i) {
-  const item = { ...dummyProducts[0] }
-  dummyProducts.push(item)
-}
-
 class ProductList extends Component {
   static ITEMS_PER_PAGE = 2;
   state = {
