@@ -78,7 +78,8 @@ describe('Register', () => {
 	test('errors', () => {
 		const fakeErr = {
 			errors: [{
-				'name': 'Invalid name'
+				'param': 'name',
+				'msg' : 'Invalid name'
 			}]
 		}
 		let wrapper = shallow(<Register registerUser = {params.registerUser} auth = {params.auth} errors = {params.errors} />);

@@ -57,17 +57,20 @@ describe('Login', () => {
 		}
 		const historyMock = { push: jest.fn() };
 		let wrapper = shallow(<Login loginUser = {params.loginUser} auth = {isAuth} errors = {params.errors} history = {historyMock}/>);
+		wrapper.setProps({ auth: { isAuthenticated: true } });
 		expect(historyMock.push.mock.calls[0]).toEqual(['/dashboard']);
 	});
 
 	test('errors', () => {
 		const fakeErr = {
 			errors: [{
-				'email': 'Invalid email'
+				'param': 'email',
+				'msg' : 'Invalid email'
 			}]
 		}
 		let wrapper = shallow(<Login loginUser = {params.loginUser} auth = {params.auth} errors = {params.errors} />);
 		wrapper.setProps({ errors: fakeErr });
+		// console.log(wrapper.instance().props.errors.errors.find(x => x.param === 'email'));
 		expect(wrapper.state('errors')).toEqual(fakeErr);
 	});
 });

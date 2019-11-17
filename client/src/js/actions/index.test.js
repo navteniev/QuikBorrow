@@ -1,7 +1,6 @@
 import axios from 'axios';
 import * as actions from './index';
-import setAuthToken from "../utils/setAuthToken";
-import jwt_decode from "jwt-decode";
+import { GET_ERRORS } from "./types";
 
 jest.mock('axios')
 jest.mock('../utils/setAuthToken')
@@ -29,25 +28,29 @@ describe('actions', () => {
 	});
 
 	describe('loginUser', () => {
-		const dispatch = jest.fn();
 	    const userData = {
 	    	email: 'test@test.com',
 	    	password: 'password'
 	    }
 		test('successful post made', async () => {
+			const dispatch = jest.fn();
 			mock.mockResolvedValue({data: {}});
 		    await actions.loginUser(userData)(dispatch);
 		    expect(mock).toHaveBeenCalledWith('/api/users/login', userData); 
 		});
-		test('error thrown', async () => {
+		test('error dispatched', async () => {
+			const dispatch = jest.fn();
 			const mockedError = {
 		    	response: {
-		    		data: 'test error'
-		    	}
+		        	data: 'test error'
+		      	}
 		    }
-		    mock.mockResolvedValue().mockRejectedValueOnce(mockedError);
-		    await actions.loginUser(userData)(dispatch);
-		    expect(mock).toHaveBeenCalledWith('/api/users/login', userData); 
+		  	mock.mockRejectedValueOnce(mockedError);
+		  	await actions.loginUser(userData)(dispatch);
+		  	expect(dispatch).toHaveBeenCalledWith({
+		    	type: GET_ERRORS,
+		    	payload: mockedError.response.data
+		  	});
 		});
 	    
 	    
