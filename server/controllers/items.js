@@ -39,10 +39,16 @@ const rent = async (req, res, next) => {
       .catch(next);
 };
 
+const endRent = async (req, res, next) => {
+  itemServices.endRent(req.params.itemId)
+      .then((item) => res.json(item))
+      .catch(next);
+};
 
 module.exports = {
   create,
   get,
   getAll,
   rent,
+  endRent,
 };

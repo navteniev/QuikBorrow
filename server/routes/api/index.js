@@ -7,4 +7,8 @@ router.use('/items', items);
 
 router.use('/users', users);
 
+router.use('*', (req, res, next) => {
+  res.status(404).json({errors: [{msg: 'Unknown API route'}]});
+});
+
 module.exports = router;

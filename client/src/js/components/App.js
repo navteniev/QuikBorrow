@@ -2,9 +2,6 @@ import React, { Component } from "react";
 import { BrowserRouter, Route } from "react-router-dom";
 import * as actions from "../actions";
 import "../../css/App.css";
-import "primereact/resources/themes/nova-dark/theme.css";
-import "primereact/resources/primereact.min.css";
-import "primeicons/primeicons.css";
 
 import Homepage from "./Homepage/Homepage";
 import Register from "./Register/Register";

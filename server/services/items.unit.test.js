@@ -49,22 +49,36 @@ describe('services/item', function() {
   });
   describe('rentItem', function() {
     it('finds the item by id', async function() {
-      const id = '12e';
-      Item.findById.mockResolvedValueOnce({save: jest.fn()});
+      const id = 'q23r5';
+      Item.findById.mockResolvedValueOnce({rentTo: jest.fn()});
       await itemServices.rentItem(id);
       expect(Item.findById).toHaveBeenCalledWith(id);
     });
-    it('sets the availability to false', async function() {
-      const item = {a: 1, boo: 2, save: jest.fn()};
+    it('returns the updated item', async function() {
+      const item = new Item();
+      const updatedItem = {a: 1, b: 2};
+      item.rentTo = jest.fn(async () => updatedItem);
       Item.findById.mockResolvedValueOnce(item);
-      await itemServices.rentItem();
-      expect(item.availability).toEqual(false);
+      const returned = await itemServices.rentItem();
+      expect(item.rentTo).toHaveBeenCalled();
+      expect(returned).toEqual(updatedItem);
     });
-    it('calls save', async function() {
-      const item = {a: 1, boo: 2, save: jest.fn()};
+  });
+  describe('endRent', function() {
+    it('finds the item by id', async function() {
+      const id = 'qfgh23r5';
+      Item.findById.mockResolvedValueOnce({endRent: jest.fn()});
+      await itemServices.endRent(id);
+      expect(Item.findById).toHaveBeenCalledWith(id);
+    });
+    it('returns the updated item', async function() {
+      const item = new Item();
+      const updatedItem = {a: 1, b: 2};
+      item.endRent = jest.fn(async () => updatedItem);
       Item.findById.mockResolvedValueOnce(item);
-      await itemServices.rentItem();
-      expect(item.save).toHaveBeenCalled();
+      const returned = await itemServices.endRent();
+      expect(item.endRent).toHaveBeenCalled();
+      expect(returned).toEqual(updatedItem);
     });
   });
 });
