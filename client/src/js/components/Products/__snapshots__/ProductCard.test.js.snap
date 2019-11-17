@@ -8,7 +8,7 @@ exports[`ProductCard should render a ProductCard 1`] = `
     className="MuiCardMedia-root sc-bxivhb gVKxpq"
     style={
       Object {
-        "backgroundImage": "url(\\"https://via.placeholder.com/200\\")",
+        "backgroundImage": "url(\\"https://patch.com/img/cdn/users/1142384/2013/09/raw/77d3e8242e7562885116ebff68689271.jpg\\")",
       }
     }
     title="image"
