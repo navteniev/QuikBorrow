@@ -19,6 +19,11 @@ describe('Register', () => {
 		},
 		errors: {}
 	}
+	let wrapper;
+
+	beforeEach(() => {
+		wrapper = shallow(<Register registerUser = {params.registerUser} auth = {params.auth} errors = {params.errors} />);
+	});
 
 	test('renders', () => {
 		const component = renderer.create(
@@ -31,31 +36,26 @@ describe('Register', () => {
 	});
 	
 	test('username entry', () => {
-		let wrapper = shallow(<Register registerUser = {params.registerUser} auth = {params.auth} errors = {params.errors} />);
 		wrapper.find('InputText[type="text"]').simulate('change', {target: {id: 'name', value: 'test'}});
 		expect(wrapper.state('name')).toEqual('test');
 	});
 
 	test('email entry', () => {
-		let wrapper = shallow(<Register registerUser = {params.registerUser} auth = {params.auth} errors = {params.errors} />);
 		wrapper.find('InputText[type="text"]').simulate('change', {target: {id: 'email', value: 'test@test.com'}});
 		expect(wrapper.state('email')).toEqual('test@test.com');
 	});
 
 	test('password entry', () => {
-		let wrapper = shallow(<Register registerUser = {params.registerUser} auth = {params.auth} errors = {params.errors} />);
 		wrapper.find('InputText[type="text"]').simulate('change', {target: {id: 'password', value: 'password'}});
 		expect(wrapper.state('password')).toEqual('password');
 	});
 
 	test('password confirmation entry', () => {
-		let wrapper = shallow(<Register registerUser = {params.registerUser} auth = {params.auth} errors = {params.errors} />);
 		wrapper.find('InputText[type="text"]').simulate('change', {target: {id: 'password2', value: 'password'}});
 		expect(wrapper.state('password2')).toEqual('password');
 	});
 
 	test('successful registration', () => {
-		let wrapper = shallow(<Register registerUser = {params.registerUser} auth = {params.auth} errors = {params.errors} />);
 		wrapper.find('InputText[type="text"]').simulate('change', {target: {id: 'name', value: 'test'}});
 		wrapper.find('InputText[type="text"]').simulate('change', {target: {id: 'email', value: 'email@email.com'}});
 		wrapper.find('InputText[type="text"]').simulate('change', {target: {id: 'password', value: 'password'}});
@@ -71,7 +71,7 @@ describe('Register', () => {
 			loading: false,
 		}
 		const historyMock = { push: jest.fn() };
-		let wrapper = shallow(<Register registerUser = {params.registerUser} auth = {isAuth} errors = {params.errors} history = {historyMock} />);
+		wrapper = shallow(<Register registerUser = {params.registerUser} auth = {isAuth} errors = {params.errors} history = {historyMock} />);
 		expect(historyMock.push.mock.calls[0]).toEqual(['/dashboard']);
 	});
 
@@ -82,7 +82,6 @@ describe('Register', () => {
 				'msg' : 'Invalid name'
 			}]
 		}
-		let wrapper = shallow(<Register registerUser = {params.registerUser} auth = {params.auth} errors = {params.errors} />);
 		wrapper.setProps({ errors: fakeErr });
 		expect(wrapper.state('errors')).toEqual(fakeErr);
 	});
