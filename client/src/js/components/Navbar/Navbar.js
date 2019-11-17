@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import SignedIn from './SignedIn';
 import SignedOut from './SignedOut';
 
-class Navbar extends React.Component {
+export class Navbar extends React.Component {
     render() {
         return (
             <nav className="nav-wrapper light-blue">
