@@ -20,6 +20,11 @@ describe('Login', () => {
 		},
 		errors: {}
 	}
+	let wrapper;
+
+	beforeEach(() => {
+		wrapper = shallow(<Login loginUser = {params.loginUser} auth = {params.auth} errors = {params.errors} />);
+	});
 	test('renders', () => {
 		const component = renderer.create(
 			<MemoryRouter>
@@ -31,19 +36,16 @@ describe('Login', () => {
 	});
 
 	test('email entry', () => {
-		let wrapper = shallow(<Login loginUser = {params.loginUser} auth = {params.auth} errors = {params.errors} />);
 		wrapper.find('#email').simulate('change', {target: {id: 'email', value: 'test@test.com'}});
 		expect(wrapper.state('email')).toEqual('test@test.com');
 	});
 
 	test('password entry', () => {
-		let wrapper = shallow(<Login loginUser = {params.loginUser} auth = {params.auth} errors = {params.errors} />);
 		wrapper.find('#password').simulate('change', {target: {id: 'password', value: 'password'}});
 		expect(wrapper.state('password')).toEqual('password');
 	});
 
 	test('successful login', () => {
-		let wrapper = shallow(<Login loginUser = {params.loginUser} auth = {params.auth} errors = {params.errors} />);
 		wrapper.find('#email').simulate('change', {target: {id: 'email', value: 'test@test.com'}});
 		wrapper.find('#password').simulate('change', {target: {id: 'password', value: 'password'}});
 		wrapper.find('form').simulate('submit', {preventDefault() {}});
@@ -57,17 +59,18 @@ describe('Login', () => {
 			loading: false,
 		}
 		const historyMock = { push: jest.fn() };
-		let wrapper = shallow(<Login loginUser = {params.loginUser} auth = {isAuth} errors = {params.errors} history = {historyMock}/>);
+		wrapper = shallow(<Login loginUser = {params.loginUser} auth = {isAuth} errors = {params.errors} history = {historyMock}/>);
+		wrapper.setProps({ auth: { isAuthenticated: true } });
 		expect(historyMock.push.mock.calls[0]).toEqual(['/dashboard']);
 	});
 
 	test('errors', () => {
 		const fakeErr = {
 			errors: [{
-				'email': 'Invalid email'
+				'param': 'email',
+				'msg' : 'Invalid email'
 			}]
 		}
-		let wrapper = shallow(<Login loginUser = {params.loginUser} auth = {params.auth} errors = {params.errors} />);
 		wrapper.setProps({ errors: fakeErr });
 		expect(wrapper.state('errors')).toEqual(fakeErr);
 	});
