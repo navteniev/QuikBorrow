@@ -1,6 +1,6 @@
 const transactionServices = require('../services/transactions');
 
-const create  = async (req, res, next) => {
+const create = async (req, res, next) => {
   const data = {
     borrower: req.body.borrowerId,
     msg: req.body.msg,

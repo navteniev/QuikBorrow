@@ -9,6 +9,9 @@ const TransactionSchema = new Schema({
   processed: {type: Boolean, default: false},
 });
 
+/**
+ * Approve the transaction request
+ */
 async function approve() {
   this.set({
     approved: true,
@@ -18,6 +21,9 @@ async function approve() {
   return this;
 }
 
+/**
+ * Reject the transaction request
+ */
 async function reject() {
   this.set({
     approved: false,
