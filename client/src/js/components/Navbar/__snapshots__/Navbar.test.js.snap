@@ -1,81 +1,138 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Navbar should render a navbar with SignedIn links 1`] = `
-<nav
-  className="nav-wrapper light-blue"
+<header
+  className="MuiPaper-root MuiPaper-elevation4 MuiAppBar-root MuiAppBar-positionStatic MuiAppBar-colorPrimary"
 >
   <div
-    className="container"
+    className="MuiToolbar-root MuiToolbar-regular MuiToolbar-gutters"
   >
-    <a
-      className="brand-logo"
-      href="/"
-      onClick={[Function]}
+    <button
+      aria-label="menu"
+      className="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorInherit MuiIconButton-edgeStart"
+      disabled={false}
+      onBlur={[Function]}
+      onDragLeave={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      tabIndex={0}
+      type="button"
     >
-      QuikBorrow
-    </a>
-    <ul
-      className="right"
+      <span
+        className="MuiIconButton-label"
+      />
+    </button>
+    <h6
+      className="MuiTypography-root MuiTypography-h6"
+      style={
+        Object {
+          "flexGrow": 1,
+        }
+      }
     >
-      <li>
-        <a
-          aria-current={null}
-          href="/login"
-          onClick={[Function]}
-        >
-          Login
-        </a>
-      </li>
-      <li>
-        <a
-          aria-current={null}
-          href="/register"
-          onClick={[Function]}
-        >
-          Register
-        </a>
-      </li>
-    </ul>
+      <a
+        className="sc-htpNat hPRntI brand-logo"
+        href="/"
+        onClick={[Function]}
+      >
+        QuikBorrow
+      </a>
+    </h6>
+    <div
+      className="MuiToolbar-root MuiToolbar-regular MuiToolbar-gutters"
+    >
+      <a
+        className="sc-bwzfXH jeMjYc"
+        href="/login"
+        onClick={[Function]}
+      >
+        Login
+      </a>
+      <a
+        className="sc-bwzfXH jeMjYc"
+        href="/register"
+        onClick={[Function]}
+      >
+        Register
+      </a>
+    </div>
   </div>
-</nav>
+</header>
 `;
 
 exports[`Navbar should render a navbar with SignedOut links 1`] = `
-<nav
-  className="nav-wrapper light-blue"
+<header
+  className="MuiPaper-root MuiPaper-elevation4 MuiAppBar-root MuiAppBar-positionStatic MuiAppBar-colorPrimary"
 >
   <div
-    className="container"
+    className="MuiToolbar-root MuiToolbar-regular MuiToolbar-gutters"
   >
-    <a
-      className="brand-logo"
-      href="/"
-      onClick={[Function]}
+    <button
+      aria-label="menu"
+      className="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorInherit MuiIconButton-edgeStart"
+      disabled={false}
+      onBlur={[Function]}
+      onDragLeave={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      tabIndex={0}
+      type="button"
     >
-      QuikBorrow
-    </a>
-    <ul
-      className="right"
+      <span
+        className="MuiIconButton-label"
+      />
+      <span
+        className="MuiTouchRipple-root"
+      />
+    </button>
+    <h6
+      className="MuiTypography-root MuiTypography-h6"
+      style={
+        Object {
+          "flexGrow": 1,
+        }
+      }
     >
-      <li>
-        <a
-          aria-current={null}
-          href="/login"
-          onClick={[Function]}
-        >
-          Login
-        </a>
-      </li>
-      <li>
-        <a
-          aria-current={null}
-          href="/register"
-          onClick={[Function]}
-        >
-          Register
-        </a>
-      </li>
-    </ul>
+      <a
+        className="sc-htpNat hPRntI brand-logo"
+        href="/"
+        onClick={[Function]}
+      >
+        QuikBorrow
+      </a>
+    </h6>
+    <div
+      className="MuiToolbar-root MuiToolbar-regular MuiToolbar-gutters"
+    >
+      <a
+        className="sc-bwzfXH jeMjYc"
+        href="/login"
+        onClick={[Function]}
+      >
+        Login
+      </a>
+      <a
+        className="sc-bwzfXH jeMjYc"
+        href="/register"
+        onClick={[Function]}
+      >
+        Register
+      </a>
+    </div>
   </div>
-</nav>
+</header>
 `;

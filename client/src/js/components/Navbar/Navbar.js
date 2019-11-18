@@ -19,7 +19,7 @@ export class Navbar extends React.Component {
                     <IconButton edge="start" color="inherit" aria-label="menu">
                     </IconButton>
                         <Typography variant="h6" style={{flexGrow: 1}}>
-                            <UnstyledLink to='/'>
+                            <UnstyledLink to='/' className='brand-logo'>
                             QuikBorrow
                             </UnstyledLink>
                         </Typography>
