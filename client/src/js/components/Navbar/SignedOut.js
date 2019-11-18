@@ -1,12 +1,20 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { Toolbar } from '@material-ui/core';
+import styled from 'styled-components'
+
+const UnstyledLink = styled(Link)`
+    color: inherit;
+    text-decoration: inherit;
+    margin-left: 20px;
+`
 
 const SignedOut = () => {
     return (
-        <ul className="right">
-            <li><NavLink to='/login'>Login</NavLink></li>
-            <li><NavLink to='/register'>Register</NavLink></li>
-        </ul>
+        <Toolbar>
+            <UnstyledLink to='/login'>Login</UnstyledLink>
+            <UnstyledLink to='/register'>Register</UnstyledLink>
+        </Toolbar>
     )
 }
 

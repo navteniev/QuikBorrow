@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { BrowserRouter, Route } from "react-router-dom";
 import * as actions from "../actions";
 import "../../css/App.css";
+import 'typeface-roboto';
 
 import Homepage from "./Homepage/Homepage";
 import Register from "./Register/Register";
