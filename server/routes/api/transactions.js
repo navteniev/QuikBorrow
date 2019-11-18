@@ -16,13 +16,37 @@ router.post('/', transactionController.create);
  * @name POST /approve
  */
 
-router.post('/approve', transactionController.approve);
+router.post('/:transactionId/approve', transactionController.approve);
 
 /**
  * @memberof module:api/transactions
  * @name POST /reject
  */
 
-router.post('/reject', transactionController.reject);
+router.post('/:transactionId/reject', transactionController.reject);
+
+/**
+ * @memberof module:api/transactions
+ * @name POST /getUserBorrowTransactions
+ */
+
+router.post('/getUserBorrowTransactions',
+    transactionController.getUserBorrowTransactions);
+
+/**
+ * @memberof module:api/transactions
+ * @name POST /getPendingTransactions
+ */
+
+router.post('/getUserPendingTransactions',
+    transactionController.getUserPendingTransactions);
+
+/**
+ * @memberof module:api/transactions
+ * @name POST /getTransactionRequests
+ */
+
+router.post('/getTransactionRequests',
+    transactionController.getTransactionRequests);
 
 module.exports = router;
