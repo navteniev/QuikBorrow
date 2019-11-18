@@ -6,8 +6,7 @@ import { loginUser } from "../../actions/index";
 import classnames from "classnames";
 import styled from 'styled-components';
 import quikLogo from '../../components/quikLogo.png';
-import { TextField } from "@material-ui/core";
-import Button from '@material-ui/core/Button';
+import { Button, TextField } from "@material-ui/core";
 
 const LoginForm = styled.div`
 	margin: 0 auto;
@@ -74,14 +73,14 @@ export class Login extends Component {
 	render() {
 		return (
 			<div>
-				<Link to="/"> Back to home</Link><br/>
 				<Center>
-				<img src={quikLogo} width="275" height= "180" alt = "logo"/>
+					<br/>
+					<img src={quikLogo} width="275" height= "180" alt = "logo"/>
 				</Center>
 				<LoginForm>
-					<div>
+					<Center>
 						<h4>Login</h4>
-					</div>
+					</Center>
 					<form noValidate onSubmit={this.onSubmit}>
 						<TextField
 							onChange={this.onChange}
@@ -90,6 +89,7 @@ export class Login extends Component {
 							id="email"
 							type="email"
 							label="Email"
+							fullWidth
 							className={classnames("", {
                     			invalid: this.getErrors('email')
                   			})}
@@ -103,6 +103,7 @@ export class Login extends Component {
 							id="password"
 							type="password"
 							label="Password"
+							fullWidth
 							className={classnames("", {
                     			invalid: this.getErrors('password')
                   			})}
@@ -110,7 +111,12 @@ export class Login extends Component {
 						<span>{this.getErrors('password')}</span>
 					<p>Dont have an account? <Link to="/register">Register</Link></p>
 					<div>
-					<Button variant="contained" color="primary" type="submit">
+					<Button 
+						variant="contained" 
+						color="primary" 
+						type="submit"
+						fullWidth
+					>
         			Login
       				</Button>
 					</div>

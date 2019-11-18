@@ -2,16 +2,10 @@
 
 exports[`Login renders 1`] = `
 <div>
-  <a
-    href="/"
-    onClick={[Function]}
-  >
-     Back to home
-  </a>
-  <br />
   <div
     className="sc-bwzfXH gZvuZl"
   >
+    <br />
     <img
       alt="logo"
       height="180"
@@ -22,7 +16,9 @@ exports[`Login renders 1`] = `
   <div
     className="sc-bdVaJa fKOCmO"
   >
-    <div>
+    <div
+      className="sc-bwzfXH gZvuZl"
+    >
       <h4>
         Login
       </h4>
@@ -32,7 +28,7 @@ exports[`Login renders 1`] = `
       onSubmit={[Function]}
     >
       <div
-        className="MuiFormControl-root MuiTextField-root invalid"
+        className="MuiFormControl-root MuiTextField-root invalid MuiFormControl-fullWidth"
       >
         <label
           className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated Mui-error Mui-error"
@@ -43,7 +39,7 @@ exports[`Login renders 1`] = `
           Email
         </label>
         <div
-          className="MuiInputBase-root MuiInput-root MuiInput-underline Mui-error Mui-error MuiInputBase-formControl MuiInput-formControl"
+          className="MuiInputBase-root MuiInput-root MuiInput-underline Mui-error Mui-error MuiInputBase-fullWidth MuiInput-fullWidth MuiInputBase-formControl MuiInput-formControl"
           onClick={[Function]}
         >
           <input
@@ -65,7 +61,7 @@ exports[`Login renders 1`] = `
       <span />
       <br />
       <div
-        className="MuiFormControl-root MuiTextField-root invalid"
+        className="MuiFormControl-root MuiTextField-root invalid MuiFormControl-fullWidth"
       >
         <label
           className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated Mui-error Mui-error"
@@ -76,7 +72,7 @@ exports[`Login renders 1`] = `
           Password
         </label>
         <div
-          className="MuiInputBase-root MuiInput-root MuiInput-underline Mui-error Mui-error MuiInputBase-formControl MuiInput-formControl"
+          className="MuiInputBase-root MuiInput-root MuiInput-underline Mui-error Mui-error MuiInputBase-fullWidth MuiInput-fullWidth MuiInputBase-formControl MuiInput-formControl"
           onClick={[Function]}
         >
           <input
@@ -107,7 +103,7 @@ exports[`Login renders 1`] = `
       </p>
       <div>
         <button
-          className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary"
+          className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-fullWidth"
           disabled={false}
           onBlur={[Function]}
           onDragLeave={[Function]}

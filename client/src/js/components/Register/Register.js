@@ -5,9 +5,8 @@ import { connect } from "react-redux";
 import { registerUser } from "../../actions/index";
 import classnames from "classnames";
 import styled from 'styled-components';
-import Button from '@material-ui/core/Button';
+import { Button, TextField } from '@material-ui/core';
 import quikLogo from '../../components/quikLogo.png';
-import TextField from '@material-ui/core/TextField';
 
 const LoginForm = styled.div`
 	margin: 0 auto;
@@ -77,8 +76,8 @@ export class Register extends Component {
 		
 		return (
 			<div>
-				<Link to="/"> Back to home</Link><br/>
 				<Center>
+					<br/>
 					<img src={quikLogo} width="275" height= "180" alt = "logo"/>
 				</Center>
 				<LoginForm>
@@ -92,6 +91,7 @@ export class Register extends Component {
 						id="name"
 						label="Name"
 						type="text"
+						fullWidth
 						className={classnames("", {
 							invalid: this.getErrors('name')
 		                })}
@@ -105,6 +105,7 @@ export class Register extends Component {
 						id="email"
 						type="email"
 						label="Email"
+						fullWidth
 						className={classnames("", {
                     		invalid: this.getErrors('email')
                   		})}
@@ -118,6 +119,7 @@ export class Register extends Component {
 						id="password"
 						type="password"
 						label="Password"
+						fullWidth
 						className={classnames("", {
                     		invalid: this.getErrors('password')
                   		})}
@@ -131,6 +133,7 @@ export class Register extends Component {
 						id="password2"
 						type="password"
 						label="Confirm Password"
+						fullWidth
 						className={classnames("", {
                     		invalid: this.getErrors('password')
                   		})}
@@ -138,7 +141,12 @@ export class Register extends Component {
 					<br/>
 					<br/>
 					<div>
-					<Button variant="contained" color="primary" type="submit">
+					<Button 
+						variant="contained" 
+						color="primary" 
+						type="submit"
+						fullWidth
+					>
         			Register
       				</Button>
 					</div>
