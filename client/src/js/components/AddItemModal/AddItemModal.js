@@ -99,7 +99,7 @@ export function AddItemModal (props) {
             {({getRootProps, getInputProps}) => (
               <DropzoneStyles {...getRootProps()}>
                 <input {...getInputProps()} />
-                <Typography variant='p'>
+                <Typography variant='subtitle1' color='textSecondary'>
                   Drag 'n' drop some files here, or click to select files
                 </Typography>
               </DropzoneStyles>
