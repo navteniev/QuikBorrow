@@ -15,7 +15,7 @@ const findAllItems = async () => {
 };
 
 const searchItems = async (query) => {
-  return await Item.find({ name: { $regex: query, $options: 'i'} });
+  return await Item.find({name: {$regex: query, $options: 'i'}});
 };
 
 const rentItem = async (id, borrowerId, duration) => {

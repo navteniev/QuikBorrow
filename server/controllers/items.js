@@ -35,10 +35,10 @@ const search = (req, res, next) => {
         console.log(items);
         res.json(items);
       })
-      .catch(next)
-      {
-        console.log(next);
-      };
+      .catch(next);
+  {
+    console.log(next);
+  }
 };
 
 const rent = async (req, res, next) => {
