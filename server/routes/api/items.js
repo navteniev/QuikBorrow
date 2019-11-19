@@ -48,4 +48,10 @@ router.get('/:itemId/endrent', [
   validatorErrors,
 ], itemController.endRent);
 
+/**
+ * @memberof module:api/items
+ * @name POST /search
+ */
+router.get('/search', itemController.search);
+
 module.exports = router;

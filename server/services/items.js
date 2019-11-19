@@ -14,6 +14,10 @@ const findAllItems = async () => {
   return await Item.find({});
 };
 
+const searchItems = async (query) => {
+  return await Item.find({ name: { $regex: query, $options: 'i'} });
+};
+
 const rentItem = async (id, borrowerId, duration) => {
   const item = await Item.findById(id);
   const updated = await item.rentTo(borrowerId, duration);
@@ -30,6 +34,7 @@ module.exports = {
   createItem,
   findItem,
   findAllItems,
+  searchItems,
   rentItem,
   endRent,
 };
