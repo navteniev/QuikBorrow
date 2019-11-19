@@ -50,7 +50,7 @@ router.get('/:itemId/endrent', [
 
 /**
  * @memberof module:api/items
- * @name POST /search
+ * @name GET /search
  */
 router.get('/search', itemController.search);
 
