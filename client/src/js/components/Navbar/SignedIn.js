@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { logoutUser } from '../../actions';
-import { Toolbar } from '@material-ui/core';
+import { Toolbar, Avatar } from '@material-ui/core';
 import styled from 'styled-components'
 
 const UnstyledLink = styled(Link)`
@@ -20,8 +20,8 @@ const SignedIn = (props) => {
     return (
         <Toolbar>
             <UnstyledLink to='/products'>Products</UnstyledLink>
-            <UnstyledLink to='/profile'>{props.name}</UnstyledLink>
-            <UnstyledLink to='#' onClick={onClick}>Products</UnstyledLink>
+            <UnstyledLink to='/profile'><Avatar src='https://avatars1.githubusercontent.com/u/619960?s=460&v=4' /></UnstyledLink>
+            <UnstyledLink to='#' onClick={onClick}>Sign Out</UnstyledLink>
         </Toolbar>
     )
 }

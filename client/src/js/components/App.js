@@ -12,18 +12,35 @@ import ProductList from "./Products/ProductList";
 import Navbar from './Navbar/Navbar';
 import ProductDetail from './Products/ProductDetail';
 import Profile from "./Profile/Profile";
-
+import 'typeface-roboto';
+import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
+import teal from '@material-ui/core/colors/teal'
+import cyan from '@material-ui/core/colors/cyan'
 import { Provider } from "react-redux";
 import { createStore, applyMiddleware } from "redux";
 import reduxThunk from "redux-thunk";
 import reducers from '../reducers'
 const store = createStore(reducers, {}, applyMiddleware(reduxThunk));
 
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      light: teal[300],
+      main: teal[500],
+      dark: teal[700]
+    },
+    secondary: {
+      light: cyan[300],
+      main: cyan[500],
+      dark: cyan[700]
+    }
+  }
+})
 
 class App extends Component {
   render() {
     return (
-      <div>
+      <ThemeProvider theme={theme}>
         <Provider store={store}>
           <BrowserRouter>
             <Navbar />
@@ -38,7 +55,7 @@ class App extends Component {
             </div>
           </BrowserRouter>
         </Provider>
-      </div>
+      </ThemeProvider>
     );
   }
 }
