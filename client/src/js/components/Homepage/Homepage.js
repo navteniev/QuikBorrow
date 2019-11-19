@@ -96,7 +96,7 @@ class Homepage extends Component {
 									The NSA is always watching our every move. On our platform however, they won't see a thing. You are free to trade your musty second-hand textbooks with those suspicious liquid stains from one student to another without any prying eyes.
 								</Typography>
 							</div>
-							<ChatIcon style={{fontSize: 200, color: teal[500]}} />
+							<ChatIcon style={{fontSize: 150, color: teal[500]}} />
 						</Card>
 						<Card>
 							<div>
@@ -107,7 +107,7 @@ class Homepage extends Component {
 									Students should feel confident that the stuff they're borrowing are not bugged by corporate spies. Users will rate each other on their trustworthiness, and their ratings will be affected for everyone to see. User reports can also be made to our team that will either confirm or deny corporate spies who intends to break our service.
 								</Typography>
 							</div>
-							<ThumbsUpDownTwoTone style={{fontSize: 200, color: teal[500]}} />
+							<ThumbsUpDownTwoTone style={{fontSize: 150, color: teal[500]}} />
 						</Card>
 						<Card>
 							<div>
@@ -118,7 +118,7 @@ class Homepage extends Component {
 									Corporate spies are the bane of our existence, and we use a wide range of state-of-the-art tech tools to keep them out. All lenders and buyers must validate their account with student emails to verify that they are attending a university. Once they're no longer a student, they can no longer lend or borrow items.
 								</Typography>
 							</div>
-							<VerifiedUserTwoTone style={{fontSize: 200, color: teal[500]}} />
+							<VerifiedUserTwoTone style={{fontSize: 150, color: teal[500]}} />
 						</Card>
 					</Cards>
 				</Section>

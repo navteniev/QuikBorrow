@@ -125,7 +125,7 @@ exports[`Homepage renders 1`] = `
           style={
             Object {
               "color": "#009688",
-              "fontSize": 200,
+              "fontSize": 150,
             }
           }
           viewBox="0 0 24 24"
@@ -158,7 +158,7 @@ exports[`Homepage renders 1`] = `
           style={
             Object {
               "color": "#009688",
-              "fontSize": 200,
+              "fontSize": 150,
             }
           }
           viewBox="0 0 24 24"
@@ -195,7 +195,7 @@ exports[`Homepage renders 1`] = `
           style={
             Object {
               "color": "#009688",
-              "fontSize": 200,
+              "fontSize": 150,
             }
           }
           viewBox="0 0 24 24"
