@@ -3,10 +3,10 @@
 exports[`Homepage renders 1`] = `
 <div>
   <div
-    className="sc-bwzfXH emheVM"
+    className="sc-bdVaJa bVoqmz"
   />
   <div
-    className="sc-htpNat cXobZL"
+    className="sc-bwzfXH dgJTYm"
   >
     <h4
       className="MuiTypography-root MuiTypography-h4"
@@ -83,10 +83,10 @@ exports[`Homepage renders 1`] = `
     </div>
   </div>
   <div
-    className="sc-bxivhb CEeSg"
+    className="sc-htpNat eLTOJD"
   >
     <h4
-      className="MuiTypography-root sc-bZQynM cXBPgo MuiTypography-h4 MuiTypography-gutterBottom"
+      className="MuiTypography-root sc-EHOje hZKWfX MuiTypography-h4 MuiTypography-gutterBottom"
     >
       By the students. For the students.
     </h4>
@@ -100,14 +100,14 @@ exports[`Homepage renders 1`] = `
       *
     </p>
     <div
-      className="sc-ifAKCX dAAesq"
+      className="sc-bxivhb gMhfOi"
     >
       <div
-        className="sc-EHOje cXapIA"
+        className="sc-ifAKCX gTAKrW"
       >
         <div>
           <h5
-            className="MuiTypography-root sc-bZQynM cXBPgo MuiTypography-h5 MuiTypography-gutterBottom"
+            className="MuiTypography-root sc-EHOje hZKWfX MuiTypography-h5 MuiTypography-gutterBottom"
           >
             Securely Chat
           </h5>
@@ -136,11 +136,11 @@ exports[`Homepage renders 1`] = `
         </svg>
       </div>
       <div
-        className="sc-EHOje cXapIA"
+        className="sc-ifAKCX gTAKrW"
       >
         <div>
           <h5
-            className="MuiTypography-root sc-bZQynM cXBPgo MuiTypography-h5 MuiTypography-gutterBottom"
+            className="MuiTypography-root sc-EHOje hZKWfX MuiTypography-h5 MuiTypography-gutterBottom"
           >
             Trusted Users
           </h5>
@@ -173,11 +173,11 @@ exports[`Homepage renders 1`] = `
         </svg>
       </div>
       <div
-        className="sc-EHOje cXapIA"
+        className="sc-ifAKCX gTAKrW"
       >
         <div>
           <h5
-            className="MuiTypography-root sc-bZQynM cXBPgo MuiTypography-h5 MuiTypography-gutterBottom"
+            className="MuiTypography-root sc-EHOje hZKWfX MuiTypography-h5 MuiTypography-gutterBottom"
           >
             Students Only
           </h5>
