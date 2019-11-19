@@ -1,11 +1,9 @@
 import React, { useState } from "react";
 import styled from 'styled-components';
-import { Typography, Button, ButtonGroup, Dialog, DialogTitle, DialogContent, DialogActions, TextField, FormControl, FormHelperText, InputAdornment, MenuItem } from "@material-ui/core";
+import { Typography, Button, ButtonGroup } from "@material-ui/core";
 import teal from '@material-ui/core/colors/teal'
 import ChatIcon from '@material-ui/icons/Chat';
-import { VerifiedUserTwoTone, ThumbsUpDownTwoTone, AddCircle } from "@material-ui/icons";
-import Dropzone from 'react-dropzone'
-import ImageIcon from '@material-ui/icons/Image'
+import { VerifiedUserTwoTone, ThumbsUpDownTwoTone } from "@material-ui/icons";
 import AddItemModal from '../AddItemModal/AddItemModal'
 
 const Background = styled.div`
@@ -61,7 +59,7 @@ const Heading = styled(Typography)`
 	color: ${teal[800]};
 `
 
-function Homepage() {
+export function Homepage() {
 	const [ openModal, setOpenModal ] = useState(false)
 
 	return (
