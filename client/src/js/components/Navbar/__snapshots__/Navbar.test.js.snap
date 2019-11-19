@@ -2,7 +2,14 @@
 
 exports[`Navbar should render a navbar with SignedIn links 1`] = `
 <header
-  className="MuiPaper-root MuiPaper-elevation4 MuiAppBar-root MuiAppBar-positionStatic MuiAppBar-colorPrimary"
+  className="MuiPaper-root MuiPaper-elevation4 MuiAppBar-root MuiAppBar-positionFixed MuiAppBar-colorPrimary mui-fixed"
+  style={
+    Object {
+      "background": "#009688",
+      "boxShadow": "none",
+      "color": "white",
+    }
+  }
 >
   <div
     className="MuiToolbar-root MuiToolbar-regular MuiToolbar-gutters"
@@ -29,8 +36,8 @@ exports[`Navbar should render a navbar with SignedIn links 1`] = `
         className="MuiIconButton-label"
       />
     </button>
-    <h6
-      className="MuiTypography-root MuiTypography-h6"
+    <h5
+      className="MuiTypography-root MuiTypography-h5"
       style={
         Object {
           "flexGrow": 1,
@@ -44,7 +51,7 @@ exports[`Navbar should render a navbar with SignedIn links 1`] = `
       >
         QuikBorrow
       </a>
-    </h6>
+    </h5>
     <div
       className="MuiToolbar-root MuiToolbar-regular MuiToolbar-gutters"
     >
@@ -69,7 +76,14 @@ exports[`Navbar should render a navbar with SignedIn links 1`] = `
 
 exports[`Navbar should render a navbar with SignedOut links 1`] = `
 <header
-  className="MuiPaper-root MuiPaper-elevation4 MuiAppBar-root MuiAppBar-positionStatic MuiAppBar-colorPrimary"
+  className="MuiPaper-root MuiPaper-elevation4 MuiAppBar-root MuiAppBar-positionFixed MuiAppBar-colorPrimary mui-fixed"
+  style={
+    Object {
+      "background": "#009688",
+      "boxShadow": "none",
+      "color": "white",
+    }
+  }
 >
   <div
     className="MuiToolbar-root MuiToolbar-regular MuiToolbar-gutters"
@@ -99,8 +113,8 @@ exports[`Navbar should render a navbar with SignedOut links 1`] = `
         className="MuiTouchRipple-root"
       />
     </button>
-    <h6
-      className="MuiTypography-root MuiTypography-h6"
+    <h5
+      className="MuiTypography-root MuiTypography-h5"
       style={
         Object {
           "flexGrow": 1,
@@ -114,7 +128,7 @@ exports[`Navbar should render a navbar with SignedOut links 1`] = `
       >
         QuikBorrow
       </a>
-    </h6>
+    </h5>
     <div
       className="MuiToolbar-root MuiToolbar-regular MuiToolbar-gutters"
     >
