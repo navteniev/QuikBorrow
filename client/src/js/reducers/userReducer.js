@@ -1,4 +1,4 @@
-import { GET_USER_PROFILE, GET_ERRORS } from '../action/types';
+import { GET_USER_PROFILE, GET_ERRORS } from '../actions/types';
 
 const initState = {};
 
