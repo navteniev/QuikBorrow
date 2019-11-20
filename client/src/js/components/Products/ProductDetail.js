@@ -18,16 +18,16 @@ const GridCard = styled(Card)`
 `
 
 const GridCardMedia = styled(CardMedia)`
-    height: 300px;
-    width: 300px;
-    margin: 0 auto;
-    grid-area: box1;
+  height: 300px;
+  width: 300px;
+  margin: 0 auto;
+  grid-area: box1;
 `
 
 const GridDiv = styled.div`
-    margin-left: 2%;
-    margin-right: 2%;
-    grid-area: box2;
+  margin-left: 2%;
+  margin-right: 2%;
+  grid-area: box2;
 `
 
 const CommentGrid = styled.div`
@@ -72,7 +72,7 @@ export class ProductDetail extends Component {
                                 Description
                             </span>
                         </Typography>
-                        <Typography>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</Typography>
+                        <Typography>{this.props.product.description}</Typography>
                     </div>
                     <div style={{marginTop: '30px'}}>
                         <Typography component='h5' variant='h5'>
