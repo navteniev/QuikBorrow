@@ -29,6 +29,18 @@ const getAll = (req, res, next) => {
       .catch(next);
 };
 
+const search = (req, res, next) => {
+  itemServices.searchItems(req.query['param'])
+      .then((items) => {
+        console.log(items);
+        res.json(items);
+      })
+      .catch(next);
+  {
+    console.log(next);
+  }
+};
+
 const rent = async (req, res, next) => {
   itemServices.rentItem(req.params.itemId,
       req.params.borrowerId, req.params.duration)
@@ -49,6 +61,7 @@ module.exports = {
   create,
   get,
   getAll,
+  search,
   rent,
   endRent,
 };
