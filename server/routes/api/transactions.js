@@ -27,26 +27,9 @@ router.post('/:transactionId/reject', transactionController.reject);
 
 /**
  * @memberof module:api/transactions
- * @name POST /getUserBorrowTransactions
+ * @name POST /getTransactions
  */
 
-router.post('/getUserBorrowTransactions',
-    transactionController.getUserBorrowTransactions);
-
-/**
- * @memberof module:api/transactions
- * @name POST /getPendingTransactions
- */
-
-router.post('/getUserPendingTransactions',
-    transactionController.getUserPendingTransactions);
-
-/**
- * @memberof module:api/transactions
- * @name POST /getTransactionRequests
- */
-
-router.post('/getTransactionRequests',
-    transactionController.getTransactionRequests);
+router.post('/getTransactions', transactionController.getTransactions);
 
 module.exports = router;

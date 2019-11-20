@@ -33,29 +33,12 @@ const reject = async (req, res, next) => {
       .catch(next);
 };
 
-const getUserBorrowTransactions = async (req, res, next) => {
-  transactionServices.getUserBorrowTransactions(req.body.userId)
+const getTransactions = async (req, res, next) => {
+  transactionServices.getTransactions(req.body.userId,
+      req.query.type, req.query.isProcessed)
       .then((transactionList) => {
         console.log(transactionList);
         res.json(transactionList);
-      })
-      .catch(next);
-};
-
-const getUserPendingTransactions = async (req, res, next) => {
-  transactionServices.getUserPendingTransactions(req.body.userId)
-      .then((pendingList) => {
-        console.log(pendingList);
-        res.json(pendingList);
-      })
-      .catch(next);
-};
-
-const getTransactionRequests = async (req, res, next) => {
-  transactionServices.getTransactionRequests(req.body.userId)
-      .then((requests) => {
-        console.log(requests);
-        res.json(requests);
       })
       .catch(next);
 };
@@ -64,7 +47,5 @@ module.exports = {
   create,
   approve,
   reject,
-  getUserBorrowTransactions,
-  getUserPendingTransactions,
-  getTransactionRequests,
+  getTransactions,
 };
