@@ -3,6 +3,7 @@ const Schema = mongoose.Schema;
 
 const TransactionSchema = new Schema({
   borrower: {type: Schema.Types.ObjectId, ref: 'User'},
+  lender: {type: Schema.Types.ObjectId, ref: 'User'},
   msg: {type: String, default: ''},
   item: {type: Schema.Types.ObjectId, ref: 'Item'},
   approved: {type: Boolean, default: false},
