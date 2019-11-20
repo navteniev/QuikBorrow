@@ -34,6 +34,16 @@ describe('controller/items', function() {
       expect(response.json).toHaveBeenCalledWith(items);
     });
   });
+  describe('search', function() {
+    it('searches for items', async function() {
+      const request = {query: {param: 'chair'}};
+      const response = {json: jest.fn()};
+      const items = [{a: 'ba'}];
+      itemServices.searchItems.mockResolvedValueOnce(items);
+      await itemsController.search(request, response);
+      expect(response.json).toHaveBeenCalledWith(items);
+    });
+  });
   describe('rent', function() {
     it('returns the items', async function() {
       const request = {params: {itemId: '2qw3eit8ghj1'}};
