@@ -34,7 +34,7 @@ async function endRent() {
   });
   await this.save();
   return this;
-};
+}
 
 ItemSchema.methods.rentTo = rentTo;
 ItemSchema.methods.endRent = endRent;
