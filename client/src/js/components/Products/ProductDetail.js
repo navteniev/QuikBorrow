@@ -11,21 +11,27 @@ const GridCard = styled(Card)`
   height: 100vh;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
+  grid-template-areas:
+    "box1 box2"
+    "box3 box2";
   margin-top: 100px;
 `
 
 const GridCardMedia = styled(CardMedia)`
-    height: auto;
-    width: auto;
-    grid-row: 1/2;
-    grid-column: 1/2;
-
+    height: 300px;
+    width: 300px;
+    margin: 0 auto;
+    grid-area: box1;
 `
 
 const GridDiv = styled.div`
     margin-left: 2%;
     margin-right: 2%;
-    grid-row: 1/3;
+    grid-area: box2;
+`
+
+const CommentGrid = styled.div`
+  grid-area: box3;
 `
 
 const SpaceBetween = styled.div`
@@ -95,9 +101,9 @@ export class ProductDetail extends Component {
                         </SpaceBetween>
                     </div>
                 </GridDiv>
-                <div>
+                <CommentGrid>
                     Comments and Reviews section COMING SOON!!!
-                </div>
+                </CommentGrid>
             </GridCard>
         )
     }
