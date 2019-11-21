@@ -6,6 +6,10 @@ const createItem = async (data) => {
   return item;
 };
 
+const deleteItem = async (id) => {
+  await Item.findByIdAndDelete(id);
+};
+
 const findItem = async (id) => {
   return await Item.findById(id);
 };
@@ -32,6 +36,7 @@ const endRent = async (id) => {
 
 module.exports = {
   createItem,
+  deleteItem,
   findItem,
   findAllItems,
   searchItems,
