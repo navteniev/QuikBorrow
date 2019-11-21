@@ -7,26 +7,29 @@ import Adapter from 'enzyme-adapter-react-16';
 Enzyme.configure({ adapter: new Adapter() });
 
 describe('AddItemModal', () => {
+	let wrapper
+	beforeEach(function() {
+		wrapper = mount(<AddItemModal open={true} onClose={jest.fn()} />)
+	});
+	
 	it('renders', () => {
-        const wrapper = mount(<AddItemModal open={true} onClose={jest.fn()} />)
 		expect(wrapper.html()).toMatchSnapshot();
 	});
 
 	it('shows added files', async () => {
-		const wrapper = mount(<AddItemModal open={true} onClose={jest.fn()} />)
 		const imageDropzone = wrapper.find('div[data-testid="image-dropzone-container"]')
 		const images = [ new File([], 'image1.jpg'), new File([], 'aaaa.png') ]
 		act(() => {
 			imageDropzone.prop('onDrop')(images)
 		})
 		wrapper.update()
+		expect(wrapper.find(`div[data-testid^="added-image"]`)).toHaveLength(images.length);
 		for (const image of images) {
 			expect(wrapper.find(`div[data-testid="added-image-${image.name}"]`)).toHaveLength(1)
 		}
 	})
 
 	it('removes added file', async () => {
-		const wrapper = mount(<AddItemModal open={true} onClose={jest.fn()} />)
 		const imageDropzone = wrapper.find('div[data-testid="image-dropzone-container"]')
 		const images = [ new File([], 'image1.jpg'), new File([], 'aaaa.png'), new File([], 'aedgtrhrf.jpg') ]
 		act(() => {
