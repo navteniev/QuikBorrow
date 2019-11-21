@@ -1,5 +1,6 @@
 const transactionServices = require('../services/transactions');
 
+/** @type {import('express').RequestHandler} */
 const create = async (req, res, next) => {
   const data = {
     borrower: req.body.borrowerId,
@@ -14,6 +15,7 @@ const create = async (req, res, next) => {
       .catch(next);
 };
 
+/** @type {import('express').RequestHandler} */
 const approve = async (req, res, next) => {
   transactionServices.approveTransaction(req.body.transactionId)
       .then((transaction) => {
@@ -23,6 +25,7 @@ const approve = async (req, res, next) => {
       .catch(next);
 };
 
+/** @type {import('express').RequestHandler} */
 const reject = async (req, res, next) => {
   transactionServices.rejectTransaction(req.body.transactionId)
       .then((transaction) => {

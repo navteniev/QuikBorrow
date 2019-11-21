@@ -10,6 +10,7 @@ const {check, param} = require('express-validator');
 
 /**
  * Register user
+ *
  * @memberof module:api/users
  * @name POST /register
  */
@@ -30,6 +31,7 @@ router.post('/register', [
 
 /**
  * Login user and return JWT token
+ *
  * @memberof module:api/users
  * @name POST /login
  */
@@ -46,6 +48,8 @@ router.post('/login', [
 ], userController.login);
 
 /**
+ * Get a user
+ *
  * @memberof module:api/users
  * @name GET /:userId
  */
@@ -56,6 +60,8 @@ router.get('/:userId', [
 ], userController.get);
 
 /**
+ * Update a user
+ *
  * @memberof module:api/users
  * @name PATCH /:userId
  */
@@ -66,6 +72,8 @@ router.patch('/:userId', [
 ], userController.edit);
 
 /**
+ * Get the items of a user
+ *
  * @memberof module:api/users
  * @name GET /:userId/items
  */

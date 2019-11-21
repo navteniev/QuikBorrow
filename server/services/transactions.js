@@ -1,17 +1,39 @@
 const Transaction = require('../models/Transaction');
 
+/**
+ * @typedef {import('mongoose').Document} MongooseDocument
+ */
+
+/**
+ * Create a new transation
+ *
+ * @param {Object} data - Transaction data
+ * @returns {MongooseDocument} - The newly created Document
+ */
 const createTransaction = async (data) => {
   const transaction = new Transaction(data);
   await transaction.save();
   return transaction;
 };
 
+/**
+ * Approve a transaction
+ *
+ * @param {string} id - The transaction ID
+ * @returns {MongooseDocument} - The updated Document
+ */
 const approveTransaction = async (id) => {
   const transaction = await Transaction.findById(id);
   const updated = await transaction.approve();
   return updated;
 };
 
+/**
+ * Reject a transaction
+ *
+ * @param {string} id - The transaction ID
+ * @returns {MongooseDocument} - The updated Document
+ */
 const rejectTransaction = async (id) => {
   const transaction = await Transaction.findById(id);
   const updated = await transaction.reject();

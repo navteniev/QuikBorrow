@@ -1,6 +1,5 @@
 const userServices = require('../services/users');
 
-// eslint-disable-next-line valid-jsdoc
 /** @type {import('express').RequestHandler} */
 const login = (req, res, next) => {
   const payload = {
@@ -13,7 +12,6 @@ const login = (req, res, next) => {
       .catch(next);
 };
 
-// eslint-disable-next-line valid-jsdoc
 /** @type {import('express').RequestHandler} */
 const register = async (req, res, next) => {
   const {name, email, password} = req.body;
@@ -27,12 +25,14 @@ const register = async (req, res, next) => {
   }
 };
 
+/** @type {import('express').RequestHandler} */
 const get = (req, res, next) => {
   return userServices.findUser(req.params.userId)
       .then((user) => res.json(user))
       .catch(next);
 };
 
+/** @type {import('express').RequestHandler} */
 const edit = (req, res, next) => {
   const name = req.body.name;
   const email = req.body.email;
@@ -41,6 +41,7 @@ const edit = (req, res, next) => {
       .catch(next);
 };
 
+/** @type {import('express').RequestHandler} */
 const getLendingList = async (req, res, next) => {
   userServices.getLendingList(req.params.userId)
       .then((lendingList) => {
