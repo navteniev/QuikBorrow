@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import { Dialog, DialogTitle, DialogContent, DialogActions, FormHelperText, Typography, TextField, FormControl, IconButton } from '@material-ui/core'
-import Dropzone, { useDropzone } from 'react-dropzone'
+import Dropzone from 'react-dropzone'
 import teal from '@material-ui/core/colors/teal'
 import { Button } from '@material-ui/core'
 import ImageIcon from '@material-ui/icons/Image'
