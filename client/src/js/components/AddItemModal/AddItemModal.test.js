@@ -27,7 +27,7 @@ describe('AddItemModal', () => {
 		for (const image of images) {
 			expect(wrapper.find(`div[data-testid="added-image-${image.name}"]`)).toHaveLength(1)
 		}
-	})
+	});
 
 	it('removes added file', async () => {
 		const imageDropzone = wrapper.find('div[data-testid="image-dropzone-container"]')
@@ -38,7 +38,8 @@ describe('AddItemModal', () => {
 		wrapper.update()
 		wrapper.find(`*[data-testid="delete-image-${images[0].name}"]`).hostNodes().simulate('click')
 		wrapper.find(`*[data-testid="delete-image-${images[2].name}"]`).hostNodes().simulate('click')
-		expect(wrapper.find(`*[data-testid^="delete-image"]`).hostNodes()).toHaveLength(1)
+		expect(wrapper.find(`*[data-testid="delete-image-${images[0].name}"]`).hostNodes()).toHaveLength(0)
 		expect(wrapper.find(`*[data-testid="delete-image-${images[1].name}"]`).hostNodes()).toHaveLength(1)
-	})
+		expect(wrapper.find(`*[data-testid="delete-image-${images[2].name}"]`).hostNodes()).toHaveLength(0)	
+	});
 });
