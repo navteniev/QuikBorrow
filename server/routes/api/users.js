@@ -45,27 +45,33 @@ router.post('/login', [
   validatorErrors,
 ], userController.login);
 
-//
+/**
+ * @memberof module:api/users
+ * @name GET /:userId
+ */
 router.get('/:userId', [
   param('userId', 'Invalid UserId')
       .custom(validObjectId),
   validatorErrors,
 ], userController.get);
 
-
+/**
+ * @memberof module:api/users
+ * @name PATCH /:userId
+ */
 router.patch('/:userId', [
   param('userId')
       .custom(validObjectId),
   validatorErrors,
 ], userController.edit);
+
 /**
- *  @memberof module:api/users
+ * @memberof module:api/users
  * @name GET /:userId/items
  */
 router.get('/:userId/items', [
   param('userId', 'invalid UserId').isAlphanumeric(),
   validatorErrors,
 ], userController.getLendingList);
-
 
 module.exports = router;

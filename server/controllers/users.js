@@ -41,7 +41,6 @@ const edit = (req, res, next) => {
       .catch(next);
 };
 
-
 const getLendingList = async (req, res, next) => {
   userServices.getLendingList(req.params.userId)
       .then((lendingList) => {
