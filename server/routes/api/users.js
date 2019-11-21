@@ -63,13 +63,14 @@ router.patch('/:userId', [
  * @name GET /:userId/items
  */
 router.get('/:userId/items', [
-  param('userId', 'Invalid userId').isAlphanumeric(),
+  param('userId')
+      .custom(validObjectId),
   validatorErrors,
 ], userController.getLendingList);
 
 router.post('/:userId/items', [
-  param('userId', 'Invalid userId')
-      .isAlphanumeric(),
+  param('userId')
+      .custom(validObjectId),
   check('name')
       .isLength({min: 1}),
   check('description')
