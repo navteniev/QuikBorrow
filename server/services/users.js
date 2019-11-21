@@ -2,6 +2,8 @@ const bcrypt = require('bcryptjs');
 const keys = require('../config/keys');
 const jwt = require('jsonwebtoken');
 const User = require('../models/User');
+const mongoose = require('mongoose');
+const Item = require('../models/Item');
 const JWT_OPTIONS = {
   expiresIn: 31556926,
 };
@@ -13,8 +15,14 @@ const getJwtToken = (payload) => {
     });
   });
 };
-const mongoose = require('mongoose');
-const Item = require('../models/Item');
+
+const verifyJwtToken = (token) => {
+  return new Promise((resolve, reject) => {
+    jwt.verify(token, keys.secretOrKey, (err, decoded) => {
+      return err ? reject(err) : resolve(decoded);
+    });
+  });
+};
 
 const findUserByEmail = (email) => {
   return User.findOne({email});
@@ -61,4 +69,5 @@ module.exports = {
   findUser,
   editUser,
   getLendingList,
+  verifyJwtToken,
 };

@@ -2,6 +2,19 @@ const userServices = require('../services/users');
 const bcrypt = require('bcryptjs');
 
 const expressValidator = {
+  attachDecodedToken: async (value, {req}) => {
+    const splitted = value.split(' ');
+    if (splitted.length !== 2) {
+      throw new Error('Malformed authorization header');
+    }
+    if (splitted[0].toLowerCase() !== 'bearer') {
+      throw new Error('Incorrect authorization type (Must be Bearer)');
+    }
+    // This returns the same payload that userServices.getJwtToken accepts
+    const decoded = await userServices.verifyJwtToken(splitted[1]);
+    req.jwtDecoded = decoded;
+    return true;
+  },
   // eslint-disable-next-line valid-jsdoc
   /**
    * @param {boolean} shouldExist

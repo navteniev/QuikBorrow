@@ -1,4 +1,5 @@
 const userServices = require('../services/users');
+const itemServices = require('../services/items');
 
 // eslint-disable-next-line valid-jsdoc
 /** @type {import('express').RequestHandler} */
@@ -51,10 +52,32 @@ const getLendingList = async (req, res, next) => {
       .catch(next);
 };
 
+const createItem = async (req, res, next) => {
+  // This is attached in the users middleware "attachDecodedToken"
+  if (!req.jwtDecoded) {
+    return next(new Error('Decoded JWT payload not found'));
+  }
+  const {name, description} = req.body;
+  if (req.jwtDecoded.id !== req.params.userId) {
+    return res.status(401).json({
+      errors: [{msg: 'Unauthorized (non-matching IDs)'}],
+    });
+  }
+  const data = {
+    name,
+    description,
+    user: req.jwtDecoded.id,
+  };
+  itemServices.createItem(data)
+      .then((item) => res.json(item))
+      .catch(next);
+};
+
 module.exports = {
   login,
   register,
   get,
   edit,
   getLendingList,
+  createItem,
 };
