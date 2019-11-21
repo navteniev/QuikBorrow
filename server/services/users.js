@@ -81,7 +81,6 @@ const getLendingList = async (userId) => {
   return lendingList;
 };
 
-
 module.exports = {
   getJwtToken,
   createUser,
