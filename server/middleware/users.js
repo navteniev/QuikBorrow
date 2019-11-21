@@ -1,7 +1,12 @@
 const userServices = require('../services/users');
 const bcrypt = require('bcryptjs');
 
+/**
+ * @typedef {import('express-validator')} ExpressValidator
+ */
+
 const expressValidator = {
+  /** @type {ExpressValidator} */
   attachDecodedToken: async (value, {req}) => {
     const splitted = value.split(' ');
     if (splitted.length !== 2) {
@@ -15,12 +20,10 @@ const expressValidator = {
     req.jwtDecoded = decoded;
     return true;
   },
-  // eslint-disable-next-line valid-jsdoc
   /**
    * @param {boolean} shouldExist - Whether the validation should assert
    *     if the email exists, or if it does not exist
-   * @returns {import('express-validator').CustomValidator} - The
-   *     express-validator function
+   * @returns {ExpressValidator} - The express-validator function
    */
   emailShouldExist: (shouldExist) => async (value, {req}) => {
     const user = await userServices.findUserByEmail(value);
@@ -34,7 +37,7 @@ const expressValidator = {
     }
     return true;
   },
-  /** @type {import('express-validator').CustomValidator} */
+  /** @type {ExpressValidator} */
   passwordMatchesHash: async (value, {req}) => {
     // req.user is attached in emailShouldExist middleware
     const matched = await bcrypt.compare(value, req.user.password);
@@ -43,7 +46,7 @@ const expressValidator = {
     }
     return true;
   },
-  /** @type {import('express-validator').CustomValidator} */
+  /** @type {ExpressValidator} */
   matches: (value, {req}) => {
     if (value !== req.body.password2) {
       throw new Error('Passwords don\'t match');

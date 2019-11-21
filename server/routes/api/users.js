@@ -83,6 +83,12 @@ router.get('/:userId/items', [
   validatorErrors,
 ], userController.getLendingList);
 
+/**
+ * Create an item for a user
+ *
+ * @memberof module:api/users
+ * @name POST /:userId/items
+ */
 router.post('/:userId/items', [
   param('userId')
       .custom(validObjectId),

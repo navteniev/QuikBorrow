@@ -23,6 +23,13 @@ const getJwtToken = (payload) => {
   });
 };
 
+/**
+ * Verify and decode a JWT token back to its original
+ * object.
+ *
+ * @param {string} token - The JWT token
+ * @returns {Promise<Object>} - The decoded object
+ */
 const verifyJwtToken = (token) => {
   return new Promise((resolve, reject) => {
     jwt.verify(token, keys.secretOrKey, (err, decoded) => {
