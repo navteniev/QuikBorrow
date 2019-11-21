@@ -17,9 +17,10 @@ router.post('/', transactionController.create);
  * Approve a transaction
  *
  * @memberof module:api/transactions
- * @name POST /approve
+ * @name POST /:transactionId/approve
  */
-router.post('/approve', transactionController.approve);
+
+router.post('/:transactionId/approve', transactionController.approve);
 
 /**
  * Reject a transaction
@@ -27,6 +28,14 @@ router.post('/approve', transactionController.approve);
  * @memberof module:api/transactions
  * @name POST /reject
  */
-router.post('/reject', transactionController.reject);
+
+router.post('/:transactionId/reject', transactionController.reject);
+
+/**
+ * @memberof module:api/transactions
+ * @name POST /getTransactions
+ */
+
+router.post('/getTransactions', transactionController.getTransactions);
 
 module.exports = router;

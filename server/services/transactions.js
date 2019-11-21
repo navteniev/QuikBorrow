@@ -40,9 +40,23 @@ const rejectTransaction = async (id) => {
   return updated;
 };
 
+const getTransactions = async (userId, type, isProcessed) => {
+  let query;
+  console.log(type);
+  if (type == 'borrower') {
+    query = {borrower: userId};
+  } else {
+    query = {lender: userId};
+  }
+  query['processed'] = isProcessed;
+  const transactions = await Transaction.find(query);
+  return transactions;
+};
+
 module.exports = {
   createTransaction,
   approveTransaction,
   rejectTransaction,
+  getTransactions,
 };
 
