@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import { Dialog, DialogTitle, DialogContent, DialogActions, FormHelperText, Typography, TextField, FormControl, IconButton } from '@material-ui/core'
-import Dropzone from 'react-dropzone'
+import Dropzone, { useDropzone } from 'react-dropzone'
 import teal from '@material-ui/core/colors/teal'
 import { Button } from '@material-ui/core'
 import ImageIcon from '@material-ui/icons/Image'
@@ -95,9 +95,10 @@ export function AddItemModal (props) {
           <Typography variant='h5'>
             Images
           </Typography>
+          
           <Dropzone onDrop={addFiles}>
             {({getRootProps, getInputProps}) => (
-              <DropzoneStyles {...getRootProps()}>
+              <DropzoneStyles data-testid='image-dropzone-container' {...getRootProps()} onDrop={addFiles}>
                 <input {...getInputProps()} />
                 <Typography variant='subtitle1' color='textSecondary'>
                   Drag 'n' drop some files here, or click to select files
@@ -105,15 +106,21 @@ export function AddItemModal (props) {
               </DropzoneStyles>
             )}
           </Dropzone>
-          {files.map((file, i) => (
-            <AddedFile key={i+file.name+file.lastModified}>
+          {/* <DropzoneStyles data-testid='image-dropzone-container' {...getRootProps()} onDrop={e => console.log(123)}>
+            <input {...getInputProps()} />
+            <Typography variant='subtitle1' color='textSecondary'>
+              Drag 'n' drop some files here, or click to select files
+            </Typography>
+          </DropzoneStyles> */}
+        {files.map((file, i) => (
+            <AddedFile key={i+file.name+file.lastModified} data-testid={`added-image-${file.name}`}>
               <div>
                 <ImageIcon />
                 <Typography variant='subtitle1' component='p'>
                 {file.name}
                 </Typography>
               </div>
-              <IconButton aria-label='remove-image-upload' size='small' onClick={e => removeFile(i)}>
+              <IconButton aria-label='remove-image-upload' size='small' onClick={e => removeFile(i)} data-testid={`delete-image-${file.name}`}>
                 <CloseIcon color='action' />
               </IconButton>
             </AddedFile>
