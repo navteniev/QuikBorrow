@@ -8,6 +8,13 @@ const JWT_OPTIONS = {
   expiresIn: 31556926,
 };
 
+/**
+ * Create a token from a payload that can then be decoded
+ * later back into the payload
+ *
+ * @param {Object} payload - Data to store within the token
+ * @returns {Promise<string>} - The JWT token
+ */
 const getJwtToken = (payload) => {
   return new Promise((resolve, reject) => {
     jwt.sign(payload, keys.secretOrKey, JWT_OPTIONS, (err, token) => {
@@ -24,19 +31,42 @@ const verifyJwtToken = (token) => {
   });
 };
 
+/**
+ * Find a user by email
+ *
+ * @param {string} email - User email
+ * @returns {mongoose.Document} - The found Document
+ */
 const findUserByEmail = (email) => {
   return User.findOne({email});
 };
 
+/**
+ * @param {string} id - User ID
+ * @returns {mongoose.Document} - The found Document
+ */
 const findUser = async (id) => {
   return await User.findById(id);
 };
 
+/**
+ * Edit a user's details
+ *
+ * @param {string} id - User ID
+ * @param {Object} updated - Updated values
+ * @returns {mongoose.Document} - The found Document
+ */
 const editUser = async (id, updated) =>{
   return await User.findByIdAndUpdate(id,
       {name: updated.name, email: updated.email}, {new: true});
 };
 
+/**
+ * Creates a new User
+ *
+ * @param {Object} data - User data
+ * @returns {mongoose.Document} - The newly created Document
+ */
 const createUser = async (data) => {
   const newUser = new User({
     name: data.name,
@@ -47,19 +77,29 @@ const createUser = async (data) => {
   return newUser;
 };
 
+/**
+ * Generate a hash with bcrypt
+ *
+ * @param {string} value - Input string
+ * @returns {string} - The hash value
+ */
 const generateHash = async (value) => {
   const salt = await bcrypt.genSalt(10);
   const hash = await bcrypt.hash(value, salt);
   return hash;
 };
 
+/**
+ * Get a list of items that a user owns (lending out)
+ *
+ * @param {string} userId - User ID
+ * @returns {mongoose.Document[]} - Array of Documents
+ */
 const getLendingList = async (userId) => {
-  // const user = await User.findById(userId);
   const casted = new mongoose.Types.ObjectId(userId);
   const lendingList = await Item.find({'user': casted});
   return lendingList;
 };
-
 
 module.exports = {
   getJwtToken,

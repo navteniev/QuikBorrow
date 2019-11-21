@@ -17,8 +17,10 @@ const expressValidator = {
   },
   // eslint-disable-next-line valid-jsdoc
   /**
-   * @param {boolean} shouldExist
-   * @returns {import('express-validator').CustomValidator}
+   * @param {boolean} shouldExist - Whether the validation should assert
+   *     if the email exists, or if it does not exist
+   * @returns {import('express-validator').CustomValidator} - The
+   *     express-validator function
    */
   emailShouldExist: (shouldExist) => async (value, {req}) => {
     const user = await userServices.findUserByEmail(value);
@@ -32,7 +34,6 @@ const expressValidator = {
     }
     return true;
   },
-  // eslint-disable-next-line valid-jsdoc
   /** @type {import('express-validator').CustomValidator} */
   passwordMatchesHash: async (value, {req}) => {
     // req.user is attached in emailShouldExist middleware
@@ -42,7 +43,6 @@ const expressValidator = {
     }
     return true;
   },
-  // eslint-disable-next-line valid-jsdoc
   /** @type {import('express-validator').CustomValidator} */
   matches: (value, {req}) => {
     if (value !== req.body.password2) {

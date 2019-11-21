@@ -1,9 +1,6 @@
 const mongoose = require('mongoose');
 
-// eslint-disable-next-line valid-jsdoc
-/**
- * @type {import('express-validator').CustomValidator}
- */
+/** @type {import('express-validator').CustomValidator} */
 const isObjectId = async (value, {req}) => {
   if (!mongoose.Types.ObjectId.isValid(value)) {
     throw new Error('Malformed Object ID');
