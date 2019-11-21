@@ -36,10 +36,11 @@ describe('AddItemModal', () => {
 			imageDropzone.prop('onDrop')(images)
 		})
 		wrapper.update()
-		wrapper.find(`*[data-testid="delete-image-${images[0].name}"]`).hostNodes().simulate('click')
-		wrapper.find(`*[data-testid="delete-image-${images[2].name}"]`).hostNodes().simulate('click')
-		expect(wrapper.find(`*[data-testid="delete-image-${images[0].name}"]`).hostNodes()).toHaveLength(0)
-		expect(wrapper.find(`*[data-testid="delete-image-${images[1].name}"]`).hostNodes()).toHaveLength(1)
-		expect(wrapper.find(`*[data-testid="delete-image-${images[2].name}"]`).hostNodes()).toHaveLength(0)	
+		const findImageNode = imageName => wrapper.find(`*[data-testid="delete-image-${imageName}"]`).hostNodes()
+		findImageNode(images[0].name).simulate('click')
+		findImageNode(images[2].name).simulate('click')
+		expect(findImageNode(images[0].name)).toHaveLength(0)
+		expect(findImageNode(images[1].name)).toHaveLength(1)
+		expect(findImageNode(images[2].name)).toHaveLength(0)
 	});
 });
