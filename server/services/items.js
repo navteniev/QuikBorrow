@@ -39,8 +39,8 @@ const searchItems = async (query) => {
 
 /**
  * @param {string} id - Item ID
- * @param {*} borrowerId - Borrower ID
- * @param {*} duration - Duration to rent
+ * @param {string} borrowerId - Borrower ID
+ * @param {number} duration - Duration to rent
  * @returns {MongooseDocument} - The updated document
  */
 const rentItem = async (id, borrowerId, duration) => {
