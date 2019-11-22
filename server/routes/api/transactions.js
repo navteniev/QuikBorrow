@@ -6,19 +6,25 @@ const transactionController = require('../../controllers/transactions');
 
 
 /**
+ * Create a transaction
+ *
  * @memberof module:api/transactions
  * @name POST /
  */
 router.post('/', transactionController.create);
 
 /**
+ * Approve a transaction
+ *
  * @memberof module:api/transactions
- * @name POST /approve
+ * @name POST /:transactionId/approve
  */
 
 router.post('/:transactionId/approve', transactionController.approve);
 
 /**
+ * Reject a transaction
+ *
  * @memberof module:api/transactions
  * @name POST /reject
  */

@@ -11,6 +11,7 @@ const {check, param, header} = require('express-validator');
 
 /**
  * Register user
+ *
  * @memberof module:api/users
  * @name POST /register
  */
@@ -31,6 +32,7 @@ router.post('/register', [
 
 /**
  * Login user and return JWT token
+ *
  * @memberof module:api/users
  * @name POST /login
  */
@@ -46,21 +48,34 @@ router.post('/login', [
   validatorErrors,
 ], userController.login);
 
-//
+/**
+ * Get a user
+ *
+ * @memberof module:api/users
+ * @name GET /:userId
+ */
 router.get('/:userId', [
   param('userId', 'Invalid UserId')
       .custom(validObjectId),
   validatorErrors,
 ], userController.get);
 
-
+/**
+ * Update a user
+ *
+ * @memberof module:api/users
+ * @name PATCH /:userId
+ */
 router.patch('/:userId', [
   param('userId')
       .custom(validObjectId),
   validatorErrors,
 ], userController.edit);
+
 /**
- *  @memberof module:api/users
+ * Get the items of a user
+ *
+ * @memberof module:api/users
  * @name GET /:userId/items
  */
 router.get('/:userId/items', [
@@ -69,6 +84,12 @@ router.get('/:userId/items', [
   validatorErrors,
 ], userController.getLendingList);
 
+/**
+ * Create an item for a user
+ *
+ * @memberof module:api/users
+ * @name POST /:userId/items
+ */
 router.post('/:userId/items', [
   param('userId')
       .custom(validObjectId),

@@ -1,8 +1,11 @@
 const userServices = require('../services/users');
 const itemServices = require('../services/items');
 
-// eslint-disable-next-line valid-jsdoc
-/** @type {import('express').RequestHandler} */
+/**
+ * @typedef {import('express').RequestHandler} RequestHandler
+ */
+
+/** @type {RequestHandler} */
 const login = (req, res, next) => {
   const payload = {
     id: req.user.id,
@@ -14,8 +17,7 @@ const login = (req, res, next) => {
       .catch(next);
 };
 
-// eslint-disable-next-line valid-jsdoc
-/** @type {import('express').RequestHandler} */
+/** @type {RequestHandler} */
 const register = async (req, res, next) => {
   const {name, email, password} = req.body;
   try {
@@ -28,12 +30,14 @@ const register = async (req, res, next) => {
   }
 };
 
+/** @type {RequestHandler} */
 const get = (req, res, next) => {
   return userServices.findUser(req.params.userId)
       .then((user) => res.json(user))
       .catch(next);
 };
 
+/** @type {RequestHandler} */
 const edit = (req, res, next) => {
   const name = req.body.name;
   const email = req.body.email;
@@ -42,7 +46,7 @@ const edit = (req, res, next) => {
       .catch(next);
 };
 
-
+/** @type {RequestHandler} */
 const getLendingList = async (req, res, next) => {
   userServices.getLendingList(req.params.userId)
       .then((lendingList) => {
@@ -52,6 +56,7 @@ const getLendingList = async (req, res, next) => {
       .catch(next);
 };
 
+/** @type {RequestHandler} */
 const createItem = async (req, res, next) => {
   // This is attached in the users middleware "attachDecodedToken"
   if (!req.jwtDecoded) {

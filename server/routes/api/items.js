@@ -8,18 +8,24 @@ const validatorErrors = require('../../middleware/shared/validatorErrors');
 const isObjectId = require('../../middleware/shared/validators/isObjectId');
 
 /**
+ * Create a new item
+ *
  * @memberof module:api/items
  * @name POST /
  */
 router.post('/', itemController.create);
 
 /**
+ * Get all items
+ *
  * @memberof module:api/items
  * @name GET /
  */
 router.get('/', itemController.getAll);
 
 /**
+ * Get a specific item
+ *
  * @memberof module:api/items
  * @name GET /:itemId
  */
@@ -29,6 +35,8 @@ router.get('/:itemId', [
 ], itemController.get);
 
 /**
+ * Rent an item from a specific borrower for a set duration
+ *
  * @memberof module:api/items
  * @name GET /rent
  */
@@ -40,6 +48,8 @@ router.get('/:itemId/rent/:borrowerId/:duration', [
 ], itemController.rent);
 
 /**
+ * Stop renting an item
+ *
  * @memberof module:api/items
  * @name GET /:itemId/endrent
  */
@@ -49,6 +59,8 @@ router.get('/:itemId/endrent', [
 ], itemController.endRent);
 
 /**
+ * Search for items
+ *
  * @memberof module:api/items
  * @name GET /search
  */

@@ -1,7 +1,9 @@
 const userController = require('./users');
 const userServices = require('../services/users');
+const itemServices = require('../services/items');
 
 jest.mock('../services/users');
+jest.mock('../services/items');
 
 describe('Unit::controller/users', function() {
   describe('login', function() {
@@ -61,6 +63,63 @@ describe('Unit::controller/users', function() {
       userServices.findUser.mockRejectedValueOnce(err);
       await userController.get({params: {}}, {}, next);
       expect(next).toHaveBeenCalledWith(err);
+    });
+  });
+  describe('createItem', function() {
+    afterEach(function() {
+      itemServices.createItem.mockReset();
+    });
+    it('passes an error to next for no jwt payload', async function() {
+      const error = new TypeError('Decoded JWT payload not found');
+      const next = jest.fn();
+      await userController.createItem({}, {}, next);
+      expect(next).toHaveBeenCalledWith(error);
+    });
+    it('returns 401 for nonmatching user ids', async function() {
+      const userId = 'abc';
+      const request = {
+        body: {},
+        params: {userId},
+        jwtDecoded: {id: userId + 1},
+      };
+      const response = {status: jest.fn(() => ({json: jest.fn()}))};
+      await userController.createItem(request, response);
+      expect(response.status).toHaveBeenCalledWith(401);
+    });
+    it('returns the created item', async function() {
+      const userId = 'abc';
+      const request = {
+        body: {},
+        params: {userId},
+        jwtDecoded: {id: userId},
+      };
+      const response = {json: jest.fn()};
+      const item = {HOO: 'DUR'};
+      itemServices.createItem.mockResolvedValueOnce(item);
+      await userController.createItem(request, response);
+      expect(response.json).toHaveBeenCalledWith(item);
+    });
+    it('creates the proper item to create', async function() {
+      const userId = 'abc';
+      const request = {
+        body: {
+          name: 'aadegjijrig',
+          description: 'ew3r5ujies',
+          random: 123,
+        },
+        params: {userId},
+        jwtDecoded: {id: userId},
+      };
+      const response = {json: jest.fn()};
+      const expectedItemCreation = {
+        name: request.body.name,
+        description: request.body.description,
+        user: request.jwtDecoded.id,
+      };
+      itemServices.createItem.mockResolvedValueOnce();
+      await userController.createItem(request, response);
+      expect(itemServices.createItem)
+          .toHaveBeenCalledWith(expectedItemCreation);
     });
   });
 });
