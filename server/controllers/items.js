@@ -1,5 +1,6 @@
 const itemServices = require('../services/items');
 
+/** @type {import('express').RequestHandler} */
 const create = async (req, res, next) => {
   const data = {
     name: req.body.name,
@@ -14,12 +15,14 @@ const create = async (req, res, next) => {
       .catch(next);
 };
 
+/** @type {import('express').RequestHandler} */
 const get = (req, res, next) => {
   itemServices.findItem(req.params.itemId)
       .then((item) => res.json(item))
       .catch(next);
 };
 
+/** @type {import('express').RequestHandler} */
 const getAll = (req, res, next) => {
   itemServices.findAllItems()
       .then((items) => {
@@ -29,6 +32,7 @@ const getAll = (req, res, next) => {
       .catch(next);
 };
 
+/** @type {import('express').RequestHandler} */
 const search = (req, res, next) => {
   itemServices.searchItems(req.query['param'])
       .then((items) => {
@@ -41,6 +45,7 @@ const search = (req, res, next) => {
   }
 };
 
+/** @type {import('express').RequestHandler} */
 const rent = async (req, res, next) => {
   itemServices.rentItem(req.params.itemId,
       req.params.borrowerId, req.params.duration)
@@ -51,6 +56,7 @@ const rent = async (req, res, next) => {
       .catch(next);
 };
 
+/** @type {import('express').RequestHandler} */
 const endRent = async (req, res, next) => {
   itemServices.endRent(req.params.itemId)
       .then((item) => res.json(item))

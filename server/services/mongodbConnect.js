@@ -11,7 +11,7 @@ const options = {
  */
 
 /**
- * @param {ExpressApplication} expressApp
+ * @param {ExpressApplication} expressApp - The Express.js application
  */
 module.exports = (expressApp) => {
   mongoose.connect(keys.mongoURI, options)

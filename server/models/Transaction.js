@@ -11,7 +11,13 @@ const TransactionSchema = new Schema({
 });
 
 /**
+ * @typedef {import('mongoose').Document} MongooseDocument
+ */
+
+/**
  * Approve the transaction request
+ *
+ * @returns {MongooseDocument} - The updated document
  */
 async function approve() {
   this.set({
@@ -24,6 +30,8 @@ async function approve() {
 
 /**
  * Reject the transaction request
+ *
+ * @returns {MongooseDocument} - The updated document
  */
 async function reject() {
   this.set({
