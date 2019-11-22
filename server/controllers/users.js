@@ -90,10 +90,10 @@ const deleteItem = async (req, res, next) => {
     });
   }
 
-  /** @type {import('mongoose').Document} */
+  /** @type {RequestHandler} */
   const item = req.item;
   if (item.get('user', String) !== userId) {
-    return res.status(401).json({
+    return res.status(404).json({
       errors: [{msg: 'Unauthorized (user does not own this item)'}],
     });
   };
