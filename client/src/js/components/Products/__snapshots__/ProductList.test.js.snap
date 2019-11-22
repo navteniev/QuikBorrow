@@ -133,6 +133,42 @@ exports[`ProductList should render ProductList with given Redux state 1`] = `
     <ul
       className="sc-EHOje fJblyY"
     />
+    <form
+      noValidate={true}
+      onSubmit={[Function]}
+    >
+      <div
+        className="MuiFormControl-root MuiTextField-root"
+      >
+        <label
+          className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated"
+          data-shrink={false}
+          htmlFor="query"
+          id="query-label"
+        >
+          Search Query
+        </label>
+        <div
+          className="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl"
+          onClick={[Function]}
+        >
+          <input
+            aria-invalid={false}
+            autoFocus={false}
+            className="MuiInputBase-input MuiInput-input"
+            disabled={false}
+            id="query"
+            onAnimationStart={[Function]}
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            required={false}
+            type="text"
+            value=""
+          />
+        </div>
+      </div>
+    </form>
   </div>
 </div>
 `;

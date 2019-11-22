@@ -21,6 +21,12 @@ router.get('/', itemController.getAll);
 
 /**
  * @memberof module:api/items
+ * @name GET /search
+ */
+router.get('/search', itemController.search);
+
+/**
+ * @memberof module:api/items
  * @name GET /:itemId
  */
 router.get('/:itemId', [
@@ -47,11 +53,5 @@ router.get('/:itemId/endrent', [
   param('itemId').isAlphanumeric(),
   validatorErrors,
 ], itemController.endRent);
-
-/**
- * @memberof module:api/items
- * @name GET /search
- */
-router.get('/search', itemController.search);
 
 module.exports = router;
