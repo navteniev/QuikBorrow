@@ -20,7 +20,6 @@ const rejectTransaction = async (id) => {
 
 const getTransactions = async (userId, type, isProcessed) => {
   let query;
-  console.log(type);
   if (type == 'borrower') {
     query = {borrower: userId};
   } else {
