@@ -86,7 +86,7 @@ class ProductList extends Component {
 
     const items = pages[this.state.page] && pages[this.state.page].map(this.renderItem)
     return (
-      <div style={{display: 'flex', justifyContent: 'center', width: '100%'}}>
+      <div style={{display: 'flex', justifyContent: 'center', width: '100%', marginTop: '70px'}}>
         <div style={{maxWidth: '1000px', width: '100%'}}>
           <ListTop>
             <Typography component='h4' variant='h4'>

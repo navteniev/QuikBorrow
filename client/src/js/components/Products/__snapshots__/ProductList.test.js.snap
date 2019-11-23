@@ -6,6 +6,7 @@ exports[`ProductList should render ProductList with given Redux state 1`] = `
     Object {
       "display": "flex",
       "justifyContent": "center",
+      "marginTop": "70px",
       "width": "100%",
     }
   }
