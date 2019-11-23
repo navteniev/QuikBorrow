@@ -2,6 +2,137 @@
 
 exports[`ProductList should render ProductList with given Redux state 1`] = `
 <div
-  className="sc-bdVaJa hioVum"
-/>
+  style={
+    Object {
+      "display": "flex",
+      "justifyContent": "center",
+      "width": "100%",
+    }
+  }
+>
+  <div
+    style={
+      Object {
+        "maxWidth": "1000px",
+        "width": "100%",
+      }
+    }
+  >
+    <div
+      className="sc-bZQynM gJmhNi"
+    >
+      <h4
+        className="MuiTypography-root MuiTypography-h4"
+      >
+        0
+         Products
+      </h4>
+      <div
+        className="MuiButtonGroup-root"
+        role="group"
+      >
+        <button
+          className="MuiButtonBase-root MuiIconButton-root MuiButtonGroup-grouped MuiButtonGroup-groupedOutlined MuiButtonGroup-groupedOutlined Mui-disabled Mui-disabled"
+          disabled={true}
+          fullWidth={false}
+          onBlur={[Function]}
+          onClick={[Function]}
+          onDragLeave={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          tabIndex={-1}
+          type="button"
+          variant="outlined"
+        >
+          <span
+            className="MuiIconButton-label"
+          >
+            <svg
+              aria-hidden="true"
+              className="MuiSvgIcon-root"
+              focusable="false"
+              role="presentation"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"
+              />
+            </svg>
+          </span>
+        </button>
+        <button
+          className="MuiButtonBase-root MuiButton-root MuiButton-text MuiButtonGroup-grouped MuiButtonGroup-groupedOutlined MuiButtonGroup-groupedOutlined Mui-disabled Mui-disabled"
+          disabled={true}
+          onBlur={[Function]}
+          onDragLeave={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          tabIndex={-1}
+          type="button"
+        >
+          <span
+            className="MuiButton-label"
+          >
+            1
+            /
+            0
+          </span>
+        </button>
+        <button
+          className="MuiButtonBase-root MuiIconButton-root MuiButtonGroup-grouped MuiButtonGroup-groupedOutlined MuiButtonGroup-groupedOutlined"
+          disabled={false}
+          fullWidth={false}
+          onBlur={[Function]}
+          onClick={[Function]}
+          onDragLeave={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          tabIndex={0}
+          type="button"
+          variant="outlined"
+        >
+          <span
+            className="MuiIconButton-label"
+          >
+            <svg
+              aria-hidden="true"
+              className="MuiSvgIcon-root"
+              focusable="false"
+              role="presentation"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"
+              />
+            </svg>
+          </span>
+        </button>
+      </div>
+    </div>
+    <ul
+      className="sc-EHOje fJblyY"
+    />
+  </div>
+</div>
 `;

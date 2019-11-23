@@ -1,17 +1,14 @@
 import React from "react";
-import { Card } from "primereact/card";
 import styled from 'styled-components';
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
+import CardMedia from '@material-ui/core/CardMedia';
+import Typography from '@material-ui/core/Typography';
 
 const StyledDiv = styled.div`
   text-align:center;
-  margin-top: 10px;
-  margin-left: 500px;
-  vertical-align: middle;
-  div > ul {
-    display: inline-block
-    list-style-type: none
-  };
-`
+  margin-top:10px;
+  `
 
 const ProfileCard = props => {
     const { name, age, college , products, bio, wishlist } = props;
@@ -21,36 +18,44 @@ const ProfileCard = props => {
 
     const products_li = products.map((element) => {
       return <li key={element.id}>
-        <h3>{element.item}</h3>
+        <h7>{element.item}</h7>
         <p>{element.description}</p>
         </li>
     });
     const wishlist_li = wishlist.map((element) => {
       return <li key={element.id}>
-        <h3>{element.item}</h3>
+        <h7>{element.item}</h7>
       </li>
     });
 
     return (
       <StyledDiv>
-      <Card
-        header={header}
-        title={name}
-        subTitle={college}
-        className="ui-card-shadow"
-        style={{ width: "360px"}}
-      >   
-          <p>{age} years old</p>
-          <p>{bio}</p>
-          <ul>
-            <h2> Lending</h2>
-            {products_li}
-          </ul>
-
-          <ul>
-            <h2> Wishlist </h2>
-            {wishlist_li}
-          </ul>
+      <Card>
+        <CardMedia>
+          <img src="https://via.placeholder.com/500" alt="profile_image" />
+        </CardMedia>
+        <CardContent>
+          <Typography gutterBottom variant="h5" component="h2">
+            {name}
+          </Typography>
+          <Typography variant="body2" color="textSecondary" component="p">
+            {college} <br/>
+            {age} years old<br/>
+            {bio}<br/><br/>
+          </Typography>
+          <Typography gutterBottom variant="h4" component="h2">
+            Lending List
+          </Typography>
+          <Typography variant="body2" color="textSecondary" component="p">
+            {products_li} <br/>
+          </Typography>
+          <Typography gutterBottom variant="h4" component="h2">
+            Wishlist
+          </Typography>
+          <Typography variant="body2" color="textSecondary" component="p">
+            {wishlist_li} <br/>
+          </Typography>
+        </CardContent>   
       </Card>
     </StyledDiv>
     );

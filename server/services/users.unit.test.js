@@ -69,6 +69,22 @@ describe('Unit::services/users', function() {
       expect(userServices.getJwtToken()).rejects.toThrow(err);
     });
   });
+  describe('verifyJwtToken', function() {
+    it('resolves with decoded data', function() {
+      const resolved = 'etr43ouj';
+      jwt.verify.mockImplementationOnce((g1, g2, callback) => {
+        callback(null, resolved);
+      });
+      expect(userServices.verifyJwtToken()).resolves.toEqual(resolved);
+    });
+    it('rejects with the error', function() {
+      const error = new Error('aeqwt426r');
+      jwt.verify.mockImplementationOnce((g1, g2, callback) => {
+        callback(error);
+      });
+      expect(userServices.verifyJwtToken()).rejects.toThrow(error);
+    });
+  });
   describe('generateHash', function() {
     it('resolves with the token', async function() {
       const hash = 'wet4';

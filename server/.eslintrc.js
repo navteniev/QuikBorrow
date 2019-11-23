@@ -5,6 +5,7 @@ module.exports = {
   },
   'extends': [
     'google',
+    'plugin:jsdoc/recommended'
   ],
   'globals': {
     'Atomics': 'readonly',
@@ -14,5 +15,11 @@ module.exports = {
     'ecmaVersion': 2018,
   },
   'rules': {
+    'valid-jsdoc': 'off',
+    'require-jsdoc': 'off',
+    'jsdoc/check-types': 'off'
   },
+  'plugins': [
+    'jsdoc'
+  ]
 };

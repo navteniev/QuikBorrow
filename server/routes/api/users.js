@@ -4,11 +4,13 @@ const express = require('express');
 const router = new express.Router();
 const userController = require('../../controllers/users');
 const userMiddleware = require('../../middleware/users');
-const validationErrors = require('../../middleware/shared/validatorErrors');
-const {check, param} = require('express-validator');
+const validatorErrors = require('../../middleware/shared/validatorErrors');
+const validObjectId = require('../../middleware/shared/validators/isObjectId');
+const {check, param, header} = require('express-validator');
 
 /**
  * Register user
+ *
  * @memberof module:api/users
  * @name POST /register
  */
@@ -24,11 +26,12 @@ router.post('/register', [
   check('password')
       .isLength({min: 6}).withMessage('Password must be >6 characters')
       .custom(userMiddleware.expressValidator.matches),
-  validationErrors,
+  validatorErrors,
 ], userController.register);
 
 /**
  * Login user and return JWT token
+ *
  * @memberof module:api/users
  * @name POST /login
  */
@@ -41,30 +44,63 @@ router.post('/login', [
       .custom(userMiddleware.expressValidator.emailShouldExist(true)),
   check('password')
       .custom(userMiddleware.expressValidator.passwordMatchesHash),
-  validationErrors,
+  validatorErrors,
 ], userController.login);
 
-//
+/**
+ * Get a user
+ *
+ * @memberof module:api/users
+ * @name GET /:userId
+ */
 router.get('/:userId', [
   param('userId', 'Invalid UserId')
-      .isAlphanumeric(),
-  validationErrors,
+      .custom(validObjectId),
+  validatorErrors,
 ], userController.get);
 
-
-router.patch('/:userId', [
-  param('userId', 'Invalid userID')
-      .isAlphanumeric(),
-  validationErrors,
-], userController.edit);
 /**
- *  @memberof module:api/users
+ * Update a user
+ *
+ * @memberof module:api/users
+ * @name PATCH /:userId
+ */
+router.patch('/:userId', [
+  param('userId')
+      .custom(validObjectId),
+  validatorErrors,
+], userController.edit);
+
+/**
+ * Get the items of a user
+ *
+ * @memberof module:api/users
  * @name GET /:userId/items
  */
 router.get('/:userId/items', [
-  param('userId', 'invalid UserId').isAlphanumeric(),
-  validationErrors,
+  param('userId')
+      .custom(validObjectId),
+  validatorErrors,
 ], userController.getLendingList);
 
+/**
+ * Create an item for a user
+ *
+ * @memberof module:api/users
+ * @name POST /:userId/items
+ */
+router.post('/:userId/items', [
+  param('userId')
+      .custom(validObjectId),
+  check('name')
+      .isLength({min: 1}),
+  check('description')
+      .isLength({min: 1}),
+  header('Authorization', 'Invalid Authorization header')
+      .isLength({min: 1})
+      .bail()
+      .custom(userMiddleware.expressValidator.attachDecodedToken),
+  validatorErrors,
+], userController.createItem);
 
 module.exports = router;

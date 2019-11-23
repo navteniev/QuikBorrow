@@ -1,7 +1,15 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { logoutUser } from '../../actions';
+import { Toolbar, Avatar } from '@material-ui/core';
+import styled from 'styled-components'
+
+const UnstyledLink = styled(Link)`
+    color: inherit;
+    text-decoration: inherit;
+    margin-left: 20px;
+`
 
 const SignedIn = (props) => {
     const onClick = e => {
@@ -10,11 +18,11 @@ const SignedIn = (props) => {
     };
 
     return (
-        <ul className="right">
-            <li><NavLink to='/products'>Products</NavLink></li>
-            <li><NavLink to='/profile' className='btn btn-floating red'>{props.name}</NavLink></li>
-            <li><NavLink to='#' onClick={onClick}>Log Out</NavLink></li>
-        </ul>
+        <Toolbar>
+            <UnstyledLink to='/products'>Products</UnstyledLink>
+            <UnstyledLink to='/profile'><Avatar src='https://avatars1.githubusercontent.com/u/619960?s=460&v=4' /></UnstyledLink>
+            <UnstyledLink to='#' onClick={onClick}>Sign Out</UnstyledLink>
+        </Toolbar>
     )
 }
 

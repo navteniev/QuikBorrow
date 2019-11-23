@@ -5,9 +5,8 @@ import { connect } from "react-redux";
 import { loginUser } from "../../actions/index";
 import classnames from "classnames";
 import styled from 'styled-components';
-import {InputText} from 'primereact/inputtext';
-import {Button} from 'primereact/button';
 import quikLogo from '../../components/quikLogo.png';
+import { Button, TextField } from "@material-ui/core";
 
 const LoginForm = styled.div`
 	margin: 0 auto;
@@ -21,6 +20,7 @@ const LoginForm = styled.div`
 const Center = styled.div`
 	text-align: center;
 `
+
 export class Login extends Component {
 	constructor() {
 		super();
@@ -42,10 +42,10 @@ export class Login extends Component {
       		this.props.history.push("/dashboard"); // push user to dashboard when they login
     	}
 		if (nextProps.errors) {
-      			this.setState({
-        			errors: nextProps.errors
-      			});
-    		}
+      		this.setState({
+        		errors: nextProps.errors
+      		});
+    	}
   	}
 	onChange = e => {
 		this.setState({ [e.target.id]: e.target.value });
@@ -62,58 +62,63 @@ export class Login extends Component {
 		const { errors } = this.state;
 		if (errors.errors === undefined || errors.errors.find(x => x.param === e) === undefined)
 		{
-			return "";
+			return true;
 		}
 		else
 		{
-			return errors.errors.find(x => x.param === e).msg;
+			// return errors.errors.find(x => x.param === e).msg;
+			return false;
 		}
 	};
 	render() {
 		return (
 			<div>
-				<Link to="/"> Back to home</Link><br/>
 				<Center>
-				<img src={quikLogo} width="275" height= "180" alt = "logo"/>
+					<br/>
+					<img src={quikLogo} width="275" height= "180" alt = "logo"/>
 				</Center>
 				<LoginForm>
-					<div>
-						<h2>Login</h2>
-					</div>
-				<form noValidate onSubmit={this.onSubmit}>
-					<span className="p-float-label">
-						<InputText
+					<Center>
+						<h4>Login</h4>
+					</Center>
+					<form noValidate onSubmit={this.onSubmit}>
+						<TextField
 							onChange={this.onChange}
 							value={this.state.email}
 							error={this.getErrors('email')}
 							id="email"
 							type="email"
-							size="35"
+							label="Email"
+							fullWidth
 							className={classnames("", {
                     			invalid: this.getErrors('email')
                   			})}
 						/>
 						<span>{this.getErrors('email')}</span>
-						<label htmlFor="email">Email</label>
-					</span><br/>
-					<span className="p-float-label">
-						<InputText
+						<br/>
+						<TextField
 							onChange={this.onChange}
 							value={this.state.password}
 							error={this.getErrors('password')}
 							id="password"
 							type="password"
-							size="35"
+							label="Password"
+							fullWidth
 							className={classnames("", {
                     			invalid: this.getErrors('password')
                   			})}
 						/>
 						<span>{this.getErrors('password')}</span>
-						<label htmlFor="password">Password</label>
-					</span>
 					<p>Dont have an account? <Link to="/register">Register</Link></p>
 					<div>
-						<Button label="Login" className="p-button-rounded" type="submit"/>
+					<Button 
+						variant="contained" 
+						color="primary" 
+						type="submit"
+						fullWidth
+					>
+        			Login
+      				</Button>
 					</div>
 				</form>
 				</LoginForm>

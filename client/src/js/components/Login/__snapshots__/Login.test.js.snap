@@ -2,16 +2,10 @@
 
 exports[`Login renders 1`] = `
 <div>
-  <a
-    href="/"
-    onClick={[Function]}
-  >
-     Back to home
-  </a>
-  <br />
   <div
     className="sc-bwzfXH gZvuZl"
   >
+    <br />
     <img
       alt="logo"
       height="180"
@@ -22,62 +16,82 @@ exports[`Login renders 1`] = `
   <div
     className="sc-bdVaJa fKOCmO"
   >
-    <div>
-      <h2>
+    <div
+      className="sc-bwzfXH gZvuZl"
+    >
+      <h4>
         Login
-      </h2>
+      </h4>
     </div>
     <form
       noValidate={true}
       onSubmit={[Function]}
     >
-      <span
-        className="p-float-label"
+      <div
+        className="MuiFormControl-root MuiTextField-root invalid MuiFormControl-fullWidth"
       >
-        <input
-          className="p-inputtext p-component"
-          error=""
-          id="email"
-          onChange={[Function]}
-          onInput={[Function]}
-          onKeyPress={[Function]}
-          size="35"
-          type="email"
-          value=""
-        />
-        <span>
-          
-        </span>
         <label
+          className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated Mui-error Mui-error"
+          data-shrink={false}
           htmlFor="email"
+          id="email-label"
         >
           Email
         </label>
-      </span>
+        <div
+          className="MuiInputBase-root MuiInput-root MuiInput-underline Mui-error Mui-error MuiInputBase-fullWidth MuiInput-fullWidth MuiInputBase-formControl MuiInput-formControl"
+          onClick={[Function]}
+        >
+          <input
+            aria-invalid={true}
+            autoFocus={false}
+            className="MuiInputBase-input MuiInput-input"
+            disabled={false}
+            id="email"
+            onAnimationStart={[Function]}
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            required={false}
+            type="email"
+            value=""
+          />
+        </div>
+      </div>
+      <span />
       <br />
-      <span
-        className="p-float-label"
+      <div
+        className="MuiFormControl-root MuiTextField-root invalid MuiFormControl-fullWidth"
       >
-        <input
-          className="p-inputtext p-component"
-          error=""
-          id="password"
-          onChange={[Function]}
-          onInput={[Function]}
-          onKeyPress={[Function]}
-          size="35"
-          type="password"
-          value=""
-        />
-        <span>
-          
-        </span>
         <label
+          className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated Mui-error Mui-error"
+          data-shrink={false}
           htmlFor="password"
+          id="password-label"
         >
           Password
         </label>
-      </span>
+        <div
+          className="MuiInputBase-root MuiInput-root MuiInput-underline Mui-error Mui-error MuiInputBase-fullWidth MuiInput-fullWidth MuiInputBase-formControl MuiInput-formControl"
+          onClick={[Function]}
+        >
+          <input
+            aria-invalid={true}
+            autoFocus={false}
+            className="MuiInputBase-input MuiInput-input"
+            disabled={false}
+            id="password"
+            onAnimationStart={[Function]}
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            required={false}
+            type="password"
+            value=""
+          />
+        </div>
+      </div>
+      <span />
       <p>
         Dont have an account? 
         <a
@@ -89,11 +103,24 @@ exports[`Login renders 1`] = `
       </p>
       <div>
         <button
-          className="p-button p-component p-button-rounded p-button-text-only"
+          className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-fullWidth"
+          disabled={false}
+          onBlur={[Function]}
+          onDragLeave={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          tabIndex={0}
           type="submit"
         >
           <span
-            className="p-button-text p-c"
+            className="MuiButton-label"
           >
             Login
           </span>
