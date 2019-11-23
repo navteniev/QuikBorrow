@@ -60,21 +60,23 @@ const expressValidator = {
 };
 
 /** @type {ExpressHandler} */
-const userIsAuthorized = async (req, res, next) => {
+const userIsAuthorized = (req, res, next) => {
   if (req.jwtDecoded.id !== req.params.userId) {
-    res.status(401).json({
+    return res.status(401).json({
       errors: [{msg: 'Unauthorized (non-matching IDs)'}],
     });
   }
+  next();
 };
 
 /** @type {ExpressHandler} */
-const userOwnsItem = async (req, res, next) => {
+const userOwnsItem = (req, res, next) => {
   if (req.jwtDecoded.id !== req.item.get('user', String)) {
-    res.status(401).json({
+    return res.status(404).json({
       errors: [{msg: 'Unauthorized (does not own item)'}],
     });
   }
+  next();
 };
 
 module.exports = {

@@ -6,6 +6,52 @@ jest.mock('../services/users');
 jest.mock('bcryptjs');
 
 describe('Unit::middleware/users', function() {
+  describe('userIsAuthorized', function() {
+    it('returns 401 if decoded id is not userId param', function() {
+      const userId = 'q135r';
+      const request = {
+        params: {userId},
+        jwtDecoded: {id: userId + 1},
+      };
+      const response = {status: jest.fn(() => ({json: jest.fn()}))};
+      usersMiddleware.userIsAuthorized(request, response);
+      expect(response.status).toHaveBeenCalledWith(401);
+    });
+    it('calls next on success', function() {
+      const userId = 'q135r';
+      const request = {params: {userId}};
+      const next = jest.fn();
+      request.jwtDecoded = {id: userId};
+      usersMiddleware.userIsAuthorized(request, {}, next);
+      expect(next).toHaveBeenCalledWith();
+    });
+  });
+  describe('userOwnsItem', function() {
+    it('returns 404 if item owner is not param userId', async function() {
+      const userId = '2q3rtgre';
+      const item = {get: () => userId + 1};
+      const request = {
+        params: {userId},
+        jwtDecoded: {id: userId},
+        item,
+      };
+      const response = {status: jest.fn(() => ({json: jest.fn()}))};
+      usersMiddleware.userOwnsItem(request, response);
+      expect(response.status).toHaveBeenCalledWith(404);
+    });
+    it('calls next on success', function() {
+      const userId = '2q3rtgre';
+      const item = {get: () => userId};
+      const request = {
+        params: {userId},
+        jwtDecoded: {id: userId},
+        item,
+      };
+      const next = jest.fn();
+      usersMiddleware.userOwnsItem(request, {}, next);
+      expect(next).toHaveBeenCalledWith();
+    });
+  });
   describe('expressValidator custom functions', function() {
     describe('attachDecodedToken', function() {
       afterEach(function() {

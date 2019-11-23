@@ -126,30 +126,6 @@ describe('Unit::controller/users', function() {
     afterEach(function() {
       itemServices.deleteItem.mockReset();
     });
-    it('calls next(err) if decoded jwt payload not found', async function() {
-      const err = new Error('Decoded JWT payload not found');
-      const next = jest.fn();
-      await userController.deleteItem({params: {}}, {}, next);
-      expect(next).toHaveBeenCalledWith(err);
-    });
-    it('returns 401 if decoded id is not route :userId', async function() {
-      const userId = 'q135r';
-      const request = {params: {userId}};
-      const response = {status: jest.fn(() => ({json: jest.fn()}))};
-      request.jwtDecoded = {id: userId + 1};
-      await userController.deleteItem(request, response);
-      expect(response.status).toHaveBeenCalledWith(401);
-    });
-    it('returns 404 if item owner is not param userId', async function() {
-      const userId = '2q3rtgre';
-      const item = {get: () => userId + 1};
-      const request = {params: {userId}};
-      const response = {status: jest.fn(() => ({json: jest.fn()}))};
-      request.jwtDecoded = {id: userId};
-      request.item = item;
-      await userController.deleteItem(request, response);
-      expect(response.status).toHaveBeenCalledWith(404);
-    });
     it('returns 204 on success', async function() {
       const userId = '2q3rtgre';
       const item = {get: () => userId};
