@@ -2,7 +2,11 @@ const userServices = require('../services/users');
 const bcrypt = require('bcryptjs');
 
 /**
- * @typedef {import('express-validator')} ExpressValidator
+ * @typedef {import('express-validator').CustomValidator} ExpressValidator
+ */
+
+/**
+ * @typedef {import('express').RequestHandler} ExpressHandler
  */
 
 const expressValidator = {
@@ -55,6 +59,26 @@ const expressValidator = {
   },
 };
 
+/** @type {ExpressHandler} */
+const userIsAuthorized = async (req, res, next) => {
+  if (req.jwtDecoded.id !== req.params.userId) {
+    res.status(401).json({
+      errors: [{msg: 'Unauthorized (non-matching IDs)'}],
+    });
+  }
+};
+
+/** @type {ExpressHandler} */
+const userOwnsItem = async (req, res, next) => {
+  if (req.jwtDecoded.id !== req.item.get('user', String)) {
+    res.status(401).json({
+      errors: [{msg: 'Unauthorized (does not own item)'}],
+    });
+  }
+};
+
 module.exports = {
   expressValidator,
+  userIsAuthorized,
+  userOwnsItem,
 };

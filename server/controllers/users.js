@@ -79,24 +79,7 @@ const createItem = async (req, res, next) => {
 };
 
 const deleteItem = async (req, res, next) => {
-  const {userId, itemId} = req.params;
-
-  if (!req.jwtDecoded) {
-    return next(new Error('Decoded JWT payload not found'));
-  }
-  if (req.jwtDecoded.id !== userId) {
-    return res.status(401).json({
-      errors: [{msg: 'Unauthorized (non-matching IDs)'}],
-    });
-  }
-
-  /** @type {RequestHandler} */
-  const item = req.item;
-  if (item.get('user', String) !== userId) {
-    return res.status(404).json({
-      errors: [{msg: 'Unauthorized (user does not own this item)'}],
-    });
-  };
+  const {itemId} = req.params;
   await itemServices.deleteItem(itemId);
   res.status(204).end();
 };

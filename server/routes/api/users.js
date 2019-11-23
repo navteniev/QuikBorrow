@@ -115,6 +115,8 @@ router.delete('/:userId/items/:itemId', [
       .bail()
       .custom(userMiddleware.expressValidator.attachDecodedToken),
   validatorErrors,
+  userMiddleware.userIsAuthorized,
+  userMiddleware.userOwnsItem,
 ], userController.deleteItem);
 
 module.exports = router;
