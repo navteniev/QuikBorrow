@@ -7,6 +7,37 @@ jest.mock('bcryptjs');
 
 describe('Unit::middleware/users', function() {
   describe('expressValidator custom functions', function() {
+    describe('attachDecodedToken', function() {
+      afterEach(function() {
+        userServices.verifyJwtToken.mockReset();
+      });
+      it('rejects for wrong length header', async function() {
+        expect(usersMiddleware.expressValidator.attachDecodedToken('abc', {}))
+            .rejects.toThrowError(new Error('Malformed authorization header'));
+        expect(usersMiddleware.expressValidator.attachDecodedToken('A a a', {}))
+            .rejects.toThrowError(new Error('Malformed authorization header'));
+      });
+      it('rejects for wrong type auth', function() {
+        const func = usersMiddleware.expressValidator.attachDecodedToken;
+        const err = new Error('Incorrect authorization type (Must be Bearer)');
+        expect(func(`ITTTTTTTS JOHNNY!`, {}))
+            .rejects.toThrowError(err);
+      });
+      it('attaches the decoded jwt token', async function() {
+        const func = usersMiddleware.expressValidator.attachDecodedToken;
+        const data = {req: {}};
+        const decoded = {your: 'mom'};
+        userServices.verifyJwtToken.mockResolvedValueOnce(decoded);
+        await func(`Bearer 123`, data);
+        expect(data.req.jwtDecoded).toEqual(decoded);
+      });
+      it('returns true on success', async function() {
+        const func = usersMiddleware.expressValidator.attachDecodedToken;
+        userServices.verifyJwtToken.mockResolvedValueOnce();
+        expect(func(`Bearer 123`, {req: {}})).resolves.toEqual(true);
+        expect(func(`bearer 123`, {req: {}})).resolves.toEqual(true);
+      });
+    });
     describe('emailShouldExist', function() {
       it(`throws error if email should exist but it doesn't`, function() {
         userServices.findUserByEmail.mockResolvedValueOnce();

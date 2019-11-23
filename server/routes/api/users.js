@@ -6,7 +6,7 @@ const userController = require('../../controllers/users');
 const userMiddleware = require('../../middleware/users');
 const validatorErrors = require('../../middleware/shared/validatorErrors');
 const validObjectId = require('../../middleware/shared/validators/isObjectId');
-const {check, param} = require('express-validator');
+const {check, param, header} = require('express-validator');
 
 /**
  * Register user
@@ -78,8 +78,29 @@ router.patch('/:userId', [
  * @name GET /:userId/items
  */
 router.get('/:userId/items', [
-  param('userId', 'invalid UserId').isAlphanumeric(),
+  param('userId')
+      .custom(validObjectId),
   validatorErrors,
 ], userController.getLendingList);
+
+/**
+ * Create an item for a user
+ *
+ * @memberof module:api/users
+ * @name POST /:userId/items
+ */
+router.post('/:userId/items', [
+  param('userId')
+      .custom(validObjectId),
+  check('name')
+      .isLength({min: 1}),
+  check('description')
+      .isLength({min: 1}),
+  header('Authorization', 'Invalid Authorization header')
+      .isLength({min: 1})
+      .bail()
+      .custom(userMiddleware.expressValidator.attachDecodedToken),
+  validatorErrors,
+], userController.createItem);
 
 module.exports = router;
