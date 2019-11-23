@@ -19,7 +19,6 @@ const LoginForm = styled.div`
 `
 const Center = styled.div`
 	text-align: center;
-	margin-top: 60px;
 `
   
 export class Register extends Component {
