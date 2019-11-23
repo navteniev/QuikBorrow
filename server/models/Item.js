@@ -6,7 +6,7 @@ const ItemSchema = new Schema({
   description: {type: String, default: ''},
   user: {type: Schema.Types.ObjectId, ref: 'User'},
   availability: {type: Boolean, default: false},
-  image: {type: Buffer},
+  productImage: {type: String, required: false},
   borrower: {type: Schema.Types.ObjectId},
   returnDate: {type: Date, default: Date.now},
 });
