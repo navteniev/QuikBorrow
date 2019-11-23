@@ -12,9 +12,15 @@ const ItemSchema = new Schema({
 });
 
 /**
+ * @typedef {mongoose.Document} MongooseDocument
+ */
+
+/**
  * Rent an item to a borrower for a specified duration
+ *
  * @param {mongoose.Types.ObjectId|string} borrowerId - The borrow's ObjectId
  * @param {number|string} duration - ms since January 1, 1970, 00:00:00 UTC
+ * @returns {MongooseDocument} - The newly saved document
  */
 async function rentTo(borrowerId, duration) {
   this.availability = false;
@@ -26,6 +32,8 @@ async function rentTo(borrowerId, duration) {
 
 /**
  * Stop renting an item
+ *
+ * @returns {MongooseDocument} - The updated document
  */
 async function endRent() {
   this.set({
@@ -34,7 +42,7 @@ async function endRent() {
   });
   await this.save();
   return this;
-};
+}
 
 ItemSchema.methods.rentTo = rentTo;
 ItemSchema.methods.endRent = endRent;

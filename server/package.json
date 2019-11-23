@@ -28,6 +28,7 @@
     "@types/jest": "^24.0.21",
     "eslint": "^6.6.0",
     "eslint-config-google": "^0.14.0",
+    "eslint-plugin-jsdoc": "^18.1.4",
     "jest": "^24.9.0",
     "nodemon": "^1.19.4",
     "supertest": "^4.0.2"

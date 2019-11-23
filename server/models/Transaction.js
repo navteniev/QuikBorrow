@@ -3,6 +3,7 @@ const Schema = mongoose.Schema;
 
 const TransactionSchema = new Schema({
   borrower: {type: Schema.Types.ObjectId, ref: 'User'},
+  lender: {type: Schema.Types.ObjectId, ref: 'User'},
   msg: {type: String, default: ''},
   item: {type: Schema.Types.ObjectId, ref: 'Item'},
   approved: {type: Boolean, default: false},
@@ -10,7 +11,13 @@ const TransactionSchema = new Schema({
 });
 
 /**
+ * @typedef {import('mongoose').Document} MongooseDocument
+ */
+
+/**
  * Approve the transaction request
+ *
+ * @returns {MongooseDocument} - The updated document
  */
 async function approve() {
   this.set({
@@ -23,6 +30,8 @@ async function approve() {
 
 /**
  * Reject the transaction request
+ *
+ * @returns {MongooseDocument} - The updated document
  */
 async function reject() {
   this.set({

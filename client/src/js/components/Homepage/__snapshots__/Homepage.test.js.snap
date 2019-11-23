@@ -3,34 +3,214 @@
 exports[`Homepage renders 1`] = `
 <div>
   <div
-    className="sc-bdVaJa khUSez"
+    className="sc-bxivhb qdYAV"
+  />
+  <div
+    className="sc-ifAKCX epwfZB"
   >
-    <img
-      alt="logo"
-      src="quikLogo.png"
-    />
-    <div>
-      <a
-        href="/register"
+    <h4
+      className="MuiTypography-root MuiTypography-h4"
+      style={
+        Object {
+          "color": "#e0f2f1",
+        }
+      }
+    >
+      Need something?
+    </h4>
+    <p
+      className="MuiTypography-root MuiTypography-body1 MuiTypography-alignCenter"
+      style={
+        Object {
+          "color": "#e0f2f1",
+        }
+      }
+    >
+      With Quikborrow, you can do whatever you want with no reprucussions.
+      <br />
+      What do you want to do?
+    </p>
+    <div
+      className="MuiButtonGroup-root"
+      role="group"
+    >
+      <button
+        className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButtonGroup-grouped MuiButtonGroup-groupedOutlined MuiButtonGroup-groupedOutlined MuiButton-containedSizeLarge MuiButton-sizeLarge"
+        disabled={false}
+        onBlur={[Function]}
         onClick={[Function]}
+        onDragLeave={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex={0}
+        type="button"
       >
-        <button
-          className="sc-bwzfXH kufQqT"
+        <span
+          className="MuiButton-label"
         >
-           Register 
-        </button>
-      </a>
-      <a
-        href="/login"
-        onClick={[Function]}
+          I want to lend
+        </span>
+      </button>
+      <button
+        className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButtonGroup-grouped MuiButtonGroup-groupedOutlined MuiButtonGroup-groupedOutlined MuiButton-containedSizeLarge MuiButton-sizeLarge"
+        disabled={false}
+        onBlur={[Function]}
+        onDragLeave={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex={0}
+        type="button"
       >
-        <button
-          className="sc-bwzfXH kufQqT"
+        <span
+          className="MuiButton-label"
         >
-           Log In 
-        </button>
-      </a>
+          I want to borrow
+        </span>
+      </button>
     </div>
   </div>
+  <section
+    className="sc-EHOje kjBPoZ"
+  >
+    <h4
+      className="MuiTypography-root sc-htoDjs htGEwi MuiTypography-h4 MuiTypography-gutterBottom"
+    >
+      By the students. For the students.
+    </h4>
+    <p
+      className="MuiTypography-root MuiTypography-h6 MuiTypography-gutterBottom MuiTypography-paragraph"
+    >
+      Too long have we been chained by our corporate overlords such as McGraw Hill and Pearson. Today, you have the chance to break free with QuikBorrow. A service so quik you can't even "c" it. *
+      <i>
+        pause for applause
+      </i>
+      *
+    </p>
+    <div
+      className="sc-bZQynM kuWbXW"
+    >
+      <div
+        className="sc-gzVnrw bkjvZa"
+      >
+        <div>
+          <h5
+            className="MuiTypography-root sc-htoDjs htGEwi MuiTypography-h5 MuiTypography-gutterBottom"
+          >
+            Securely Chat
+          </h5>
+          <p
+            className="MuiTypography-root MuiTypography-body1"
+          >
+            The NSA is always watching our every move. On our platform however, they won't see a thing. You are free to trade your musty second-hand textbooks with those suspicious liquid stains from one student to another without any prying eyes.
+          </p>
+        </div>
+        <svg
+          aria-hidden="true"
+          className="MuiSvgIcon-root"
+          focusable="false"
+          role="presentation"
+          style={
+            Object {
+              "color": "#009688",
+              "fontSize": 150,
+            }
+          }
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 9h12v2H6V9zm8 5H6v-2h8v2zm4-6H6V6h12v2z"
+          />
+        </svg>
+      </div>
+      <div
+        className="sc-gzVnrw bkjvZa"
+      >
+        <div>
+          <h5
+            className="MuiTypography-root sc-htoDjs htGEwi MuiTypography-h5 MuiTypography-gutterBottom"
+          >
+            Trusted Users
+          </h5>
+          <p
+            className="MuiTypography-root MuiTypography-body1"
+          >
+            Students should feel confident that the stuff they're borrowing are not bugged by corporate spies. Users will rate each other on their trustworthiness, and their ratings will be affected for everyone to see. User reports can also be made to our team that will either confirm or deny corporate spies who intends to break our service.
+          </p>
+        </div>
+        <svg
+          aria-hidden="true"
+          className="MuiSvgIcon-root"
+          focusable="false"
+          role="presentation"
+          style={
+            Object {
+              "color": "#009688",
+              "fontSize": 150,
+            }
+          }
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M12 6c0-.55-.45-1-1-1H5.82l.66-3.18.02-.23c0-.31-.13-.59-.33-.8L5.38 0 .44 4.94C.17 5.21 0 5.59 0 6v6.5c0 .83.67 1.5 1.5 1.5h6.75c.62 0 1.15-.38 1.38-.91l2.26-5.29c.07-.17.11-.36.11-.55V6zm-2 1.13L7.92 12H2V6.21l1.93-1.93L3.36 7H10v.13zM22.5 10h-6.75c-.62 0-1.15.38-1.38.91l-2.26 5.29c-.07.17-.11.36-.11.55V18c0 .55.45 1 1 1h5.18l-.66 3.18-.02.24c0 .31.13.59.33.8l.79.78 4.94-4.94c.27-.27.44-.65.44-1.06v-6.5c0-.83-.67-1.5-1.5-1.5zm-.5 7.79l-1.93 1.93.57-2.72H14v-.13L16.08 12H22v5.79z"
+          />
+          <path
+            d="M3.93 4.28L2 6.21V12h5.92L10 7.13V7H3.36zM14 16.87V17h6.64l-.57 2.72L22 17.79V12h-5.92z"
+            opacity=".3"
+          />
+        </svg>
+      </div>
+      <div
+        className="sc-gzVnrw bkjvZa"
+      >
+        <div>
+          <h5
+            className="MuiTypography-root sc-htoDjs htGEwi MuiTypography-h5 MuiTypography-gutterBottom"
+          >
+            Students Only
+          </h5>
+          <p
+            className="MuiTypography-root MuiTypography-body1"
+          >
+            Corporate spies are the bane of our existence, and we use a wide range of state-of-the-art tech tools to keep them out. All lenders and buyers must validate their account with student emails to verify that they are attending a university. Once they're no longer a student, they can no longer lend or borrow items.
+          </p>
+        </div>
+        <svg
+          aria-hidden="true"
+          className="MuiSvgIcon-root"
+          focusable="false"
+          role="presentation"
+          style={
+            Object {
+              "color": "#009688",
+              "fontSize": 150,
+            }
+          }
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm7 10c0 4.52-2.98 8.69-7 9.93-4.02-1.24-7-5.41-7-9.93V6.3l7-3.11 7 3.11V11zm-11.59.59L6 13l4 4 8-8-1.41-1.42L10 14.17z"
+          />
+          <path
+            d="M5 6.3V11c0 4.52 2.98 8.69 7 9.93 4.02-1.23 7-5.41 7-9.93V6.3l-7-3.11L5 6.3zM18 9l-8 8-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9z"
+            opacity=".3"
+          />
+        </svg>
+      </div>
+    </div>
+  </section>
 </div>
 `;

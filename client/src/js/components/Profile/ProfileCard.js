@@ -33,7 +33,7 @@ const ProfileCard = props => {
     });
 
     return (
-      <div style={{display: 'flex', flexDirection: 'row'}}>
+      <div style={{display: 'flex', flexDirection: 'row', marginTop: '50px'}}>
       <SideBar>
       <Card>
         <CardMedia>
