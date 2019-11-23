@@ -23,22 +23,26 @@ export const fetchProduct = itemId => {
 /**
  *  Search by query for items in database by calling {@link Action} to backend
  *  @param {String} query - query string to search
- *  @param {Object} function - used to dispatch actions
- *  @return {Promise<Object>} - response from an {@link Action}
+ *  @returns {Function} dispatch - used to dispatch actions
  */
-export const searchProducts = query => dispatch => {
-  return axios
-      .get("/api/items/search", { params: { param: query} })
-      .then(res => {
-        dispatch({ type: SEARCH, payload: res.data });
-      })
-      .catch(err => {
-        dispatch({
-          type: GET_ERRORS,
-          payload: err.response.data
+export const searchProducts = query => 
+  /**
+   *  @param {Function} dispatch - used to dispatch actions
+   *  @returns {Promise<Object>} - response from an {@link Action}
+   */
+  dispatch => {
+    return axios
+        .get("/api/items/search", { params: { param: query} })
+        .then(res => {
+          dispatch({ type: SEARCH, payload: res.data });
         })
-      });
-};
+        .catch(err => {
+          dispatch({
+            type: GET_ERRORS,
+            payload: err.response.data
+          })
+        });
+  };
 
 // Register User
 export const registerUser = (userData, history) => dispatch => {
