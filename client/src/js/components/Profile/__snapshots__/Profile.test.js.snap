@@ -6,6 +6,7 @@ exports[`Profile should render a mock Profile 1`] = `
     Object {
       "display": "flex",
       "flexDirection": "row",
+      "marginTop": "50px",
     }
   }
 >
