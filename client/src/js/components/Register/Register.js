@@ -19,6 +19,7 @@ const LoginForm = styled.div`
 `
 const Center = styled.div`
 	text-align: center;
+	margin-top: 60px;
 `
   
 export class Register extends Component {
@@ -77,7 +78,6 @@ export class Register extends Component {
 		return (
 			<div>
 				<Center>
-					<br/>
 					<img src={quikLogo} width="275" height= "180" alt = "logo"/>
 				</Center>
 				<LoginForm>

@@ -3,9 +3,8 @@
 exports[`Register renders 1`] = `
 <div>
   <div
-    className="sc-bwzfXH gZvuZl"
+    className="sc-bwzfXH bPmSrw"
   >
-    <br />
     <img
       alt="logo"
       height="180"
