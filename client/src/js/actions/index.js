@@ -46,7 +46,6 @@ export const loginUser = userData => dispatch => {
       setAuthToken(token);
       // Decode token to get user data
       const decoded = jwt_decode(token);
-      localStorage.setItem('qb-user', JSON.stringify(decoded))
       // Set current user
       dispatch(setCurrentUser(decoded));
     })
@@ -77,7 +76,6 @@ export const setUserLoading = () => {
 export const logoutUser = () => dispatch => {
   // Remove token from local storage
   localStorage.removeItem("jwtToken");
-  localStorage.removeItem('qb-user');
   // Remove auth header for future requests
   setAuthToken(false);
   // Set current user to empty object {} which will set isAuthenticated to false
@@ -98,14 +96,3 @@ export const getUserProfile = userId => {
     }
   }
 };
-
-export const checkLogin = () => {
-  return async function(dispatch) {
-    const token = localStorage.getItem('jwtToken');
-    const userDetails = localStorage.getItem('qb-user');
-    if (token && userDetails) {
-      setAuthToken(token);
-      dispatch(setCurrentUser(JSON.parse(userDetails)))
-    }
-  }
-}
