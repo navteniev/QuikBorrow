@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import ProductCard from "./ProductCard";
 import { Typography, Button, IconButton, ButtonGroup } from "@material-ui/core";
 import { ArrowBack, ArrowForward } from '@material-ui/icons'
+import axios from 'axios'
 
 const List = styled.ul`
   margin-left: 0;
@@ -30,12 +31,36 @@ const ListTop = styled.div`
 class ProductList extends Component {
   static ITEMS_PER_PAGE = 2;
   state = {
-    page: 0
+    page: 0,
+    loading: true,
+    transactions: []
   }
   
   componentDidMount() {
+    const { auth } = this.props
     // Fetch products when component gets mounted
     this.props.fetchProducts();
+  }
+
+  componentDidUpdate(prevProps) {
+    const { auth: prevAuth } = prevProps
+    const { auth: thisAuth } = this.props
+    if (!thisAuth || thisAuth.user.id === prevAuth.user.id) {
+      return
+    }
+    // Get transactions that the user is currently trying to borrow
+    const body = { userId: thisAuth.user.id }
+    const params = { type: 'borrower', isProcessed: false }
+    axios.post('/api/transactions/getTransactions', body, { params })
+        .then(res => {
+          console.log('res', res.data)
+          this.setState({ loading: false, transactions: res.data })
+        })
+        .catch(err => {
+          alert('error in getting transactions')
+          console.log(err)
+          this.setState({ loading: false })
+        })
   }
 
   renderItem(item) {
@@ -65,6 +90,9 @@ class ProductList extends Component {
   }
 
   render() {
+    if (this.state.loading) {
+      return <h1>Loading</h1>
+    }
     const { products } = this.props
 
     // Calculate pages
@@ -114,7 +142,10 @@ class ProductList extends Component {
 }
 
 function mapStateToProps(state) {
-  return { products: state.products };
+  return {
+    products: state.products,
+    auth: state.auth
+  };
 }
 
 export default connect(
