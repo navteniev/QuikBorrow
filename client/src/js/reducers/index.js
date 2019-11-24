@@ -3,10 +3,12 @@ import productsReducer from "./productsReducer";
 import productReducer from './productReducer';
 import authReducer from "./authReducer";
 import errorReducer from "./errorReducer";
+import userReducer from "./userReducer";
 
 export default combineReducers({
   products: productsReducer,
   product: productReducer,
   auth: authReducer,
-  errors: errorReducer
+  errors: errorReducer,
+  user: userReducer
 });

@@ -2,7 +2,7 @@ import axios from "axios";
 import setAuthToken from "../utils/setAuthToken";
 import jwt_decode from "jwt-decode";
 
-import { FETCH_PRODUCTS, FETCH_PRODUCT, GET_ERRORS, SET_CURRENT_USER, USER_LOADING } from "./types";
+import { FETCH_PRODUCTS, FETCH_PRODUCT, GET_ERRORS, SET_CURRENT_USER, USER_LOADING, GET_USER_PROFILE } from "./types";
 
 // Fetch all products
 export const fetchProducts = () => {
@@ -80,4 +80,19 @@ export const logoutUser = () => dispatch => {
   setAuthToken(false);
   // Set current user to empty object {} which will set isAuthenticated to false
   dispatch(setCurrentUser({}));
+};
+
+export const getUserProfile = userId => {
+  return async function(dispatch) {
+    try {
+    const res = await axios.get(`/api/users/${userId}`);
+    dispatch({ type: GET_USER_PROFILE, payload: res.data });
+  }
+  catch(error) {
+    console.log(error)
+    dispatch({
+      type: GET_ERRORS, payload: error
+      });
+    }
+  }
 };
