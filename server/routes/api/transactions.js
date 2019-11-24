@@ -3,6 +3,9 @@
 const express = require('express');
 const router = new express.Router();
 const transactionController = require('../../controllers/transactions');
+const validatorErrors = require('../../middleware/shared/validatorErrors');
+const {check} = require('express-validator');
+const isObjectId = require('../../middleware/shared/validators/isObjectId');
 
 
 /**
@@ -11,7 +14,18 @@ const transactionController = require('../../controllers/transactions');
  * @memberof module:api/transactions
  * @name POST /
  */
-router.post('/', transactionController.create);
+router.post('/', [
+  check('borrowerId')
+      .custom(isObjectId),
+  check('lenderId')
+      .custom(isObjectId),
+  check('itemId')
+      .custom(isObjectId),
+  check('msg')
+      .optional()
+      .isString(),
+  validatorErrors,
+], transactionController.create);
 
 /**
  * Approve a transaction

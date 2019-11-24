@@ -2,7 +2,9 @@ import React from "react";
 import styled from 'styled-components';
 import { Card, CardMedia, CardContent, Typography, Button, Tooltip, ButtonGroup } from '@material-ui/core'
 import { useHistory } from 'react-router-dom';
-
+import { useSelector, useDispatch } from 'react-redux'
+import { fetchProducts } from "../../actions";
+import axios from 'axios'
 const SpaceBetween = styled.div`
   display: flex;
   justify-content: space-between;
@@ -53,8 +55,30 @@ const FlexCardContent = styled(CardContent)`
 `
 
 const ProductCard = props => {
-  const { id, name, user, description, availability, image } = props;
+  const { isAuthenticated, user } = useSelector(state => state.auth)
+  const { id, name, user: itemOwnerId, description, availability, image } = props;
   const history = useHistory()
+  const dispatch = useDispatch()
+
+  function apiRequest() {
+    if (!isAuthenticated || itemOwnerId === user.id) {
+      return;
+    }
+    const body = {
+      borrowerId: user.id,
+      lenderId: itemOwnerId,
+      itemOwnerId: id
+    }
+    axios.post(`/api/transactions`, body)
+        .then(res => {
+          console.log(res)
+          fetchProducts()(dispatch)
+        })
+        .catch(err => {
+          alert('Error, check console')
+          console.log(err)
+        })
+  }
 
   return (
     <FlexCard>
@@ -66,7 +90,7 @@ const ProductCard = props => {
               {name}
             </Typography>
             <span style={{color: 'gray'}}>
-              User: {user || 'unknown'}
+              User: {itemOwnerId || 'unknown'}
             </span>
           </SpaceBetween>
           <TruncatedText>
@@ -86,11 +110,11 @@ const ProductCard = props => {
             }
           </ButtonGroup>
           {
-            availability
+            availability && isAuthenticated && user.id !== itemOwnerId
             ? <Button color='primary' variant='contained'>
             Request
           </Button>
-          : <Tooltip title='Unavailable'>
+          : <Tooltip title={!availability ? 'Unavailable' : 'You own this item, silly goose!'}>
               <span>
                 <Button color='primary' disabled variant='outlined'>
                   Request

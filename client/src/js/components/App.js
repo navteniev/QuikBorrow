@@ -44,7 +44,7 @@ class App extends Component {
         <BrowserRouter>
           <ThemeProvider theme={theme}>
             <Navbar />
-            <div style={{marginTop: '63px'}}>
+            <div style={{paddingTop: '63px'}}>
               <Route exact path="/" component={Homepage} />
               <Route exact path="/register" component={Register} />
               <Route exact path="/login" component={Login} />
