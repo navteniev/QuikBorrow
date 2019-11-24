@@ -3,10 +3,10 @@
 exports[`Homepage renders 1`] = `
 <div>
   <div
-    className="sc-bdVaJa bVoqmz"
+    className="sc-bxivhb qdYAV"
   />
   <div
-    className="sc-bwzfXH dgJTYm"
+    className="sc-ifAKCX epwfZB"
   >
     <h4
       className="MuiTypography-root MuiTypography-h4"
@@ -38,6 +38,7 @@ exports[`Homepage renders 1`] = `
         className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButtonGroup-grouped MuiButtonGroup-groupedOutlined MuiButtonGroup-groupedOutlined MuiButton-containedSizeLarge MuiButton-sizeLarge"
         disabled={false}
         onBlur={[Function]}
+        onClick={[Function]}
         onDragLeave={[Function]}
         onFocus={[Function]}
         onKeyDown={[Function]}
@@ -82,11 +83,11 @@ exports[`Homepage renders 1`] = `
       </button>
     </div>
   </div>
-  <div
-    className="sc-htpNat eLTOJD"
+  <section
+    className="sc-EHOje kjBPoZ"
   >
     <h4
-      className="MuiTypography-root sc-EHOje hZKWfX MuiTypography-h4 MuiTypography-gutterBottom"
+      className="MuiTypography-root sc-htoDjs htGEwi MuiTypography-h4 MuiTypography-gutterBottom"
     >
       By the students. For the students.
     </h4>
@@ -100,14 +101,14 @@ exports[`Homepage renders 1`] = `
       *
     </p>
     <div
-      className="sc-bxivhb gMhfOi"
+      className="sc-bZQynM kuWbXW"
     >
       <div
-        className="sc-ifAKCX gTAKrW"
+        className="sc-gzVnrw bkjvZa"
       >
         <div>
           <h5
-            className="MuiTypography-root sc-EHOje hZKWfX MuiTypography-h5 MuiTypography-gutterBottom"
+            className="MuiTypography-root sc-htoDjs htGEwi MuiTypography-h5 MuiTypography-gutterBottom"
           >
             Securely Chat
           </h5>
@@ -136,11 +137,11 @@ exports[`Homepage renders 1`] = `
         </svg>
       </div>
       <div
-        className="sc-ifAKCX gTAKrW"
+        className="sc-gzVnrw bkjvZa"
       >
         <div>
           <h5
-            className="MuiTypography-root sc-EHOje hZKWfX MuiTypography-h5 MuiTypography-gutterBottom"
+            className="MuiTypography-root sc-htoDjs htGEwi MuiTypography-h5 MuiTypography-gutterBottom"
           >
             Trusted Users
           </h5>
@@ -173,11 +174,11 @@ exports[`Homepage renders 1`] = `
         </svg>
       </div>
       <div
-        className="sc-ifAKCX gTAKrW"
+        className="sc-gzVnrw bkjvZa"
       >
         <div>
           <h5
-            className="MuiTypography-root sc-EHOje hZKWfX MuiTypography-h5 MuiTypography-gutterBottom"
+            className="MuiTypography-root sc-htoDjs htGEwi MuiTypography-h5 MuiTypography-gutterBottom"
           >
             Students Only
           </h5>
@@ -210,6 +211,6 @@ exports[`Homepage renders 1`] = `
         </svg>
       </div>
     </div>
-  </div>
+  </section>
 </div>
 `;

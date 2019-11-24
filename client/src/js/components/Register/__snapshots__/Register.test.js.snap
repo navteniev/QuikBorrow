@@ -5,7 +5,6 @@ exports[`Register renders 1`] = `
   <div
     className="sc-bwzfXH gZvuZl"
   >
-    <br />
     <img
       alt="logo"
       height="180"

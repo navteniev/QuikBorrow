@@ -7,6 +7,7 @@ import classnames from "classnames";
 import styled from 'styled-components';
 import quikLogo from '../../components/quikLogo.png';
 import { Button, TextField } from "@material-ui/core";
+import { textAlign } from "@material-ui/system";
 
 const LoginForm = styled.div`
 	margin: 0 auto;
@@ -74,13 +75,10 @@ export class Login extends Component {
 		return (
 			<div>
 				<Center>
-					<br/>
 					<img src={quikLogo} width="275" height= "180" alt = "logo"/>
 				</Center>
 				<LoginForm>
-					<Center>
-						<h4>Login</h4>
-					</Center>
+						<h3 style = {{textAlign:'center'}}>Login</h3>
 					<form noValidate onSubmit={this.onSubmit}>
 						<TextField
 							onChange={this.onChange}
