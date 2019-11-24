@@ -4,6 +4,7 @@ const express = require('express');
 const router = new express.Router();
 const userController = require('../../controllers/users');
 const userMiddleware = require('../../middleware/users');
+const itemMiddleware = require('../../middleware/items');
 const validatorErrors = require('../../middleware/shared/validatorErrors');
 const validObjectId = require('../../middleware/shared/validators/isObjectId');
 const {check, param, header} = require('express-validator');
@@ -102,5 +103,20 @@ router.post('/:userId/items', [
       .custom(userMiddleware.expressValidator.attachDecodedToken),
   validatorErrors,
 ], userController.createItem);
+
+router.delete('/:userId/items/:itemId', [
+  param('userId')
+      .custom(validObjectId),
+  param('itemId')
+      .custom(validObjectId)
+      .custom(itemMiddleware.expressValidator.itemExistsAndAttach),
+  header('Authorization', 'Invalid Authorization header')
+      .isLength({min: 1})
+      .bail()
+      .custom(userMiddleware.expressValidator.attachDecodedToken),
+  validatorErrors,
+  userMiddleware.userIsAuthorized,
+  userMiddleware.userOwnsItem,
+], userController.deleteItem);
 
 module.exports = router;
