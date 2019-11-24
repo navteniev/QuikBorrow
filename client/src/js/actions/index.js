@@ -2,7 +2,7 @@ import axios from "axios";
 import setAuthToken from "../utils/setAuthToken";
 import jwt_decode from "jwt-decode";
 
-import { FETCH_PRODUCTS, FETCH_PRODUCT, GET_ERRORS, SET_CURRENT_USER, USER_LOADING, GET_USER_PROFILE } from "./types";
+import { FETCH_PRODUCTS, FETCH_PRODUCT, GET_ERRORS, SET_CURRENT_USER, USER_LOADING, SEARCH, GET_USER_PROFILE } from "./types";
 
 // Fetch all products
 export const fetchProducts = () => {

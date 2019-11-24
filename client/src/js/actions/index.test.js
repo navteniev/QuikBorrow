@@ -1,6 +1,6 @@
 import axios from 'axios';
 import * as actions from './index';
-import { GET_ERRORS, GET_USER_PROFILE } from "./types";
+import { GET_ERRORS } from "./types";
 
 jest.mock('axios')
 jest.mock('../utils/setAuthToken')
@@ -19,7 +19,7 @@ describe('actions', () => {
 		test('searchProducts', async () => {
 			let getMock = jest.spyOn(axios, 'get');
 			const dispatch = jest.fn();
-		    getMock.mockResolvedValue({ data: {}});
+		    getMock.mockResolvedValueOnce({ data: {}});
 		    await actions.searchProducts('chair')(dispatch);
 		    expect(getMock).toHaveBeenCalledWith('/api/items/search', { params: { param: "chair" }});
 		});
@@ -42,7 +42,7 @@ describe('actions', () => {
 
 	test('registerUser', async () => {
 		const push = jest.fn();
-	    const history = { push }; 
+	    const history = { push };
 	    const dispatch = jest.fn();
 	    mock.mockResolvedValue();  // mock axios.post to resolve
 
@@ -94,47 +94,4 @@ describe('actions', () => {
 		const logoutUser = actions.logoutUser()(dispatch);
 		expect(dispatch).toHaveBeenCalledWith({"payload": {}, "type": "SET_CURRENT_USER"});
 	});
-
-	describe('getUserProfile', () => {
-		const resp = {
-			data: {
-			rating: 0,
-			name: "test name",
-			email: "test1@test.com",
-			_id: "5dbb0cc7edeea12284986dcc"
-			}
-		}
-		test('Successful getUserProfile', async () => {
-			const dispatch = jest.fn();
-			let mock = axios.get.mockResolvedValue(resp)
-			await actions.getUserProfile(resp.data._id)(dispatch)
-			expect(mock).toHaveBeenCalledWith('/api/users/'+resp.data._id) //asserting what im testing in line 87
-			});
-
-		test('Successful dispatched', async () => {
-				const dispatch = jest.fn();
-				axios.get.mockResolvedValue(resp)
-				await actions.getUserProfile(resp)(dispatch)
-				expect(dispatch).toHaveBeenCalledWith({
-					type: GET_USER_PROFILE,
-					payload: resp.data
-					});
-				});
-
-		test('error dispatched', async () => {
-			const dispatch = jest.fn();
-			const mock_error = {
-					data: 'test error',
-					type: GET_ERRORS,
-		      	}
-			  //axios.get.mockRejectedValue(resp);
-			axios.get.mockRejectedValueOnce(mock_error);
-		  	await actions.getUserProfile(mock_error)(dispatch);
-		  	expect(dispatch).toHaveBeenCalledWith({
-		    	type: GET_ERRORS,
-		    	payload: mock_error
-		  	});
-		});
-	});
-	
 });
