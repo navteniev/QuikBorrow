@@ -2,12 +2,10 @@ const itemServices = require('../services/items');
 
 /** @type {import('express').RequestHandler} */
 const create = async (req, res, next) => {
-  console.log(req.file);
-  const productImage = !req.file ? 'Default Image' : req.file.path; 
   const data = {
     name: req.body.name,
     description: req.body.description,
-    productImage: productImage
+    productImage: req.file.path
   };
 
   itemServices.createItem(data)
