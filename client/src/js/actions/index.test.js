@@ -15,9 +15,34 @@ describe('actions', () => {
 		mock.mockRestore();
 	});
 
+	describe('searchProducts', () => {
+		test('searchProducts', async () => {
+			let getMock = jest.spyOn(axios, 'get');
+			const dispatch = jest.fn();
+		    getMock.mockResolvedValue({ data: {}});
+		    await actions.searchProducts('chair')(dispatch);
+		    expect(getMock).toHaveBeenCalledWith('/api/items/search', { params: { param: "chair" }});
+		});
+		test('error dispatched', async () => {
+			let getMock = jest.spyOn(axios, 'get');
+			const dispatch = jest.fn();
+			const mockedError = {
+		    	response: {
+		        	data: 'test error'
+		      	}
+		    }
+		  	getMock.mockRejectedValueOnce(mockedError);
+		  	await actions.searchProducts('chair')(dispatch);
+		  	expect(dispatch).toHaveBeenCalledWith({
+		    	type: GET_ERRORS,
+		    	payload: mockedError.response.data
+		  	});
+		});
+	});
+
 	test('registerUser', async () => {
 		const push = jest.fn();
-	    const history = { push }; 
+	    const history = { push };
 	    const dispatch = jest.fn();
 	    mock.mockResolvedValue();  // mock axios.post to resolve
 
@@ -52,10 +77,6 @@ describe('actions', () => {
 		    	payload: mockedError.response.data
 		  	});
 		});
-	    
-	    
-	    
-
 	});
 
 	test('setCurrentUser', () => {
@@ -115,5 +136,4 @@ describe('actions', () => {
 		  	});
 		});
 	});
-	
 });
