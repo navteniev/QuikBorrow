@@ -64,12 +64,11 @@ export class Register extends Component {
 		const { errors } = this.state;
 		if(errors.errors === undefined || errors.errors.find(x => x.param === e) === undefined)
 		{
-			return true;
+			return "";
 		}
 		else
 		{
-			// return errors.errors.find(x => x.param === e).msg;
-			return false;
+			return errors.errors.find(x => x.param === e).msg;
 		}
 	};
 	render() {
@@ -86,7 +85,7 @@ export class Register extends Component {
 					<TextField
 						onChange={this.onChange}
 						value={this.state.name}
-						error={this.getErrors('name')}
+						error={this.getErrors('name')===""}
 						id="name"
 						label="Name"
 						type="text"
@@ -100,7 +99,7 @@ export class Register extends Component {
 					<TextField
 						onChange={this.onChange}
 						value={this.state.email}
-						error={this.getErrors('email')}
+						error={this.getErrors('email')===""}
 						id="email"
 						type="email"
 						label="Email"
@@ -114,7 +113,7 @@ export class Register extends Component {
 					<TextField
 						onChange={this.onChange}
 						value={this.state.password}
-						error={this.getErrors('password')}
+						error={this.getErrors('password')===""}
 						id="password"
 						type="password"
 						label="Password"
@@ -128,7 +127,7 @@ export class Register extends Component {
 					<TextField
 						onChange={this.onChange}
 						value={this.state.password2}
-						error={this.getErrors('password')}
+						error={this.getErrors('password')===""}
 						id="password2"
 						type="password"
 						label="Confirm Password"

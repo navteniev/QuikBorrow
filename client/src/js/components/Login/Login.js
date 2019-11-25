@@ -63,12 +63,11 @@ export class Login extends Component {
 		const { errors } = this.state;
 		if (errors.errors === undefined || errors.errors.find(x => x.param === e) === undefined)
 		{
-			return true;
+			return "";
 		}
 		else
 		{
-			// return errors.errors.find(x => x.param === e).msg;
-			return false;
+			return errors.errors.find(x => x.param === e).msg;
 		}
 	};
 	render() {
@@ -83,7 +82,7 @@ export class Login extends Component {
 						<TextField
 							onChange={this.onChange}
 							value={this.state.email}
-							error={this.getErrors('email')}
+							error={this.getErrors('email')===""}
 							id="email"
 							type="email"
 							label="Email"
@@ -97,7 +96,7 @@ export class Login extends Component {
 						<TextField
 							onChange={this.onChange}
 							value={this.state.password}
-							error={this.getErrors('password')}
+							error={this.getErrors('password')===""}
 							id="password"
 							type="password"
 							label="Password"

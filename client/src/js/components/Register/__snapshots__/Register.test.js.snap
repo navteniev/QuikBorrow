@@ -32,7 +32,7 @@ exports[`Register renders 1`] = `
       onSubmit={[Function]}
     >
       <div
-        className="MuiFormControl-root MuiTextField-root invalid MuiFormControl-fullWidth"
+        className="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
       >
         <label
           className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated Mui-error Mui-error"
@@ -62,10 +62,12 @@ exports[`Register renders 1`] = `
           />
         </div>
       </div>
-      <span />
+      <span>
+        
+      </span>
       <br />
       <div
-        className="MuiFormControl-root MuiTextField-root invalid MuiFormControl-fullWidth"
+        className="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
       >
         <label
           className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated Mui-error Mui-error"
@@ -95,10 +97,12 @@ exports[`Register renders 1`] = `
           />
         </div>
       </div>
-      <span />
+      <span>
+        
+      </span>
       <br />
       <div
-        className="MuiFormControl-root MuiTextField-root invalid MuiFormControl-fullWidth"
+        className="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
       >
         <label
           className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated Mui-error Mui-error"
@@ -128,10 +132,12 @@ exports[`Register renders 1`] = `
           />
         </div>
       </div>
-      <span />
+      <span>
+        
+      </span>
       <br />
       <div
-        className="MuiFormControl-root MuiTextField-root invalid MuiFormControl-fullWidth"
+        className="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
       >
         <label
           className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated Mui-error Mui-error"

@@ -29,7 +29,7 @@ exports[`Login renders 1`] = `
       onSubmit={[Function]}
     >
       <div
-        className="MuiFormControl-root MuiTextField-root invalid MuiFormControl-fullWidth"
+        className="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
       >
         <label
           className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated Mui-error Mui-error"
@@ -59,10 +59,12 @@ exports[`Login renders 1`] = `
           />
         </div>
       </div>
-      <span />
+      <span>
+        
+      </span>
       <br />
       <div
-        className="MuiFormControl-root MuiTextField-root invalid MuiFormControl-fullWidth"
+        className="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
       >
         <label
           className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated Mui-error Mui-error"
@@ -92,7 +94,9 @@ exports[`Login renders 1`] = `
           />
         </div>
       </div>
-      <span />
+      <span>
+        
+      </span>
       <p>
         Dont have an account? 
         <a
