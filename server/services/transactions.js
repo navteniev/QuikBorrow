@@ -1,5 +1,5 @@
 const Transaction = require('../models/Transaction');
-
+const itemServices = require('./items');
 /**
  * @typedef {import('mongoose').Document} MongooseDocument
  */
@@ -24,7 +24,16 @@ const createTransaction = async (data) => {
  */
 const approveTransaction = async (id) => {
   const transaction = await Transaction.findById(id);
+  await Transaction.updateMany(
+      {'item': transaction.item},
+      {'$set': {'processed': true}},
+  );
   const updated = await transaction.approve();
+  await itemServices.rentItem(
+      transaction.item,
+      transaction.borrower,
+      transaction.duration,
+  );
   return updated;
 };
 

@@ -1,7 +1,9 @@
 const transactionServices = require('./transactions');
 const Transaction = require('../models/Transaction');
+const itemServices = require('./items');
 
 jest.mock('../models/Transaction');
+jest.mock('./items');
 
 describe('services/item', function() {
   afterEach(function() {
@@ -27,8 +29,12 @@ describe('services/item', function() {
     it('approves a transaction by id', async function() {
       const id = 'abc123';
       Transaction.findById.mockResolvedValueOnce({approve: jest.fn()});
+      Transaction.updateMany.mockResolvedValueOnce({});
+      itemServices.rentItem.mockResolvedValueOnce({'duration': 98});
       await transactionServices.approveTransaction(id);
       expect(Transaction.findById).toHaveBeenCalledWith(id);
+      expect(Transaction.updateMany).toHaveBeenCalled();
+      expect(itemServices.rentItem).toHaveBeenCalled();
     });
     it('returns the transaction found by id', async function() {
       const transaction = new Transaction();
