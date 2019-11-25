@@ -37,5 +37,8 @@
   "bugs": {
     "url": "https://github.com/CSC59939/QuickBorrow/issues"
   },
-  "homepage": "https://github.com/CSC59939/QuickBorrow#readme"
+  "homepage": "https://github.com/CSC59939/QuickBorrow#readme",
+  "dependencies": {
+    "@material-ui/lab": "^4.0.0-alpha.32"
+  }
 }

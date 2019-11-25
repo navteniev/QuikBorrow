@@ -16,6 +16,13 @@ const createItem = async (data) => {
 
 /**
  * @param {string} id - Item ID
+ */
+const deleteItem = async (id) => {
+  await Item.findByIdAndDelete(id);
+};
+
+/**
+ * @param {string} id - Item ID
  * @returns {MongooseDocument} - The found item
  */
 const findItem = async (id) => {
@@ -61,6 +68,7 @@ const endRent = async (id) => {
 
 module.exports = {
   createItem,
+  deleteItem,
   findItem,
   findAllItems,
   searchItems,

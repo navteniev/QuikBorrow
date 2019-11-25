@@ -1,9 +1,7 @@
-import React, { Component } from "react";
+import React from "react";
 import { BrowserRouter, Route } from "react-router-dom";
-import * as actions from "../actions";
 import "../../css/App.css";
 import 'typeface-roboto';
-
 import Homepage from "./Homepage/Homepage";
 import Register from "./Register/Register";
 import Login from "./Login/Login";
@@ -16,11 +14,6 @@ import 'typeface-roboto';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 import teal from '@material-ui/core/colors/teal'
 import cyan from '@material-ui/core/colors/cyan'
-import { Provider } from "react-redux";
-import { createStore, applyMiddleware } from "redux";
-import reduxThunk from "redux-thunk";
-import reducers from '../reducers'
-const store = createStore(reducers, {}, applyMiddleware(reduxThunk));
 
 const theme = createMuiTheme({
   palette: {
@@ -37,27 +30,23 @@ const theme = createMuiTheme({
   }
 })
 
-class App extends Component {
-  render() {
-    return (
-      <Provider store={store}>
-        <BrowserRouter>
-          <ThemeProvider theme={theme}>
-            <Navbar />
-            <div style={{paddingTop: '63px'}}>
-              <Route exact path="/" component={Homepage} />
-              <Route exact path="/register" component={Register} />
-              <Route exact path="/login" component={Login} />
-              <Route exact path="/products" component={ProductList} />
-              <Route exact path="/products/:productId" component={ProductDetail} />
-              <Route exact path="/dashboard" component={Dashboard} />
-              <Route exact path="/profile" component={Profile} />
-            </div>
-            </ThemeProvider>
-        </BrowserRouter>
-      </Provider>
-    );
-  }
+function App() {
+  return (
+      <BrowserRouter>
+        <ThemeProvider theme={theme}>
+          <Navbar />
+          <div style={{marginTop: '63px'}}>
+            <Route exact path="/" component={Homepage} />
+            <Route exact path="/register" component={Register} />
+            <Route exact path="/login" component={Login} />
+            <Route exact path="/products" component={ProductList} />
+            <Route exact path="/products/:productId" component={ProductDetail} />
+            <Route exact path="/dashboard" component={Dashboard} />
+            <Route exact path="/profile" component={Profile} />
+          </div>
+          </ThemeProvider>
+      </BrowserRouter>
+  );
 }
 
 export default App;
