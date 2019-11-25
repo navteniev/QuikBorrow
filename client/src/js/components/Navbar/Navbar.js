@@ -6,7 +6,7 @@ import SignedIn from './SignedIn';
 import SignedOut from './SignedOut';
 import { AppBar, Toolbar, IconButton, Typography } from '@material-ui/core';
 import teal from '@material-ui/core/colors/teal'
-
+import Collapsed from './Collapse'
 const UnstyledLink = styled(Link)`
     color: inherit;
     text-decoration: inherit;
@@ -25,6 +25,7 @@ export class Navbar extends React.Component {
                             </UnstyledLink>
                         </Typography>
                     {this.props.auth.isAuthenticated ? <SignedIn name={this.props.auth.user.name} /> : <SignedOut />}
+                    {this.props.auth.isAuthenticated ? "Hello World" : "Cool story"}
                 </Toolbar>
             </AppBar>
         )

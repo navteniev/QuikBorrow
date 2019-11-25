@@ -17,10 +17,11 @@ const SignedIn = (props) => {
         props.logoutUser();
     };
 
+    // work in progress to make navbar profile link to specific profiler user ;-; profile/:profileId 
     return (
         <Toolbar>
             <UnstyledLink to='/products'>Products</UnstyledLink>
-            <UnstyledLink to='/profile'><Avatar src='https://avatars1.githubusercontent.com/u/619960?s=460&v=4' /></UnstyledLink>
+            <UnstyledLink to='/profile/${profile.Id}'><Avatar src='https://avatars1.githubusercontent.com/u/619960?s=460&v=4'/> Edit Profile</UnstyledLink>
             <UnstyledLink to='#' onClick={onClick}>Sign Out</UnstyledLink>
         </Toolbar>
     )

@@ -1,6 +1,8 @@
 import React from "react";
 import styled from 'styled-components';
-import { Card, CardContent, CardMedia, Typography } from '@material-ui/core';
+import { Card, CardContent, CardMedia, Typography, Box, Button } from '@material-ui/core';
+import Rating from '@material-ui/lab/Rating';
+
 
 const SideBar = styled.div`
   display: flex;
@@ -16,9 +18,13 @@ const RightSide = styled.div`
   width: 3000px;
   
 `
+// trying to center the text in CardContent Center need to work on that 
+const mCardContent = styled(CardContent)`
+  align-items: center;
+`
 
 const ProfileCard = props => {
-    const { name, age, college , products, bio, wishlist } = props;
+    const { name, age, college , products, bio, wishlist,rating,email} = props;
 
     const products_li = products.map((element) => {
       return <li key={element.id}>
@@ -39,13 +45,18 @@ const ProfileCard = props => {
         <CardMedia>
           <img src="https://via.placeholder.com/500"  width="350" height="350" alt="profile_image" />
         </CardMedia>
-        <CardContent>
+        <mCardContent>
           <Typography variant="body2" color="textSecondary" component="p">
+            {email} <br/>
             {college} <br/>
             {age} years old<br/>
+            <br></br>
             {bio}<br/><br/>
           </Typography>
-        </CardContent>   
+          <Button variant="outlined" color="primary" focusVisible>
+                      Edit Profile 
+          </Button>   
+        </mCardContent>
       </Card>
     </SideBar>
     <RightSide>
@@ -55,19 +66,34 @@ const ProfileCard = props => {
           {name} <br/>
         </Typography>
         <Typography gutterBottom variant="h4" component="h2">
-          Rating : 4/5 <br/><br/><br/>
+          Rating : {rating} <br></br>
+        <Box component="span" m={1} borderColor="transparent">
+        <Rating name="read-only" value={rating} readOnly />
+      </Box>
+      <br></br>
         </Typography>
         <Typography gutterBottom variant="h4" component="h2">
-          Lending List <br/>
+          Lending List
+           <br/> 
         </Typography>
         <Typography variant="body2" color="textSecondary" component="p">
           {products_li} <br/>
         </Typography>
+        
+        <Button variant="outlined" color="primary" focusVisible>
+                      Edit LendingList
+          </Button> 
+          <br/>
+          <br></br>
         <Typography gutterBottom variant="h4" component="h2">
-          Wishlist  <br/>
+          Wishlist
+          <br/>
         </Typography>
         <Typography variant="body2" color="textSecondary" component="p">
           {wishlist_li} <br/>
+          <Button variant="outlined" color="primary" focusVisible>
+                      Edit LendingList
+          </Button> 
         </Typography>
         </CardContent>
       </Card>
