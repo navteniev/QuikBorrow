@@ -21,6 +21,16 @@ describe('services/item', function() {
       expect(Item.mock.instances[0]).toEqual(returned);
     });
   });
+  describe('deleteItem', function() {
+    afterEach(function() {
+      Item.findByIdAndDelete.mockReset();
+    });
+    it('deletes the item', async function() {
+      const id = 'we23r4';
+      await itemServices.deleteItem(id);
+      expect(Item.findByIdAndDelete).toHaveBeenCalledWith(id);
+    });
+  });
   describe('findItem', function() {
     it('finds an item by id', async function() {
       const id = '12e';

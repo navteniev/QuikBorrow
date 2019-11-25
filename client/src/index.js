@@ -8,7 +8,7 @@ import reduxThunk from "redux-thunk";
 import jwt_decode from "jwt-decode";
 import setAuthToken from "./js/utils/setAuthToken";
 import { setCurrentUser, logoutUser } from "./js/actions/index";
-
+import { Provider } from "react-redux";
 import reducers from "./js/reducers";
 
 const store = createStore(reducers, {}, applyMiddleware(reduxThunk));
@@ -33,7 +33,9 @@ if (localStorage.jwtToken) {
 }
 
 ReactDOM.render(
-    <App />,
+	<Provider store={store}>
+    	<App />
+	</Provider>,
   document.getElementById("root")
 );
 

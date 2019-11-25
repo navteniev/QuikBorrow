@@ -2,7 +2,7 @@ import axios from "axios";
 import setAuthToken from "../utils/setAuthToken";
 import jwt_decode from "jwt-decode";
 
-import { FETCH_PRODUCTS, FETCH_PRODUCT, GET_ERRORS, SET_CURRENT_USER, USER_LOADING, GET_USER_PROFILE } from "./types";
+import { FETCH_PRODUCTS, FETCH_PRODUCT, GET_ERRORS, SET_CURRENT_USER, USER_LOADING, SEARCH, GET_USER_PROFILE } from "./types";
 
 // Fetch all products
 export const fetchProducts = () => {
@@ -19,6 +19,30 @@ export const fetchProduct = itemId => {
     dispatch({ type: FETCH_PRODUCT, payload: res.data });
   };
 };
+
+/**
+ *  Search by query for items in database by calling {@link Action} to backend
+ *  @param {String} query - query string to search
+ *  @returns {Function} dispatch - used to dispatch actions
+ */
+export const searchProducts = query => 
+  /**
+   *  @param {Function} dispatch - used to dispatch actions
+   *  @returns {Promise<Object>} - response from an {@link Action}
+   */
+  dispatch => {
+    return axios
+        .get("/api/items/search", { params: { param: query} })
+        .then(res => {
+          dispatch({ type: SEARCH, payload: res.data });
+        })
+        .catch(err => {
+          dispatch({
+            type: GET_ERRORS,
+            payload: err.response.data
+          })
+        });
+  };
 
 // Register User
 export const registerUser = (userData, history) => dispatch => {

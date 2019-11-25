@@ -64,7 +64,7 @@ export class ProductDetail extends Component {
                                 Price: {this.props.price ? this.props.price : '$100'}
                             </span>
                         </Typography>
-                        <Rating name="half-rating" value={this.props.rating ? this.props.rating : '2.5'} precision={0.5} size="small" />
+                        <Rating name="half-rating" value={this.props.rating ? this.props.rating : 2.5} precision={0.5} size="small" />
                     </SpaceBetween>
                     <div style={{marginTop: '30px'}}>
                         <Typography component='h5' variant='h5'>
