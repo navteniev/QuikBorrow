@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import * as actions from "../../actions";
 import styled from 'styled-components';
 import ProductCard from "./ProductCard";
+import Search from "../Search/Search";
 import { Typography, Button, IconButton, ButtonGroup } from "@material-ui/core";
 import { ArrowBack, ArrowForward } from '@material-ui/icons'
 
@@ -107,6 +108,7 @@ class ProductList extends Component {
           <List>
             {items}
           </List>
+          <Search />
         </div>
       </div>
     )

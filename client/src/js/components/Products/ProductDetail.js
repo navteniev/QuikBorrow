@@ -48,7 +48,7 @@ export class ProductDetail extends Component {
     renderDetail() {
         return (
             <GridCard>
-                <GridCardMedia image={'https://patch.com/img/cdn/users/1142384/2013/09/raw/77d3e8242e7562885116ebff68689271.jpg'} />
+                <GridCardMedia image={this.props.productImage || 'https://patch.com/img/cdn/users/1142384/2013/09/raw/77d3e8242e7562885116ebff68689271.jpg'} />
                 <GridDiv>
                     <SpaceBetween>
                         <Typography component='h4' variant='h4'>{this.props.product.name}</Typography>
@@ -64,7 +64,7 @@ export class ProductDetail extends Component {
                                 Price: {this.props.price ? this.props.price : '$100'}
                             </span>
                         </Typography>
-                        <Rating name="half-rating" value={this.props.rating ? this.props.rating : '2.5'} precision={0.5} size="small" />
+                        <Rating name="half-rating" value={this.props.rating ? this.props.rating : 2.5} precision={0.5} size="small" />
                     </SpaceBetween>
                     <div style={{marginTop: '30px'}}>
                         <Typography component='h5' variant='h5'>

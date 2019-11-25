@@ -25,8 +25,14 @@ router.post('/', upload.single('productImage'), itemController.create);
 router.get('/', itemController.getAll);
 
 /**
- * Get a specific item
+ * Search for items
  *
+ * @memberof module:api/items
+ * @name GET /search
+ */
+router.get('/search', itemController.search);
+
+/**
  * @memberof module:api/items
  * @name GET /:itemId
  */
@@ -58,13 +64,5 @@ router.get('/:itemId/endrent', [
   param('itemId').isAlphanumeric(),
   validatorErrors,
 ], itemController.endRent);
-
-/**
- * Search for items
- *
- * @memberof module:api/items
- * @name GET /search
- */
-router.get('/search', itemController.search);
 
 module.exports = router;

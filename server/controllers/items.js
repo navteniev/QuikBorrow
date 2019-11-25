@@ -5,7 +5,7 @@ const create = async (req, res, next) => {
   const data = {
     name: req.body.name,
     description: req.body.description,
-    productImage: req.file.path
+    productImage: req.file.path,
   };
 
   itemServices.createItem(data)

@@ -78,6 +78,12 @@ const createItem = async (req, res, next) => {
       .catch(next);
 };
 
+const deleteItem = async (req, res, next) => {
+  const {itemId} = req.params;
+  await itemServices.deleteItem(itemId);
+  res.status(204).end();
+};
+
 module.exports = {
   login,
   register,
@@ -85,4 +91,5 @@ module.exports = {
   edit,
   getLendingList,
   createItem,
+  deleteItem,
 };

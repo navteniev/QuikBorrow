@@ -122,4 +122,21 @@ describe('Unit::controller/users', function() {
           .toHaveBeenCalledWith(expectedItemCreation);
     });
   });
+  describe('deleteItem', function() {
+    afterEach(function() {
+      itemServices.deleteItem.mockReset();
+    });
+    it('returns 204 on success', async function() {
+      const userId = '2q3rtgre';
+      const item = {get: () => userId};
+      const request = {params: {userId}};
+      const endFunction = jest.fn();
+      const response = {status: jest.fn(() => ({end: endFunction}))};
+      request.jwtDecoded = {id: userId};
+      request.item = item;
+      await userController.deleteItem(request, response);
+      expect(response.status).toHaveBeenCalledWith(204);
+      expect(endFunction).toHaveBeenCalled();
+    });
+  });
 });
