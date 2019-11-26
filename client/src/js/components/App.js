@@ -42,7 +42,7 @@ function App() {
             <Route exact path="/products" component={ProductList} />
             <Route exact path="/products/:productId" component={ProductDetail} />
             <Route exact path="/dashboard" component={Dashboard} />
-            <Route exact path="/profile" component={Profile} />
+            <Route exact path="/profile/:profileId" component={Profile} />
           </div>
           </ThemeProvider>
       </BrowserRouter>

@@ -1,9 +1,7 @@
 import React, { Component } from "react";
 import ProfileCard from './ProfileCard'
 import { connect } from "react-redux";
-import { getUserProfile } from "../../actions";
-import styled from 'styled-components';
-
+import { getUserProfile, fetchProducts } from "../../actions";
 
 class UserProfile extends Component {
     constructor(props) {
@@ -12,15 +10,6 @@ class UserProfile extends Component {
             age: 21,
             college:'City College of New York',
             bio: 'Currently a student looking for a full time job',
-            products: [{ // i guess these are the products he can lend lol
-                id: 2,
-                item: 'Pencil',
-                description: 'It is a nice muji pencil'
-                },{
-                id: 3,
-                item: 'Phone',
-                description:'Sparkling new apple phone'
-                }],
             wishlist: [{
                 id:1,
                 item:"pokemon cards"
@@ -33,11 +22,22 @@ class UserProfile extends Component {
 
     componentDidMount(){
         this.props.getUserProfile(this.props.match.params.profileId) // getting userProfile based on Id
-
+        this.props.fetchProducts()
     }
+
     render() {
-        let {age , college, products,bio, wishlist } = this.state
-        let {_id,name, rating,email} = this.props.user 
+        let {age , college,bio, wishlist } = this.state
+        let {_id, name, rating, email} = this.props.user 
+        let mylist = this.props.products
+        
+        const lendinglist = []
+
+        for (let i =0; i < mylist.length; ++i){
+            if(_id === mylist[i].user){
+                lendinglist.push(mylist[i])
+            }
+        }
+        
         if (!_id) {
             return <h3> User profile does not exist</h3>
         }
@@ -47,7 +47,7 @@ class UserProfile extends Component {
             name={name}
             age={age}
             college={college}
-            products={products}
+            products={lendinglist}
             bio={bio}
             wishlist={wishlist}
             rating={rating}
@@ -60,7 +60,8 @@ class UserProfile extends Component {
 
 
 function mapStateToProps(state) {
-    return { user : state.user }
+    return { user : state.user ,
+             products : state.products }
 }
 
-export default connect(mapStateToProps, { getUserProfile })(UserProfile);
+export default connect(mapStateToProps, { getUserProfile, fetchProducts })(UserProfile);

@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import { logoutUser } from '../../actions';
 import { Toolbar, Avatar } from '@material-ui/core';
 import styled from 'styled-components'
-import Collapse from './Collapse'
 
 const UnstyledLink = styled(Link)`
     color: inherit;
