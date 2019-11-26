@@ -1,5 +1,5 @@
 import { borrowProductFetch } from './products'
-import { BORROW_PRODUCT_FINISHED, GET_ERRORS } from './types'
+import { REQUEST_BORROW_PRODUCT_FINISHED, GET_ERRORS } from './types'
 import axios from 'axios'
 
 jest.mock('axios')
@@ -42,7 +42,7 @@ describe('actions/products', () => {
             const dispatch = jest.fn()
             const getState = jest.fn(() => state)
             const expectedAction = {
-                type: BORROW_PRODUCT_FINISHED,
+                type: REQUEST_BORROW_PRODUCT_FINISHED,
                 payload: resolvedData.data
             }
             await borrowProductFetch({})(dispatch, getState)

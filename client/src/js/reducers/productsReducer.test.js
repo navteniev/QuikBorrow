@@ -21,34 +21,4 @@ describe('productsReducer', () => {
             })
         ).toEqual([payload])
     })
-
-    it('should handle BORROW_PRODUCT_FINISHED correctly', () => {
-        const updatedItem = {
-            _id: 'abcde',
-            key: 123
-        }
-        const action = {
-            type: types.BORROW_PRODUCT_FINISHED,
-            payload: updatedItem
-        }
-        const initialState = [
-            {
-                _id: updatedItem._id + 1,
-                key: 547
-            },{
-                _id: updatedItem._id,
-                key: 666
-            }, {
-                _id: updatedItem._id + 2,
-                key: 'reno 911'
-            }
-        ]
-        const expectedState = [
-            { ...initialState[0] },
-            { ...initialState[1], ...updatedItem },
-            { ...initialState[2] }
-        ]
-        const returnedState = productsReducer(initialState, action)
-        expect(returnedState).toEqual(expectedState)
-    })
 })
