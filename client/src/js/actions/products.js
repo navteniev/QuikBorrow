@@ -23,7 +23,7 @@ export const borrowProductFetch = (item, msg) => async (dispatch, getState) => {
         itemId: item._id,
         msg
     }
-    axios.post(`/api/transactions`, body)
+    return axios.post(`/api/transactions`, body)
         .then(({ data }) => dispatch({ type: BORROW_PRODUCT_FINISHED, payload: data }))
         .catch(err => dispatch({ type: GET_ERRORS, payload: err.response.data }))
 }
