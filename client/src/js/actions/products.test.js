@@ -48,10 +48,10 @@ describe('actions/products', () => {
             await borrowProductFetch({})(dispatch, getState)
             expect(dispatch).toHaveBeenCalledWith(expectedAction)
         })
-        it.only('should dispatch the correct action on fetch error', async () => {
+        it('should dispatch the correct action on fetch error', async () => {
             const error = {
                 response: {
-                    data: 'BOIIIIIIIIIIIIIIIIIIIIIII'
+                    data: 'Ade[hijordeh'
                 }
             }
             axios.post.mockRejectedValueOnce(error)
