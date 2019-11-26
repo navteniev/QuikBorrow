@@ -20,7 +20,7 @@ const RightSide = styled.div`
 `
 
 const ProfileCard = props => {
-    const { name, age, college , products, bio, wishlist,rating,email} = props;
+    const { name, age, college , products, bio, wishlist, rating, email} = props;
 
     const products_li = products.map((items) => {
       return <li key={items.id}>
@@ -39,7 +39,7 @@ const ProfileCard = props => {
       <SideBar>
       <Card>
         <CardMedia>
-          <img src="https://via.placeholder.com/500"  width="350" height="350" alt="profile_image" />
+          <img src="https://computerscience.johncabot.edu/mscaramastra/F2017/CS131-1/Scopece/CS130/SCOPECE%20FINAL/griffin%20photo/pet.jpg"  width="350" height="350" alt="profile_image" />
         </CardMedia>
         <CardContent>
           <Typography variant="body2" color="textSecondary" component="p">
@@ -50,7 +50,7 @@ const ProfileCard = props => {
             {bio}<br/><br/>
           </Typography>
           <Button variant="outlined" color="primary" focusVisible>
-                      Edit Profile 
+            Edit Profile 
           </Button>   
         </CardContent>
       </Card>
