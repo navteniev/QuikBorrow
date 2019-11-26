@@ -35,7 +35,7 @@ exports[`Register renders 1`] = `
         className="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
       >
         <label
-          className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated Mui-error Mui-error"
+          className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated"
           data-shrink={false}
           htmlFor="name"
           id="name-label"
@@ -43,11 +43,11 @@ exports[`Register renders 1`] = `
           Name
         </label>
         <div
-          className="MuiInputBase-root MuiInput-root MuiInput-underline Mui-error Mui-error MuiInputBase-fullWidth MuiInput-fullWidth MuiInputBase-formControl MuiInput-formControl"
+          className="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-fullWidth MuiInput-fullWidth MuiInputBase-formControl MuiInput-formControl"
           onClick={[Function]}
         >
           <input
-            aria-invalid={true}
+            aria-invalid={false}
             autoFocus={false}
             className="MuiInputBase-input MuiInput-input"
             disabled={false}
@@ -61,16 +61,14 @@ exports[`Register renders 1`] = `
             value=""
           />
         </div>
-      </div>
-      <span>
         
-      </span>
+      </div>
       <br />
       <div
         className="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
       >
         <label
-          className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated Mui-error Mui-error"
+          className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated"
           data-shrink={false}
           htmlFor="email"
           id="email-label"
@@ -78,11 +76,11 @@ exports[`Register renders 1`] = `
           Email
         </label>
         <div
-          className="MuiInputBase-root MuiInput-root MuiInput-underline Mui-error Mui-error MuiInputBase-fullWidth MuiInput-fullWidth MuiInputBase-formControl MuiInput-formControl"
+          className="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-fullWidth MuiInput-fullWidth MuiInputBase-formControl MuiInput-formControl"
           onClick={[Function]}
         >
           <input
-            aria-invalid={true}
+            aria-invalid={false}
             autoFocus={false}
             className="MuiInputBase-input MuiInput-input"
             disabled={false}
@@ -96,16 +94,14 @@ exports[`Register renders 1`] = `
             value=""
           />
         </div>
-      </div>
-      <span>
         
-      </span>
+      </div>
       <br />
       <div
         className="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
       >
         <label
-          className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated Mui-error Mui-error"
+          className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated"
           data-shrink={false}
           htmlFor="password"
           id="password-label"
@@ -113,11 +109,11 @@ exports[`Register renders 1`] = `
           Password
         </label>
         <div
-          className="MuiInputBase-root MuiInput-root MuiInput-underline Mui-error Mui-error MuiInputBase-fullWidth MuiInput-fullWidth MuiInputBase-formControl MuiInput-formControl"
+          className="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-fullWidth MuiInput-fullWidth MuiInputBase-formControl MuiInput-formControl"
           onClick={[Function]}
         >
           <input
-            aria-invalid={true}
+            aria-invalid={false}
             autoFocus={false}
             className="MuiInputBase-input MuiInput-input"
             disabled={false}
@@ -131,16 +127,14 @@ exports[`Register renders 1`] = `
             value=""
           />
         </div>
-      </div>
-      <span>
         
-      </span>
+      </div>
       <br />
       <div
         className="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
       >
         <label
-          className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated Mui-error Mui-error"
+          className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated"
           data-shrink={false}
           htmlFor="password2"
           id="password2-label"
@@ -148,11 +142,11 @@ exports[`Register renders 1`] = `
           Confirm Password
         </label>
         <div
-          className="MuiInputBase-root MuiInput-root MuiInput-underline Mui-error Mui-error MuiInputBase-fullWidth MuiInput-fullWidth MuiInputBase-formControl MuiInput-formControl"
+          className="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-fullWidth MuiInput-fullWidth MuiInputBase-formControl MuiInput-formControl"
           onClick={[Function]}
         >
           <input
-            aria-invalid={true}
+            aria-invalid={false}
             autoFocus={false}
             className="MuiInputBase-input MuiInput-input"
             disabled={false}
@@ -166,6 +160,7 @@ exports[`Register renders 1`] = `
             value=""
           />
         </div>
+        
       </div>
       <br />
       <br />
