@@ -48,7 +48,7 @@ describe('actions/products', () => {
             await borrowProductFetch({})(dispatch, getState)
             expect(dispatch).toHaveBeenCalledWith(expectedAction)
         })
-        it('should dispatch the correct action on fetch error', async () => {
+        it.only('should dispatch the correct action on fetch error', async () => {
             const error = {
                 response: {
                     data: 'BOIIIIIIIIIIIIIIIIIIIIIII'
