@@ -1,11 +1,11 @@
-import { borrowProductFetch } from './products'
+import { requestBorrowProductFetch } from './products'
 import { REQUEST_BORROW_PRODUCT_FINISHED, GET_ERRORS } from './types'
 import axios from 'axios'
 
 jest.mock('axios')
 
 describe('actions/products', () => {
-    describe('borrowProductFetch', () => {
+    describe('requestBorrowProductFetch', () => {
         it('should make the axios post with the right body', async () => {
             axios.post.mockResolvedValueOnce({})
             const state = {
@@ -28,7 +28,7 @@ describe('actions/products', () => {
             }
             const dispatch = jest.fn()
             const getState = jest.fn(() => state)
-            await borrowProductFetch(item, message)(dispatch, getState)
+            await requestBorrowProductFetch(item, message)(dispatch, getState)
             expect(axios.post).toHaveBeenCalledWith('/api/transactions', expectedBody)
         })
         it('should dispatch the correct action on fetch success', async () => {
@@ -45,7 +45,7 @@ describe('actions/products', () => {
                 type: REQUEST_BORROW_PRODUCT_FINISHED,
                 payload: resolvedData.data
             }
-            await borrowProductFetch({})(dispatch, getState)
+            await requestBorrowProductFetch({})(dispatch, getState)
             expect(dispatch).toHaveBeenCalledWith(expectedAction)
         })
         it('should dispatch the correct action on fetch error', async () => {
@@ -66,7 +66,7 @@ describe('actions/products', () => {
                 type: GET_ERRORS,
                 payload: error.response.data
             }
-            await borrowProductFetch({})(dispatch, getState)
+            await requestBorrowProductFetch({})(dispatch, getState)
             expect(dispatch).toHaveBeenCalledWith(expectedAction)
         })
     })

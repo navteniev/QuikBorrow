@@ -15,7 +15,7 @@ import {
  * @param {string} msg - The message for the lender
  * @returns {DispatchFunction}
  */
-export const borrowProductFetch = (item, msg) => async (dispatch, getState) => {
+export const requestBorrowProductFetch = (item, msg) => async (dispatch, getState) => {
     const state = getState()
     const body = {
         borrowerId: state.auth.user.id,
