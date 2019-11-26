@@ -7,7 +7,7 @@ jest.mock('axios')
 describe('actions/products', () => {
     describe('borrowProductFetch', () => {
         it('should make the axios post with the right body', async () => {
-            axios.post.mockResolvedValueOnce()
+            axios.post.mockResolvedValueOnce({})
             const state = {
                 auth: {
                     user: {
@@ -41,7 +41,10 @@ describe('actions/products', () => {
             }
             const dispatch = jest.fn()
             const getState = jest.fn(() => state)
-            const expectedAction = { type: BORROW_PRODUCT_FINISHED, payload: resolvedData.data }
+            const expectedAction = {
+                type: BORROW_PRODUCT_FINISHED,
+                payload: resolvedData.data
+            }
             await borrowProductFetch({})(dispatch, getState)
             expect(dispatch).toHaveBeenCalledWith(expectedAction)
         })
@@ -59,7 +62,10 @@ describe('actions/products', () => {
             }
             const dispatch = jest.fn()
             const getState = jest.fn(() => state)
-            const expectedAction = { type: GET_ERRORS, payload: error.response.data }
+            const expectedAction = {
+                type: GET_ERRORS,
+                payload: error.response.data
+            }
             await borrowProductFetch({})(dispatch, getState)
             expect(dispatch).toHaveBeenCalledWith(expectedAction)
         })
