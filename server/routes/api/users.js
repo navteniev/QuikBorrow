@@ -7,7 +7,8 @@ const userMiddleware = require('../../middleware/users');
 const itemMiddleware = require('../../middleware/items');
 const validatorErrors = require('../../middleware/shared/validatorErrors');
 const validObjectId = require('../../middleware/shared/validators/isObjectId');
-const {check, param, header} = require('express-validator');
+const {body, check, param, header} = require('express-validator');
+const {upload} = require('../../middleware/items');
 
 /**
  * Register user
@@ -93,15 +94,11 @@ router.get('/:userId/items', [
 router.post('/:userId/items', [
   param('userId')
       .custom(validObjectId),
-  check('name')
-      .isLength({min: 1}),
-  check('description')
-      .isLength({min: 1}),
   header('Authorization', 'Invalid Authorization header')
       .isLength({min: 1})
       .bail()
       .custom(userMiddleware.expressValidator.attachDecodedToken),
-  validatorErrors,
+  validatorErrors, upload.single('productImage'),
 ], userController.createItem);
 
 router.delete('/:userId/items/:itemId', [

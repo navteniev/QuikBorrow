@@ -1,17 +1,10 @@
 const itemServices = require('../services/items');
-const keys = require('../config/keys');
 
 /** @type {import('express').RequestHandler} */
 const create = async (req, res, next) => {
-  const productImage = (req.file && req.file.filename) ?
-                        'http://localhost:8081/' + req.file.filename
-                        :
-                        'none';
-  console.log(productImage);
   const data = {
     name: req.body.name,
     description: req.body.description,
-    productImage: productImage,
   };
 
   itemServices.createItem(data)

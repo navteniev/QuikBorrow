@@ -133,7 +133,7 @@ export function AddItemModal (props) {
     if(files.length > 0) {
       formData.append('productImage', files[0])
     }
-    axios.post(`/api/users/${user.id}/items`, body, headers)
+    axios.post(`/api/users/${user.id}/items`, formData, headers)
       .then(res => {
         setLoadingState(LOADING_STATES.SUCCESS)
         setName('')

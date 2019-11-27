@@ -6,7 +6,6 @@ const {param} = require('express-validator');
 const itemController = require('../../controllers/items');
 const validatorErrors = require('../../middleware/shared/validatorErrors');
 const isObjectId = require('../../middleware/shared/validators/isObjectId');
-const {upload} = require('../../middleware/items');
 
 /**
  * Create a new item
@@ -14,7 +13,7 @@ const {upload} = require('../../middleware/items');
  * @memberof module:api/items
  * @name POST /
  */
-router.post('/', upload.single('productImage'), itemController.create);
+router.post('/', itemController.create);
 
 /**
  * Get all items
