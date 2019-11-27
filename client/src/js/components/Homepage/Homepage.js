@@ -4,7 +4,8 @@ import { Typography, Button, ButtonGroup } from "@material-ui/core";
 import teal from '@material-ui/core/colors/teal'
 import ChatIcon from '@material-ui/icons/Chat';
 import { VerifiedUserTwoTone, ThumbsUpDownTwoTone } from "@material-ui/icons";
-import AddItemModal from '../AddItemModal/AddItemModal'
+import AddItemModal from '../AddItemModal/AddItemModal';
+import { Link } from 'react-router-dom';
 
 const Background = styled.div`
 	background: #009688;
@@ -78,7 +79,9 @@ export function Homepage() {
 						I want to lend
 					</Button>
 					<Button size='large' variant='contained'>
-						I want to borrow
+						<Link to='/products' style={{textDecoration: 'none'}}>
+							I want to borrow
+						</Link>
 					</Button>
 				</ButtonGroup>
 			</Content>
