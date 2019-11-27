@@ -18,9 +18,10 @@ const createTransaction = async (data) => {
 
 /**
  * Approves a transaction.
- * Updates all other transactions related 
+ * Updates all other transactions related
  * to this item to processed (cancels all other transactions).
  * Finishes the rent out process by setting the item fields.
+ *
  * @param {string} id - The transaction ID
  * @returns {MongooseDocument} - The updated Document
  */
