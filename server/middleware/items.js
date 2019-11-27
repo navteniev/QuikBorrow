@@ -28,7 +28,7 @@ const expressValidator = {
     }
     req.item = item;
     return true;
-  }
+  },
 };
 
 module.exports = {

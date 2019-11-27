@@ -3,7 +3,10 @@ const keys = require('../config/keys');
 
 /** @type {import('express').RequestHandler} */
 const create = async (req, res, next) => {
-  const productImage = (req.file && req.file.filename) ? keys.domain + req.file.filename : 'none';
+  const productImage = (req.file && req.file.filename) ?
+                        keys.domain + req.file.filename
+                        :
+                        'none';
   console.log(productImage);
   const data = {
     name: req.body.name,
