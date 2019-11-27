@@ -17,8 +17,10 @@ const createTransaction = async (data) => {
 };
 
 /**
- * Approve a transaction
- *
+ * Approves a transaction.
+ * Updates all other transactions related 
+ * to this item to processed (cancels all other transactions).
+ * Finishes the rent out process by setting the item fields.
  * @param {string} id - The transaction ID
  * @returns {MongooseDocument} - The updated Document
  */
@@ -49,6 +51,12 @@ const rejectTransaction = async (id) => {
   return updated;
 };
 
+/**
+ * Gets Transactions based on
+ * - userId
+ * - type
+ * - processed
+ */
 const getTransactions = async (userId, type, isProcessed) => {
   let query;
   if (type == 'borrower') {
