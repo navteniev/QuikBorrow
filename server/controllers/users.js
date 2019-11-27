@@ -71,7 +71,7 @@ const createItem = async (req, res, next) => {
   const {name, description} = req.body;
   console.log(req);
   const productImage = (req.file && req.file.filename) ?
-                        'http://localhost:8081/uploads/' + req.file.filename
+                        keys.domain + req.file.filename
                         :
                         'none';
   console.log(productImage);
