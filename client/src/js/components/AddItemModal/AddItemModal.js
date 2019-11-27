@@ -76,7 +76,7 @@ export function AddItemModal (props) {
   const [ maxDays, setMaxDays ] = useState(1)
   const [ name, setName ] = useState('')
   const [ description, setDescription ] = useState('')
-  const [ loadingState, setLoadingState ] = useState(LOADING_STATES.FETCHING) // 0=waiting, 1=fetching, 2=success, 3=error
+  const [ loadingState, setLoadingState ] = useState(LOADING_STATES.WAITING) // 0=waiting, 1=fetching, 2=success, 3=error
   const [ error, setError ] = useState();
   const [ createdItem, setCreatedItem ] = useState()
   const history = useHistory()
