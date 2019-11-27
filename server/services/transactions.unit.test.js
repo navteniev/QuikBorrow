@@ -29,8 +29,6 @@ describe('services/item', function() {
     it('approves a transaction by id', async function() {
       const id = 'abc123';
       Transaction.findById.mockResolvedValueOnce({approve: jest.fn()});
-      Transaction.updateMany.mockResolvedValueOnce({});
-      itemServices.rentItem.mockResolvedValueOnce({'duration': 98});
       await transactionServices.approveTransaction(id);
       expect(Transaction.findById).toHaveBeenCalledWith(id);
       expect(Transaction.updateMany).toHaveBeenCalled();
