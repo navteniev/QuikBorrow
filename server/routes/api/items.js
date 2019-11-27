@@ -6,7 +6,7 @@ const {param} = require('express-validator');
 const itemController = require('../../controllers/items');
 const validatorErrors = require('../../middleware/shared/validatorErrors');
 const isObjectId = require('../../middleware/shared/validators/isObjectId');
-const { upload } = require('../../middleware/items');
+const {upload} = require('../../middleware/items');
 
 /**
  * Create a new item

@@ -19,7 +19,7 @@ require('./config/passport')(passport);
 // Routes
 app.use('/api', apiRoutes);
 
-app.use(express.static(path.join(__dirname, '/uploads')));
+app.use('/uploads', express.static(path.join(__dirname, '/uploads')));
 app.use(express.static('../client/build'));
 
 app.get('*', (req, res) => {
