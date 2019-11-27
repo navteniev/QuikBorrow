@@ -1,6 +1,13 @@
 const mongoose = require('mongoose');
 const TransactionModel = require('./Transaction');
-const transactionData = {borrower: '5db9fdce1dd490177413ab0b', lender: '5dc4967ed2616e19c8eef654', msg: 'test transaction', duration: 1, item: '5dc9dba21c9d4400001b972d', approved: false, processed: false};
+const transactionData = {borrower: '5db9fdce1dd490177413ab0b',
+      lender: '5dc4967ed2616e19c8eef654',
+      msg: 'test transaction',
+      duration: 1,
+      item: '5dc9dba21c9d4400001b972d',
+      approved: false,
+      processed: false
+};
 const keys = require('../config/keys');
 const MONGODB_OPTIONS = {
   useNewUrlParser: true,
