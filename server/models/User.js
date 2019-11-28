@@ -22,11 +22,9 @@ const UserSchema = new Schema({
   },
   bio: {
     type: String,
-    required: true,
   },
   age: {
     type: Number,
-    required: true
   },
   wishlist: [{
     type: String,
