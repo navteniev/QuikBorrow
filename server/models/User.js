@@ -20,6 +20,19 @@ const UserSchema = new Schema({
     min: 0,
     max: 5,
   },
+  bio: {
+    type: String,
+    required: true
+  },
+  age: {
+    type: Number,
+    required: true
+  },
+  wishlist: [{
+    type: String,
+  }],
+
+
 });
 
 module.exports = mongoose.model('users', UserSchema);

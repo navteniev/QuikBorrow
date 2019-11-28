@@ -1,7 +1,12 @@
-import React from "react";
+import React, { Component } from "react";
 import styled from 'styled-components';
-import { Card, CardContent, CardMedia, Typography, Box, Button } from '@material-ui/core';
+import { Card, CardContent, CardMedia, Typography, Box, Button, TextField } from '@material-ui/core';
 import Rating from '@material-ui/lab/Rating';
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle';
 
 
 const SideBar = styled.div`
@@ -16,12 +21,44 @@ const SideBar = styled.div`
 const RightSide = styled.div`
   padding: 40px 40px;
   width: 3000px;
-  
 `
 
-const ProfileCard = props => {
-    const { name, age, college , products, bio, wishlist, rating, email} = props;
+class ProfileCard extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      _editing: false,
+      oriAge: this.props.age,
+      oriCollege: this.props.college,
+      oriBio : this.props.bio,
+      tempAge: '',
+      tempCollege: '',
+      tempBio: ''
+    }
+  }
+  
+  toggle_Editing = async() => {
+    this.setState(prevState => ({
+      _editing: !prevState._editing
+    }));
+  }
 
+	onChange = async (e) => {
+    this.setState({[e.target.id]:e.target.value});
+
+  };
+
+  onSubmit = async (e) => {
+		e.preventDefault();
+		let	oriAge = this.state.tempAge
+		let	oriCollege = this.state.tempCollege
+		let oriBio = this.state.tempBio
+    this.setState({oriAge, oriCollege, oriBio})
+    this.toggle_Editing()
+  };
+
+  render() {
+    const { name, age, college , products, bio, wishlist,rating,email} = this.props;
     const products_li = products.map((items) => {
       return <li key={items.id}>
         <h7>{items.name}</h7>
@@ -34,6 +71,7 @@ const ProfileCard = props => {
       </li>
     });
 
+
     return (
       <div style={{display: 'flex', flexDirection: 'row', marginTop: '50px'}}>
       <SideBar>
@@ -44,14 +82,68 @@ const ProfileCard = props => {
         <CardContent>
           <Typography variant="body2" color="textSecondary" component="p">
             {email} <br/>
-            {college} <br/>
-            {age} years old<br/>
-            <br></br>
-            {bio}<br/><br/>
+            {this.state.oriCollege} <br/>
+            {this.state.oriAge} years old<br/>
+            {this.state.oriBio}<br></br>
           </Typography>
-          <Button variant="outlined" color="primary" focusVisible>
-            Edit Profile 
-          </Button>   
+          <Button align="center" variant="outlined" color="primary" focusVisible onClick={(this.toggle_Editing)}>
+                      Edit Profile 
+          </Button>  
+          {this.state._editing === true ? 
+          <div>
+            <Dialog open={this.state._editing} onClose={this.toggle_Editing} aria-labelledby="form-dialog-title">
+            <DialogTitle id="form-dialog-title">Edit Profile</DialogTitle>
+            <DialogContent>
+              <DialogContentText>
+                Edit your profile and press submit to save your changes
+              </DialogContentText>
+                <form  onSubmit={this.onSubmit}>
+                  <TextField
+                    onChange={this.onChange}
+                    value={this.state.tempAge || this.state.oriAge}
+                    id="tempAge"
+                    label="Age"
+                    type="number"
+                    margin="normal"
+                    fullWidth
+                  />
+					        <br/>
+                  <TextField
+                    onChange={this.onChange}
+                    value={this.state.tempCollege || this.state.oriCollege}
+                    id="tempCollege"
+                    label="College"
+                    type="text"
+                    margin="normal"
+                    fullWidth
+                  />
+					        <br/>
+                  <TextField
+                    onChange={this.onChange}
+                    value={this.state.tempBio || this.state.oriBio}
+                    id="tempBio"
+                    type="text"
+                    label="Bio"
+                    margin="normal"
+                    fullWidth
+                  />
+					        <br/>
+                    <div>
+                    <DialogActions>
+                  <Button type="reset" onClick={this.toggle_Editing} color="primary">
+                    Cancel
+                  </Button>
+                  <Button type="submit"  color="primary">
+                    Submit
+                  </Button>
+                </DialogActions>
+                    </div>
+              </form>
+          </DialogContent>
+          </Dialog>
+          </div> 
+          : null }
+        
         </CardContent>
       </Card>
     </SideBar>
@@ -99,6 +191,6 @@ const ProfileCard = props => {
     </div>
     );
   };
-  
+}
   export default ProfileCard;
   
