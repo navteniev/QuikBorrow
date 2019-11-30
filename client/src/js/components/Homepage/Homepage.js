@@ -79,7 +79,7 @@ export function Homepage() {
 						I want to lend
 					</Button>
 					<Button size='large' variant='contained'>
-						<Link to='/products' style={{textDecoration: 'none'}}>
+						<Link to='/products' style={{textDecoration: 'none', color: 'black'}}>
 							I want to borrow
 						</Link>
 					</Button>

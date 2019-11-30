@@ -105,6 +105,7 @@ describe('Unit::controller/users', function() {
         body: {
           name: 'aadegjijrig',
           description: 'ew3r5ujies',
+          productImage: 'none',
           random: 123,
         },
         params: {userId},
@@ -114,6 +115,7 @@ describe('Unit::controller/users', function() {
       const expectedItemCreation = {
         name: request.body.name,
         description: request.body.description,
+        productImage: request.body.productImage,
         user: request.jwtDecoded.id,
       };
       itemServices.createItem.mockResolvedValueOnce();

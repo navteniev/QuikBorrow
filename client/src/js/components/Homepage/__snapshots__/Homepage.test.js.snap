@@ -78,7 +78,18 @@ exports[`Homepage renders 1`] = `
         <span
           className="MuiButton-label"
         >
-          I want to borrow
+          <a
+            href="/products"
+            onClick={[Function]}
+            style={
+              Object {
+                "color": "black",
+                "textDecoration": "none",
+              }
+            }
+          >
+            I want to borrow
+          </a>
         </span>
       </button>
     </div>

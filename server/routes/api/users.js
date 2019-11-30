@@ -7,7 +7,7 @@ const userMiddleware = require('../../middleware/users');
 const itemMiddleware = require('../../middleware/items');
 const validatorErrors = require('../../middleware/shared/validatorErrors');
 const validObjectId = require('../../middleware/shared/validators/isObjectId');
-const {body, check, param, header} = require('express-validator');
+const {check, param, header} = require('express-validator');
 const {upload} = require('../../middleware/items');
 
 /**
