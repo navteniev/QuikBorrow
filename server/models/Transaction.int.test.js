@@ -23,19 +23,6 @@ describe('Transaction Model Test', () => {
     });
   });
 
-  it('create & save transaction successfully', async () => {
-    const validTransaction = new TransactionModel(transactionData);
-    const savedTransaction = await validTransaction.save();
-    // Object Id should be defined when successfully saved to MongoDB.
-    expect(savedTransaction._id).toBeDefined();
-    expect(savedTransaction.borrower).toBeDefined();
-    expect(savedTransaction.lender).toBeDefined();
-    expect(savedTransaction.msg).toBe(transactionData.msg);
-    expect(savedTransaction.duration).toBe(transactionData.duration);
-    expect(savedTransaction.item).toBeDefined();
-    expect(savedTransaction.approved).toBe(transactionData.approved);
-    expect(savedTransaction.processed).toBe(transactionData.processed);
-  });
   it('approves a transaction successfully', async () => {
     const validTransaction = new TransactionModel(transactionData);
     const savedTransaction = await validTransaction.approve();
