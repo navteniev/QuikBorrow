@@ -3,7 +3,7 @@ import ProfileCard from './ProfileCard'
 import { connect } from "react-redux";
 import { getUserProfile, fetchProducts } from "../../actions";
 
-class UserProfile extends Component {
+export class UserProfile extends Component {
     constructor(props) {
         super(props);
         this.state = {

@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Profile should render Profile 1`] = `
+<h3>
+   User profile does not exist
+</h3>
+`;
