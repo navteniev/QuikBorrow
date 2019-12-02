@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest --detectOpenHandles --forceExit --coverage --coverageReporters=text-lcov | coveralls",
+    "test": "jest --detectOpenHandles --forceExit --coverage",
     "test-unit": "jest unit\\.test\\.js$ --detectOpenHandles --forceExit",
     "test-int": "jest int\\.test\\.js$ --detectOpenHandles --forceExit",
     "start": "node index.js",
@@ -35,6 +35,7 @@
     "supertest": "^4.0.2"
   },
   "jest": {
+    "coverageReporters": ["text", "lcov"],
     "testEnvironment": "node",
     "coveragePathIgnorePatterns": [
       "/node_modules/"

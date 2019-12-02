@@ -27,6 +27,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "test-coverage": "react-scripts test --coverage --watchAll=false",
     "eject": "react-scripts eject",
     "lint": "eslint src",
     "lint-fix": "eslint src --fix"
@@ -35,6 +36,7 @@
     "extends": "react-app"
   },
   "jest": {
+    "coverageReporters": ["text", "lcov"],
     "collectCoverageFrom": [
       "src/**/*.js",
       "!src/index.js",
