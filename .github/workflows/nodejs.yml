@@ -3,26 +3,6 @@ name: Node CI
 on: [push]
 
 jobs:
-  coveralls:
-    runs-on: ubuntu-latest
-      steps:
-
-      - uses: actions/checkout@v1
-
-      - name: Use Node.js 10.x
-        uses: actions/setup-node@v1
-        with:
-          node-version: 10.x
-
-      - name: npm install, make test-coverage
-        run: |
-          npm install
-          make test-coverage
-
-      - name: Coveralls
-        uses: coverallsapp/github-action@master
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
   # Testing server
   test-server:
     name: Server Tests
@@ -39,14 +19,14 @@ jobs:
     - name: npm install, build, and test
       run: |
         npm run install-server
-        npm run test-server
-        make test-coverage
+        npm run test-server-coverage
       env:
         CI: true
-    - name: Coveralls
-      uses: coverallsapp/github-action@master
+    - uses: codecov/codecov-action@v1
       with:
-        github-token: ${{ secrets.GITHUB_TOKEN }}
+        token: ${{ secrets.CODECOV_TOKEN }} #required
+        flags: server
+        name: codecov-server
 
   # Testing client
   test-client:
@@ -64,9 +44,14 @@ jobs:
     - name: npm install, build, and test
       run: |
         npm run install-client
-        npm run test-client
+        npm run test-client-coverage
       env:
         CI: true
+    - uses: codecov/codecov-action@v1
+      with:
+        token: ${{ secrets.CODECOV_TOKEN }} #required
+        flags: client
+        name: codecov-client
 
   # Linting server
   lint-server:
