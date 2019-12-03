@@ -17,7 +17,6 @@ const SignedIn = (props) => {
         props.logoutUser();
     };
     const userProfileId = props.id 
-    // work in progress to make navbar profile link to specific profiler user ;-; profile/:profileId 
     return (
         <Toolbar>
             <UnstyledLink to='/products'>Products</UnstyledLink>

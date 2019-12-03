@@ -15,6 +15,25 @@ app.use(passport.initialize());
 // Passport config
 require('./config/passport')(passport);
 
+// preventing CORS error
+const isPreflight = (req) => {
+  return (
+    req.method === 'OPTIONS' &&
+    req.headers['origin'] &&
+    req.headers['access-control-request-method']
+  )
+}
+
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', ["*"]);
+  res.header('Access-Control-Allow-Methods', ['GET,PUT,POST,DELETE,PATCH']);
+  res.header('Access-Control-Allow-Headers', ['Content-Type','Accept','Access-Control-Allow-Origin']);
+  if (isPreflight(req)) {
+    res.status(204).end()
+    return
+  }
+  next();
+});
 
 // Routes
 app.use('/api', apiRoutes);

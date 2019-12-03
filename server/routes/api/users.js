@@ -67,7 +67,7 @@ router.get('/:userId', [
  * @name PATCH /:userId
  */
 router.patch('/:userId', [
-  param('userId')
+  param('userId', 'Invalid UserId')
       .custom(validObjectId),
   validatorErrors,
 ], userController.edit);

@@ -28,6 +28,7 @@ class ProfileCard extends Component {
     super(props);
     this.state = {
       _editing: false,
+      id : this.props.id, 
       oriAge: this.props.age,
       oriCollege: this.props.college,
       oriBio : this.props.bio,
@@ -49,16 +50,33 @@ class ProfileCard extends Component {
   };
 
   onSubmit = async (e) => {
-		e.preventDefault();
-		let	oriAge = this.state.tempAge
-		let	oriCollege = this.state.tempCollege
-		let oriBio = this.state.tempBio
-    this.setState({oriAge, oriCollege, oriBio})
+    e.preventDefault();
+    const updateInfo = {
+			oriAge : this.state.tempAge,
+		  oriCollege :this.state.tempCollege,
+      oriBio : this.state.tempBio,
+  }
+    this.setState(updateInfo)
     this.toggle_Editing()
+    // save the updateInfo to the database
+    fetch('http://localhost:8081/api/users/'+this.state.id, {
+      method: 'PATCH',
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(updateInfo)
+    })
+    .then((response) => {
+      return console.log(response.json())
+    })
+    .catch((error) => {
+      return console.log(error)
+    })
   };
 
   render() {
-    const { name, age, college , products, bio, wishlist,rating,email} = this.props;
+    const { id, name, age, college , products, bio, wishlist,rating,email} = this.props;
     const products_li = products.map((items) => {
       return <li key={items.id}>
         <h7>{items.name}</h7>

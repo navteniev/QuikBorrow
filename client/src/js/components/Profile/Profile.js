@@ -52,6 +52,7 @@ class UserProfile extends Component {
             wishlist={wishlist}
             rating={rating}
             email={email}
+            id = {_id}
             />
                 )
         }
