@@ -36,7 +36,10 @@
     "extends": "react-app"
   },
   "jest": {
-    "coverageReporters": ["text", "lcov"],
+    "coverageReporters": [
+      "text",
+      "lcov"
+    ],
     "collectCoverageFrom": [
       "src/**/*.js",
       "!src/index.js",

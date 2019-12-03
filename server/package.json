@@ -35,7 +35,10 @@
     "supertest": "^4.0.2"
   },
   "jest": {
-    "coverageReporters": ["text", "lcov"],
+    "coverageReporters": [
+      "text",
+      "lcov"
+    ],
     "testEnvironment": "node",
     "coveragePathIgnorePatterns": [
       "/node_modules/"
