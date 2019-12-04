@@ -27,7 +27,8 @@ export class Login extends Component {
 		super();
 		this.state = {
 			email: "",
-			password: ""
+			password: "",
+			errors: {}
 		};
 	}
 
@@ -40,7 +41,12 @@ export class Login extends Component {
 	componentWillReceiveProps(nextProps) {
     	if (nextProps.auth.isAuthenticated) {
       		this.props.history.push("/products"); // push user to dashboard when they login
-    	}
+		}
+		if (nextProps.errors) {
+			this.setState({
+			  errors: nextProps.errors
+			});
+		}
   	}
 	onChange = e => {
 		this.setState({ [e.target.id]: e.target.value });
@@ -54,8 +60,8 @@ export class Login extends Component {
 		this.props.loginUser(userData);
 	};
 	getErrors = e => {
-		const { errors } = this.props;
-		if (!errors || errors.errors === undefined || errors.errors.find(x => x.param === e) === undefined)
+		const { errors } = this.state;
+		if (errors.errors === undefined || errors.errors.find(x => x.param === e) === undefined)
 		{
 			return "";
 		}
