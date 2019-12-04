@@ -133,10 +133,10 @@ class ProductList extends Component {
               </IconButton>
             </ButtonGroup>
           </ListTop>
+          <Search resetPage={() => { this.setState({ page: 0 }) }} />
           <List>
             {items}
           </List>
-          <Search />
         </div>
       </div>
     )

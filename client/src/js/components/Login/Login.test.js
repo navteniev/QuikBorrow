@@ -61,7 +61,7 @@ describe('Login', () => {
 		const historyMock = { push: jest.fn() };
 		wrapper = shallow(<Login loginUser = {params.loginUser} auth = {isAuth} errors = {params.errors} history = {historyMock}/>);
 		wrapper.setProps({ auth: { isAuthenticated: true } });
-		expect(historyMock.push.mock.calls[0]).toEqual(['/dashboard']);
+		expect(historyMock.push.mock.calls[0]).toEqual(['/products']);
 	});
 
 	test('errors', () => {

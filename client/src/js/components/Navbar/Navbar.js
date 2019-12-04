@@ -24,7 +24,7 @@ export class Navbar extends React.Component {
                             QuikBorrow
                             </UnstyledLink>
                         </Typography>
-                    {this.props.auth.isAuthenticated ? <SignedIn name={this.props.auth.user.name} /> : <SignedOut />}
+                    {this.props.auth.isAuthenticated ? <SignedIn name={this.props.auth.user.name} id={this.props.auth.user.id}/> : <SignedOut />}
                 </Toolbar>
             </AppBar>
         )

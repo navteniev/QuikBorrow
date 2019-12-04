@@ -1,23 +1,14 @@
 import React, { Component } from "react";
 import ProfileCard from './ProfileCard'
+import { connect } from "react-redux";
+import { getUserProfile, fetchProducts } from "../../actions";
 
 class UserProfile extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            id: 1,
-            name: 'Tester2',
             age: 21,
             college:'City College of New York',
-            products: [{ // i guess these are the products he can lend lol
-                id: 2,
-                item: 'Pencil',
-                description: 'It is a nice muji pencil'
-                },{
-                id: 3,
-                item: 'Phone',
-                description:'Sparkling new apple phone'
-                }],
             bio: 'Currently a student looking for a full time job',
             wishlist: [{
                 id:1,
@@ -30,11 +21,24 @@ class UserProfile extends Component {
     }
 
     componentDidMount(){
-        /* fetch userprofile from database */
+        this.props.getUserProfile(this.props.match.params.profileId) // getting userProfile based on Id
+        this.props.fetchProducts()
     }
+
     render() {
-        let { id,name, age , college, products,bio, wishlist } = this.state
-        if (id === 'undefined' || id === null) {
+        let {age , college,bio, wishlist } = this.state
+        let {_id, name, rating, email} = this.props.user 
+        let mylist = this.props.products
+        
+        const lendinglist = []
+
+        for (let i =0; i < mylist.length; ++i){
+            if(_id === mylist[i].user){
+                lendinglist.push(mylist[i])
+            }
+        }
+        
+        if (!_id) {
             return <h3> User profile does not exist</h3>
         }
         else {
@@ -43,13 +47,21 @@ class UserProfile extends Component {
             name={name}
             age={age}
             college={college}
-            products={products}
+            products={lendinglist}
             bio={bio}
-            wishlist={wishlist} 
+            wishlist={wishlist}
+            rating={rating}
+            email={email}
             />
                 )
         }
     }
 }
 
-export default UserProfile;
+
+function mapStateToProps(state) {
+    return { user : state.user ,
+             products : state.products }
+}
+
+export default connect(mapStateToProps, { getUserProfile, fetchProducts })(UserProfile);

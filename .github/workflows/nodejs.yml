@@ -19,9 +19,14 @@ jobs:
     - name: npm install, build, and test
       run: |
         npm run install-server
-        npm run test-server
+        npm run test-server-coverage
       env:
         CI: true
+    - uses: codecov/codecov-action@v1
+      with:
+        token: ${{ secrets.CODECOV_TOKEN }} #required
+        flags: server
+        name: codecov-server
 
   # Testing client
   test-client:
@@ -39,9 +44,14 @@ jobs:
     - name: npm install, build, and test
       run: |
         npm run install-client
-        npm run test-client
+        npm run test-client-coverage
       env:
         CI: true
+    - uses: codecov/codecov-action@v1
+      with:
+        token: ${{ secrets.CODECOV_TOKEN }} #required
+        flags: client
+        name: codecov-client
 
   # Linting server
   lint-server:

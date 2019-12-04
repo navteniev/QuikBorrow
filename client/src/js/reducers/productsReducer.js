@@ -1,4 +1,7 @@
-import { FETCH_PRODUCTS, SEARCH } from "../actions/types";
+import {
+  FETCH_PRODUCTS,
+  SEARCH
+} from "../actions/types";
 
 const initState = [];
 
