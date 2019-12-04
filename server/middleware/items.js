@@ -32,5 +32,5 @@ const expressValidator = {
 };
 
 module.exports = {
-  expressValidator, upload,
+  expressValidator, upload, imageFilter
 };
