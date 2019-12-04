@@ -1,3 +1,5 @@
+import { CLEAR_ALL_ERRORS } from '../actions/types'
+
 const initialState = {};
 
 /**
@@ -10,6 +12,10 @@ const initialState = {};
 export default function(state = initialState, action) {
   if (!action.type) {
     return state
+  }
+
+  if (action.type === CLEAR_ALL_ERRORS) {
+    return {}
   }
 
   const isError = action.type.endsWith('_ERROR')
