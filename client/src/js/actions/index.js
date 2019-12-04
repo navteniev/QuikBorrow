@@ -1,7 +1,7 @@
 import axios from "axios";
 import setAuthToken from "../utils/setAuthToken";
 import jwt_decode from "jwt-decode";
-import { FETCH_PRODUCTS, FETCH_PRODUCT, GET_ERRORS, SET_CURRENT_USER, USER_LOADING, SEARCH, GET_USER_PROFILE } from "./types";
+import { FETCH_PRODUCTS, FETCH_PRODUCT, SET_CURRENT_USER, USER_LOADING, SEARCH_PRODUCTS, GET_USER, REGISTER_USER, LOGIN_USER } from "./types";
 export * from './products';
 
 // Fetch all products
@@ -34,11 +34,11 @@ export const searchProducts = query =>
     return axios
         .get("/api/items/search", { params: { param: query} })
         .then(res => {
-          dispatch({ type: SEARCH, payload: res.data });
+          dispatch({ type: SEARCH_PRODUCTS.FETCH, payload: res.data });
         })
         .catch(err => {
           dispatch({
-            type: GET_ERRORS,
+            type: SEARCH_PRODUCTS.ERROR,
             payload: err.response.data
           })
         });
@@ -51,7 +51,7 @@ export const registerUser = (userData, history) => dispatch => {
     .then(res => history.push("/login")) // re-direct to login on successful register
     .catch(err =>
       dispatch({
-        type: GET_ERRORS,
+        type: REGISTER_USER.ERROR,
         payload: err.response.data
       })
     );
@@ -75,7 +75,7 @@ export const loginUser = userData => dispatch => {
     })
     .catch(err =>
       dispatch({
-        type: GET_ERRORS,
+        type: LOGIN_USER.ERROR,
         payload: err.response.data
       })
     );
@@ -110,12 +110,12 @@ export const getUserProfile = userId => {
   return async function(dispatch) {
     try {
     const res = await axios.get(`/api/users/${userId}`);
-    dispatch({ type: GET_USER_PROFILE, payload: res.data });
+    dispatch({ type: GET_USER.FINISHED, payload: res.data });
   }
   catch(error) {
     console.log(error)
     dispatch({
-      type: GET_ERRORS, payload: error
+      type: GET_USER.ERROR, payload: error
       });
     }
   }

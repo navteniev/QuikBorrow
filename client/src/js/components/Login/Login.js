@@ -7,7 +7,7 @@ import classnames from "classnames";
 import styled from 'styled-components';
 import quikLogo from '../../components/quikLogo.png';
 import { Button, TextField } from "@material-ui/core";
-import { textAlign } from "@material-ui/system";
+import { LOGIN_USER } from '../../actions/types'
 
 const LoginForm = styled.div`
 	margin: 0 auto;
@@ -27,8 +27,7 @@ export class Login extends Component {
 		super();
 		this.state = {
 			email: "",
-			password: "",
-			errors: {}
+			password: ""
 		};
 	}
 
@@ -41,11 +40,6 @@ export class Login extends Component {
 	componentWillReceiveProps(nextProps) {
     	if (nextProps.auth.isAuthenticated) {
       		this.props.history.push("/products"); // push user to dashboard when they login
-    	}
-		if (nextProps.errors) {
-      		this.setState({
-        		errors: nextProps.errors
-      		});
     	}
   	}
 	onChange = e => {
@@ -60,8 +54,8 @@ export class Login extends Component {
 		this.props.loginUser(userData);
 	};
 	getErrors = e => {
-		const { errors } = this.state;
-		if (errors.errors === undefined || errors.errors.find(x => x.param === e) === undefined)
+		const { errors } = this.props;
+		if (!errors || errors.errors === undefined || errors.errors.find(x => x.param === e) === undefined)
 		{
 			return "";
 		}
@@ -132,7 +126,7 @@ Login.propTypes = {
 
 const mapStateToProps = state => ({
   auth: state.auth,
-  errors: state.errors
+  errors: state.errors[LOGIN_USER.ERROR]
 });
 
 export default connect(
