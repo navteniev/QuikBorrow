@@ -34,7 +34,7 @@ export const searchProducts = query =>
     return axios
         .get("/api/items/search", { params: { param: query} })
         .then(res => {
-          dispatch({ type: SEARCH_PRODUCTS.FETCH, payload: res.data });
+          dispatch({ type: SEARCH_PRODUCTS.FINISHED, payload: res.data });
         })
         .catch(err => {
           dispatch({
