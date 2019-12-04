@@ -8,15 +8,37 @@ const initialState = {};
  * @param {*} action.payload
  */
 export default function(state = initialState, action) {
-  const isError = !action.type || action.type.endsWith('_ERROR')
-  if (!isError) {
+  if (!action.type) {
     return state
   }
+
+  const isError = action.type.endsWith('_ERROR')
+  const isFinish = action.type.endsWith('_FINISHED')
+
+  if (!isError && !isFinish) {
+    return state
+  }
+
+  const stateKey = action.type.replace(/_ERROR|_FINISHED/g, '')
+
+  /**
+   * Remove the error object if this is a _FINISHED action
+   * by creating a clone to maintain immutability
+   */
+  if (isFinish) {
+    return Object.keys(state).reduce((newState, key) => {
+      if (key !== stateKey) {
+        newState[key] = state[key]
+      }
+      return newState
+    }, {})
+  }
+
   /**
    * We can do stuff to the error here if we want to reduce
    * the ridiculous layers of information an Axios error
    * normally contains
    */
   
-  return { ...state, [action.type]: action.payload }
+  return { ...state, [stateKey]: action.payload }
 }
