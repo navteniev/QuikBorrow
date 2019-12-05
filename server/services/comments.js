@@ -19,10 +19,10 @@ const createComment = async (data) => {
  * @returns {MongooseDocument} - Comments associated with the product
  */
 const findComments = async (id) => {
-  return await Item.find({ product: id });
+  return await Comment.find({product: id});
 };
 
 module.exports = {
-	createComment,
-	findComments
+  createComment,
+  findComments,
 };

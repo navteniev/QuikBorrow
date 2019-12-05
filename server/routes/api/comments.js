@@ -20,6 +20,8 @@ router.post('/', commentController.create);
  * @memberof module:api/comments
  * @name GET /
  */
-router.get('/:productId', [ param('productId').custom(isObjectId) ], itemController.getAll);
+router.get('/:productId',
+    [param('productId').custom(isObjectId)],
+    commentController.getComments);
 
 module.exports = router;
