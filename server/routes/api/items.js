@@ -41,19 +41,6 @@ router.get('/:itemId', [
 ], itemController.get);
 
 /**
- * Rent an item from a specific borrower for a set duration
- *
- * @memberof module:api/items
- * @name GET /rent
- */
-router.get('/:itemId/rent/:borrowerId/:duration', [
-  param('itemId').custom(isObjectId),
-  param('borrowerId').custom(isObjectId),
-  param('duration').isInt(),
-  validatorErrors,
-], itemController.rent);
-
-/**
  * Stop renting an item
  *
  * @memberof module:api/items

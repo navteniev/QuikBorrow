@@ -6,6 +6,7 @@ const create = async (req, res, next) => {
     name: req.body.name,
     description: req.body.description,
     image: req.body.image,
+		price: req.body.price,
   };
   itemServices.createItem(data)
       .then((item) => {

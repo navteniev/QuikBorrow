@@ -7,6 +7,8 @@ const ItemSchema = new Schema({
   user: {type: Schema.Types.ObjectId, ref: 'User'},
   availability: {type: Boolean, default: false},
   image: {type: Buffer},
+	price: {type: Number, default: 5},
+	rating: {type: Number, default: 0},
   borrower: {type: Schema.Types.ObjectId},
   returnDate: {type: Date, default: Date.now},
 });
