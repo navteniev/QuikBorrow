@@ -48,7 +48,6 @@ exports[`Profile render mylist 1`] = `
         <button
           className="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary"
           disabled={false}
-          focusVisible={true}
           onBlur={[Function]}
           onDragLeave={[Function]}
           onFocus={[Function]}
@@ -187,16 +186,13 @@ exports[`Profile render mylist 1`] = `
         </h2>
         <p
           className="MuiTypography-root MuiTypography-body2 MuiTypography-colorTextSecondary"
+          id="products-list"
         >
-          <ul
-            id="products-list"
-          />
           <br />
         </p>
         <button
           className="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary"
           disabled={false}
-          focusVisible={true}
           onBlur={[Function]}
           onDragLeave={[Function]}
           onFocus={[Function]}
@@ -227,26 +223,18 @@ exports[`Profile render mylist 1`] = `
         </h2>
         <p
           className="MuiTypography-root MuiTypography-body2 MuiTypography-colorTextSecondary"
+          id="wish-list"
         >
-          <ul
-            id="wish-list"
-          >
-            <li>
-              <h7>
-                pokemon cards
-              </h7>
-            </li>
-            <li>
-              <h7>
-                calculator
-              </h7>
-            </li>
-          </ul>
+          <li>
+            pokemon cards
+          </li>
+          <li>
+            calculator
+          </li>
           <br />
           <button
             className="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary"
             disabled={false}
-            focusVisible={true}
             onBlur={[Function]}
             onDragLeave={[Function]}
             onFocus={[Function]}
@@ -328,7 +316,6 @@ exports[`Profile render when user match 1`] = `
         <button
           className="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary"
           disabled={false}
-          focusVisible={true}
           onBlur={[Function]}
           onDragLeave={[Function]}
           onFocus={[Function]}
@@ -467,16 +454,13 @@ exports[`Profile render when user match 1`] = `
         </h2>
         <p
           className="MuiTypography-root MuiTypography-body2 MuiTypography-colorTextSecondary"
+          id="products-list"
         >
-          <ul
-            id="products-list"
-          />
           <br />
         </p>
         <button
           className="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary"
           disabled={false}
-          focusVisible={true}
           onBlur={[Function]}
           onDragLeave={[Function]}
           onFocus={[Function]}
@@ -507,26 +491,18 @@ exports[`Profile render when user match 1`] = `
         </h2>
         <p
           className="MuiTypography-root MuiTypography-body2 MuiTypography-colorTextSecondary"
+          id="wish-list"
         >
-          <ul
-            id="wish-list"
-          >
-            <li>
-              <h7>
-                pokemon cards
-              </h7>
-            </li>
-            <li>
-              <h7>
-                calculator
-              </h7>
-            </li>
-          </ul>
+          <li>
+            pokemon cards
+          </li>
+          <li>
+            calculator
+          </li>
           <br />
           <button
             className="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary"
             disabled={false}
-            focusVisible={true}
             onBlur={[Function]}
             onDragLeave={[Function]}
             onFocus={[Function]}

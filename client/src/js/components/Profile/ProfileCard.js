@@ -22,15 +22,15 @@ const RightSide = styled.div`
 const ProfileCard = props => {
     const { name, age, college , products, bio, wishlist, rating, email} = props;
 
-    const products_li = products.map((items) => {
-      return <li key={items._id}>
-        <h7>{items.name}</h7>
+    const products_li = products.map((items, index) => {
+      return <li key={items._id + index}>
+        {items.name}
         </li>
     });
     
-    const wishlist_li = wishlist.map((element) => {
-      return <li key={element._id}>
-        <h7>{element.item}</h7>
+    const wishlist_li = wishlist.map((element, index) => {
+      return <li key={element._id + index}>
+        {element.item}
       </li>
     });
 
@@ -49,7 +49,7 @@ const ProfileCard = props => {
             <br></br>
             {bio}<br/><br/>
           </Typography>
-          <Button variant="outlined" color="primary" focusVisible>
+          <Button variant="outlined" color="primary">
             Edit Profile 
           </Button>   
         </CardContent>
@@ -73,11 +73,11 @@ const ProfileCard = props => {
             Lending List 
             <br/> 
           </Typography>
-          <Typography variant="body2" color="textSecondary" component="p">
-            <ul id='products-list'>{products_li}</ul>            
+          <Typography variant="body2" color="textSecondary" component="p" id='products-list'>
+            {products_li}       
             <br/>
           </Typography>
-            <Button variant="outlined" color="primary" focusVisible>
+            <Button variant="outlined" color="primary">
               Edit Lending List
             </Button> 
             <br/>
@@ -86,10 +86,10 @@ const ProfileCard = props => {
             Wishlist
             <br/>
           </Typography>
-          <Typography variant="body2" color="textSecondary" component="p">
-            <ul id='wish-list'>{wishlist_li}</ul> 
+          <Typography variant="body2" color="textSecondary" component="p" id='wish-list'>
+            {wishlist_li}
             <br/>
-            <Button variant="outlined" color="primary" focusVisible>
+            <Button variant="outlined" color="primary">
               Edit Wishist
             </Button> 
           </Typography>
