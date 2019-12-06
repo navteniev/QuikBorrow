@@ -46,10 +46,10 @@ export class ProductDetail extends Component {
 
     // Just some initial rendering to make sure it works before styling
     renderDetail() {
-        console.log(this.props.product.productImage);
+        console.log(this.props.product.imagePath);
         return (
             <GridCard>
-                <GridCardMedia image={this.props.product.productImage || 'https://patch.com/img/cdn/users/1142384/2013/09/raw/77d3e8242e7562885116ebff68689271.jpg'} />
+                <GridCardMedia image={this.props.product.imagePath || 'https://patch.com/img/cdn/users/1142384/2013/09/raw/77d3e8242e7562885116ebff68689271.jpg'} />
                 <GridDiv>
                     <SpaceBetween>
                         <Typography component='h4' variant='h4'>{this.props.product.name}</Typography>

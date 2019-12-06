@@ -62,6 +62,7 @@ exports[`Homepage renders 1`] = `
         className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButtonGroup-grouped MuiButtonGroup-groupedOutlined MuiButtonGroup-groupedOutlined MuiButton-containedSizeLarge MuiButton-sizeLarge"
         disabled={false}
         onBlur={[Function]}
+        onClick={[Function]}
         onDragLeave={[Function]}
         onFocus={[Function]}
         onKeyDown={[Function]}
@@ -78,18 +79,7 @@ exports[`Homepage renders 1`] = `
         <span
           className="MuiButton-label"
         >
-          <a
-            href="/products"
-            onClick={[Function]}
-            style={
-              Object {
-                "color": "black",
-                "textDecoration": "none",
-              }
-            }
-          >
-            I want to borrow
-          </a>
+          I want to borrow
         </span>
       </button>
     </div>

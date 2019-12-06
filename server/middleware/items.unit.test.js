@@ -1,6 +1,6 @@
 const itemMiddleware = require('./items');
 const itemServices = require('../services/items');
-
+const path = require('path');
 jest.mock('../services/items');
 
 describe('Unit::middleware/items', function() {
@@ -64,11 +64,27 @@ describe('Unit::middleware/items', function() {
     it(`throws an error if file is not an image`, function() {
       const file = {
         originalname: 'text.txt',
-      }
+      };
       const error = new Error('Only image files are allowed!');
       const next = jest.fn();
       imageFilter({}, file, next);
       expect(next).toHaveBeenCalledWith(error, false);
+    });
+    describe('Multer', function() {
+      it('should call next', function() {
+        const file = {
+          originalname: 'image.png',
+        };
+        const next = jest.fn();
+        itemMiddleware.upload.storage.getFilename({}, file, next);
+        expect(next).toHaveBeenCalled();
+      });
+      it('should return correct uploads destination', function() {
+        const next = jest.fn();
+        const pathOfUploads = path.join(__dirname, '..', 'uploads');
+        itemMiddleware.upload.storage.getDestination({}, {}, next);
+        expect(next).toHaveBeenCalledWith(null, pathOfUploads);
+      });
     });
   });
 });

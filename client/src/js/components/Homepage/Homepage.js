@@ -5,7 +5,7 @@ import teal from '@material-ui/core/colors/teal'
 import ChatIcon from '@material-ui/icons/Chat';
 import { VerifiedUserTwoTone, ThumbsUpDownTwoTone } from "@material-ui/icons";
 import AddItemModal from '../AddItemModal/AddItemModal';
-import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 const Background = styled.div`
 	background: #009688;
@@ -62,7 +62,8 @@ const Heading = styled(Typography)`
 
 export function Homepage() {
 	const [ openModal, setOpenModal ] = useState(false)
-
+	const history = useHistory();
+	
 	return (
 		<div>
 			<Background />
@@ -78,10 +79,8 @@ export function Homepage() {
 					<Button size='large' variant='contained' onClick={e => setOpenModal(true)}>
 						I want to lend
 					</Button>
-					<Button size='large' variant='contained'>
-						<Link to='/products' style={{textDecoration: 'none', color: 'black'}}>
-							I want to borrow
-						</Link>
+					<Button size='large' variant='contained' onClick={() => history.push('/products')}>
+						I want to borrow
 					</Button>
 				</ButtonGroup>
 			</Content>
