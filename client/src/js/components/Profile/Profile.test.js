@@ -48,5 +48,4 @@ describe('Profile', () => {
         let tree = component.toJSON();
 		expect(tree).toMatchSnapshot();
     })
-
 });
