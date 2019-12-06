@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ProfileCard should render a ProfileCard 1`] = `
+exports[`ProfileCard render ProfileCard 1`] = `
 <div
   style={
     Object {
@@ -89,7 +89,7 @@ exports[`ProfileCard should render a ProfileCard 1`] = `
           Rating : 
           <br />
           <span
-            className="MuiBox-root MuiBox-root-95"
+            className="MuiBox-root MuiBox-root-131"
           >
             <span
               aria-label="0 Stars"
@@ -185,6 +185,9 @@ exports[`ProfileCard should render a ProfileCard 1`] = `
         <p
           className="MuiTypography-root MuiTypography-body2 MuiTypography-colorTextSecondary"
         >
+          <ul
+            id="products-list"
+          />
           <br />
         </p>
         <button
@@ -222,6 +225,9 @@ exports[`ProfileCard should render a ProfileCard 1`] = `
         <p
           className="MuiTypography-root MuiTypography-body2 MuiTypography-colorTextSecondary"
         >
+          <ul
+            id="wish-list"
+          />
           <br />
           <button
             className="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary"

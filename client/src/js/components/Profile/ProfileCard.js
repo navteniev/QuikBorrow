@@ -23,13 +23,13 @@ const ProfileCard = props => {
     const { name, age, college , products, bio, wishlist, rating, email} = props;
 
     const products_li = products.map((items) => {
-      return <li key={items.id}>
+      return <li key={items._id}>
         <h7>{items.name}</h7>
         </li>
     });
     
     const wishlist_li = wishlist.map((element) => {
-      return <li key={element.id}>
+      return <li key={element._id}>
         <h7>{element.item}</h7>
       </li>
     });
@@ -74,7 +74,7 @@ const ProfileCard = props => {
             <br/> 
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
-            {products_li} 
+            <ul id='products-list'>{products_li}</ul>            
             <br/>
           </Typography>
             <Button variant="outlined" color="primary" focusVisible>
@@ -87,7 +87,7 @@ const ProfileCard = props => {
             <br/>
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
-            {wishlist_li} 
+            <ul id='wish-list'>{wishlist_li}</ul> 
             <br/>
             <Button variant="outlined" color="primary" focusVisible>
               Edit Wishist

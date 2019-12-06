@@ -11,10 +11,10 @@ export class UserProfile extends Component {
             college:'City College of New York',
             bio: 'Currently a student looking for a full time job',
             wishlist: [{
-                id:1,
+                _id:1,
                 item:"pokemon cards"
                 },{
-                id:2,
+                _id:2,
                 item:"calculator"
                 }] 
         }
@@ -61,7 +61,7 @@ export class UserProfile extends Component {
 
 function mapStateToProps(state) {
     return { user : state.user ,
-             products : state.products }
+             products : state.products }    
 }
 
 export default connect(mapStateToProps, { getUserProfile, fetchProducts })(UserProfile);
