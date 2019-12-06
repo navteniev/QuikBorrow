@@ -69,15 +69,14 @@ const createItem = async (req, res, next) => {
     });
   }
   const {name, description} = req.body;
-  console.log(req);
-  const productImage = (req.file && req.file.filename) ?
-    keys.domain + req.file.filename : 'none';
-  console.log(productImage);
+  const imagePath = (req.file && req.file.filename) ?
+    (keys.domain || 'http://localhost:8081/uploads/') + req.file.filename : 'none';
   const data = {
     name,
     description,
     user: req.jwtDecoded.id,
-    productImage,
+    imagePath,
+    availability: true,
   };
   itemServices.createItem(data)
       .then((item) => res.json(item))

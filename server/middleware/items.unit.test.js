@@ -28,12 +28,13 @@ describe('Unit::middleware/items', function() {
     });
   });
   describe('imageFilter middleware', function() {
+    const {imageFilter} = itemMiddleware;
     it('should call next if file has png extension', function() {
       const file = {
         originalname: 'randomPic.png',
       };
       const next = jest.fn();
-      itemMiddleware.imageFilter({}, file, next);
+      imageFilter({}, file, next);
       expect(next).toHaveBeenCalled();
     });
     it('should call next if file has jpg extension', function() {
@@ -41,7 +42,7 @@ describe('Unit::middleware/items', function() {
         originalname: 'randomPic.jpg',
       };
       const next = jest.fn();
-      itemMiddleware.imageFilter({}, file, next);
+      imageFilter({}, file, next);
       expect(next).toHaveBeenCalled();
     });
     it('should call next if file has jpeg extension', function() {
@@ -49,7 +50,7 @@ describe('Unit::middleware/items', function() {
         originalname: 'randomPic.jpeg',
       };
       const next = jest.fn();
-      itemMiddleware.imageFilter({}, file, next);
+      imageFilter({}, file, next);
       expect(next).toHaveBeenCalled();
     });
     it('should call next if file has gif extension', function() {
@@ -57,8 +58,17 @@ describe('Unit::middleware/items', function() {
         originalname: 'randomPic.gif',
       };
       const next = jest.fn();
-      itemMiddleware.imageFilter({}, file, next);
+      imageFilter({}, file, next);
       expect(next).toHaveBeenCalled();
+    });
+    it(`throws an error if file is not an image`, function() {
+      const file = {
+        originalname: 'text.txt',
+      }
+      const error = new Error('Only image files are allowed!');
+      const next = jest.fn();
+      imageFilter({}, file, next);
+      expect(next).toHaveBeenCalledWith(error, false);
     });
   });
 });
