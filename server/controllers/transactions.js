@@ -6,6 +6,7 @@ const create = async (req, res, next) => {
     borrower: req.body.borrowerId,
     lender: req.body.lenderId,
     msg: req.body.msg,
+    duration: req.body.duration,
     item: req.body.itemId,
   };
   transactionServices.createTransaction(data)
