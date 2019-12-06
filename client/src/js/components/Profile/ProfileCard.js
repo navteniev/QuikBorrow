@@ -54,7 +54,7 @@ const ProfileCard = props => {
           </Button>   
         </CardContent>
       </Card>
-    </SideBar>
+    </SideBar> 
     <RightSide>
       <Card>
         <CardContent>
