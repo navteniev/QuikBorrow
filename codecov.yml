@@ -1,4 +1,7 @@
 coverage:
   status:
     project: true
-    patch: off
+    patch:
+      default:
+        enabled: no
+        if_not_found: success
