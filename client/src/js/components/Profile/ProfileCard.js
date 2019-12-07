@@ -16,7 +16,6 @@ const SideBar = styled.div`
 const RightSide = styled.div`
   padding: 40px 40px;
   width: 3000px;
-  
 `
 
 const ProfileCard = props => {
