@@ -11,7 +11,7 @@ jest.mock('../../actions/index');
 
 describe('ProfileCard', () => {
 
-    const profile = mount(
+    let profile = mount(
         <ProfileCard
         products ={[]}
         wishlist = {[]}
