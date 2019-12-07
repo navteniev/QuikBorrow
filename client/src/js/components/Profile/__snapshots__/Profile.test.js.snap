@@ -72,7 +72,7 @@ exports[`Profile render mylist 1`] = `
     </div>
   </div>
   <div
-    className="sc-bwzfXH cLypgM"
+    className="sc-bwzfXH eMcUQb"
   >
     <div
       className="MuiPaper-root MuiPaper-elevation1 MuiCard-root MuiPaper-rounded"
@@ -340,7 +340,7 @@ exports[`Profile render when user match 1`] = `
     </div>
   </div>
   <div
-    className="sc-bwzfXH cLypgM"
+    className="sc-bwzfXH eMcUQb"
   >
     <div
       className="MuiPaper-root MuiPaper-elevation1 MuiCard-root MuiPaper-rounded"
