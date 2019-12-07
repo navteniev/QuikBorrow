@@ -27,6 +27,7 @@ jobs:
         token: ${{ secrets.CODECOV_TOKEN }} #required
         flags: server
         name: codecov-server
+        yml: codecov.yml
 
   # Testing client
   test-client:
@@ -52,6 +53,7 @@ jobs:
         token: ${{ secrets.CODECOV_TOKEN }} #required
         flags: client
         name: codecov-client
+        yml: codecov.yml
 
   # Linting server
   lint-server:
