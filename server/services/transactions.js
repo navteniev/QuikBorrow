@@ -54,9 +54,13 @@ const rejectTransaction = async (id) => {
 
 /**
  * Gets Transactions based on
- * - userId
- * - type
- * - processed
+- userId
+- type
+- processed
+ *
+ * @param userId
+ * @param type
+ * @param isProcessed
  */
 const getTransactions = async (userId, type, isProcessed) => {
   let query;

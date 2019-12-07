@@ -1,9 +1,9 @@
 const mongoose = require('mongoose');
 const ItemModel = require('./Item');
 const itemData = {name: 'test',
-	description: 'test description',
+  description: 'test description',
   user: '5dc4967ed2616e19c8eef654',
-	availability: true,
+  availability: true,
   price: 1,
   rating: 0,
 };
@@ -23,11 +23,11 @@ describe('Item Model Test', () => {
   });
 
   it('rents a item successfully', async () => {
-		const validItem = new ItemModel(itemData);
-		const savedItem = await validItem.rentTo('5db9fdce1dd490177413ab0b', 7);
+    const validItem = new ItemModel(itemData);
+    const savedItem = await validItem.rentTo('5db9fdce1dd490177413ab0b', 7);
     expect(savedItem.borrower).toBeDefined;
     expect(savedItem.returnDate).toBeDefined;
-		expect(savedItem.availability).toBe(false);
+    expect(savedItem.availability).toBe(false);
   });
   it('returns a item successfully', async () => {
     const validItem = new ItemModel(itemData);
