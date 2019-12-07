@@ -3,6 +3,8 @@ import renderer from 'react-test-renderer';
 import ProfileCard from './ProfileCard';
 import Enzyme, { mount } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
+import { isNumber } from 'util';
+
 
 Enzyme.configure({ adapter: new Adapter() });
 jest.mock('../../actions/index');
@@ -14,10 +16,10 @@ describe('ProfileCard', () => {
         products ={[]}
         wishlist = {[]}
         />);
-
+    
     it('render list', () =>{
-        expect(profile.find('#products-list').children()).toEqual(expect.anything());
-        expect(profile.find('#wish-list').children()).toEqual(expect.anything());
+        expect(profile.find('#products-list').children().hostNodes()).toHaveLength(2);
+        expect(profile.find('#wish-list').children().hostNodes()).toHaveLength(2);
 	});
 
 	test('render ProfileCard', () => {
