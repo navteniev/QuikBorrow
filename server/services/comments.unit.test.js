@@ -14,6 +14,7 @@ describe('services/comments', function() {
         user: 'sdg8n6hs9',
         product: 'q3jiu3rh94',
         text: 'New comment',
+        rating: 3,
       };
       await commentServices.createComment(data);
       expect(Comment).toHaveBeenCalledWith(data);

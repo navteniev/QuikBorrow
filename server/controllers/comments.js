@@ -6,6 +6,7 @@ const create = async (req, res, next) => {
     user: req.body.user,
     product: req.body.product,
     text: req.body.text,
+    rating: req.body.rating,
   };
   commentServices.createComment(data)
       .then((comment) => {
