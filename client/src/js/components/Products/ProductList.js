@@ -27,10 +27,11 @@ const List = styled.ul`
 const ListTop = styled.div`
   display: flex;
   justify-content: space-between;
+  margin-top: 1.5em;
 `
 
 class ProductList extends Component {
-  static ITEMS_PER_PAGE = 2;
+  static ITEMS_PER_PAGE = 5;
   state = {
     page: 0,
     loading: true,
@@ -112,32 +113,30 @@ class ProductList extends Component {
       pages.push(currentPage)
     }
 
-
     const items = pages[this.state.page] && pages[this.state.page].map(this.renderItem)
+
     return (
-      <div style={{display: 'flex', justifyContent: 'center', width: '100%'}}>
-        <div style={{maxWidth: '1000px', width: '100%'}}>
-          <ListTop>
-            <Typography component='h4' variant='h4'>
-              {products ? products.length : 0} Products
-            </Typography>
-            <ButtonGroup>
-              <IconButton onClick={e => this.prevPage()} disabled={this.state.page <= 0}>
-                <ArrowBack />
-              </IconButton>
-              <Button disabled variant='text'>
-                {this.state.page + 1}/{pages.length}
-              </Button>
-              <IconButton onClick={e => this.nextPage()} disabled={this.state.page === pages.length - 1}>
-                <ArrowForward />
-              </IconButton>
-            </ButtonGroup>
-          </ListTop>
-          <Search resetPage={() => { this.setState({ page: 0 }) }} />
-          <List>
-            {items}
-          </List>
-        </div>
+      <div>
+        <Search resetPage={() => { this.setState({ page: 0 }) }} />
+        <ListTop>
+          <Typography component='h4' variant='h4'>
+            {products ? products.length : 0} Products
+          </Typography>
+          <ButtonGroup>
+            <IconButton onClick={e => this.prevPage()} disabled={this.state.page <= 0}>
+              <ArrowBack />
+            </IconButton>
+            <Button disabled variant='text'>
+              {this.state.page + 1}/{pages.length}
+            </Button>
+            <IconButton onClick={e => this.nextPage()} disabled={this.state.page === pages.length - 1}>
+              <ArrowForward />
+            </IconButton>
+          </ButtonGroup>
+        </ListTop>
+        <List>
+          {items}
+        </List>
       </div>
     )
   }

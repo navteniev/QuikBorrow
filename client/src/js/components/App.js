@@ -12,8 +12,10 @@ import ProductDetail from './Products/ProductDetail';
 import Profile from "./Profile/Profile";
 import 'typeface-roboto';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
+import styled from 'styled-components'
 import teal from '@material-ui/core/colors/teal'
 import cyan from '@material-ui/core/colors/cyan'
+import PageContent from './utils/PageContent'
 
 const theme = createMuiTheme({
   palette: {
@@ -30,20 +32,27 @@ const theme = createMuiTheme({
   }
 })
 
+const Content = styled.div`
+  margin-top: 64px;
+  padding-top: 60px;
+`
+
 function App() {
   return (
       <BrowserRouter>
         <ThemeProvider theme={theme}>
           <Navbar />
-          <div style={{marginTop: '63px'}}>
+          <Content>
             <Route exact path="/" component={Homepage} />
-            <Route exact path="/register" component={Register} />
-            <Route exact path="/login" component={Login} />
-            <Route exact path="/products" component={ProductList} />
-            <Route exact path="/products/:productId" component={ProductDetail} />
-            <Route exact path="/dashboard" component={Dashboard} />
-            <Route exact path="/profile/:profileId" component={Profile} />
-          </div>
+            <PageContent>
+              <Route exact path="/register" component={Register} />
+              <Route exact path="/login" component={Login} />
+              <Route exact path="/products" component={ProductList} />
+              <Route exact path="/products/:productId" component={ProductDetail} />
+              <Route exact path="/dashboard" component={Dashboard} />
+              <Route exact path="/profile/:profileId" component={Profile} />
+            </PageContent>
+          </Content>
           </ThemeProvider>
       </BrowserRouter>
   );

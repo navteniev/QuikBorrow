@@ -14,13 +14,11 @@ const GridCard = styled(Card)`
   grid-template-areas:
     "box1 box2"
     "box3 box2";
-  margin-top: 100px;
 `
 
 const GridCardMedia = styled(CardMedia)`
   height: 300px;
   width: 300px;
-  margin: 0 auto;
   grid-area: box1;
 `
 
