@@ -53,12 +53,12 @@ const FlexCardContent = styled(CardContent)`
 `
 
 const ProductCard = props => {
-  const { id, name, user, description, availability, image } = props;
+  const { id, name, user, description, availability, imagePath } = props;
   const history = useHistory()
 
   return (
     <FlexCard>
-      <FlexCardImage image={image || 'https://patch.com/img/cdn/users/1142384/2013/09/raw/77d3e8242e7562885116ebff68689271.jpg'} title='image' />
+      <FlexCardImage image={imagePath || 'https://patch.com/img/cdn/users/1142384/2013/09/raw/77d3e8242e7562885116ebff68689271.jpg'} title='image' />
       <FlexCardContent>
         <div>
           <SpaceBetween>

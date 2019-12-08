@@ -39,14 +39,15 @@ const SpaceBetween = styled.div`
 
 export class ProductDetail extends Component {
     componentDidMount() {
-        this.props.fetchProduct(this.props.match.params.productId);
+        this.props.fetchProduct(this.props.match.params.productId)
     }
 
     // Just some initial rendering to make sure it works before styling
     renderDetail() {
+        console.log(this.props.product.imagePath);
         return (
             <GridCard>
-                <GridCardMedia image={'https://patch.com/img/cdn/users/1142384/2013/09/raw/77d3e8242e7562885116ebff68689271.jpg'} />
+                <GridCardMedia image={this.props.product.imagePath || 'https://patch.com/img/cdn/users/1142384/2013/09/raw/77d3e8242e7562885116ebff68689271.jpg'} />
                 <GridDiv>
                     <SpaceBetween>
                         <Typography component='h4' variant='h4'>{this.props.product.name}</Typography>
@@ -86,7 +87,7 @@ export class ProductDetail extends Component {
                                 variant="contained" 
                                 size="medium" 
                                 color="primary" 
-                                disabled={this.props.availability ? false : true}>
+                                disabled={this.props.product.availability ? false : true}>
                                 Add to Cart
                             </Button>
                             <Button 
