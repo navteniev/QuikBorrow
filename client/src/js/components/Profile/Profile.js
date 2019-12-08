@@ -3,7 +3,7 @@ import ProfileCard from './ProfileCard'
 import { connect } from "react-redux";
 import { getUserProfile, fetchProducts } from "../../actions";
 
-class UserProfile extends Component {
+export class UserProfile extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -11,10 +11,10 @@ class UserProfile extends Component {
             college:'City College of New York',
             bio: 'Currently a student looking for a full time job',
             wishlist: [{
-                id:1,
+                _id:1,
                 item:"pokemon cards"
                 },{
-                id:2,
+                _id:2,
                 item:"calculator"
                 }] 
         }

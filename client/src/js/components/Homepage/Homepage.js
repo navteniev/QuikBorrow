@@ -6,6 +6,7 @@ import ChatIcon from '@material-ui/icons/Chat';
 import { VerifiedUserTwoTone, ThumbsUpDownTwoTone } from "@material-ui/icons";
 import AddItemModal from '../AddItemModal/AddItemModal';
 import { useHistory } from 'react-router-dom';
+import PageContent from '../utils/PageContent'
 
 const Background = styled.div`
 	background: #009688;
@@ -14,6 +15,12 @@ const Background = styled.div`
 	background-repeat: no-repeat;
 	background-size: cover;
 	margin-bottom: -350px;
+	margin-top: -70px;
+	@media screen and (min-width: 600px) {
+	body {
+		margin-top: -60px;
+	}
+}
 `
 
 const Content = styled.div`
@@ -27,15 +34,6 @@ const Content = styled.div`
 		margin-bottom: 20px;
 	}
 	margin-bottom: 210px;
-`
-
-const Section = styled.section`
-	padding: 0 50px;
-	margin: 0 auto;
-	display: flex;
-	justify-content: center;
-	flex-direction: column;
-	max-width: 1100px;
 `
 
 const Cards = styled.div`
@@ -84,7 +82,7 @@ export function Homepage() {
 					</Button>
 				</ButtonGroup>
 			</Content>
-			<Section>
+			<PageContent>
 				<Heading variant='h4' component='h4' gutterBottom>
 					By the students. For the students.
 				</Heading>
@@ -126,7 +124,7 @@ export function Homepage() {
 						<VerifiedUserTwoTone style={{fontSize: 150, color: teal[500]}} />
 					</Card>
 				</Cards>
-			</Section>
+			</PageContent>
 		</div>
 	);
 }
