@@ -1,7 +1,10 @@
 import React from "react";
 import styled from 'styled-components';
+import { useSelector } from 'react-redux'
 import { Card, CardMedia, CardContent, Typography, Button, Tooltip, ButtonGroup } from '@material-ui/core'
 import { useHistory } from 'react-router-dom';
+import green from '@material-ui/core/colors/green'
+import grey from '@material-ui/core/colors/grey'
 
 const SpaceBetween = styled.div`
   display: flex;
@@ -53,21 +56,30 @@ const FlexCardContent = styled(CardContent)`
 `
 
 const ProductCard = props => {
-  const { id, name, user, description, availability, image } = props;
+  const { id, name, user, description, availability, borrower } = props;
+  const { user: loggedInUser } = useSelector(state => state.auth)
   const history = useHistory()
+  
+  const availabilityText = user === loggedInUser.id
+    ? <span style={{ color: green[500], fontWeight: 600 }}>You own this item</span>
+    : !availability
+      ? <span style={{ color: grey[500] }}>Currently being lended out</span>
+      : borrower === loggedInUser.id
+        ? <span style={{ color: green[500] }}>You're currently borrowing this item!</span>
+        : <span>Available to borrow</span>
 
   return (
     <FlexCard>
-      <FlexCardImage image={image || 'https://patch.com/img/cdn/users/1142384/2013/09/raw/77d3e8242e7562885116ebff68689271.jpg'} title='image' />
+      <FlexCardImage image={'https://patch.com/img/cdn/users/1142384/2013/09/raw/77d3e8242e7562885116ebff68689271.jpg'} title='image' />
       <FlexCardContent>
         <div>
           <SpaceBetween>
             <Typography component='h6' variant='h6'>
               {name}
             </Typography>
-            <span style={{color: 'gray'}}>
-              User: {user || 'unknown'}
-            </span>
+            <Typography variant='body2'>
+              {availabilityText}
+            </Typography>
           </SpaceBetween>
           <TruncatedText>
             {description}

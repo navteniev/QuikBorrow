@@ -541,7 +541,9 @@ exports[`Product Detail renders 1`] = `
         <p
           className="MuiTypography-root MuiTypography-body1"
         >
-          Unfortunately, this item is no longer in stock. :(
+          <span>
+            Unavailable (currently being lended out)
+          </span>
         </p>
       </div>
       <div
