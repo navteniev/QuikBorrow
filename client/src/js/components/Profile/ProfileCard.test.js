@@ -18,8 +18,8 @@ describe('ProfileCard', () => {
         />);
     
     it('render list', () =>{
-        expect(profile.find('#products-list').children().hostNodes()).toHaveLength(2);
-        expect(profile.find('#wish-list').children().hostNodes()).toHaveLength(2);
+        expect(profile.find('#products-list').hostNodes()).toHaveLength(1);
+        expect(profile.find('#wish-list').hostNodes()).toHaveLength(1);
 	});
 
 	test('render ProfileCard', () => {
