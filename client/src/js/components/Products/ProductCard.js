@@ -65,7 +65,7 @@ const ProductCard = props => {
     : !availability
       ? <span style={{ color: grey[500] }}>Currently being lended out</span>
       : borrower === loggedInUser.id
-        ? <span style={{ color: green[500] }}>You're currently borrowing this item!</span>
+        ? <span style={{ color: green[500] }}>You're currently borrowing this item</span>
         : <span>Available to borrow</span>
 
   return (
