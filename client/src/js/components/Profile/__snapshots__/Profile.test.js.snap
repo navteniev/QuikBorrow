@@ -6,12 +6,11 @@ exports[`Profile render mylist 1`] = `
     Object {
       "display": "flex",
       "flexDirection": "row",
-      "marginTop": "50px",
     }
   }
 >
   <div
-    className="sc-bdVaJa rALGF"
+    className="sc-bdVaJa kHPzNS"
   >
     <div
       className="MuiPaper-root MuiPaper-elevation1 MuiCard-root MuiPaper-rounded"
@@ -72,7 +71,7 @@ exports[`Profile render mylist 1`] = `
     </div>
   </div>
   <div
-    className="sc-bwzfXH eMcUQb"
+    className="sc-bwzfXH iJYcqs"
   >
     <div
       className="MuiPaper-root MuiPaper-elevation1 MuiCard-root MuiPaper-rounded"
@@ -274,12 +273,11 @@ exports[`Profile render when user match 1`] = `
     Object {
       "display": "flex",
       "flexDirection": "row",
-      "marginTop": "50px",
     }
   }
 >
   <div
-    className="sc-bdVaJa rALGF"
+    className="sc-bdVaJa kHPzNS"
   >
     <div
       className="MuiPaper-root MuiPaper-elevation1 MuiCard-root MuiPaper-rounded"
@@ -340,7 +338,7 @@ exports[`Profile render when user match 1`] = `
     </div>
   </div>
   <div
-    className="sc-bwzfXH eMcUQb"
+    className="sc-bwzfXH iJYcqs"
   >
     <div
       className="MuiPaper-root MuiPaper-elevation1 MuiCard-root MuiPaper-rounded"

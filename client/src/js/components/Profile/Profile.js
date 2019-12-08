@@ -61,7 +61,7 @@ export class UserProfile extends Component {
 
 function mapStateToProps(state) {
     return { user : state.user ,
-             products : state.products }    
+             products : state.products }
 }
 
 export default connect(mapStateToProps, { getUserProfile, fetchProducts })(UserProfile);
