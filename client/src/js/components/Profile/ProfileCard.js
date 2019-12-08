@@ -6,7 +6,6 @@ import Rating from '@material-ui/lab/Rating';
 
 const SideBar = styled.div`
   display: flex;
-  padding: 40px 40px;
     > div:first-child {
     margin-right: 30px;
     max-width: 350px;
@@ -14,7 +13,6 @@ const SideBar = styled.div`
 `
 
 const RightSide = styled.div`
-  padding: 40px 40px;
   width: 3000px;
 `
 
@@ -34,7 +32,7 @@ const ProfileCard = props => {
     });
 
     return (
-      <div style={{display: 'flex', flexDirection: 'row', marginTop: '50px'}}>
+      <div style={{display: 'flex', flexDirection: 'row'}}>
       <SideBar>
       <Card>
         <CardMedia>
@@ -53,7 +51,7 @@ const ProfileCard = props => {
           </Button>   
         </CardContent>
       </Card>
-    </SideBar> 
+    </SideBar>
     <RightSide>
       <Card>
         <CardContent>
