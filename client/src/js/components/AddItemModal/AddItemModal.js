@@ -127,11 +127,13 @@ export function AddItemModal (props) {
     }
     setLoadingState(LOADING_STATES.FETCHING)
     const body = { name, description }
-    // const formData = new FormData()
-    // formData.append('name', name)
-    // formData.append('description', description)
-    // files.forEach(file => formData.append(file.name, file))
-    axios.post(`/api/users/${user.id}/items`, body, headers)
+    const formData = new FormData()
+    formData.append('name', name)
+    formData.append('description', description)
+    if(files.length > 0) {
+      formData.append('productImage', files[0])
+    }
+    axios.post(`/api/users/${user.id}/items`, formData, headers)
       .then(res => {
         setLoadingState(LOADING_STATES.SUCCESS)
         setName('')

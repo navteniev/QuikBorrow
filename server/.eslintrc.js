@@ -17,7 +17,8 @@ module.exports = {
   'rules': {
     'valid-jsdoc': 'off',
     'require-jsdoc': 'off',
-    'jsdoc/check-types': 'off'
+    'jsdoc/check-types': 'off',
+    'linebreak-style': 0,
   },
   'plugins': [
     'jsdoc'
