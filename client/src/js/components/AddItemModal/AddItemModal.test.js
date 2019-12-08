@@ -98,7 +98,7 @@ describe('AddItemModal', () => {
 	})
 	it('shows the product page button on submit success', async function() {
 		recreateWrapper(true)
-		const _id = '32qr5etw4gr'
+		const _id = '32qr5etw4gr5dca2c93a2750d0db814427d'
 		axios.post.mockResolvedValueOnce({data: {_id}})
 		wrapper.find(formSelector).simulate('submit')
 		await act(async () => await flushPromises())

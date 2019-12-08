@@ -15,13 +15,11 @@ const GridCard = styled(Card)`
   grid-template-areas:
     "box1 box2"
     "box3 box2";
-  margin-top: 100px;
 `
 
 const GridCardMedia = styled(CardMedia)`
   height: 300px;
   width: 300px;
-  margin: 0 auto;
   grid-area: box1;
 `
 
@@ -42,7 +40,7 @@ const SpaceBetween = styled.div`
 
 export class ProductDetail extends Component {
     componentDidMount() {
-        this.props.fetchProduct(this.props.match.params.productId);
+        this.props.fetchProduct(this.props.match.params.productId)
     }
 
     // Just some initial rendering to make sure it works before styling
@@ -60,7 +58,7 @@ export class ProductDetail extends Component {
 
         return (
             <GridCard>
-                <GridCardMedia image={'https://patch.com/img/cdn/users/1142384/2013/09/raw/77d3e8242e7562885116ebff68689271.jpg'} />
+                <GridCardMedia image={this.props.product.imagePath || 'https://patch.com/img/cdn/users/1142384/2013/09/raw/77d3e8242e7562885116ebff68689271.jpg'} />
                 <GridDiv>
                     <SpaceBetween>
                         <Typography component='h4' variant='h4'>{this.props.product.name}</Typography>
@@ -100,7 +98,7 @@ export class ProductDetail extends Component {
                                 variant="contained" 
                                 size="medium" 
                                 color="primary" 
-                                disabled={this.props.availability ? false : true}>
+                                disabled={this.props.product.availability ? false : true}>
                                 Add to Cart
                             </Button>
                             <Button 
