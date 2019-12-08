@@ -1,7 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ProductList should render ProductList with given Redux state 1`] = `
-
 <div>
   <form
     noValidate={true}
