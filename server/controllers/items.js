@@ -5,9 +5,9 @@ const create = async (req, res, next) => {
   const data = {
     name: req.body.name,
     description: req.body.description,
-    image: req.body.image,
     price: req.body.price,
   };
+
   itemServices.createItem(data)
       .then((item) => {
         console.log('Successfully created item.');

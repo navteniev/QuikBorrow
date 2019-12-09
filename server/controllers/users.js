@@ -1,5 +1,6 @@
 const userServices = require('../services/users');
 const itemServices = require('../services/items');
+const keys = require('../config/keys');
 
 /**
  * @typedef {import('express').RequestHandler} RequestHandler
@@ -62,17 +63,21 @@ const createItem = async (req, res, next) => {
   if (!req.jwtDecoded) {
     return next(new Error('Decoded JWT payload not found'));
   }
-  const {name, description, price} = req.body;
   if (req.jwtDecoded.id !== req.params.userId) {
     return res.status(401).json({
       errors: [{msg: 'Unauthorized (non-matching IDs)'}],
     });
   }
+  const {name, description, price} = req.body;
+  const imagePath = (req.file && req.file.filename) ?
+    (keys.domain || 'http://localhost:8081/uploads/') + req.file.filename : 'none';
   const data = {
     name,
     description,
     price,
     user: req.jwtDecoded.id,
+    imagePath,
+    availability: true,
   };
   itemServices.createItem(data)
       .then((item) => res.json(item))

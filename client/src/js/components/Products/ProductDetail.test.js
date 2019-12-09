@@ -1,7 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import { MemoryRouter } from 'react-router-dom';
-import Enzyme, { shallow } from 'enzyme';
+import Enzyme from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import { ProductDetail } from './ProductDetail';
 import { fetchProduct } from "../../actions/index";
@@ -26,10 +25,11 @@ describe('Product Detail', () => {
 	}
 
 	test('renders', () => {
+		const auth = {
+			user: {}
+		}
 		const component = renderer.create(
-			<MemoryRouter>
-				<ProductDetail product = {param.product} match = {param.match} fetchProduct = {fetchProduct} />
-			</MemoryRouter>
+			<ProductDetail product = {param.product} match = {param.match} fetchProduct = {fetchProduct} auth={auth} />
 		).toJSON();
 		
 		expect(component).toMatchSnapshot();
