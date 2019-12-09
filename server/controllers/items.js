@@ -47,17 +47,6 @@ const search = (req, res, next) => {
 };
 
 /** @type {import('express').RequestHandler} */
-const rent = async (req, res, next) => {
-  itemServices.rentItem(req.params.itemId,
-      req.params.borrowerId, req.params.duration)
-      .then((item) => {
-        console.log(item);
-        res.json(item);
-      })
-      .catch(next);
-};
-
-/** @type {import('express').RequestHandler} */
 const endRent = async (req, res, next) => {
   itemServices.endRent(req.params.itemId)
       .then((item) => res.json(item))
@@ -69,6 +58,5 @@ module.exports = {
   get,
   getAll,
   search,
-  rent,
   endRent,
 };

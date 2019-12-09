@@ -62,7 +62,7 @@ const createItem = async (req, res, next) => {
   if (!req.jwtDecoded) {
     return next(new Error('Decoded JWT payload not found'));
   }
-  const {name, description} = req.body;
+  const {name, description, price} = req.body;
   if (req.jwtDecoded.id !== req.params.userId) {
     return res.status(401).json({
       errors: [{msg: 'Unauthorized (non-matching IDs)'}],
@@ -71,6 +71,7 @@ const createItem = async (req, res, next) => {
   const data = {
     name,
     description,
+    price,
     user: req.jwtDecoded.id,
   };
   itemServices.createItem(data)

@@ -5,7 +5,6 @@ const itemData = {name: 'test',
   user: '5dc4967ed2616e19c8eef654',
   availability: true,
   price: 1,
-  rating: 0,
 };
 const keys = require('../config/keys');
 const MONGODB_OPTIONS = {
