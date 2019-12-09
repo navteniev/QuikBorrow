@@ -7,7 +7,7 @@ import classnames from "classnames";
 import styled from 'styled-components';
 import quikLogo from '../../components/quikLogo.png';
 import { Button, TextField } from "@material-ui/core";
-import { textAlign } from "@material-ui/system";
+import { LOGIN_USER } from '../../actions/types'
 
 const LoginForm = styled.div`
 	margin: 0 auto;
@@ -41,12 +41,12 @@ export class Login extends Component {
 	componentWillReceiveProps(nextProps) {
     	if (nextProps.auth.isAuthenticated) {
       		this.props.history.push("/products"); // push user to dashboard when they login
-    	}
+		}
 		if (nextProps.errors) {
-      		this.setState({
-        		errors: nextProps.errors
-      		});
-    	}
+			this.setState({
+			  errors: nextProps.errors
+			});
+		}
   	}
 	onChange = e => {
 		this.setState({ [e.target.id]: e.target.value });
@@ -132,7 +132,7 @@ Login.propTypes = {
 
 const mapStateToProps = state => ({
   auth: state.auth,
-  errors: state.errors
+  errors: state.errors[LOGIN_USER.ERROR]
 });
 
 export default connect(
