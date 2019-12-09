@@ -23,16 +23,20 @@ exports[`ProductCard should render a ProductCard 1`] = `
         <h6
           className="MuiTypography-root MuiTypography-h6"
         />
-        <span
-          style={
-            Object {
-              "color": "gray",
-            }
-          }
+        <p
+          className="MuiTypography-root MuiTypography-body2"
         >
-          User: 
-          unknown
-        </span>
+          <span
+            style={
+              Object {
+                "color": "#4caf50",
+                "fontWeight": 600,
+              }
+            }
+          >
+            You own this item
+          </span>
+        </p>
       </div>
       <p
         className="sc-bwzfXH qHaOC"

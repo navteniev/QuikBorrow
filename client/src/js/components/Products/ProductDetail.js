@@ -5,6 +5,7 @@ import { Button, Card, CardMedia, Container, Typography } from '@material-ui/cor
 import Rating from '@material-ui/lab/Rating';
 import AddIcon from '@material-ui/icons/Add';
 import styled from 'styled-components';
+import green from '@material-ui/core/colors/green'
 
 const GridCard = styled(Card)`
   display: grid;
@@ -44,7 +45,17 @@ export class ProductDetail extends Component {
 
     // Just some initial rendering to make sure it works before styling
     renderDetail() {
-        console.log(this.props.product.imagePath);
+        const { user, borrower, availability } = this.props.product
+        const { user: loggedInUser } = this.props.auth
+
+        const availabilityText = user === loggedInUser.id
+        ? <span>You own this item</span>
+        : !availability
+          ? <span>Unavailable (currently being lended out)</span>
+          : borrower === loggedInUser.id
+            ? <span style={{ color: green[500] }}>You're currently borrowing this item!</span>
+            : <span>Available</span>
+
         return (
             <GridCard>
                 <GridCardMedia image={this.props.product.imagePath || 'https://patch.com/img/cdn/users/1142384/2013/09/raw/77d3e8242e7562885116ebff68689271.jpg'} />
@@ -79,7 +90,7 @@ export class ProductDetail extends Component {
                                 Availability
                             </span>
                         </Typography>
-                        <Typography>{this.props.product.availability ? 'This item is still in stock. Grab it now!' : 'Unfortunately, this item is no longer in stock. :('}</Typography>
+                        <Typography>{availabilityText}</Typography>
                     </div>
                     <div style={{marginTop: '30px'}}>
                         <SpaceBetween>
@@ -117,7 +128,10 @@ export class ProductDetail extends Component {
 }
 
 function mapStateToProps(state) {
-    return { product : state.product }
+    return {
+        product : state.product,
+        auth: state.auth
+    }
 }
 
 export default connect(mapStateToProps, actions)(ProductDetail);
