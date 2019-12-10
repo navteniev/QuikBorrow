@@ -1,11 +1,37 @@
 const userServices = require('./users');
+const transactionServices = require('./transactions');
 const User = require('../models/User');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 
+jest.mock('./transactions');
 jest.mock('bcryptjs');
 jest.mock('jsonwebtoken');
 jest.mock('../models/User');
+
+/**
+ * Mock instance of a mongo ID. Mongo object IDs can't be compared with strings
+ * with equality operators === if we're operating directly on the queried
+ * documents, so we have to use the equals method on object ID fields
+ */
+class MongoID {
+  /**
+   * @param {string} id - ID to initialize with
+   */
+  constructor(id) {
+    this.id = id;
+  }
+
+  /**
+   * Checks to see if the value is equal to the id
+   *
+   * @param {string} value - Value to compare with
+   * @returns {boolean} - Equality result
+   */
+  equals(value) {
+    return value === this.id;
+  }
+}
 
 describe('Unit::services/users', function() {
   afterEach(function() {
@@ -92,6 +118,32 @@ describe('Unit::services/users', function() {
       bcrypt.hash.mockResolvedValueOnce(hash);
       const result = await userServices.generateHash();
       expect(result).toEqual(hash);
+    });
+  });
+  describe('hasPendingTransaction', function() {
+    it('resolves with true correctly', function() {
+      const pendingTransactions = [
+        {item: new MongoID(123), processed: true},
+        {item: new MongoID(456), processed: true},
+        {item: new MongoID(789), processed: false},
+      ];
+      transactionServices.getTransactions
+          .mockResolvedValueOnce(pendingTransactions);
+      expect(userServices.hasPendingTransaction('', 456))
+          .resolves
+          .toEqual(true);
+    });
+    it('resolves with false correctly', function() {
+      const pendingTransactions = [
+        {item: new MongoID(123), processed: false},
+        {item: new MongoID(111), processed: true},
+        {item: new MongoID(789), processed: true},
+      ];
+      transactionServices.getTransactions
+          .mockResolvedValueOnce(pendingTransactions);
+      expect(userServices.hasPendingTransaction('', 456))
+          .resolves
+          .toEqual(false);
     });
   });
 });

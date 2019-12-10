@@ -56,7 +56,7 @@ const rejectTransaction = async (id) => {
  * Gets Transactions based on
  *
  * @param {string} userId - The id for the user
- * @param {string} type - The type between borrower or lender
+ * @param {('borrower'|'lender')} type - The type between borrower or lender
  * @param {boolean} isProcessed - Processed filter for transactions
  * @returns {MongooseDocument[]} - The retrieved documents
  */
