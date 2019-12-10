@@ -46,5 +46,5 @@ export default function(state = initialState, action) {
    * normally contains
    */
 
-   return { ...state, [stateKey]: action.payload }
+  return { ...state, [stateKey]: action.payload }
 }
