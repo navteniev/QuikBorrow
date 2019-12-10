@@ -119,12 +119,10 @@ const getLendingList = async (userId) => {
 async function hasPendingTransaction(userId, itemId) {
   const allItems = await transactionServices
       .getTransactions(userId, 'borrower', false);
-  console.log('all items', allItems);
   const unprocessedItems = allItems
       .filter((transaction) => {
         return transaction.item.equals(itemId) && !transaction.processed;
       });
-  console.log('unprocessed', unprocessedItems);
   return unprocessedItems.length > 0;
 }
 
