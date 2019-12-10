@@ -3,12 +3,13 @@ const Schema = mongoose.Schema;
 
 const CommentSchema = new Schema({
   user: {
-    type: Schema.Types.ObjectID,
-    ref: 'User',
+    type: String,
+  },
+  id: {
+    type: String,
   },
   product: {
-    type: Schema.Types.ObjectID,
-    ref: 'Item',
+    type: String,
   },
   text: {
     type: String,

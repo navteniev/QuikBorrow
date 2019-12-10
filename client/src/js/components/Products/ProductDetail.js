@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import * as actions from "../../actions";
+import Comment from "../Comments/Comment";
+import CommentList from "../Comments/CommentList";
 import { Button, Card, CardMedia, Container, Typography } from '@material-ui/core';
 import Rating from '@material-ui/lab/Rating';
 import AddIcon from '@material-ui/icons/Add';
@@ -8,7 +10,6 @@ import styled from 'styled-components';
 
 const GridCard = styled(Card)`
   display: grid;
-  height: 100vh;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
   grid-template-areas:
@@ -102,7 +103,8 @@ export class ProductDetail extends Component {
                     </div>
                 </GridDiv>
                 <CommentGrid>
-                    Comments and Reviews section COMING SOON!!!
+                    <Comment prodId = {this.props.match.params.productId} />
+                    <CommentList prodId = {this.props.match.params.productId} />
                 </CommentGrid>
             </GridCard>
         )

@@ -9,6 +9,18 @@ import { fetchProduct } from "../../actions/index";
 Enzyme.configure({ adapter: new Adapter() });
 jest.mock('../../actions/index');
 
+jest.mock("react-redux", () => {
+  return {
+    connect: (mapStateToProps, mapDispatchToProps) => (
+      ReactComponent
+    ) => ReactComponent
+  };
+});
+
+jest.mock('../Comments/CommentList', () => ()=> <div id="mockContainer">
+   mockContainer
+</div>);
+
 describe('Product Detail', () => {
 	const param = {
 		product: {
