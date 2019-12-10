@@ -44,14 +44,4 @@ describe('controller/items', function() {
       expect(response.json).toHaveBeenCalledWith(items);
     });
   });
-  describe('rent', function() {
-    it('returns the items', async function() {
-      const request = {params: {itemId: '2qw3eit8ghj1'}};
-      const response = {json: jest.fn()};
-      const item = {ab: 'ba'};
-      itemServices.rentItem.mockResolvedValueOnce(item);
-      await itemsController.rent(request, response);
-      expect(response.json).toHaveBeenCalledWith(item);
-    });
-  });
 });

@@ -34,7 +34,6 @@ class ProductList extends Component {
   static ITEMS_PER_PAGE = 5;
   state = {
     page: 0,
-    loading: true,
     transactions: []
   }
   
@@ -56,12 +55,11 @@ class ProductList extends Component {
     axios.post('/api/transactions/getTransactions', body, { params })
         .then(res => {
           console.log('res', res.data)
-          this.setState({ loading: false, transactions: res.data })
+          this.setState({transactions: res.data })
         })
         .catch(err => {
           alert('error in getting transactions')
           console.log(err)
-          this.setState({ loading: false })
         })
   }
 
@@ -92,9 +90,6 @@ class ProductList extends Component {
   }
 
   render() {
-    if (this.state.loading) {
-      return <h1>Loading</h1>
-    }
     const { products } = this.props
 
     // Calculate pages

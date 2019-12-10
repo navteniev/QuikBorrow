@@ -1,6 +1,6 @@
 import axios from 'axios';
 import * as actions from './index';
-import { GET_ERRORS, GET_USER_PROFILE } from "./types";
+import { GET_USER, LOGIN_USER, SEARCH_PRODUCTS } from "./types";
 
 jest.mock('axios')
 jest.mock('../utils/setAuthToken')
@@ -34,7 +34,7 @@ describe('actions', () => {
 		  	getMock.mockRejectedValueOnce(mockedError);
 		  	await actions.searchProducts('chair')(dispatch);
 		  	expect(dispatch).toHaveBeenCalledWith({
-		    	type: GET_ERRORS,
+		    	type: SEARCH_PRODUCTS.ERROR,
 		    	payload: mockedError.response.data
 		  	});
 		});
@@ -73,7 +73,7 @@ describe('actions', () => {
 		  	mock.mockRejectedValueOnce(mockedError);
 		  	await actions.loginUser(userData)(dispatch);
 		  	expect(dispatch).toHaveBeenCalledWith({
-		    	type: GET_ERRORS,
+		    	type: LOGIN_USER.ERROR,
 		    	payload: mockedError.response.data
 		  	});
 		});
@@ -91,7 +91,7 @@ describe('actions', () => {
 
 	test('logoutUser', () => {
 		const dispatch = jest.fn();
-		const logoutUser = actions.logoutUser()(dispatch);
+		actions.logoutUser()(dispatch);
 		expect(dispatch).toHaveBeenCalledWith({"payload": {}, "type": "SET_CURRENT_USER"});
 	});
 
@@ -116,7 +116,7 @@ describe('actions', () => {
 				axios.get.mockResolvedValue(resp)
 				await actions.getUserProfile(resp)(dispatch)
 				expect(dispatch).toHaveBeenCalledWith({
-					type: GET_USER_PROFILE,
+					type: GET_USER.FINISHED,
 					payload: resp.data
 					});
 				});
@@ -125,13 +125,13 @@ describe('actions', () => {
 			const dispatch = jest.fn();
 			const mock_error = {
 					data: 'test error',
-					type: GET_ERRORS,
+					type: LOGIN_USER.ERROR,
 		      	}
 			  //axios.get.mockRejectedValue(resp);
 			axios.get.mockRejectedValueOnce(mock_error);
 		  	await actions.getUserProfile(mock_error)(dispatch);
 		  	expect(dispatch).toHaveBeenCalledWith({
-		    	type: GET_ERRORS,
+		    	type: GET_USER.ERROR,
 		    	payload: mock_error
 		  	});
 		});

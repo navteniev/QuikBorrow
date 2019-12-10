@@ -1,13 +1,11 @@
-import { GET_USER_PROFILE, GET_ERRORS } from '../actions/types';
+import { GET_USER } from '../actions/types';
 
 const initState = {};
 
 const userReducer = (state = initState, action) => {
     switch (action.type) {
-      case GET_USER_PROFILE:
+      case GET_USER.FINISHED:
         return action.payload;
-      case GET_ERRORS:
-          return action.payload;
       default:
         return state;
     }

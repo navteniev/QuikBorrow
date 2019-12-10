@@ -5,6 +5,9 @@ import { useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux'
 import { fetchProducts } from "../../actions";
 import axios from 'axios'
+import green from '@material-ui/core/colors/green'
+import grey from '@material-ui/core/colors/grey'
+
 const SpaceBetween = styled.div`
   display: flex;
   justify-content: space-between;
@@ -55,17 +58,17 @@ const FlexCardContent = styled(CardContent)`
 `
 
 const ProductCard = props => {
-  const { isAuthenticated, user } = useSelector(state => state.auth)
-  const { id, name, user: itemOwnerId, description, availability, image } = props;
+  const { isAuthenticated, user: loggedInUser } = useSelector(state => state.auth)
+  const { id, name, user: itemOwnerId, description, availability, imagePath, borrower } = props;
   const history = useHistory()
   const dispatch = useDispatch()
 
   function apiRequest() {
-    if (!isAuthenticated || itemOwnerId === user.id) {
+    if (!isAuthenticated || itemOwnerId === loggedInUser.id) {
       return;
     }
     const body = {
-      borrowerId: user.id,
+      borrowerId: loggedInUser.id,
       lenderId: itemOwnerId,
       itemOwnerId: id
     }
@@ -79,19 +82,27 @@ const ProductCard = props => {
           console.log(err)
         })
   }
+  
+  const availabilityText = itemOwnerId === loggedInUser.id
+    ? <span style={{ color: green[500], fontWeight: 600 }}>You own this item</span>
+    : !availability
+      ? <span style={{ color: grey[500] }}>Currently being lended out</span>
+      : borrower === loggedInUser.id
+        ? <span style={{ color: green[500] }}>You're currently borrowing this item</span>
+        : <span>Available to borrow</span>
 
   return (
     <FlexCard>
-      <FlexCardImage image={image || 'https://patch.com/img/cdn/users/1142384/2013/09/raw/77d3e8242e7562885116ebff68689271.jpg'} title='image' />
+      <FlexCardImage image={imagePath || 'https://patch.com/img/cdn/users/1142384/2013/09/raw/77d3e8242e7562885116ebff68689271.jpg'} title='image' />
       <FlexCardContent>
         <div>
           <SpaceBetween>
             <Typography component='h6' variant='h6'>
               {name}
             </Typography>
-            <span style={{color: 'gray'}}>
-              User: {itemOwnerId || 'unknown'}
-            </span>
+            <Typography variant='body2'>
+              {availabilityText}
+            </Typography>
           </SpaceBetween>
           <TruncatedText>
             {description}
