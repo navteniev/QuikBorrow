@@ -1,6 +1,6 @@
 import axios from "axios";
 import { createComment, getComments } from './comments';
-import { CREATE_COMMENT } from './types';
+import { CREATE_COMMENT, GET_COMMENTS } from './types';
 
 describe('actions/comments', () => {
 	describe('createComment', () => {
@@ -42,6 +42,22 @@ describe('actions/comments', () => {
 		    getMock.mockResolvedValue({ data: {}});
 		    await getComments('someid')(dispatch);
 		    expect(getMock).toHaveBeenCalledWith('/api/comments/someid');
+		});
+
+		test('error dispatched', async () => {
+			let getMock = jest.spyOn(axios, 'get');
+			const dispatch = jest.fn();
+			const mockedError = {
+		    	response: {
+		        	data: 'test error'
+		      	}
+		    }
+		  	getMock.mockRejectedValueOnce(mockedError);
+		  	await getComments('blah')(dispatch);
+		  	expect(dispatch).toHaveBeenCalledWith({
+		    	type: GET_COMMENTS.ERROR,
+		    	payload: mockedError.response.data
+		  	});
 		});
 	});
 });

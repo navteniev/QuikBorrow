@@ -6,10 +6,12 @@ const CommentSchema = new Schema({
     type: String,
   },
   id: {
-    type: String,
+    type: Schema.Types.ObjectID,
+    ref: 'User',
   },
   product: {
-    type: String,
+    type: Schema.Types.ObjectID,
+    ref: 'Item',
   },
   text: {
     type: String,

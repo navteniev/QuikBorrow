@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { createComment } from '../../actions/comments';
-import jwt_decode from "jwt-decode";
 import { Box, Button, TextField } from "@material-ui/core";
 import Rating from '@material-ui/lab/Rating';
 
@@ -31,8 +30,8 @@ export class Comment extends React.Component {
 	{
 		e.preventDefault();
 		const data = {
-			user: jwt_decode(localStorage.jwtToken).name,
-			id: jwt_decode(localStorage.jwtToken).id,
+			user: this.props.name,
+			id: this.props.id,
 			product: this.props.prodId,
 			text: this.state.body,
 			rating: this.state.rating
@@ -74,7 +73,12 @@ export class Comment extends React.Component {
 	}
 }
 
+const mapStateToProps = state => ({
+	name: state.auth.user.name,
+	id: state.auth.user.id
+});
+
 export default connect(
-	null,
+	mapStateToProps,
 	{ createComment }
 )(Comment);

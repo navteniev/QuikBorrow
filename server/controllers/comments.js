@@ -1,11 +1,12 @@
+const mongoose = require('mongoose');
 const commentServices = require('../services/comments');
 
 /** @type {import('express').RequestHandler} */
 const create = async (req, res, next) => {
   const data = {
     user: req.body.user,
-    id: req.body.id,
-    product: req.body.product,
+    id: new mongoose.Types.ObjectId(req.body.id),
+    product: new mongoose.Types.ObjectId(req.body.product),
     text: req.body.text,
     rating: req.body.rating,
   };

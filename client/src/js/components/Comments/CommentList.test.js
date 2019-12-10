@@ -22,13 +22,11 @@ describe('CommentList', () => {
 	}
 
 	test('renderComment', () => {
-		wrapper = shallow(<CommentList getComments = {getComments} comments = {[]} />);
 		const renderComment = shallow(wrapper.instance().renderComment(comment));
 		expect(renderComment.find('#comment')).toHaveLength(1);
 	});
 
-	test('renderComment', () => {
-		wrapper = shallow(<CommentList getComments = {getComments} comments = {[]} />);
+	test('render all comments', () => {
 		const arr = [
 			{
 				user: 'a',

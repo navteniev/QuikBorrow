@@ -28,17 +28,23 @@ export const createComment = (comment) => dispatch => {
 };
 
 /**
- * @typedef {import('redux').Dispatch} DispatchFunction
- */
-
-/**
  *  Get comments associated with product
  *  @param {String} id - object id of product
  *  @returns {DispatchFunction} dispatch - used to dispatch actions
  */
-export const getComments = id => {
-  return async function(dispatch) {
-    const res = await axios.get(`/api/comments/${id}`);
-    dispatch({ type: GET_COMMENTS.FINISHED, payload: res.data });
-  };
+export const getComments = (id) => dispatch => {
+  return axios
+    .get(`/api/comments/${id}`)
+    .then(res => {
+      dispatch({
+        type: GET_COMMENTS.FINISHED,
+        payload: res.data
+      });
+    })
+    .catch(err => {
+      dispatch({
+        type: GET_COMMENTS.ERROR,
+        payload: err.response.data
+      })
+    });
 };
