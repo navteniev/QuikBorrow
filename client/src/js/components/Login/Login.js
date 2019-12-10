@@ -27,8 +27,7 @@ export class Login extends Component {
 		super();
 		this.state = {
 			email: "",
-			password: "",
-			errors: {}
+			password: ""
 		};
 	}
 
@@ -41,11 +40,6 @@ export class Login extends Component {
 	componentWillReceiveProps(nextProps) {
     	if (nextProps.auth.isAuthenticated) {
       		this.props.history.push("/products"); // push user to dashboard when they login
-		}
-		if (nextProps.errors) {
-			this.setState({
-			  errors: nextProps.errors
-			});
 		}
   	}
 	onChange = e => {
@@ -60,8 +54,8 @@ export class Login extends Component {
 		this.props.loginUser(userData);
 	};
 	getErrors = e => {
-		const { errors } = this.state;
-		if (errors.errors === undefined || errors.errors.find(x => x.param === e) === undefined)
+		const { errors } = this.props;
+		if (!errors || errors.errors === undefined || errors.errors.find(x => x.param === e) === undefined)
 		{
 			return "";
 		}
@@ -127,7 +121,7 @@ export class Login extends Component {
 Login.propTypes = {
   loginUser: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
-  errors: PropTypes.object.isRequired
+  errors: PropTypes.object
 };
 
 const mapStateToProps = state => ({

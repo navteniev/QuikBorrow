@@ -25,7 +25,7 @@ export default function(state = initialState, action) {
     return state
   }
 
-  const stateKey = action.type.replace(/_ERROR|_FINISHED/g, '')
+  const stateKey = action.type
 
   /**
    * Remove the error object if this is a _FINISHED action
@@ -45,6 +45,6 @@ export default function(state = initialState, action) {
    * the ridiculous layers of information an Axios error
    * normally contains
    */
-  
+
   return { ...state, [stateKey]: action.payload }
 }
