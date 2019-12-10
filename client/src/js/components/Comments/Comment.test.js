@@ -4,8 +4,6 @@ import Adapter from 'enzyme-adapter-react-16';
 import { Comment } from './Comment';
 import { createComment } from '../../actions/comments';
 
-require('jest-localstorage-mock');
-
 Enzyme.configure({ adapter: new Adapter() });
 jest.mock('../../actions/comments');
 

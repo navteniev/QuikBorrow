@@ -10,7 +10,6 @@ const Comment = require('../models/Comment');
  */
 const createComment = async (data) => {
   const comment = new Comment(data);
-  console.log(comment);
   await comment.save();
   return comment;
 };
