@@ -1,7 +1,6 @@
 import axios from "axios";
 import {
-    REQUEST_BORROW_PRODUCT_FINISHED,
-    GET_ERRORS 
+    REQUEST_BORROW_PRODUCT
 } from './types'
 
 /**
@@ -24,6 +23,6 @@ export const requestBorrowProductFetch = (item, msg) => async (dispatch, getStat
         msg
     }
     return axios.post(`/api/transactions`, body)
-        .then(({ data }) => dispatch({ type: REQUEST_BORROW_PRODUCT_FINISHED, payload: data }))
-        .catch(err => dispatch({ type: GET_ERRORS, payload: err.response.data }))
+        .then(({ data }) => dispatch({ type: REQUEST_BORROW_PRODUCT.FINISHED, payload: data }))
+        .catch(err => dispatch({ type: REQUEST_BORROW_PRODUCT.ERROR, payload: err.response.data }))
 }

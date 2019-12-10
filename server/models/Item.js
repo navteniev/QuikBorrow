@@ -5,6 +5,7 @@ const ItemSchema = new Schema({
   name: {type: String, default: ''},
   description: {type: String, default: ''},
   user: {type: Schema.Types.ObjectId, ref: 'User'},
+  price: {type: Number, default: 5},
   imagePath: {type: String, required: false},
   availability: {type: Boolean, default: true},
   borrower: {type: Schema.Types.ObjectId},

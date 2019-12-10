@@ -10,6 +10,7 @@ import setAuthToken from "./js/utils/setAuthToken";
 import { setCurrentUser, logoutUser } from "./js/actions/index";
 import { Provider } from "react-redux";
 import reducers from "./js/reducers";
+import { BrowserRouter } from "react-router-dom";
 
 const store = createStore(reducers, {}, applyMiddleware(reduxThunk));
 
@@ -34,7 +35,9 @@ if (localStorage.jwtToken) {
 
 ReactDOM.render(
 	<Provider store={store}>
-    	<App />
+		<BrowserRouter>
+    		<App />
+		</BrowserRouter>
 	</Provider>,
   document.getElementById("root")
 );

@@ -68,12 +68,13 @@ const createItem = async (req, res, next) => {
       errors: [{msg: 'Unauthorized (non-matching IDs)'}],
     });
   }
-  const {name, description} = req.body;
+  const {name, description, price} = req.body;
   const imagePath = (req.file && req.file.filename) ?
     (keys.domain || 'http://localhost:8081/uploads/') + req.file.filename : 'none';
   const data = {
     name,
     description,
+    price,
     user: req.jwtDecoded.id,
     imagePath,
     availability: true,
