@@ -46,6 +46,7 @@ router.post('/getTransactions', [
       .custom(transactionMiddleware.expressValidator.validUserType),
   query('isProcessed')
       .custom(transactionMiddleware.expressValidator.validProcessedType),
+  validatorErrors,
 ], transactionController.getTransactions);
 
 module.exports = router;
