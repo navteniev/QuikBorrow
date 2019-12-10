@@ -43,6 +43,11 @@ export function App() {
   const history = useHistory()
   const dispatch = useDispatch()
 
+  /**
+   * The function in useEffect will run whenever history.location.pathname
+   * within the array in the second argument changes, which will dispatch
+   * an action to clear all errors whenever the page changes.
+   */
   useEffect(() => {
     dispatch(clearAllErrors())
   // eslint-disable-next-line react-hooks/exhaustive-deps
