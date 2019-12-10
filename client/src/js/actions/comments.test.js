@@ -1,6 +1,6 @@
 import axios from "axios";
 import { createComment, getComments } from './comments';
-import { GET_ERRORS } from './types';
+import { CREATE_COMMENT } from './types';
 
 describe('actions/comments', () => {
 	describe('createComment', () => {
@@ -29,7 +29,7 @@ describe('actions/comments', () => {
 		  	postMock.mockRejectedValueOnce(mockedError);
 		  	await createComment(comment)(dispatch);
 		  	expect(dispatch).toHaveBeenCalledWith({
-		    	type: GET_ERRORS,
+		    	type: CREATE_COMMENT.ERROR,
 		    	payload: mockedError.response.data
 		  	});
 		});

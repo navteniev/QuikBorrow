@@ -1,5 +1,5 @@
 import axios from "axios";
-import { GET_COMMENTS, GET_ERRORS } from './types';
+import { CREATE_COMMENT, GET_COMMENTS } from './types';
 
 /**
  * @typedef {import('redux').Dispatch} DispatchFunction
@@ -20,10 +20,10 @@ export const createComment = (comment) => dispatch => {
     })
     .catch(err => {
     	console.log(err);
-		dispatch({
-			type: GET_ERRORS,
-			payload: err.response.data
-		})
+  		dispatch({
+  			type: CREATE_COMMENT.ERROR,
+  			payload: err.response.data
+  		})
     });
 };
 
@@ -39,6 +39,6 @@ export const createComment = (comment) => dispatch => {
 export const getComments = id => {
   return async function(dispatch) {
     const res = await axios.get(`/api/comments/${id}`);
-    dispatch({ type: GET_COMMENTS, payload: res.data });
+    dispatch({ type: GET_COMMENTS.FINISHED, payload: res.data });
   };
 };

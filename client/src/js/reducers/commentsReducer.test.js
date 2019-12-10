@@ -14,7 +14,7 @@ describe('Comments reducer', () => {
 			rating: 5
 		}
 		const newState = commentsReducer([], {
-			type: GET_COMMENTS,
+			type: GET_COMMENTS.FINISHED,
 			payload: { ...comment }
 		})
 		expect(newState).toEqual(comment)
