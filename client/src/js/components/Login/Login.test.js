@@ -62,15 +62,4 @@ describe('Login', () => {
 		wrapper.setProps({ auth: { isAuthenticated: true } });
 		expect(historyMock.push.mock.calls[0]).toEqual(['/products']);
 	});
-
-	test('errors', () => {
-		const fakeErr = {
-			errors: [{
-				'param': 'email',
-				'msg' : 'Invalid email'
-			}]
-		}
-		wrapper.setProps({ errors: fakeErr });
-		expect(wrapper.state('errors')).toEqual(fakeErr);
-	});
 });

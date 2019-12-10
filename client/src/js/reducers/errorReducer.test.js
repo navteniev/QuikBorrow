@@ -19,18 +19,15 @@ describe('Error Reducer', () => {
 		const initialStateCopy = { ...initialState }
 		const payload = { foo: 'gosh darnit bobby' }
 		const action = { type: 'a_ERROR', payload }
-		const expectedStateKey = action.type.replace('_ERROR', '')
 		const returned = errorReducer(initialState, action)
-		expect(returned).toEqual({ ...initialState, [expectedStateKey]: action.payload })
+		expect(returned).toEqual({ ...initialState, [action.type]: action.payload })
 		// Assert that the reducer did not illegally mutate state
 		expect(initialState).toEqual(initialStateCopy)
 	})
 
 	it('removes the error from state if finished action', () => {
-		const stateKey = 'randomaction'
-		const actionType = stateKey + '_FINISHED'
-		const action = { type: actionType, payload: 1 }
-		const initialState = { jingle: 'bells', [stateKey]: 1 }
+		const action = { type: 'randomaction_FINISHED', payload: 1 }
+		const initialState = { jingle: 'bells', [action.type]: 1 }
 		const initialStateCopy = { ...initialState }
 		const returned = errorReducer(initialState, action)
 		expect(returned).toEqual({ jingle: 'bells' })
