@@ -5,8 +5,9 @@ const create = async (req, res, next) => {
   const data = {
     name: req.body.name,
     description: req.body.description,
-    image: req.body.image,
+    price: req.body.price,
   };
+
   itemServices.createItem(data)
       .then((item) => {
         console.log('Successfully created item.');
@@ -46,17 +47,6 @@ const search = (req, res, next) => {
 };
 
 /** @type {import('express').RequestHandler} */
-const rent = async (req, res, next) => {
-  itemServices.rentItem(req.params.itemId,
-      req.params.borrowerId, req.params.duration)
-      .then((item) => {
-        console.log(item);
-        res.json(item);
-      })
-      .catch(next);
-};
-
-/** @type {import('express').RequestHandler} */
 const endRent = async (req, res, next) => {
   itemServices.endRent(req.params.itemId)
       .then((item) => res.json(item))
@@ -68,6 +58,5 @@ module.exports = {
   get,
   getAll,
   search,
-  rent,
   endRent,
 };

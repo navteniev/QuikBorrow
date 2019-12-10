@@ -8,7 +8,7 @@ exports[`Product Detail renders 1`] = `
     className="MuiPaper-root MuiPaper-elevation1 MuiCard-root sc-bdVaJa hoCxYm MuiPaper-rounded"
   >
     <div
-      className="MuiCardMedia-root sc-bwzfXH faIglm"
+      className="MuiCardMedia-root sc-bwzfXH fQtfNt"
       style={
         Object {
           "backgroundImage": "url(\\"https://patch.com/img/cdn/users/1142384/2013/09/raw/77d3e8242e7562885116ebff68689271.jpg\\")",
@@ -541,7 +541,9 @@ exports[`Product Detail renders 1`] = `
         <p
           className="MuiTypography-root MuiTypography-body1"
         >
-          Unfortunately, this item is no longer in stock. :(
+          <span>
+            Unavailable (currently being lended out)
+          </span>
         </p>
       </div>
       <div

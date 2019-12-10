@@ -1,6 +1,6 @@
 import {
   FETCH_PRODUCTS,
-  SEARCH
+  SEARCH_PRODUCTS
 } from "../actions/types";
 
 const initState = [];
@@ -9,7 +9,7 @@ const productsReducer = (state = initState, action) => {
   switch (action.type) {
     case FETCH_PRODUCTS:
       return action.payload;
-    case SEARCH:
+    case SEARCH_PRODUCTS.FINISHED:
       return action.payload;
     default:
       return state;

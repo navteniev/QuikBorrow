@@ -7,6 +7,7 @@ import { Button, Card, CardMedia, Container, Typography } from '@material-ui/cor
 import Rating from '@material-ui/lab/Rating';
 import AddIcon from '@material-ui/icons/Add';
 import styled from 'styled-components';
+import green from '@material-ui/core/colors/green'
 
 const GridCard = styled(Card)`
   display: grid;
@@ -15,13 +16,11 @@ const GridCard = styled(Card)`
   grid-template-areas:
     "box1 box2"
     "box3 box2";
-  margin-top: 100px;
 `
 
 const GridCardMedia = styled(CardMedia)`
   height: 300px;
   width: 300px;
-  margin: 0 auto;
   grid-area: box1;
 `
 
@@ -42,14 +41,25 @@ const SpaceBetween = styled.div`
 
 export class ProductDetail extends Component {
     componentDidMount() {
-        this.props.fetchProduct(this.props.match.params.productId);
+        this.props.fetchProduct(this.props.match.params.productId)
     }
 
     // Just some initial rendering to make sure it works before styling
     renderDetail() {
+        const { user, borrower, availability } = this.props.product
+        const { user: loggedInUser } = this.props.auth
+
+        const availabilityText = user === loggedInUser.id
+        ? <span>You own this item</span>
+        : !availability
+          ? <span>Unavailable (currently being lended out)</span>
+          : borrower === loggedInUser.id
+            ? <span style={{ color: green[500] }}>You're currently borrowing this item!</span>
+            : <span>Available</span>
+
         return (
             <GridCard>
-                <GridCardMedia image={'https://patch.com/img/cdn/users/1142384/2013/09/raw/77d3e8242e7562885116ebff68689271.jpg'} />
+                <GridCardMedia image={this.props.product.imagePath || 'https://patch.com/img/cdn/users/1142384/2013/09/raw/77d3e8242e7562885116ebff68689271.jpg'} />
                 <GridDiv>
                     <SpaceBetween>
                         <Typography component='h4' variant='h4'>{this.props.product.name}</Typography>
@@ -81,7 +91,7 @@ export class ProductDetail extends Component {
                                 Availability
                             </span>
                         </Typography>
-                        <Typography>{this.props.product.availability ? 'This item is still in stock. Grab it now!' : 'Unfortunately, this item is no longer in stock. :('}</Typography>
+                        <Typography>{availabilityText}</Typography>
                     </div>
                     <div style={{marginTop: '30px'}}>
                         <SpaceBetween>
@@ -89,7 +99,7 @@ export class ProductDetail extends Component {
                                 variant="contained" 
                                 size="medium" 
                                 color="primary" 
-                                disabled={this.props.availability ? false : true}>
+                                disabled={this.props.product.availability ? false : true}>
                                 Add to Cart
                             </Button>
                             <Button 
@@ -120,7 +130,10 @@ export class ProductDetail extends Component {
 }
 
 function mapStateToProps(state) {
-    return { product : state.product }
+    return {
+        product : state.product,
+        auth: state.auth
+    }
 }
 
 export default connect(mapStateToProps, actions)(ProductDetail);
