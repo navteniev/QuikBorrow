@@ -85,16 +85,16 @@ export class ProductDetail extends Component {
                             <Button 
                                 variant="contained" 
                                 size="medium" 
-                                color="primary" 
-                                disabled={this.props.availability ? false : true}>
-                                Add to Cart
+                                color="primary">
+                                <AddIcon />
+                                Add to Wishlist
                             </Button>
                             <Button 
                                 variant="contained" 
                                 size="medium" 
-                                color="primary">
-                                <AddIcon />
-                                Add to Wishlist
+                                color="primary" 
+                                disabled={this.props.product.availability ? false : true}>
+                                Add to Cart
                             </Button>
                         </SpaceBetween>
                     </div>

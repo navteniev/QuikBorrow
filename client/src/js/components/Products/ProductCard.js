@@ -98,30 +98,15 @@ const ProductCard = props => {
           </TruncatedText>
         </div>
         <SpaceBetween>
-          <ButtonGroup>
-            <Button variant='outlined' onClick={e => history.push(`/products/${id}`)}>
+          {availability
+            ? <div />
+            : <Button variant='outlined'>
+              Get Notified
+            </Button>
+          }
+          <Button variant='outlined' onClick={e => history.push(`/products/${id}`)}>
               Details
             </Button>
-            {availability
-              ? null
-              : <Button variant='outlined'>
-                Get Notified
-              </Button>
-            }
-          </ButtonGroup>
-          {
-            availability && isAuthenticated && user.id !== itemOwnerId
-            ? <Button color='primary' variant='contained'>
-            Request
-          </Button>
-          : <Tooltip title={!availability ? 'Unavailable' : 'You own this item, silly goose!'}>
-              <span>
-                <Button color='primary' disabled variant='outlined'>
-                  Request
-                </Button>
-              </span>
-          </Tooltip>
-          }
           
         </SpaceBetween>
       </FlexCardContent>
