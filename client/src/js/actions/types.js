@@ -3,6 +3,15 @@ export const SET_CURRENT_USER = "SET_CURRENT_USER";
 export const FETCH_PRODUCTS = "fetch_products";
 export const FETCH_PRODUCT = "fetch_product";
 
+export const CREATE_COMMENT = {
+	ERROR: 'CREATE_COMMENT_ERROR'
+}
+
+export const GET_COMMENTS = {
+  FINISHED: 'GET_COMMENTS_FINISHED',
+  ERROR: 'GET_COMMENTS_ERROR'
+}
+
 export const GET_USER = {
     FINISHED: 'GET_USER_FINISHED',
     ERROR: 'GET_USER_ERROR'
