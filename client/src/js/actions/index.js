@@ -1,5 +1,5 @@
 import axios from "axios";
-import { FETCH_PRODUCTS, FETCH_PRODUCT, SEARCH_PRODUCTS, GET_USER } from "./types";
+import { FETCH_PRODUCTS, FETCH_PRODUCT, SEARCH_PRODUCTS } from "./types";
 export * from './products';
 
 // Fetch all products
@@ -41,18 +41,3 @@ export const searchProducts = query =>
           })
         });
   };
-
-export const getUserProfile = userId => {
-  return async function(dispatch) {
-    try {
-    const res = await axios.get(`/api/users/${userId}`);
-    dispatch({ type: GET_USER.FINISHED, payload: res.data });
-  }
-  catch(error) {
-    console.log(error)
-    dispatch({
-      type: GET_USER.ERROR, payload: error
-      });
-    }
-  }
-};

@@ -1,7 +1,7 @@
 import axios from "axios";
 import setAuthToken from "../utils/setAuthToken";
 import jwt_decode from "jwt-decode";
-import { SET_CURRENT_USER, USER_LOADING, REGISTER_USER, LOGIN_USER } from "./types";
+import { SET_CURRENT_USER, USER_LOADING, REGISTER_USER, LOGIN_USER, GET_USER } from "./types";
 
 /**
  * @typedef {import('redux').Dispatch} DispatchFunction
@@ -84,4 +84,24 @@ export const logoutUser = () => dispatch => {
   setAuthToken(false);
   // Set current user to empty object {} which will set isAuthenticated to false
   dispatch(setCurrentUser({}));
+};
+
+/**
+ *	Get user profile
+ *	@param {Object} userId - get profile based on userId
+ *	@returns {DispatchFunction}
+ */
+export const getUserProfile = userId => {
+  return async function(dispatch) {
+    try {
+    const res = await axios.get(`/api/users/${userId}`);
+    dispatch({ type: GET_USER.FINISHED, payload: res.data });
+  }
+  catch(error) {
+    console.log(error)
+    dispatch({
+      type: GET_USER.ERROR, payload: error
+      });
+    }
+  }
 };
