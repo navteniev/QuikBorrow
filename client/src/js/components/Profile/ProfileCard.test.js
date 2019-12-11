@@ -3,8 +3,6 @@ import renderer from 'react-test-renderer';
 import ProfileCard from './ProfileCard';
 import Enzyme, { mount } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-import { isNumber } from 'util';
-
 
 Enzyme.configure({ adapter: new Adapter() });
 
