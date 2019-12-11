@@ -2,7 +2,7 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import Enzyme, { shallow, mount } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-import { MemoryHistory } from 'react-router-dom';
+import { MemoryRouter } from 'react-router-dom';
 import { SignedIn } from './SignedIn';
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store'
@@ -30,9 +30,9 @@ describe('SignedIn', () => {
 
         const component = renderer.create(
                 <Provider store={store}>
-                    <MemoryHistory>
+                    <MemoryRouter>
                         <SignedIn />
-                    </MemoryHistory>
+                    </MemoryRouter>
                 </Provider>
 			);
 		let tree = component.toJSON();
