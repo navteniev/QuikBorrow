@@ -13,19 +13,7 @@ const createStore = configureStore()
 
 describe('SignedIn', () => {
 
-  	// it('Test click event', () => {
-	// 	const mockCallBack = jest.fn();
-	// 	const store = createStore({ auth: { user: {} } })
-
-    // 	const tree = mount(
-	// 		<Provider store={store}>
-	// 		<SignedIn onClick={mockCallBack}/>
-	// 		</Provider>
-	// 		)
-	// 	tree.simulate('click');
-    // 	expect(mockCallBack.mock.calls.length).toEqual(1);
-	//   });
-    it('render SignedIn', () => {
+    it('render SignedIn Page', () => {
         const store = createStore({ auth: { user: {} } })
 
         const component = renderer.create(
@@ -38,5 +26,20 @@ describe('SignedIn', () => {
 		let tree = component.toJSON();
 		expect(tree).toMatchSnapshot();
         });
+
+    // it('Test click event', () => {
+	// 	const mockCallBack = jest.fn();
+	// 	const store = createStore({ auth: { user: {} } })
+
+    // 	const tree = mount(
+	// 		<Provider store={store}>
+    //             <MemoryRouter>
+	// 		        <SignedIn onClick={mockCallBack}/>
+    //             </MemoryRouter>
+	// 		</Provider>
+	// 		)
+	// 	tree.simulate('click');
+    // 	expect(mockCallBack.mock.calls.length).toEqual(1);
+	//   });
 
 });
