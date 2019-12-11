@@ -62,12 +62,19 @@ const rejectTransaction = async (id) => {
  */
 const getTransactions = async (userId, type, isProcessed) => {
   let query;
-  if (type == 'borrower') {
+  if (type === 'borrower') {
     query = {borrower: userId};
-  } else {
+  } else if (type === 'lender') {
     query = {lender: userId};
+  } else {
+    query = {$or: [
+      {borrower: userId},
+      {lender: userId},
+    ]};
   }
-  query['processed'] = isProcessed;
+  if (isProcessed === 'true' || isProcessed === 'false') {
+    query['processed'] = isProcessed;
+  }
   const transactions = await Transaction.find(query);
   return transactions;
 };

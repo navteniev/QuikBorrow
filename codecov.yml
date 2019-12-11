@@ -1,4 +1,8 @@
 coverage:
   status:
-    project: true
+    project:
+      client:
+        flags: client
+      server:
+        flags: server
     patch: false

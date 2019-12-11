@@ -16,15 +16,15 @@ const expressValidator = {
     return true;
   },
   validUserType: (value, {req}) => {
-    if (value !== 'borrower' && value !== 'lender') {
-      throw new Error('User type must be "borrower" or "lender"');
+    if (value && value !== 'borrower' && value !== 'lender') {
+      throw new Error('User type must be "borrower" or "lender" if it exists');
     }
     return true;
   },
   /** @type {ExpressValidator} */
   validProcessedType: (value, {req}) => {
-    if (value !== 'true' && value !== 'false') {
-      throw new Error('Porcessed query must be "true" or "false"');
+    if (value && value !== 'true' && value !== 'false') {
+      throw new Error('Processed query must be "true" or "false" if it exists');
     }
     return true;
   },
