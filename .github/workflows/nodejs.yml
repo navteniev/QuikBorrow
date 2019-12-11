@@ -23,7 +23,7 @@ jobs:
       env:
         CI: true
     - uses: actions/upload-artifact@v1
-      name: Save client coverage artifact
+      name: Save server coverage artifact
       with:
         name: server-coverage
         path: ./server/coverage/lcov.info
