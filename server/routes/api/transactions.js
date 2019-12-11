@@ -14,7 +14,20 @@ const transactionMiddleware = require('../../middleware/transactions');
  * @memberof module:api/transactions
  * @name POST /
  */
-router.post('/', transactionController.create);
+router.post('/', [
+  check('borrowerId')
+      .custom(isObjectId),
+  check('lenderId')
+      .custom(isObjectId),
+  check('itemId')
+      .custom(isObjectId)
+      .bail()
+      .custom(transactionMiddleware.expressValidator.hasNoPendingTransaction),
+  check('msg')
+      .optional()
+      .isString(),
+  validatorErrors,
+], transactionController.create);
 
 /**
  * Approve a transaction
