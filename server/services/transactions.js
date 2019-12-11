@@ -57,17 +57,24 @@ const rejectTransaction = async (id) => {
  *
  * @param {string} userId - The id for the user
  * @param {string} type - The type between borrower or lender
- * @param {boolean} isProcessed - Processed filter for transactions
+ * @param {string} isProcessed - Processed filter for transactions
  * @returns {MongooseDocument[]} - The retrieved documents
  */
 const getTransactions = async (userId, type, isProcessed) => {
   let query;
-  if (type == 'borrower') {
+  if (type === 'borrower') {
     query = {borrower: userId};
-  } else {
+  } else if (type === 'lender') {
     query = {lender: userId};
+  } else {
+    query = {$or: [
+      {borrower: userId},
+      {lender: userId},
+    ]};
   }
-  query['processed'] = isProcessed;
+  if (isProcessed === 'true' || isProcessed === 'false') {
+    query['processed'] = isProcessed;
+  }
   const transactions = await Transaction.find(query);
   return transactions;
 };
