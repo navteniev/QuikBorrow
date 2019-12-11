@@ -4,9 +4,9 @@ const express = require('express');
 const router = new express.Router();
 const transactionController = require('../../controllers/transactions');
 const validatorErrors = require('../../middleware/shared/validatorErrors');
-const {check} = require('express-validator');
+const {check, query} = require('express-validator');
 const isObjectId = require('../../middleware/shared/validators/isObjectId');
-const transactionsMiddleware = require('../../middleware/transactions');
+const transactionMiddleware = require('../../middleware/transactions');
 
 /**
  * Create a transaction
@@ -22,7 +22,7 @@ router.post('/', [
   check('itemId')
       .custom(isObjectId)
       .bail()
-      .custom(transactionsMiddleware.expressValidator.hasNoPendingTransaction),
+      .custom(transactionMiddleware.expressValidator.hasNoPendingTransaction),
   check('msg')
       .optional()
       .isString(),
@@ -52,6 +52,14 @@ router.post('/:transactionId/reject', transactionController.reject);
  * @name POST /getTransactions
  */
 
-router.post('/getTransactions', transactionController.getTransactions);
+router.post('/getTransactions', [
+  check('userId')
+      .custom(isObjectId),
+  query('type')
+      .custom(transactionMiddleware.expressValidator.validUserType),
+  query('isProcessed')
+      .custom(transactionMiddleware.expressValidator.validProcessedType),
+  validatorErrors,
+], transactionController.getTransactions);
 
 module.exports = router;
