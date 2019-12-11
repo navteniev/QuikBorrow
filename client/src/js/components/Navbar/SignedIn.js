@@ -24,6 +24,7 @@ const SignedIn = (props) => {
     return (
         <Toolbar>
             <AddItemModal open={openModal} onClose={e => setOpenModal(false)} />
+            
             <UnstyledLink onClick={e => setOpenModal(true)}>Add Item</UnstyledLink>
             <UnstyledLink to='/products'>Products</UnstyledLink>
             <UnstyledLink to={ '/profile/'+userProfileId}><Avatar src='https://avatars1.githubusercontent.com/u/619960?s=460&v=4'/> </UnstyledLink>
