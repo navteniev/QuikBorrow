@@ -8,6 +8,7 @@ import Rating from '@material-ui/lab/Rating';
 import AddIcon from '@material-ui/icons/Add';
 import styled from 'styled-components';
 import green from '@material-ui/core/colors/green'
+import { REQUEST_BORROW_PRODUCT } from '../../actions/types'
 
 const GridCard = styled(Card)`
   display: grid;
@@ -42,6 +43,10 @@ const SpaceBetween = styled.div`
 export class ProductDetail extends Component {
     componentDidMount() {
         this.props.fetchProduct(this.props.match.params.productId)
+    }
+    
+    requestBorrow() {
+        this.props.requestBorrowProductFetch(this.props.product, 'Borrowed from web')
     }
 
     // Just some initial rendering to make sure it works before styling
@@ -98,16 +103,18 @@ export class ProductDetail extends Component {
                             <Button 
                                 variant="contained" 
                                 size="medium" 
-                                color="primary" 
-                                disabled={this.props.product.availability ? false : true}>
-                                Add to Cart
+                                color="primary">
+                                <AddIcon />
+                                Add to Wishlist
                             </Button>
                             <Button 
                                 variant="contained" 
                                 size="medium" 
-                                color="primary">
-                                <AddIcon />
-                                Add to Wishlist
+                                color="primary"
+                                data-testid='request-btn'
+                                onClick={() => this.requestBorrow()}
+                                disabled={this.props.product.availability ? false : true}>
+                                Request to Borrow
                             </Button>
                         </SpaceBetween>
                     </div>
@@ -132,7 +139,8 @@ export class ProductDetail extends Component {
 function mapStateToProps(state) {
     return {
         product : state.product,
-        auth: state.auth
+        auth: state.auth,
+        error: state.errors[REQUEST_BORROW_PRODUCT.ERROR]
     }
 }
 

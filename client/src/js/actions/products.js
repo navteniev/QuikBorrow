@@ -21,13 +21,17 @@ export const requestBorrowProductFetch = (item, msg) => async (dispatch, getStat
     const state = getState()
     const body = {
         borrowerId: state.auth.user.id,
-        lender: item.user,
+        lenderId: item.user,
         itemId: item._id,
         msg
     }
     return axios.post(`/api/transactions`, body)
-        .then(({ data }) => dispatch({ type: REQUEST_BORROW_PRODUCT.FINISHED, payload: data }))
-        .catch(err => dispatch({ type: REQUEST_BORROW_PRODUCT.ERROR, payload: err.response.data }))
+        .then(({ data }) => {
+            dispatch({ type: REQUEST_BORROW_PRODUCT.FINISHED, payload: data })
+        })
+        .catch(err => {
+            dispatch({ type: REQUEST_BORROW_PRODUCT.ERROR, payload: err.response.data })
+        })
 }
 
 /**

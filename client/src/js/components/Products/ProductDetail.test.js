@@ -1,6 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import Enzyme from 'enzyme';
+import Enzyme, { shallow } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import { ProductDetail } from './ProductDetail';
 import { fetchProduct } from "../../actions/products";
@@ -46,4 +46,25 @@ describe('Product Detail', () => {
 		
 		expect(component).toMatchSnapshot();
 	});
+
+	test('it requests the fetch on button press', () => {
+		const match = {
+			params: {
+				productId: 1
+			}
+		}
+		const product = {}
+		const auth = {user: {}}
+		const requestBorrowProductFetch = jest.fn()
+		const wrapper = shallow(
+			<ProductDetail
+				match={match}
+				product={product}
+				auth={auth}
+				requestBorrowProductFetch={requestBorrowProductFetch}
+				fetchProduct={jest.fn()} />
+		)
+		wrapper.find('*[data-testid="request-btn"]').simulate('click')
+		expect(requestBorrowProductFetch).toHaveBeenCalled()
+	});	
 });
