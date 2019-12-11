@@ -15,7 +15,7 @@ describe('<SignedIn />', () => {
     const userId = '5de9ae93f3321a2d53b485ab';
 
     /** @type {Enzyme.ReactWrapper} */
-    let wrapper
+    let wrapper 
 
     let element
 
