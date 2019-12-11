@@ -25,7 +25,7 @@ describe('Unit://middleware/transactions', function() {
             .hasNoPendingTransaction('', data))
             .rejects
             .toThrowError(new Error('Pending transaction exists'));
-        });
+      });
     });
     describe('validUserType', function() {
       it('returns true for borrower', function() {
