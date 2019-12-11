@@ -1,5 +1,5 @@
-import { requestBorrowProductFetch } from './products'
-import { REQUEST_BORROW_PRODUCT } from './types'
+import { requestBorrowProductFetch, searchProducts, fetchProducts, fetchProduct } from './products'
+import { FETCH_PRODUCTS, FETCH_PRODUCT, SEARCH_PRODUCTS, REQUEST_BORROW_PRODUCT } from './types'
 import axios from 'axios'
 
 jest.mock('axios')
@@ -70,4 +70,68 @@ describe('actions/products', () => {
             expect(dispatch).toHaveBeenCalledWith(expectedAction)
         })
     })
+
+    describe('fetchProducts', () => {
+        let mock;
+        beforeEach(() => {
+            mock = jest.spyOn(axios, 'get');
+        });
+        afterEach(() => {
+            mock.mockRestore();
+        });
+        test('fetchProducts', async () => {
+            const dispatch = jest.fn();
+            mock.mockResolvedValue({ data: {}});
+            await fetchProducts()(dispatch);
+            expect(mock).toHaveBeenCalledWith('/api/items');
+        });
+    });
+
+    describe('fetchProduct', () => {
+        let mock;
+        beforeEach(() => {
+            mock = jest.spyOn(axios, 'get');
+        });
+        afterEach(() => {
+            mock.mockRestore();
+        });
+        test('fetchProducts', async () => {
+            const dispatch = jest.fn();
+            mock.mockResolvedValue({ data: {}});
+            await fetchProduct('someid')(dispatch);
+            expect(mock).toHaveBeenCalledWith('/api/items/someid');
+        });
+    });
+
+    describe('searchProducts', () => {
+        let mock;
+        beforeEach(() => {
+            mock = jest.spyOn(axios, 'post');
+        });
+        afterEach(() => {
+            mock.mockRestore();
+        });
+        test('searchProducts', async () => {
+            let getMock = jest.spyOn(axios, 'get');
+            const dispatch = jest.fn();
+            getMock.mockResolvedValue({ data: {}});
+            await searchProducts('chair')(dispatch);
+            expect(getMock).toHaveBeenCalledWith('/api/items/search', { params: { param: "chair" }});
+        });
+        test('error dispatched', async () => {
+            let getMock = jest.spyOn(axios, 'get');
+            const dispatch = jest.fn();
+            const mockedError = {
+                response: {
+                    data: 'test error'
+                }
+            }
+            getMock.mockRejectedValueOnce(mockedError);
+            await searchProducts('chair')(dispatch);
+            expect(dispatch).toHaveBeenCalledWith({
+                type: SEARCH_PRODUCTS.ERROR,
+                payload: mockedError.response.data
+            });
+        });
+    });
 })

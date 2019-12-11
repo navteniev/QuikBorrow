@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import * as actions from "../../actions";
+import * as actions from "../../actions/products";
 import styled from 'styled-components';
 import ProductCard from "./ProductCard";
 import Search from "../Search/Search";

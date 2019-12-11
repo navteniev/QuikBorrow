@@ -3,10 +3,10 @@ import renderer from 'react-test-renderer';
 import Enzyme from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import { ProductDetail } from './ProductDetail';
-import { fetchProduct } from "../../actions/index";
+import { fetchProduct } from "../../actions/products";
 
 Enzyme.configure({ adapter: new Adapter() });
-jest.mock('../../actions/index');
+jest.mock('../../actions/products');
 
 jest.mock("react-redux", () => {
   return {

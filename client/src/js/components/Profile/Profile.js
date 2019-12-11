@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import ProfileCard from './ProfileCard'
 import { connect } from "react-redux";
-import { fetchProducts } from "../../actions";
+import { fetchProducts } from "../../actions/products";
 import { getUserProfile } from "../../actions/users";
 
 export class UserProfile extends Component {
