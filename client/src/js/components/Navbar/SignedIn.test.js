@@ -39,7 +39,7 @@ describe('SignedIn', () => {
 	// 		</Provider>
 	// 		)
 	// 	tree.simulate('click');
-    // 	expect(mockCallBack.mock.calls.length).toEqual(1);
+    // 	expect(mockCallBack.mock.calls.length).toHaveBeenCalled();
 	//   });
 
 });
