@@ -5,8 +5,8 @@ import PropTypes from "prop-types"
 const Wrapper = styled.div`
   display: flex;
   justify-content: center;
-  width: 100%;
-  padding: 0 30px 50px;
+  width: 90%;
+  padding: 0 65px 50px;
   > div:first-child {
     width: 100%;
     max-width: 1100px
