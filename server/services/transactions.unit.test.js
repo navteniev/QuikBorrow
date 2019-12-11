@@ -62,21 +62,64 @@ describe('services/item', function() {
     });
   });
   describe('getTransactions', function() {
-    it('get transactions by query params', async function() {
+    it('get transactions for borrower and unprocessed', async function() {
       Transaction.findById.mockResolvedValueOnce({'userId': 'xyz'});
       const userId = 'abc123';
       const type = 'borrower';
-      const isProcessed = false;
+      const isProcessed = 'false';
       await transactionServices.getTransactions(userId, type, isProcessed);
       expect(Transaction.find).toHaveBeenCalledWith(
-          {'borrower': userId, 'processed': isProcessed});
+          {[type]: userId, 'processed': isProcessed});
     });
-    it('returns transactions found by the params', async function() {
-      const transaction = new Transaction();
-      const transactions = {transaction, transaction};
-      Transaction.find.mockResolvedValueOnce(transactions);
-      const returned = await transactionServices.getTransactions();
-      expect(returned).toEqual(transactions);
+    it('gets transactions for borrower and processed', async function() {
+      const userId = 'abc123';
+      const type = 'borrower';
+      const isProcessed = 'true';
+      await transactionServices.getTransactions(userId, type, isProcessed);
+      expect(Transaction.find).toHaveBeenCalledWith(
+          {[type]: userId, 'processed': isProcessed});
+    });
+    it('gets transactions for lender and processed', async function() {
+      const userId = 'abc123';
+      const type = 'lender';
+      const isProcessed = 'true';
+      await transactionServices.getTransactions(userId, type, isProcessed);
+      expect(Transaction.find).toHaveBeenCalledWith(
+          {[type]: userId, 'processed': isProcessed});
+    });
+    it('gets transactions for lender and unprocessed', async function() {
+      const userId = 'abc123';
+      const type = 'lender';
+      const isProcessed = 'false';
+      await transactionServices.getTransactions(userId, type, isProcessed);
+      expect(Transaction.find).toHaveBeenCalledWith(
+          {[type]: userId, 'processed': isProcessed});
+    });
+    it('works for both lender/borrower and unprocessed', async function() {
+      const userId = 'abc123';
+      const isProcessed = 'false';
+      await transactionServices.getTransactions(userId, undefined, isProcessed);
+      const expectedQuery = {
+        $or: [
+          {borrower: userId},
+          {lender: userId},
+        ],
+        processed: isProcessed,
+      };
+      expect(Transaction.find).toHaveBeenCalledWith(expectedQuery);
+    });
+    it('works for both lender/borrower and processed', async function() {
+      const userId = 'abc123';
+      const isProcessed = 'true';
+      await transactionServices.getTransactions(userId, undefined, isProcessed);
+      const expectedQuery = {
+        $or: [
+          {borrower: userId},
+          {lender: userId},
+        ],
+        processed: isProcessed,
+      };
+      expect(Transaction.find).toHaveBeenCalledWith(expectedQuery);
     });
   });
 });
