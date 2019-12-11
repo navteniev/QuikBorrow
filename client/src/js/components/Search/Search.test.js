@@ -2,10 +2,10 @@ import React from 'react';
 import Enzyme, { shallow } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import { Search } from './Search';
-import { searchProducts } from "../../actions/index";
+import { searchProducts } from "../../actions/products";
 
 Enzyme.configure({ adapter: new Adapter() });
-jest.mock('../../actions/index');
+jest.mock('../../actions/products');
 
 describe('Search', () => {
 	let wrapper;
