@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { logoutUser } from '../../actions';
+import { logoutUser } from '../../actions/users';
 import { Toolbar, Avatar } from '@material-ui/core';
 import styled from 'styled-components'
 
