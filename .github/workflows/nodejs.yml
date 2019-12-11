@@ -22,12 +22,11 @@ jobs:
         npm run test-server-coverage
       env:
         CI: true
-    - uses: codecov/codecov-action@v1
+    - uses: actions/upload-artifact@v1
+      name: Save client coverage artifact
       with:
-        token: ${{ secrets.CODECOV_TOKEN }} #required
-        flags: server
-        name: codecov-server
-        yml: codecov.yml
+        name: server-coverage
+        path: ./server/coverage/lcov.info
 
   # Testing client
   test-client:
@@ -48,12 +47,45 @@ jobs:
         npm run test-client-coverage
       env:
         CI: true
+    - uses: actions/upload-artifact@v1
+      name: Save client coverage artifact
+      with:
+        name: client-coverage
+        path: ./client/coverage/lcov.info
+
+  # Codecov
+  upload-codecov:
+    needs: [test-client, test-server]
+    runs-on: ubuntu-latest
+    name: Upload to Codecov
+    steps:
+    - uses: actions/checkout@master
+    - uses: actions/download-artifact@v1
+      name: Download client coverage
+      with:
+        name: client-coverage
+    - uses: actions/download-artifact@v1
+      name: Download server coverage
+      with:
+        name: server-coverage
     - uses: codecov/codecov-action@v1
+      name: Upload client coverage
       with:
         token: ${{ secrets.CODECOV_TOKEN }} #required
-        flags: client
-        name: codecov-client
-        yml: codecov.yml
+        file: client-coverage/lcov.info #optional
+        flags: client #optional
+        name: codecov-client #optional
+        yml: ./codecov.yml #optional
+        fail_ci_if_error: true #optional (default = false)
+    - uses: codecov/codecov-action@v1
+      name: Upload server coverage
+      with:
+        token: ${{ secrets.CODECOV_TOKEN }} #required
+        file: server-coverage/lcov.info #optional
+        flags: server #optional
+        name: codecov-server #optional
+        yml: ./codecov.yml #optional
+        fail_ci_if_error: true #optional (default = false)
 
   # Linting server
   lint-server:
