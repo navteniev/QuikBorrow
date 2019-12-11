@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ProductList should render ProductList with given Redux state 1`] = `
+exports[`ProductList renders 1`] = `
 <div>
   <form
     noValidate={true}
@@ -102,6 +102,7 @@ exports[`ProductList should render ProductList with given Redux state 1`] = `
         className="MuiButtonBase-root MuiIconButton-root MuiButtonGroup-grouped MuiButtonGroup-groupedOutlined MuiButtonGroup-groupedOutlined Mui-disabled Mui-disabled"
         disabled={true}
         fullWidth={false}
+        id="prev"
         onBlur={[Function]}
         onClick={[Function]}
         onDragLeave={[Function]}
@@ -163,6 +164,7 @@ exports[`ProductList should render ProductList with given Redux state 1`] = `
         className="MuiButtonBase-root MuiIconButton-root MuiButtonGroup-grouped MuiButtonGroup-groupedOutlined MuiButtonGroup-groupedOutlined"
         disabled={false}
         fullWidth={false}
+        id="next"
         onBlur={[Function]}
         onClick={[Function]}
         onDragLeave={[Function]}
