@@ -27,9 +27,9 @@ class ProfileCard extends Component {
     this.state = {
       _editing: false,
       id : this.props.id, 
-      oriAge: this.props.age,
-      oriCollege: this.props.college,
-      oriBio : this.props.bio,
+      Age: this.props.age,
+      College: this.props.college,
+      Bio : this.props.bio,
       tempAge: '',
       tempCollege: '',
       tempBio: ''
@@ -50,9 +50,9 @@ class ProfileCard extends Component {
   onSubmit = async (e) => {
     e.preventDefault();
     const updateInfo = {
-			oriAge : this.state.tempAge,
-		  oriCollege :this.state.tempCollege,
-      oriBio : this.state.tempBio,
+			Age : this.state.tempAge,
+		  College :this.state.tempCollege,
+      Bio : this.state.tempBio,
   }
     this.setState(updateInfo)
     this.toggle_Editing()
@@ -61,7 +61,8 @@ class ProfileCard extends Component {
       method: 'PATCH',
       headers: {
         Accept: "application/json",
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*"
       },
       body: JSON.stringify(updateInfo)
     })
@@ -100,9 +101,9 @@ class ProfileCard extends Component {
         <CardContent>
           <Typography variant="body2" color="textSecondary" component="p">
             {email} <br/>
-            {this.state.oriCollege} <br/>
-            {this.state.oriAge} years old<br/>
-            {this.state.oriBio}<br></br>
+            {this.state.College} <br/>
+            {this.state.Age} years old<br/>
+            {this.state.Bio}<br></br>
           </Typography>
           <Button align="center" variant="outlined" color="primary" focusVisible onClick={(this.toggle_Editing)}>
                       Edit Profile 
@@ -118,7 +119,7 @@ class ProfileCard extends Component {
                 <form  onSubmit={this.onSubmit}>
                   <TextField
                     onChange={this.onChange}
-                    value={this.state.tempAge || this.state.oriAge}
+                    value={this.state.tempAge || this.state.Age}
                     id="tempAge"
                     label="Age"
                     type="number"
@@ -128,7 +129,7 @@ class ProfileCard extends Component {
 					        <br/>
                   <TextField
                     onChange={this.onChange}
-                    value={this.state.tempCollege || this.state.oriCollege}
+                    value={this.state.tempCollege || this.state.College}
                     id="tempCollege"
                     label="College"
                     type="text"
@@ -138,7 +139,7 @@ class ProfileCard extends Component {
 					        <br/>
                   <TextField
                     onChange={this.onChange}
-                    value={this.state.tempBio || this.state.oriBio}
+                    value={this.state.tempBio || this.state.Bio}
                     id="tempBio"
                     type="text"
                     label="Bio"

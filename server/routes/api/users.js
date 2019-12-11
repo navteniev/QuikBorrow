@@ -70,6 +70,8 @@ router.get('/:userId', [
 router.patch('/:userId', [
   param('userId', 'Invalid UserId')
       .custom(validObjectId),
+  check('name').isLength({min : 3}),
+  check('email').isEmail,
   validatorErrors,
 ], userController.edit);
 

@@ -40,10 +40,19 @@ const get = (req, res, next) => {
 
 /** @type {RequestHandler} */
 const edit = (req, res, next) => {
-  const name = req.body.name;
-  const email = req.body.email;
-  userServices.editUser(req.params.userId, {email: email, name: name})
-      .then((user) => res.json(user))
+  const updatedUser = {
+    name: req.body.name, 
+    email: req.body.email, 
+    rating: req.body.rating,  
+    bio: req.body.bio,  
+    age: req.body.age,  
+    wishlist: req.body.wishlist, 
+  }
+  userServices.editUser(req.params.userId, updatedUser)
+      .then((user) => {
+        console.log(user)
+         res.json(user)
+      })
       .catch(next);
 };
 
