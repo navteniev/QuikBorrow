@@ -15,19 +15,8 @@ describe('userReducer', () => {
         }
         expect(
             userReducer({}, {
-                type: types.GET_USER_PROFILE,
+                type: types.GET_USER.FINISHED,
                 payload: { ...payload }
-            })
-        ).toEqual(payload)
-    })
-    it('it should handle GET_ERROR', () => {
-        const payload = {
-            error: "testt error"
-        }
-        expect(
-            userReducer({}, {
-                type: types.GET_ERRORS,
-                payload: {...payload}
             })
         ).toEqual(payload)
     })

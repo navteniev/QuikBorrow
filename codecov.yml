@@ -1,0 +1,8 @@
+coverage:
+  status:
+    project:
+      client:
+        flags: client
+      server:
+        flags: server
+    patch: false

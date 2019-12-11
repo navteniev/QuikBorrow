@@ -11,7 +11,6 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 
 const SideBar = styled.div`
   display: flex;
-  padding: 40px 40px;
     > div:first-child {
     margin-right: 30px;
     max-width: 350px;
@@ -19,7 +18,6 @@ const SideBar = styled.div`
 `
 
 const RightSide = styled.div`
-  padding: 40px 40px;
   width: 3000px;
 `
 
@@ -77,21 +75,23 @@ class ProfileCard extends Component {
 
   render() {
     const { id, name, age, college , products, bio, wishlist,rating,email} = this.props;
-    const products_li = products.map((items) => {
-      return <li key={items.id}>
-        <h7>{items.name}</h7>
+
+    
+    const products_li = products.map((items, index) => {
+      return <li key={items._id + index}>
+        {items.name}
         </li>
     });
     
-    const wishlist_li = wishlist.map((element) => {
-      return <li key={element.id}>
-        <h7>{element.item}</h7>
+    const wishlist_li = wishlist.map((element, index) => {
+      return <li key={element._id + index}>
+        {element.item}
       </li>
     });
 
 
     return (
-      <div style={{display: 'flex', flexDirection: 'row', marginTop: '50px'}}>
+      <div style={{display: 'flex', flexDirection: 'row'}}>
       <SideBar>
       <Card>
         <CardMedia>
@@ -183,11 +183,11 @@ class ProfileCard extends Component {
             Lending List 
             <br/> 
           </Typography>
-          <Typography variant="body2" color="textSecondary" component="p">
-            {products_li} 
+          <Typography variant="body2" color="textSecondary" component="p" id='products-list'>
+            {products_li}       
             <br/>
           </Typography>
-            <Button variant="outlined" color="primary" focusVisible>
+            <Button variant="outlined" color="primary">
               Edit Lending List
             </Button> 
             <br/>
@@ -196,10 +196,10 @@ class ProfileCard extends Component {
             Wishlist
             <br/>
           </Typography>
-          <Typography variant="body2" color="textSecondary" component="p">
-            {wishlist_li} 
+          <Typography variant="body2" color="textSecondary" component="p" id='wish-list'>
+            {wishlist_li}
             <br/>
-            <Button variant="outlined" color="primary" focusVisible>
+            <Button variant="outlined" color="primary">
               Edit Wishist
             </Button> 
           </Typography>

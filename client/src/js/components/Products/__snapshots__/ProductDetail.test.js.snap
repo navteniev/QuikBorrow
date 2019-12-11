@@ -5,10 +5,10 @@ exports[`Product Detail renders 1`] = `
   className="MuiContainer-root MuiContainer-maxWidthLg"
 >
   <div
-    className="MuiPaper-root MuiPaper-elevation1 MuiCard-root sc-bdVaJa bDLdwW MuiPaper-rounded"
+    className="MuiPaper-root MuiPaper-elevation1 MuiCard-root sc-bdVaJa jFJDry MuiPaper-rounded"
   >
     <div
-      className="MuiCardMedia-root sc-bwzfXH faIglm"
+      className="MuiCardMedia-root sc-bwzfXH fQtfNt"
       style={
         Object {
           "backgroundImage": "url(\\"https://patch.com/img/cdn/users/1142384/2013/09/raw/77d3e8242e7562885116ebff68689271.jpg\\")",
@@ -541,7 +541,9 @@ exports[`Product Detail renders 1`] = `
         <p
           className="MuiTypography-root MuiTypography-body1"
         >
-          Unfortunately, this item is no longer in stock. :(
+          <span>
+            Unavailable (currently being lended out)
+          </span>
         </p>
       </div>
       <div
@@ -617,7 +619,290 @@ exports[`Product Detail renders 1`] = `
     <div
       className="sc-bxivhb gNLXtS"
     >
-      Comments and Reviews section COMING SOON!!!
+      <form
+        noValidate={true}
+        onSubmit={[Function]}
+      >
+        <div
+          className="MuiBox-root MuiBox-root-126"
+        >
+          <div
+            className="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
+          >
+            <label
+              className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined"
+              data-shrink={false}
+              htmlFor="body"
+              id="body-label"
+            >
+              Type a comment
+            </label>
+            <div
+              className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl"
+              onClick={[Function]}
+            >
+              <input
+                aria-invalid={false}
+                autoFocus={false}
+                className="MuiInputBase-input MuiOutlinedInput-input"
+                disabled={false}
+                id="body"
+                onAnimationStart={[Function]}
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                required={false}
+                type="text"
+                value=""
+              />
+              <fieldset
+                aria-hidden={true}
+                className="PrivateNotchedOutline-root-187 MuiOutlinedInput-notchedOutline"
+                style={
+                  Object {
+                    "paddingLeft": 8,
+                  }
+                }
+              >
+                <legend
+                  className="PrivateNotchedOutline-legend-188"
+                  style={
+                    Object {
+                      "width": 0.01,
+                    }
+                  }
+                >
+                  <span
+                    dangerouslySetInnerHTML={
+                      Object {
+                        "__html": "&#8203;",
+                      }
+                    }
+                  />
+                </legend>
+              </fieldset>
+            </div>
+          </div>
+          <span
+            aria-label={null}
+            className="MuiRating-root"
+            id="rating"
+            onMouseLeave={[Function]}
+            onMouseMove={[Function]}
+            role={null}
+          >
+            <label
+              className="MuiRating-label"
+              htmlFor="rating-1"
+            >
+              <span
+                className="MuiRating-icon MuiRating-iconFilled"
+              >
+                <svg
+                  aria-hidden="true"
+                  className="MuiSvgIcon-root MuiSvgIcon-fontSizeInherit"
+                  focusable="false"
+                  role="presentation"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"
+                  />
+                </svg>
+              </span>
+              <span
+                className="MuiRating-visuallyhidden"
+              >
+                1 Star
+              </span>
+            </label>
+            <input
+              checked={false}
+              className="MuiRating-visuallyhidden"
+              id="rating-1"
+              name="rating"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              type="radio"
+              value={1}
+            />
+            <label
+              className="MuiRating-label"
+              htmlFor="rating-2"
+            >
+              <span
+                className="MuiRating-icon MuiRating-iconFilled"
+              >
+                <svg
+                  aria-hidden="true"
+                  className="MuiSvgIcon-root MuiSvgIcon-fontSizeInherit"
+                  focusable="false"
+                  role="presentation"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"
+                  />
+                </svg>
+              </span>
+              <span
+                className="MuiRating-visuallyhidden"
+              >
+                2 Stars
+              </span>
+            </label>
+            <input
+              checked={false}
+              className="MuiRating-visuallyhidden"
+              id="rating-2"
+              name="rating"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              type="radio"
+              value={2}
+            />
+            <label
+              className="MuiRating-label"
+              htmlFor="rating-3"
+            >
+              <span
+                className="MuiRating-icon MuiRating-iconFilled"
+              >
+                <svg
+                  aria-hidden="true"
+                  className="MuiSvgIcon-root MuiSvgIcon-fontSizeInherit"
+                  focusable="false"
+                  role="presentation"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"
+                  />
+                </svg>
+              </span>
+              <span
+                className="MuiRating-visuallyhidden"
+              >
+                3 Stars
+              </span>
+            </label>
+            <input
+              checked={false}
+              className="MuiRating-visuallyhidden"
+              id="rating-3"
+              name="rating"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              type="radio"
+              value={3}
+            />
+            <label
+              className="MuiRating-label"
+              htmlFor="rating-4"
+            >
+              <span
+                className="MuiRating-icon MuiRating-iconFilled"
+              >
+                <svg
+                  aria-hidden="true"
+                  className="MuiSvgIcon-root MuiSvgIcon-fontSizeInherit"
+                  focusable="false"
+                  role="presentation"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"
+                  />
+                </svg>
+              </span>
+              <span
+                className="MuiRating-visuallyhidden"
+              >
+                4 Stars
+              </span>
+            </label>
+            <input
+              checked={false}
+              className="MuiRating-visuallyhidden"
+              id="rating-4"
+              name="rating"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              type="radio"
+              value={4}
+            />
+            <label
+              className="MuiRating-label"
+              htmlFor="rating-5"
+            >
+              <span
+                className="MuiRating-icon MuiRating-iconFilled"
+              >
+                <svg
+                  aria-hidden="true"
+                  className="MuiSvgIcon-root MuiSvgIcon-fontSizeInherit"
+                  focusable="false"
+                  role="presentation"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"
+                  />
+                </svg>
+              </span>
+              <span
+                className="MuiRating-visuallyhidden"
+              >
+                5 Stars
+              </span>
+            </label>
+            <input
+              checked={true}
+              className="MuiRating-visuallyhidden"
+              id="rating-5"
+              name="rating"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              type="radio"
+              value={5}
+            />
+          </span>
+        </div>
+        <button
+          className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary"
+          disabled={false}
+          id="comment"
+          onBlur={[Function]}
+          onDragLeave={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          tabIndex={0}
+          type="submit"
+        >
+          <span
+            className="MuiButton-label"
+          >
+            Comment
+          </span>
+        </button>
+      </form>
+      <div
+        id="mockContainer"
+      >
+        mockContainer
+      </div>
     </div>
   </div>
 </div>

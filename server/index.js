@@ -38,7 +38,9 @@ app.use((req, res, next) => {
 // Routes
 app.use('/api', apiRoutes);
 
+app.use('/uploads', express.static(path.join(__dirname, '/uploads')));
 app.use(express.static('../client/build'));
+
 app.get('*', (req, res) => {
   res.sendFile(path.resolve(__dirname, '../client/build', 'index.html'));
 });
