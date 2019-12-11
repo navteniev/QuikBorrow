@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Link, withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { registerUser } from "../../actions/index";
+import { registerUser } from "../../actions/users";
 import classnames from "classnames";
 import styled from 'styled-components';
 import { Button, TextField } from '@material-ui/core';
