@@ -4,10 +4,10 @@ import { MemoryRouter } from 'react-router-dom';
 import Enzyme, { shallow } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import { Login } from './Login';
-import { loginUser } from "../../actions/index";
+import { loginUser } from "../../actions/users";
 
 Enzyme.configure({ adapter: new Adapter() });
-jest.mock('../../actions/index');
+jest.mock('../../actions/users');
 
 describe('Login', () => {
 	const params = {

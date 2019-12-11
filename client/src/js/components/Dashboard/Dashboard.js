@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { logoutUser } from "../../actions/index";
+import { logoutUser } from "../../actions/users";
 
 export class Dashboard extends Component {
   componentDidMount () {

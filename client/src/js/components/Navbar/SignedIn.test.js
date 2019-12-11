@@ -1,45 +1,33 @@
 import React from 'react';
-import renderer from 'react-test-renderer';
-import Enzyme, { shallow, mount } from 'enzyme';
+import Enzyme, { mount } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-import { MemoryRouter } from 'react-router-dom';
-import { SignedIn } from './SignedIn';
-import { Provider } from 'react-redux';
-import configureStore from 'redux-mock-store'
-
+import { MemoryRouter } from "react-router-dom";
+import {SignedIn} from './SignedIn';
 
 Enzyme.configure({ adapter: new Adapter() });
-const createStore = configureStore()
 
-describe('SignedIn', () => {
+describe('<SignedIn />', () => {
+    const userId = '5de9ae93f3321a2d53b485ab';
 
-    it('render SignedIn Page', () => {
-        const store = createStore({ auth: { user: {} } })
+    /** @type {Enzyme.ReactWrapper} */
+    let wrapper
 
-        const component = renderer.create(
-                <Provider store={store}>
-                    <MemoryRouter>
-                        <SignedIn />
-                    </MemoryRouter>
-                </Provider>
-			);
-		let tree = component.toJSON();
-		expect(tree).toMatchSnapshot();
-        });
+    let element
 
-    // it('Test click event', () => {
-	// 	const mockCallBack = jest.fn();
-	// 	const store = createStore({ auth: { user: {} } })
+    beforeEach(() => {  
+        wrapper = mount(<MemoryRouter><SignedIn logoutUser={jest.fn()} id={userId} /></MemoryRouter>);
+        element = selector => wrapper.find(selector).hostNodes();
+    })
 
-    // 	const tree = mount(
-	// 		<Provider store={store}>
-    //             <MemoryRouter>
-	// 		        <SignedIn onClick={mockCallBack}/>
-    //             </MemoryRouter>
-	// 		</Provider>
-	// 		)
-	// 	tree.simulate('click');
-    // 	expect(mockCallBack.mock.calls.length).toHaveBeenCalled();
-	//   });
+    it('should render', () => {
+		expect(wrapper.html()).toMatchSnapshot();
+    });
 
+    it('should have a products link', () => {
+        expect(element('#products')).toHaveLength(1);
+    });
+
+    it('should have a profile link', () => {
+        expect(element('#profile')).toHaveLength(1);
+    });
 });

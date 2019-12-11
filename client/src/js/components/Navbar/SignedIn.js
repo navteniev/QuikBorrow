@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { logoutUser } from '../../actions';
+import { logoutUser } from '../../actions/users';
 import { Toolbar, Avatar } from '@material-ui/core';
-import styled from 'styled-components'
 import AddItemModal from '../AddItemModal/AddItemModal';
+import styled from 'styled-components';
+import { useHistory } from 'react-router-dom';
 
 const UnstyledLink = styled(Link)`
     color: inherit;
@@ -13,8 +14,11 @@ const UnstyledLink = styled(Link)`
 `
 
 export const SignedIn = (props) => {
+    const history = useHistory();
+
     const onClick = e => {
         e.preventDefault();
+        history.push('/login');
         props.logoutUser();
     };
     const userProfileId = props.id 
@@ -26,9 +30,9 @@ export const SignedIn = (props) => {
             <AddItemModal open={openModal} onClose={e => setOpenModal(false)} />
             
             <UnstyledLink to='#' onClick={e => setOpenModal(true)}>Add Item</UnstyledLink>
-            <UnstyledLink to='/products'>Products</UnstyledLink>
-            <UnstyledLink to={ '/profile/'+userProfileId}><Avatar src='https://avatars1.githubusercontent.com/u/619960?s=460&v=4'/> </UnstyledLink>
-            <UnstyledLink to='#' onClick={onClick}>Sign Out</UnstyledLink>
+            <UnstyledLink id='products' to='/products'>Products</UnstyledLink>
+            <UnstyledLink id='profile' to={ '/profile/'+userProfileId}><Avatar src='https://avatars1.githubusercontent.com/u/619960?s=460&v=4'/> </UnstyledLink>
+            <UnstyledLink id='sign-out' to='#' onClick={onClick}>Sign Out</UnstyledLink>
         </Toolbar>
     )
 }

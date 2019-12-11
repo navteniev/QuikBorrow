@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<SignedOut /> should render 1`] = `
+<div
+  className="MuiToolbar-root MuiToolbar-regular MuiToolbar-gutters"
+>
+  <a
+    className="sc-bdVaJa keFmjn"
+    href="/login"
+    id="login"
+    onClick={[Function]}
+  >
+    Login
+  </a>
+  <a
+    className="sc-bdVaJa keFmjn"
+    href="/register"
+    id="register"
+    onClick={[Function]}
+  >
+    Register
+  </a>
+</div>
+`;
