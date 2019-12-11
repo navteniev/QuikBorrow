@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import * as actions from "../../actions";
+import * as actions from "../../actions/products";
 import Comment from "../Comments/Comment";
 import CommentList from "../Comments/CommentList";
 import { Button, Card, CardMedia, Container, Typography } from '@material-ui/core';

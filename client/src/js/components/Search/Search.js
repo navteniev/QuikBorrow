@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { searchProducts } from '../../actions';
+import { searchProducts } from '../../actions/products';
 import { Box, Button, TextField } from "@material-ui/core";
 import SearchIcon from '@material-ui/icons/Search';
 

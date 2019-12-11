@@ -1,5 +1,8 @@
 import axios from "axios";
 import {
+    FETCH_PRODUCTS,
+    FETCH_PRODUCT,
+    SEARCH_PRODUCTS,
     REQUEST_BORROW_PRODUCT
 } from './types'
 
@@ -26,3 +29,52 @@ export const requestBorrowProductFetch = (item, msg) => async (dispatch, getStat
         .then(({ data }) => dispatch({ type: REQUEST_BORROW_PRODUCT.FINISHED, payload: data }))
         .catch(err => dispatch({ type: REQUEST_BORROW_PRODUCT.ERROR, payload: err.response.data }))
 }
+
+/**
+ * Fetch all products
+ * @returns {DispatchFunction}
+ */
+export const fetchProducts = () => {
+  return async function(dispatch) {
+    const res = await axios.get("/api/items");
+    dispatch({ type: FETCH_PRODUCTS, payload: res.data });
+  };
+};
+
+/**
+ * Get one product
+ * 
+ * @param {Object} itemId - The id of the item to retrieve
+ * @returns {DispatchFunction}
+ */
+export const fetchProduct = itemId => {
+  return async function(dispatch) {
+    const res = await axios.get(`/api/items/${itemId}`);
+    dispatch({ type: FETCH_PRODUCT, payload: res.data });
+  };
+};
+
+/**
+ *  Search by query for items in database by calling {@link Action} to backend
+ *  @param {String} query - query string to search
+ *  @returns {Function} dispatch - used to dispatch actions
+ */
+export const searchProducts = query => 
+  /**
+   *  @param {Function} dispatch - used to dispatch actions
+   *  @returns {Promise<Object>} - response from an {@link Action}
+   */
+  dispatch => {
+    return axios
+        .get("/api/items/search", { params: { param: query} })
+        .then(res => {
+          dispatch({ type: SEARCH_PRODUCTS.FINISHED, payload: res.data });
+        })
+        .catch(err => {
+          dispatch({
+            type: SEARCH_PRODUCTS.ERROR,
+            payload: err.response.data
+          })
+        });
+  };
+

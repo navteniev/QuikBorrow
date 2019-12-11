@@ -7,7 +7,6 @@ import { isNumber } from 'util';
 
 
 Enzyme.configure({ adapter: new Adapter() });
-jest.mock('../../actions/index');
 
 describe('ProfileCard', () => {
 
