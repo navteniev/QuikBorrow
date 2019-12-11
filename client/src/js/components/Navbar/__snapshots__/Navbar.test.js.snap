@@ -58,6 +58,7 @@ exports[`Navbar should render a navbar with SignedIn links 1`] = `
       <a
         className="sc-bwzfXH jeMjYc"
         href="/login"
+        id="login"
         onClick={[Function]}
       >
         Login
@@ -65,6 +66,7 @@ exports[`Navbar should render a navbar with SignedIn links 1`] = `
       <a
         className="sc-bwzfXH jeMjYc"
         href="/register"
+        id="register"
         onClick={[Function]}
       >
         Register
@@ -135,6 +137,7 @@ exports[`Navbar should render a navbar with SignedOut links 1`] = `
       <a
         className="sc-bwzfXH jeMjYc"
         href="/login"
+        id="login"
         onClick={[Function]}
       >
         Login
@@ -142,6 +145,7 @@ exports[`Navbar should render a navbar with SignedOut links 1`] = `
       <a
         className="sc-bwzfXH jeMjYc"
         href="/register"
+        id="register"
         onClick={[Function]}
       >
         Register
