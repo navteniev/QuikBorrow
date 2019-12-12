@@ -7,6 +7,7 @@ import classnames from "classnames";
 import styled from 'styled-components';
 import { Button, TextField } from '@material-ui/core';
 import quikLogo from '../../components/quikLogo.png';
+import { REGISTER_USER } from '../../actions/types'
 
 const LoginForm = styled.div`
 	margin: 0 auto;
@@ -164,7 +165,7 @@ Register.propTypes = {
 
 const mapStateToProps = state => ({
   auth: state.auth,
-  errors: state.errors
+  errors: state.errors[REGISTER_USER.ERROR]
 });
 
 export default connect(
