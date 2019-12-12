@@ -51,4 +51,14 @@ router.get('/:itemId/endrent', [
   validatorErrors,
 ], itemController.endRent);
 
+/**
+ * Updates rating of an item
+ * @memberof module:api/items
+ * @name GET /:itemId/updateRating
+ */
+router.get('/:itemId/updateRating', [
+  param('itemId').isAlphanumeric(),
+	validatorErrors,
+], itemController.updateRating);
+
 module.exports = router;
