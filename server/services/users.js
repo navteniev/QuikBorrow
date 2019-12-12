@@ -4,6 +4,7 @@ const jwt = require('jsonwebtoken');
 const User = require('../models/User');
 const mongoose = require('mongoose');
 const Item = require('../models/Item');
+const transactionServices = require('./transactions');
 const JWT_OPTIONS = {
   expiresIn: 31556926,
 };
@@ -115,6 +116,23 @@ const getLendingList = async (userId) => {
   return lendingList;
 };
 
+/**
+ * Check if a user has a pending transaction for a particular item
+ *
+ * @param {string} userId - The user's ID
+ * @param {string} itemId - The item ID
+ * @returns {boolean} - Whether there are pending transactions
+ */
+async function hasPendingTransaction(userId, itemId) {
+  const allItems = await transactionServices
+      .getTransactions(userId, 'borrower', false);
+  const unprocessedItems = allItems
+      .filter((transaction) => {
+        return transaction.item.equals(itemId) && !transaction.processed;
+      });
+  return unprocessedItems.length > 0;
+}
+
 module.exports = {
   getJwtToken,
   createUser,
@@ -124,4 +142,5 @@ module.exports = {
   editUser,
   getLendingList,
   verifyJwtToken,
+  hasPendingTransaction,
 };

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import * as actions from "../../actions";
+import * as actions from "../../actions/products";
 import styled from 'styled-components';
 import ProductCard from "./ProductCard";
 import Search from "../Search/Search";
@@ -29,7 +29,7 @@ const ListTop = styled.div`
   margin-top: 1.5em;
 `
 
-class ProductList extends Component {
+export class ProductList extends Component {
   static ITEMS_PER_PAGE = 5;
   state = {
     page: 0
@@ -95,13 +95,13 @@ class ProductList extends Component {
             {products ? products.length : 0} Products
           </Typography>
           <ButtonGroup>
-            <IconButton onClick={e => this.prevPage()} disabled={this.state.page <= 0}>
+            <IconButton id="prev" onClick={e => this.prevPage()} disabled={this.state.page <= 0}>
               <ArrowBack />
             </IconButton>
             <Button disabled variant='text'>
               {this.state.page + 1}/{pages.length}
             </Button>
-            <IconButton onClick={e => this.nextPage()} disabled={this.state.page === pages.length - 1}>
+            <IconButton id="next" onClick={e => this.nextPage()} disabled={this.state.page === pages.length - 1}>
               <ArrowForward />
             </IconButton>
           </ButtonGroup>

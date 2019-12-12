@@ -12,8 +12,8 @@ const UnstyledLink = styled(Link)`
 const SignedOut = () => {
     return (
         <Toolbar>
-            <UnstyledLink to='/login'>Login</UnstyledLink>
-            <UnstyledLink to='/register'>Register</UnstyledLink>
+            <UnstyledLink id='login' to='/login'>Login</UnstyledLink>
+            <UnstyledLink id='register' to='/register'>Register</UnstyledLink>
         </Toolbar>
     )
 }
