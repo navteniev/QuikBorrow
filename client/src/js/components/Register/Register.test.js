@@ -64,7 +64,7 @@ describe('Register', () => {
 		expect(wrapper.instance().props.registerUser).toHaveBeenCalled()
 	});
 
-	test('redirect to dashboard if authenticated', () => {
+	test('redirect to products if authenticated', () => {
 		const isAuth = {
 			isAuthenticated: true,
 			user: {},
@@ -72,7 +72,7 @@ describe('Register', () => {
 		}
 		const historyMock = { push: jest.fn() };
 		wrapper = shallow(<Register registerUser = {params.registerUser} auth = {isAuth} errors = {params.errors} history = {historyMock} />);
-		expect(historyMock.push.mock.calls[0]).toEqual(['/dashboard']);
+		expect(historyMock.push.mock.calls[0]).toEqual(['/products']);
 	});
 
 	test('errors', () => {
