@@ -68,11 +68,16 @@ const endRent = async (id) => {
 
 /**
  * @param {string} id - Item ID
+ * @param {number} rating - The new rating
  * @returns {MongooseDocument} - The item with the modified rating
  */
 const updateRating = async (id, rating) => {
-	const item = Item.findOneAndUpdate({'_id': id}, { '$set': {'rating': parseInt(rating) }}).exec();
-	return item;
+  const item = await Item.findOneAndUpdate(
+      {'_id': id},
+      {'$set': {'rating': rating}},
+      {useFindAndModify: false},
+  );
+  return item;
 };
 
 module.exports = {
@@ -83,5 +88,5 @@ module.exports = {
   searchItems,
   rentItem,
   endRent,
-	updateRating,
+  updateRating,
 };

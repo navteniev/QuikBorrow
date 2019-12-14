@@ -91,13 +91,16 @@ describe('services/item', function() {
       expect(returned).toEqual(updatedItem);
     });
   });
-  describe('updateRating', async function() {
+  describe('updateRating', function() {
     it('finds the item by id', async function() {
       const id = 'abc123';
-			const ratingData = 4;
-      Item.findOneAndUpdate.mockResolvedValueOnce({'exec': jest.fn()});
-      await itemServices.updateRating(id, ratingData);
-      expect(Item.findOneAndUpdate).toHaveBeenCalledWith({'_id': id}, { $set: {'rating': ratingData }});
+      const ratingData = 4;
+      Item.findOneAndUpdate.mockResolvedValueOnce({
+        'id': id,
+        'rating': ratingData,
+      });
+      const returned = await itemServices.updateRating(id, ratingData);
+      expect(returned).toEqual({'id': id, 'rating': ratingData});
     });
   });
 });

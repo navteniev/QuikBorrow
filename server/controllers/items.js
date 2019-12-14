@@ -55,8 +55,8 @@ const endRent = async (req, res, next) => {
 
 /** @type {import('express').RequestHandler} */
 const updateRating = async (req, res, next) => {
-  itemServices.updateRating(req.params.itemId, req.body.rating)
-	    .then((item) => res.json(item))
+  itemServices.updateRating(req.params.itemId, req.params.rating)
+      .then((item) => res.json(item))
       .catch(next);
 };
 

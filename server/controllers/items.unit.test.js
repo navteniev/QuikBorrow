@@ -44,7 +44,7 @@ describe('controller/items', function() {
       expect(response.json).toHaveBeenCalledWith(items);
     });
   });
-	describe('updateRating', function() {
+  describe('updateRating', function() {
     it('update rating for items', async function() {
       const request = {params: {itemId: '2qw3eit8ghj1', rating: 4}};
       const response = {json: jest.fn()};
