@@ -7,16 +7,32 @@ describe('productsReducer', () => {
     })
 
     it('should handle FETCH_PRODUCTS', () => {
-	const payload = {
-	    availability: true,
-	    description: "test description",
-	    name: "test name",
-	    user: "5dbcedbc2f01110000da8ac8",
-	    _id: "5dbcedae1c9d4400009df4a5" 
+    	const payload = {
+    	    availability: true,
+    	    description: "test description",
+    	    name: "test name",
+    	    user: "5dbcedbc2f01110000da8ac8",
+    	    _id: "5dbcedae1c9d4400009df4a5" 
         }
         expect(
             productsReducer([], {
                 type: types.FETCH_PRODUCTS,
+                payload: [{ ...payload }]
+            })
+        ).toEqual([payload])
+    })
+
+    it('should handle SEARCH_PRODUCTS', () => {
+        const payload = {
+            availability: true,
+            description: "test description",
+            name: "test name",
+            user: "5dbcedbc2f01110000da8ac8",
+            _id: "5dbcedae1c9d4400009df4a5" 
+        }
+        expect(
+            productsReducer([], {
+                type: types.SEARCH_PRODUCTS.FINISHED,
                 payload: [{ ...payload }]
             })
         ).toEqual([payload])

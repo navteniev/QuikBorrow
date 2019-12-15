@@ -7,6 +7,7 @@ import classnames from "classnames";
 import styled from 'styled-components';
 import { Button, TextField } from '@material-ui/core';
 import quikLogo from '../../components/quikLogo.png';
+import { REGISTER_USER } from '../../actions/types'
 
 const LoginForm = styled.div`
 	margin: 0 auto;
@@ -20,7 +21,11 @@ const LoginForm = styled.div`
 const Center = styled.div`
 	text-align: center;
 `
-  
+
+/**
+ *	Register component that contains UI for user registration
+ *	@component
+ */
 export class Register extends Component {
 	constructor() {
 		super();
@@ -33,13 +38,19 @@ export class Register extends Component {
 		};
 	}
 
+	/** 
+	 *	Redirect to products page if already authenticated
+	 */
 	componentDidMount() {
-		// If logged in and user navigates to Register page, should redirect them to dashboard
 		if (this.props.auth.isAuthenticated) {
-		  this.props.history.push("/dashboard");
+		  this.props.history.push("/products");
 		}
 	}
 
+	/** 
+	 *	Update errors upon receiving updated props
+	 *	@param {Object} nextProps - props object that changed
+	 */
 	componentWillReceiveProps(nextProps) {
     	if (nextProps.errors) {
       		this.setState({
@@ -47,9 +58,19 @@ export class Register extends Component {
       		});
     	}
   	}
+
+  	/** 
+	 *	Change state value to input based on event e
+	 *	@param {event} e - input event that changes text field
+	 */
 	onChange = e => {
 		this.setState({ [e.target.id]: e.target.value });
 	};
+
+	/** 
+	 *	Call loginUser action when submit event e is triggered
+	 *	@param {event} e - submit event that submits form
+	 */
 	onSubmit = e => {
 		e.preventDefault();
 		const newUser = {
@@ -60,6 +81,12 @@ export class Register extends Component {
 		};
 		this.props.registerUser(newUser, this.props.history); 
 	};
+
+	/** 
+	 *	Get specific error denotes by string from errors prop
+	 *	@param {String} e - type of error
+	 *	@returns {String} - error message associated with error e
+	 */
 	getErrors = e => {
 		const { errors } = this.state;
 		if(errors.errors === undefined || errors.errors.find(x => x.param === e) === undefined)
@@ -71,6 +98,7 @@ export class Register extends Component {
 			return errors.errors.find(x => x.param === e).msg;
 		}
 	};
+
 	render() {
 		
 		return (
@@ -164,7 +192,7 @@ Register.propTypes = {
 
 const mapStateToProps = state => ({
   auth: state.auth,
-  errors: state.errors
+  errors: state.errors[REGISTER_USER.ERROR]
 });
 
 export default connect(

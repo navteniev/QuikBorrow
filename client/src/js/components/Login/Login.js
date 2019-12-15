@@ -22,6 +22,10 @@ const Center = styled.div`
 	text-align: center;
 `
 
+/**
+ *	Login component that contains UI for user authentication
+ *	@component
+ */
 export class Login extends Component {
 	constructor() {
 		super();
@@ -31,20 +35,37 @@ export class Login extends Component {
 		};
 	}
 
+	/** 
+	 *	Redirect to products page if already authenticated
+	 */
 	componentDidMount() {
-		// If logged in and user navigates to Login page, should redirect them to dashboard
 		if (this.props.auth.isAuthenticated) {
 		  this.props.history.push("/products");
 		}
 	}
+
+	/** 
+	 *	Redirect to products page if logged in
+	 *	@param {Object} nextProps - props object that changed
+	 */
 	componentWillReceiveProps(nextProps) {
     	if (nextProps.auth.isAuthenticated) {
-      		this.props.history.push("/products"); // push user to dashboard when they login
+      		this.props.history.push("/products");
 		}
   	}
+
+  	/** 
+	 *	Change state value to input based on event e
+	 *	@param {event} e - input event that changes text field
+	 */
 	onChange = e => {
 		this.setState({ [e.target.id]: e.target.value });
 	};
+
+	/** 
+	 *	Call loginUser action when submit event e is triggered
+	 *	@param {event} e - submit event that submits form
+	 */
 	onSubmit = e => {
 		e.preventDefault();
 		const userData = {
@@ -53,6 +74,12 @@ export class Login extends Component {
 		};
 		this.props.loginUser(userData);
 	};
+
+	/** 
+	 *	Get specific error denotes by string from errors prop
+	 *	@param {String} e - type of error
+	 *	@returns {String} - error message associated with error e
+	 */
 	getErrors = e => {
 		const { errors } = this.props;
 		if (!errors || errors.errors === undefined || errors.errors.find(x => x.param === e) === undefined)
@@ -64,6 +91,7 @@ export class Login extends Component {
 			return errors.errors.find(x => x.param === e).msg;
 		}
 	};
+
 	render() {
 		return (
 			<div>
