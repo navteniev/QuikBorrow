@@ -1,19 +1,23 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import { UserProfile } from './Profile';
+import { Profile } from './Profile';
 
 describe('Profile', () => {
     const user = {_id:'111'}
     const match = { params: { profileId: 'foo' } }
+    const auth = {user: {id: '001'}};
     
     test('render when user match', () => {
         let component = renderer.create(
-            <UserProfile 
+            <Profile 
             getUserProfile={() => {}}
             fetchProducts={() => {}}
+            fetchTransactions={() => {}}
             match = {match}
             user = {user}
             products = {[]}
+            transactions = {[]}
+            auth = {auth}
             />);
 		let tree = component.toJSON();
 		expect(tree).toMatchSnapshot();
@@ -21,12 +25,15 @@ describe('Profile', () => {
 
     test('render when user does not exist', () => {
         let component = renderer.create(
-            <UserProfile 
+            <Profile 
             getUserProfile={() => {}}
             fetchProducts={() => {}}
+            fetchTransactions={() => {}}
             match = {match}
             user = {0}
             products = {[]}
+            transactions = {[]}
+            auth = {auth}
             />);
 		let tree = component.toJSON();
 		expect(tree).toMatchSnapshot();
@@ -38,12 +45,15 @@ describe('Profile', () => {
             {user:'341234', item:'table'}
         ];
         let component = renderer.create(
-            <UserProfile 
+            <Profile 
             getUserProfile={() => {}}
             fetchProducts={() => {}}
+            fetchTransactions={() => {}}
             match = {match}
             user = {user}
             products = {products}
+            transactions = {[]}
+            auth = {auth}
             />);
         let tree = component.toJSON();
 		expect(tree).toMatchSnapshot();

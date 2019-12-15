@@ -3,7 +3,8 @@ import {
     FETCH_PRODUCTS,
     FETCH_PRODUCT,
     SEARCH_PRODUCTS,
-    REQUEST_BORROW_PRODUCT
+    REQUEST_BORROW_PRODUCT,
+    FETCH_TRANSACTIONS
 } from './types'
 
 /**
@@ -77,4 +78,20 @@ export const searchProducts = query =>
           })
         });
   };
+
+  /**
+ * Get all current user transactions
+ * 
+ * @param {Object} id - The user id
+ * @returns {Function} dispatch - used to dispatch actions
+ */
+
+ export const fetchTransactions = (id) => async dispatch => {
+    return axios.post('/api/transactions/getTransactions', {userId : id})
+        .then(res => dispatch({ type: FETCH_TRANSACTIONS.FINISHED, payload: res.data }))
+        .catch(err => {
+            console.log(err.response.data)
+            dispatch({ type: FETCH_TRANSACTIONS.ERROR, payload: err.response.data })
+        })
+ }
 
