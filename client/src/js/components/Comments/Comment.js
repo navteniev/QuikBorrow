@@ -4,6 +4,10 @@ import { createComment } from '../../actions/comments';
 import { Box, Button, TextField } from "@material-ui/core";
 import Rating from '@material-ui/lab/Rating';
 
+/**
+ *	Comment component that allows user to create comment to save to MongoDB collection
+ *	@component
+ */
 export class Comment extends React.Component {
 	constructor()
 	{

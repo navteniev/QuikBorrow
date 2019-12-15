@@ -3,6 +3,8 @@ coverage:
     project:
       client:
         flags: client
+        threshold: 2
       server:
         flags: server
+        threshold: 2
     patch: false

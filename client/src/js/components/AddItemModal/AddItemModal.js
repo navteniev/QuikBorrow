@@ -76,6 +76,7 @@ export function AddItemModal (props) {
   const [ maxDays, setMaxDays ] = useState(1)
   const [ name, setName ] = useState('')
   const [ description, setDescription ] = useState('')
+  const [ price, setPrice ] = useState(0)
   const [ loadingState, setLoadingState ] = useState(LOADING_STATES.WAITING) // 0=waiting, 1=fetching, 2=success, 3=error
   const [ error, setError ] = useState();
   const [ createdItem, setCreatedItem ] = useState()
@@ -130,6 +131,7 @@ export function AddItemModal (props) {
     const formData = new FormData()
     formData.append('name', name)
     formData.append('description', description)
+    formData.append('price', price)
     if(files.length > 0) {
       formData.append('productImage', files[0])
     }
@@ -200,6 +202,18 @@ export function AddItemModal (props) {
         </Typography>
         <form id='form-add-item' onSubmit={sendRequest}>
           <TextField
+            required
+            fullWidth
+            disabled={loadingState === LOADING_STATES.FETCHING}
+            inputProps={{ 'data-testid': 'input-name' }}
+            label='Item Name'
+            margin='normal'
+            InputLabelProps={{ shrink: true }}
+            value={name}
+            onChange={e => setName(e.target.value)}
+          />
+          <FormHelperText>You gotta have an item name, at the very least!</FormHelperText>
+          <TextField
             select
             required
             fullWidth
@@ -219,14 +233,17 @@ export function AddItemModal (props) {
             required
             fullWidth
             disabled={loadingState === LOADING_STATES.FETCHING}
-            inputProps={{ 'data-testid': 'input-name' }}
-            label='Item Name'
+            inputProps={{ 'data-testid': 'input-price' }}
+            label='Price'
+            type='number'
             margin='normal'
             InputLabelProps={{ shrink: true }}
-            value={name}
-            onChange={e => setName(e.target.value)}
+            value={price}
+            onChange={e => setPrice(e.target.value)}
           />
-          <FormHelperText>You gotta have an item name, at the very least!</FormHelperText>
+          <FormHelperText>
+            Set a price!
+          </FormHelperText>
           <TextField
             multiline
             required

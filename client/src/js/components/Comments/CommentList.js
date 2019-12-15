@@ -7,6 +7,10 @@ import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import Rating from '@material-ui/lab/Rating';
 import dateFormat from 'dateformat';
 
+/**
+ *	CommentList component that displays all comments associated with a product
+ *	@component
+ */
 export class CommentList extends React.Component {
 	constructor()
 	{
