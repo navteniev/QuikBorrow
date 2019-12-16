@@ -255,6 +255,13 @@ exports[`Profile render mylist 1`] = `
             </span>
           </button>
         </p>
+        <h2
+          className="MuiTypography-root MuiTypography-h4 MuiTypography-gutterBottom"
+        >
+          Transactions
+          <br />
+        </h2>
+        <div />
       </div>
     </div>
   </div>
@@ -522,6 +529,13 @@ exports[`Profile render when user match 1`] = `
             </span>
           </button>
         </p>
+        <h2
+          className="MuiTypography-root MuiTypography-h4 MuiTypography-gutterBottom"
+        >
+          Transactions
+          <br />
+        </h2>
+        <div />
       </div>
     </div>
   </div>

@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import ProfileCard from './ProfileCard'
 import { connect } from "react-redux";
-import { fetchProducts } from "../../actions/products";
+import { fetchProducts, fetchTransactions } from "../../actions/products";
 import { getUserProfile } from "../../actions/users";
 
-export class UserProfile extends Component {
+export class Profile extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -24,6 +24,8 @@ export class UserProfile extends Component {
     componentDidMount(){
         this.props.getUserProfile(this.props.match.params.profileId) // getting userProfile based on Id
         this.props.fetchProducts()
+        console.log(this.props.auth.user.id)
+        this.props.fetchTransactions(this.props.auth.user.id)
     }
 
     render() {
@@ -53,6 +55,7 @@ export class UserProfile extends Component {
             wishlist={wishlist}
             rating={rating}
             email={email}
+            transactions={this.props.transactions}
             />
                 )
         }
@@ -62,7 +65,9 @@ export class UserProfile extends Component {
 
 function mapStateToProps(state) {
     return { user : state.user ,
-             products : state.products }
+             products : state.products,
+             transactions: state.transactions,
+             auth: state.auth, }
 }
 
-export default connect(mapStateToProps, { getUserProfile, fetchProducts })(UserProfile);
+export default connect(mapStateToProps, { getUserProfile, fetchProducts, fetchTransactions })(Profile);

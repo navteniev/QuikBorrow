@@ -1,5 +1,5 @@
-import { requestBorrowProductFetch, searchProducts, fetchProducts, fetchProduct } from './products'
-import { FETCH_PRODUCTS, FETCH_PRODUCT, SEARCH_PRODUCTS, REQUEST_BORROW_PRODUCT } from './types'
+import { requestBorrowProductFetch, searchProducts, fetchProducts, fetchProduct, fetchTransactions } from './products'
+import { FETCH_PRODUCTS, FETCH_PRODUCT, SEARCH_PRODUCTS, REQUEST_BORROW_PRODUCT, FETCH_TRANSACTIONS } from './types'
 import axios from 'axios'
 
 jest.mock('axios')
@@ -132,6 +132,41 @@ describe('actions/products', () => {
                 type: SEARCH_PRODUCTS.ERROR,
                 payload: mockedError.response.data
             });
+        });
+    });
+
+    describe('fetch transactions', () => {
+        let mock;
+        let id = 'abc123';
+
+        beforeEach(() => {
+            mock = jest.spyOn(axios, 'post');
+        });
+        afterEach(() => {
+            mock.mockRestore();
+        });
+
+        it('should fetch a user\'s transactions', async () => {
+            const dispatch = jest.fn();
+            mock.mockResolvedValue(id);
+            await fetchTransactions(id)(dispatch);
+            expect(mock).toHaveBeenCalledWith('/api/transactions/getTransactions', {userId : id});
+        });
+
+        it('should dispatch error', async () => {
+            const dispatch = jest.fn();
+            const mockedError = {
+                response: {
+                    data: 'failed to get transactions',
+                }
+            };
+
+            mock.mockRejectedValueOnce(mockedError);
+            await fetchTransactions('stuff')(dispatch);
+            expect(dispatch).toHaveBeenCalledWith({
+		    	type: FETCH_TRANSACTIONS.ERROR,
+		    	payload: mockedError.response.data
+		  	});
         });
     });
 })

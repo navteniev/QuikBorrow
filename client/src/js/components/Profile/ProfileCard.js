@@ -1,6 +1,10 @@
 import React from "react";
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 import { Card, CardContent, CardMedia, Typography, Box, Button } from '@material-ui/core';
+import { ListItem, ListItemAvatar, Avatar, ListItemText } from '@material-ui/core';
+import CheckIcon from '@material-ui/icons/Check';
+import CancelIcon from '@material-ui/icons/Cancel';
 import Rating from '@material-ui/lab/Rating';
 
 
@@ -16,8 +20,18 @@ const RightSide = styled.div`
   width: 3000px;
 `
 
+const FlexDiv = styled.div`
+  display: flex;
+  justify-content: space-between;
+`
+
+const UnstyledLink = styled(Link)`
+    color: inherit;
+    text-decoration: inherit;
+`
+
 const ProfileCard = props => {
-    const { name, age, college , products, bio, wishlist, rating, email} = props;
+    const { name, age, college , products, bio, wishlist, rating, email, transactions } = props;
 
     const products_li = products.map((items, index) => {
       return <li key={items._id + index}>
@@ -29,6 +43,28 @@ const ProfileCard = props => {
       return <li key={element._id + index}>
         {element.item}
       </li>
+    });
+
+    const transactions_li = transactions.map(transaction => {
+      return  (
+        <FlexDiv>
+          <UnstyledLink to={`/products/${transaction.item}`}>
+            <ListItem>
+              <ListItemAvatar>
+                <Avatar>
+                </Avatar>
+              </ListItemAvatar>
+              <ListItemText
+                primary={transaction.item}
+              />
+            </ListItem>
+          </UnstyledLink>
+          <FlexDiv>
+            <CheckIcon />
+            <CancelIcon />
+          </FlexDiv>
+        </FlexDiv>
+      );
     });
 
     return (
@@ -90,6 +126,14 @@ const ProfileCard = props => {
               Edit Wishist
             </Button> 
           </Typography>
+          <Typography gutterBottom variant="h4" component="h2">
+            Transactions
+            <br/>
+            
+          </Typography>
+          <div>
+            {transactions_li}
+          </div>
           </CardContent>
         </Card>
       </RightSide>

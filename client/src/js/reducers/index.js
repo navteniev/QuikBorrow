@@ -5,6 +5,7 @@ import authReducer from "./authReducer";
 import errorReducer from "./errorReducer";
 import userReducer from "./userReducer";
 import commentsReducer from "./commentsReducer";
+import transactionsReducer from './transactionsReducer';
 
 export default combineReducers({
   products: productsReducer,
@@ -12,5 +13,6 @@ export default combineReducers({
   auth: authReducer,
   errors: errorReducer,
   user: userReducer,
-  comments: commentsReducer
+  comments: commentsReducer,
+  transactions: transactionsReducer,
 });
