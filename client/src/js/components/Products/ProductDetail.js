@@ -12,7 +12,7 @@ import green from '@material-ui/core/colors/green'
 const GridCard = styled(Card)`
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
+  grid-template-rows: auto auto 1fr 1fr;
   grid-template-areas:
     "box1 box2"
     "box3 box2";
@@ -32,6 +32,7 @@ const GridDiv = styled.div`
 
 const CommentGrid = styled.div`
   grid-area: box3;
+  margin: 10%;
 `
 
 const SpaceBetween = styled.div`

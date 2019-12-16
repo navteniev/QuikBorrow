@@ -5,7 +5,7 @@ exports[`Product Detail renders 1`] = `
   className="MuiContainer-root MuiContainer-maxWidthLg"
 >
   <div
-    className="MuiPaper-root MuiPaper-elevation1 MuiCard-root sc-bdVaJa jFJDry MuiPaper-rounded"
+    className="MuiPaper-root MuiPaper-elevation1 MuiCard-root sc-bdVaJa gdIaes MuiPaper-rounded"
   >
     <div
       className="MuiCardMedia-root sc-bwzfXH fQtfNt"
@@ -617,12 +617,15 @@ exports[`Product Detail renders 1`] = `
       </div>
     </div>
     <div
-      className="sc-bxivhb gNLXtS"
+      className="sc-bxivhb gMxyjI"
     >
       <form
         noValidate={true}
         onSubmit={[Function]}
       >
+        <span>
+          
+        </span>
         <div
           className="MuiBox-root MuiBox-root-126"
         >
