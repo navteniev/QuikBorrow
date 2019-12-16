@@ -47,7 +47,7 @@ router.get('/:itemId', [
  * @name GET /:itemId/endrent
  */
 router.get('/:itemId/endrent', [
-  param('itemId').isAlphanumeric(),
+  param('itemId').custom(isObjectId),
   validatorErrors,
 ], itemController.endRent);
 
@@ -58,7 +58,7 @@ router.get('/:itemId/endrent', [
  * @name GET /:itemId/updateRating/:rating/
  */
 router.get('/:itemId/updateRating/:rating/', [
-  param('itemId').isAlphanumeric(),
+  param('itemId').custom(isObjectId),
   validatorErrors,
 ], itemController.updateRating);
 

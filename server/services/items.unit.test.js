@@ -96,11 +96,11 @@ describe('services/item', function() {
       const id = 'abc123';
       const ratingData = 4;
       Item.findOneAndUpdate.mockResolvedValueOnce({
-        'id': id,
+        id,
         'rating': ratingData,
       });
       const returned = await itemServices.updateRating(id, ratingData);
-      expect(returned).toEqual({'id': id, 'rating': ratingData});
+      expect(returned).toEqual({id, 'rating': ratingData});
     });
   });
 });
