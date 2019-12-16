@@ -22,7 +22,7 @@ describe('actions/products', () => {
             const message = 'GIT BOI'
             const expectedBody = {
                 borrowerId: state.auth.user.id,
-                lender: item.user,
+                lenderId: item.user,
                 itemId: item._id,
                 msg: message
             }

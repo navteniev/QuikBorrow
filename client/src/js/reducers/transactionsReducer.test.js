@@ -20,6 +20,6 @@ describe('transactionsReducer', () => {
                 type: types.FETCH_TRANSACTIONS.FINISHED,
                 payload: [{ ...payload }]
             })
-        ).toEqual([payload]);
+        ).toEqual({fetching: false, data: [payload]});
     })
 })
