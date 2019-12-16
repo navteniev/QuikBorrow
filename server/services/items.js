@@ -66,6 +66,20 @@ const endRent = async (id) => {
   return updated;
 };
 
+/**
+ * @param {string} id - Item ID
+ * @param {number} rating - The new rating
+ * @returns {MongooseDocument} - The item with the modified rating
+ */
+const updateRating = async (id, rating) => {
+  const item = await Item.findOneAndUpdate(
+      {'_id': id},
+      {'$set': {'rating': rating}},
+      {useFindAndModify: false},
+  );
+  return item;
+};
+
 module.exports = {
   createItem,
   deleteItem,
@@ -74,4 +88,5 @@ module.exports = {
   searchItems,
   rentItem,
   endRent,
+  updateRating,
 };

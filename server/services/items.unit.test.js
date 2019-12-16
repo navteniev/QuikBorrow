@@ -91,4 +91,16 @@ describe('services/item', function() {
       expect(returned).toEqual(updatedItem);
     });
   });
+  describe('updateRating', function() {
+    it('finds the item by id', async function() {
+      const id = 'abc123';
+      const ratingData = 4;
+      Item.findOneAndUpdate.mockResolvedValueOnce({
+        id,
+        'rating': ratingData,
+      });
+      const returned = await itemServices.updateRating(id, ratingData);
+      expect(returned).toEqual({id, 'rating': ratingData});
+    });
+  });
 });
