@@ -81,13 +81,12 @@ describe('Product Detail', () => {
 				productId: 1
 			}
 		}
-		const requestBorrowProductFetch = jest.fn()
 		const wrapper = shallow(
 			<ProductDetail
 				match={match}
 				product={{}}
 				auth={{user: {id: 1}}}
-				requestBorrowProductFetch={requestBorrowProductFetch}
+				requestBorrowProductFetch={jest.fn()}
 				fetchingTransactions={true}
 				transactionsData={[]}
 				fetchTransactions={jest.fn()}
@@ -104,13 +103,12 @@ describe('Product Detail', () => {
 				productId: 1
 			}
 		}
-		const requestBorrowProductFetch = jest.fn()
 		const wrapper = shallow(
 			<ProductDetail
 				match={match}
 				product={{}}
 				auth={{user: {}}}
-				requestBorrowProductFetch={requestBorrowProductFetch}
+				requestBorrowProductFetch={jest.fn()}
 				fetchingTransactions={true}
 				transactionsData={[]}
 				fetchTransactions={jest.fn()}
@@ -118,4 +116,51 @@ describe('Product Detail', () => {
 		)
 		expect(wrapper.state('fetchingTransactions')).toEqual(false)
 	});
+
+	test('hasPendingTransaction returns correctly', () => {
+		const match = {
+			params: {
+				productId: 1
+			}
+		}
+		const userId = 'w34etgr'
+		const itemId = '2q3etw4'
+		const transactions = [{
+			borrower: userId,
+			item: itemId,
+			processed: false
+		}]
+		const auth = {
+			user: {
+				id: userId
+			}
+		}
+		const product = {
+			_id: itemId
+		}
+		const wrapper = shallow(
+			<ProductDetail
+				match={match}
+				product={product}
+				auth={auth}
+				requestBorrowProductFetch={jest.fn()}
+				fetchingTransactions={true}
+				transactionsData={transactions}
+				fetchTransactions={jest.fn()}
+				fetchProduct={jest.fn()} />
+		)
+		const pendingTransaction = () => wrapper.instance().hasPendingTransaction()
+		const toLoopOver = [ transactions[0], auth.user, product ]
+		// Make sure each individual modified key that doesn't match the original returns false
+		for (const object of toLoopOver) {
+			for (const key in object) {
+				const originalValue = object[key]
+				object[key] = typeof originalValue === 'boolean' ? !object[key] : object[key] + 1
+				expect(pendingTransaction()).toEqual(false)
+				object[key] = originalValue
+				expect(pendingTransaction()).toEqual(true)
+			}
+		}
+	})
+
 });

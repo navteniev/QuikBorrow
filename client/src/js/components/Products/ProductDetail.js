@@ -71,7 +71,7 @@ export class ProductDetail extends Component {
         const { _id: productId } = product
         const { id: thisUserId } = auth.user
         for (const transaction of transactionsData) {
-            const { borrower, item, processed } = transaction
+            const { borrower, item, processed } = transaction   
             const matchesItem = item === productId
             const iAmBorrower = borrower === thisUserId
             if (matchesItem && iAmBorrower && !processed) {

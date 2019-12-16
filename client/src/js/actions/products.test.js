@@ -153,6 +153,15 @@ describe('actions/products', () => {
             expect(mock).toHaveBeenCalledWith('/api/transactions/getTransactions', {userId : id});
         });
 
+        it('dispatches FETCH_TRANSACTIONS.FETCHING', async () => {
+            const dispatch = jest.fn()
+            mock.mockResolvedValueOnce({})
+            await fetchTransactions()(dispatch);
+            expect(dispatch).toHaveBeenCalledWith({
+                type: FETCH_TRANSACTIONS.FETCHING
+            })
+        })
+
         it('should dispatch error', async () => {
             const dispatch = jest.fn();
             const mockedError = {
