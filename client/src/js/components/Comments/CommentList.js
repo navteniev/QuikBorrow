@@ -7,6 +7,10 @@ import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import Rating from '@material-ui/lab/Rating';
 import dateFormat from 'dateformat';
 
+/**
+ *	CommentList component that displays all comments associated with a product
+ *	@component
+ */
 export class CommentList extends React.Component {
 	constructor()
 	{
@@ -37,9 +41,9 @@ export class CommentList extends React.Component {
 		const { comments } = this.props;
 		return(
 			<div>
-				<ul>
+				<ul style={{padding: 0}}>
 					{comments.reverse().map(comment => 
-						<Box p={2} key='key'>
+						<Box p={2} key='key' pl={0}>
 							<div style={{display: 'flex', alignItems: 'center' }}>
 								<AccountCircleIcon fontSize="large" />
 								<Link to={{ pathname: `/profile/${comment.id}`}}><Typography variant="h5">{comment.user}</Typography></Link>

@@ -4,13 +4,18 @@ import { createComment } from '../../actions/comments';
 import { Box, Button, TextField } from "@material-ui/core";
 import Rating from '@material-ui/lab/Rating';
 
+/**
+ *	Comment component that allows user to create comment to save to MongoDB collection
+ *	@component
+ */
 export class Comment extends React.Component {
 	constructor()
 	{
 		super();
 		this.state = {
 			body: "",
-			rating: 5
+			rating: 5,
+			error: ""
 		};
 	}
 	/** 
@@ -29,20 +34,28 @@ export class Comment extends React.Component {
 	onSubmit = e =>
 	{
 		e.preventDefault();
-		const data = {
-			user: this.props.name,
-			id: this.props.id,
-			product: this.props.prodId,
-			text: this.state.body,
-			rating: this.state.rating
+		if(this.props.auth.isAuthenticated)
+		{
+			const data = {
+				user: this.props.auth.user.name,
+				id: this.props.auth.user.id,
+				product: this.props.prodId,
+				text: this.state.body,
+				rating: this.state.rating
+			}
+			this.props.createComment(data);	
+			window.location.reload(false);	
 		}
-		this.props.createComment(data);	
-		window.location.reload(false);	
+		else
+		{
+			this.setState({ error: "You must be logged in to comment."})
+		}
 	}
 	render()
 	{
 		return(
 			<form noValidate onSubmit={this.onSubmit}>
+				<span>{this.state.error}</span>
 				<Box display="flex">
 					<TextField
 						onChange={this.onChange}
@@ -74,8 +87,7 @@ export class Comment extends React.Component {
 }
 
 const mapStateToProps = state => ({
-	name: state.auth.user.name,
-	id: state.auth.user.id
+	auth: state.auth
 });
 
 export default connect(

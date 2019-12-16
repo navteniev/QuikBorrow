@@ -41,6 +41,7 @@
   },
   "homepage": "https://github.com/CSC59939/QuickBorrow#readme",
   "dependencies": {
+    "@material-ui/icons": "^4.5.1",
     "@material-ui/lab": "^4.0.0-alpha.32"
   }
 }

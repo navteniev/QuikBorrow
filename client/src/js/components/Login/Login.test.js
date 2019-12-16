@@ -51,7 +51,7 @@ describe('Login', () => {
 		expect(wrapper.instance().props.loginUser).toHaveBeenCalled()
 	});
 
-	test('redirect to dashboard if authenticated', () => {
+	test('redirect to products if authenticated', () => {
 		const isAuth = {
 			isAuthenticated: true,
 			user: {},

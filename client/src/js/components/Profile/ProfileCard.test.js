@@ -3,8 +3,6 @@ import renderer from 'react-test-renderer';
 import ProfileCard from './ProfileCard';
 import Enzyme, { mount } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-import { isNumber } from 'util';
-
 
 Enzyme.configure({ adapter: new Adapter() });
 
@@ -14,6 +12,7 @@ describe('ProfileCard', () => {
         <ProfileCard
         products ={[]}
         wishlist = {[]}
+        transactions = {[]}
         />);
     
     it('render list', () =>{
@@ -26,6 +25,7 @@ describe('ProfileCard', () => {
         <ProfileCard
         products ={[]}
         wishlist = {[]}
+        transactions = {[]}
         />);
 		let tree = component.toJSON();
 		expect(tree).toMatchSnapshot();
