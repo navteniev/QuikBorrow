@@ -66,7 +66,7 @@ export class Profile extends Component {
 function mapStateToProps(state) {
     return { user : state.user ,
              products : state.products,
-             transactions: state.transactions,
+             transactions: state.transactions.data,
              auth: state.auth, }
 }
 

@@ -41,7 +41,12 @@ describe('Product Detail', () => {
 			user: {}
 		}
 		const component = renderer.create(
-			<ProductDetail product = {param.product} match = {param.match} fetchProduct = {fetchProduct} auth={auth} />
+			<ProductDetail
+				product={param.product}
+				match={param.match}
+				fetchProduct={fetchProduct}
+				auth={auth}
+				transactionsData={[]} />
 		).toJSON();
 		
 		expect(component).toMatchSnapshot();
@@ -62,9 +67,55 @@ describe('Product Detail', () => {
 				product={product}
 				auth={auth}
 				requestBorrowProductFetch={requestBorrowProductFetch}
+				transactionsData={[]}
+				fetchingTransactions={false}
 				fetchProduct={jest.fn()} />
 		)
 		wrapper.find('*[data-testid="request-btn"]').simulate('click')
 		expect(requestBorrowProductFetch).toHaveBeenCalled()
-	});	
+	});
+
+	test('sets state fetchingTransactions correctly for not logged in user', () => {
+		const match = {
+			params: {
+				productId: 1
+			}
+		}
+		const requestBorrowProductFetch = jest.fn()
+		const wrapper = shallow(
+			<ProductDetail
+				match={match}
+				product={{}}
+				auth={{user: {id: 1}}}
+				requestBorrowProductFetch={requestBorrowProductFetch}
+				fetchingTransactions={true}
+				transactionsData={[]}
+				fetchTransactions={jest.fn()}
+				fetchProduct={jest.fn()} />
+		)
+		expect(wrapper.state('fetchingTransactions')).toEqual(true)
+		wrapper.setProps({ fetchingTransactions: false })
+		expect(wrapper.state('fetchingTransactions')).toEqual(false)
+	});
+
+	test('sets state fetchingTransactions correctly for logged in user', () => {
+		const match = {
+			params: {
+				productId: 1
+			}
+		}
+		const requestBorrowProductFetch = jest.fn()
+		const wrapper = shallow(
+			<ProductDetail
+				match={match}
+				product={{}}
+				auth={{user: {}}}
+				requestBorrowProductFetch={requestBorrowProductFetch}
+				fetchingTransactions={true}
+				transactionsData={[]}
+				fetchTransactions={jest.fn()}
+				fetchProduct={jest.fn()} />
+		)
+		expect(wrapper.state('fetchingTransactions')).toEqual(false)
+	});
 });

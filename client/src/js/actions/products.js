@@ -96,6 +96,7 @@ export const searchProducts = query =>
    *  @returns {Promise<Object>} - response from an {@link Action}
    */
   dispatch => {
+    dispatch({ type: FETCH_TRANSACTIONS.FETCHING })
     return axios.post('/api/transactions/getTransactions', {userId : id})
         .then(res => dispatch({ type: FETCH_TRANSACTIONS.FINISHED, payload: res.data }))
         .catch(err => dispatch({ type: FETCH_TRANSACTIONS.ERROR, payload: err.response.data }))

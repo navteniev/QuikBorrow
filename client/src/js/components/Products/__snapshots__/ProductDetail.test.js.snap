@@ -589,6 +589,9 @@ exports[`Product Detail renders 1`] = `
               </svg>
               Add to Wishlist
             </span>
+            <span
+              className="MuiTouchRipple-root"
+            />
           </button>
           <button
             className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary Mui-disabled Mui-disabled"
@@ -901,6 +904,9 @@ exports[`Product Detail renders 1`] = `
           >
             Comment
           </span>
+          <span
+            className="MuiTouchRipple-root"
+          />
         </button>
       </form>
       <div
