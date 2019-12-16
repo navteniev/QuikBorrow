@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { createComment } from '../../actions/comments';
+import { createComment, getComments } from '../../actions/comments';
+import { updateRating } from '../../actions/products';
 import { Box, Button, TextField } from "@material-ui/core";
 import Rating from '@material-ui/lab/Rating';
 
@@ -17,6 +18,15 @@ export class Comment extends React.Component {
 			rating: 5,
 			error: ""
 		};
+	}
+
+	getRatings(comments)
+	{
+		let total = 0;
+		comments.map(comment => {
+			total+=comment.rating;
+		});
+		return total;
 	}
 	/** 
 	 *	Change state value to input based on event e
@@ -43,7 +53,11 @@ export class Comment extends React.Component {
 				text: this.state.body,
 				rating: this.state.rating
 			}
-			this.props.createComment(data);	
+			this.props.createComment(data);
+			this.props.getComments(this.props.prodId);
+			const sum = this.getRatings(this.props.comments);
+			const avg = (sum + this.state.rating)/(this.props.comments.length+1);
+			this.props.updateRating(this.props.prodId, avg);
 			window.location.reload(false);	
 		}
 		else
@@ -87,10 +101,11 @@ export class Comment extends React.Component {
 }
 
 const mapStateToProps = state => ({
-	auth: state.auth
+	auth: state.auth,
+	comments: state.comments
 });
 
 export default connect(
 	mapStateToProps,
-	{ createComment }
+	{ createComment, getComments, updateRating }
 )(Comment);

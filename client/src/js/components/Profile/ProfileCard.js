@@ -72,7 +72,7 @@ const ProfileCard = props => {
       <SideBar>
       <Card>
         <CardMedia>
-          <img src="https://computerscience.johncabot.edu/mscaramastra/F2017/CS131-1/Scopece/CS130/SCOPECE%20FINAL/griffin%20photo/pet.jpg"  width="350" height="350" alt="profile_image" />
+          <img src="https://icon-library.net/images/default-profile-icon/default-profile-icon-24.jpg"  width="350" height="350" alt="profile_image" />
         </CardMedia>
         <CardContent>
           <Typography variant="body2" color="textSecondary" component="p">

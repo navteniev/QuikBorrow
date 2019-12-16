@@ -21,7 +21,7 @@ exports[`Profile render mylist 1`] = `
         <img
           alt="profile_image"
           height="350"
-          src="https://computerscience.johncabot.edu/mscaramastra/F2017/CS131-1/Scopece/CS130/SCOPECE%20FINAL/griffin%20photo/pet.jpg"
+          src="https://icon-library.net/images/default-profile-icon/default-profile-icon-24.jpg"
           width="350"
         />
       </div>
@@ -295,7 +295,7 @@ exports[`Profile render when user match 1`] = `
         <img
           alt="profile_image"
           height="350"
-          src="https://computerscience.johncabot.edu/mscaramastra/F2017/CS131-1/Scopece/CS130/SCOPECE%20FINAL/griffin%20photo/pet.jpg"
+          src="https://icon-library.net/images/default-profile-icon/default-profile-icon-24.jpg"
           width="350"
         />
       </div>
