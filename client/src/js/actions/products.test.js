@@ -137,9 +137,7 @@ describe('actions/products', () => {
 
     describe('fetch transactions', () => {
         let mock;
-        let id = {
-            userId: 'abc123',
-        }
+        let id = 'abc123';
 
         beforeEach(() => {
             mock = jest.spyOn(axios, 'post');
@@ -150,9 +148,9 @@ describe('actions/products', () => {
 
         it('should fetch a user\'s transactions', async () => {
             const dispatch = jest.fn();
-            mock.mockResolvedValue();
+            mock.mockResolvedValue(id);
             await fetchTransactions(id)(dispatch);
-            expect(mock).toHaveBeenCalledWith('/api/transactions/getTransactions', id);
+            expect(mock).toHaveBeenCalledWith('/api/transactions/getTransactions', {userId : id});
         });
 
         it('should dispatch error', async () => {
