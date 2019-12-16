@@ -45,7 +45,7 @@ const ProfileCard = props => {
       </li>
     });
 
-    const transactions_li = transactions.map((transaction, index) => {
+    const transactions_li = transactions.map(transaction => {
       return  (
         <FlexDiv>
           <UnstyledLink to={`/products/${transaction.item}`}>

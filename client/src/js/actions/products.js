@@ -86,12 +86,14 @@ export const searchProducts = query =>
  * @returns {Function} dispatch - used to dispatch actions
  */
 
- export const fetchTransactions = (id) => async dispatch => {
+ export const fetchTransactions = (id) => 
+  /**
+   *  @param {Function} dispatch - used to dispatch actions
+   *  @returns {Promise<Object>} - response from an {@link Action}
+   */
+  dispatch => {
     return axios.post('/api/transactions/getTransactions', {userId : id})
         .then(res => dispatch({ type: FETCH_TRANSACTIONS.FINISHED, payload: res.data }))
-        .catch(err => {
-            console.log(err.response.data)
-            dispatch({ type: FETCH_TRANSACTIONS.ERROR, payload: err.response.data })
-        })
+        .catch(err => dispatch({ type: FETCH_TRANSACTIONS.ERROR, payload: err.response.data }))
  }
 
