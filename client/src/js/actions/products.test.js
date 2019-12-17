@@ -22,7 +22,7 @@ describe('actions/products', () => {
             const message = 'GIT BOI'
             const expectedBody = {
                 borrowerId: state.auth.user.id,
-                lender: item.user,
+                lenderId: item.user,
                 itemId: item._id,
                 msg: message
             }
@@ -152,6 +152,15 @@ describe('actions/products', () => {
             await fetchTransactions(id)(dispatch);
             expect(mock).toHaveBeenCalledWith('/api/transactions/getTransactions', {userId : id});
         });
+
+        it('dispatches FETCH_TRANSACTIONS.FETCHING', async () => {
+            const dispatch = jest.fn()
+            mock.mockResolvedValueOnce({})
+            await fetchTransactions()(dispatch);
+            expect(dispatch).toHaveBeenCalledWith({
+                type: FETCH_TRANSACTIONS.FETCHING
+            })
+        })
 
         it('should dispatch error', async () => {
             const dispatch = jest.fn();
