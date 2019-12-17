@@ -20,13 +20,14 @@ export class Comment extends React.Component {
 		};
 	}
 
+	/**
+	 *	Get sum of all ratings from comments
+	 *	@param {Array} comments - all comments associated with the prodId
+	 *	@returns {Number}
+	 */
 	getRatings(comments)
 	{
-		let total = 0;
-		comments.map(comment => {
-			total+=comment.rating;
-		});
-		return total;
+		return comments.reduce((total, comment) => total + comment.rating, 0);
 	}
 	/** 
 	 *	Change state value to input based on event e

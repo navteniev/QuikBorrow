@@ -21,6 +21,9 @@ export class CommentList extends React.Component {
 		};
 	}
 
+	/*
+	 *	Call getComments action for rendering when component mounts
+	 */
 	componentDidMount()
 	{
 		this.props.getComments(this.props.prodId);
