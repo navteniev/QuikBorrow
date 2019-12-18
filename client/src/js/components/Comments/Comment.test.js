@@ -2,10 +2,12 @@ import React from 'react';
 import Enzyme, { shallow } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import { Comment } from './Comment';
-import { createComment } from '../../actions/comments';
+import { createComment, getComments } from '../../actions/comments';
+import { updateRating } from '../../actions/products';
 
 Enzyme.configure({ adapter: new Adapter() });
 jest.mock('../../actions/comments');
+jest.mock('../../actions/products');
 
 describe('Comment', () => {
 	const params = {
@@ -20,7 +22,28 @@ describe('Comment', () => {
 	}
 	let wrapper;
 	beforeEach(() => {
-		wrapper = shallow(<Comment createComment = {createComment} auth = {params.auth} />);
+		wrapper = shallow(<Comment 
+			createComment = {createComment}
+			getComments = { getComments }
+			updateRating = { updateRating }
+			auth = {params.auth}
+			comments = {[
+				{
+					user: 'a',
+					id: 'b',
+					product: 'c',
+					text: 'd',
+					rating: 5,
+				},
+				{
+					user: 'd',
+					id: 'e',
+					product: 'f',
+					text: 'g',
+					rating: 1,
+				},
+			]}
+		/>);
 	});
 
 	test('text entry', () => {

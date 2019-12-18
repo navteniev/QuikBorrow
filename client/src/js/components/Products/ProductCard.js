@@ -70,7 +70,7 @@ const ProductCard = props => {
 
   return (
     <FlexCard>
-      <FlexCardImage image={imagePath || 'https://patch.com/img/cdn/users/1142384/2013/09/raw/77d3e8242e7562885116ebff68689271.jpg'} title='image' />
+      <FlexCardImage image={imagePath || 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/No_picture_available.png/602px-No_picture_available.png'} title='image' />
       <FlexCardContent>
         <div>
           <SpaceBetween>

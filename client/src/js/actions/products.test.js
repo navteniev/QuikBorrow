@@ -1,5 +1,5 @@
-import { requestBorrowProductFetch, searchProducts, fetchProducts, fetchProduct, fetchTransactions } from './products'
-import { FETCH_PRODUCTS, FETCH_PRODUCT, SEARCH_PRODUCTS, REQUEST_BORROW_PRODUCT, FETCH_TRANSACTIONS } from './types'
+import * as products from './products'
+import { SEARCH_PRODUCTS, REQUEST_BORROW_PRODUCT, FETCH_TRANSACTIONS, UPDATE_RATING } from './types'
 import axios from 'axios'
 
 jest.mock('axios')
@@ -28,7 +28,7 @@ describe('actions/products', () => {
             }
             const dispatch = jest.fn()
             const getState = jest.fn(() => state)
-            await requestBorrowProductFetch(item, message)(dispatch, getState)
+            await products.requestBorrowProductFetch(item, message)(dispatch, getState)
             expect(axios.post).toHaveBeenCalledWith('/api/transactions', expectedBody)
         })
         it('should dispatch the correct action on fetch success', async () => {
@@ -45,7 +45,7 @@ describe('actions/products', () => {
                 type: REQUEST_BORROW_PRODUCT.FINISHED,
                 payload: resolvedData.data
             }
-            await requestBorrowProductFetch({})(dispatch, getState)
+            await products.requestBorrowProductFetch({})(dispatch, getState)
             expect(dispatch).toHaveBeenCalledWith(expectedAction)
         })
         it('should dispatch the correct action on fetch error', async () => {
@@ -66,7 +66,7 @@ describe('actions/products', () => {
                 type: REQUEST_BORROW_PRODUCT.ERROR,
                 payload: error.response.data
             }
-            await requestBorrowProductFetch({})(dispatch, getState)
+            await products.requestBorrowProductFetch({})(dispatch, getState)
             expect(dispatch).toHaveBeenCalledWith(expectedAction)
         })
     })
@@ -82,7 +82,7 @@ describe('actions/products', () => {
         test('fetchProducts', async () => {
             const dispatch = jest.fn();
             mock.mockResolvedValue({ data: {}});
-            await fetchProducts()(dispatch);
+            await products.fetchProducts()(dispatch);
             expect(mock).toHaveBeenCalledWith('/api/items');
         });
     });
@@ -98,7 +98,7 @@ describe('actions/products', () => {
         test('fetchProducts', async () => {
             const dispatch = jest.fn();
             mock.mockResolvedValue({ data: {}});
-            await fetchProduct('someid')(dispatch);
+            await products.fetchProduct('someid')(dispatch);
             expect(mock).toHaveBeenCalledWith('/api/items/someid');
         });
     });
@@ -115,7 +115,7 @@ describe('actions/products', () => {
             let getMock = jest.spyOn(axios, 'get');
             const dispatch = jest.fn();
             getMock.mockResolvedValue({ data: {}});
-            await searchProducts('chair')(dispatch);
+            await products.searchProducts('chair')(dispatch);
             expect(getMock).toHaveBeenCalledWith('/api/items/search', { params: { param: "chair" }});
         });
         test('error dispatched', async () => {
@@ -127,7 +127,7 @@ describe('actions/products', () => {
                 }
             }
             getMock.mockRejectedValueOnce(mockedError);
-            await searchProducts('chair')(dispatch);
+            await products.searchProducts('chair')(dispatch);
             expect(dispatch).toHaveBeenCalledWith({
                 type: SEARCH_PRODUCTS.ERROR,
                 payload: mockedError.response.data
@@ -149,7 +149,7 @@ describe('actions/products', () => {
         it('should fetch a user\'s transactions', async () => {
             const dispatch = jest.fn();
             mock.mockResolvedValue(id);
-            await fetchTransactions(id)(dispatch);
+            await products.fetchTransactions(id)(dispatch);
             expect(mock).toHaveBeenCalledWith('/api/transactions/getTransactions', {userId : id});
         });
 
@@ -171,11 +171,45 @@ describe('actions/products', () => {
             };
 
             mock.mockRejectedValueOnce(mockedError);
-            await fetchTransactions('stuff')(dispatch);
+            await products.fetchTransactions('stuff')(dispatch);
             expect(dispatch).toHaveBeenCalledWith({
 		    	type: FETCH_TRANSACTIONS.ERROR,
 		    	payload: mockedError.response.data
 		  	});
+        });
+    });
+
+    describe('updateRating', () => {
+        let mock;
+        beforeEach(() => {
+            mock = jest.spyOn(axios, 'get');
+        });
+        afterEach(() => {
+            mock.mockRestore();
+        });
+
+        const id = '23iruhifuh';
+        const rating = 4;
+        test('updateRating', async () => {
+            const dispatch = jest.fn();
+            mock.mockResolvedValue({ data: {}});
+            await products.updateRating(id, rating)(dispatch);
+            expect(mock).toHaveBeenCalledWith(`/api/items/${id}/updateRating/${rating}`);
+        });
+
+        test('updateRating error dispatched', async () => {
+            const dispatch = jest.fn();
+            const mockedError = {
+                response: {
+                    data: 'test error'
+                }
+            }
+            mock.mockRejectedValueOnce(mockedError);
+            await products.updateRating(id, rating)(dispatch);
+            expect(dispatch).toHaveBeenCalledWith({
+                type: UPDATE_RATING.ERROR,
+                payload: mockedError.response.data
+            });
         });
     });
 })

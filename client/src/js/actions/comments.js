@@ -14,12 +14,7 @@ import { CREATE_COMMENT, GET_COMMENTS } from './types';
 export const createComment = (comment) => dispatch => {
   return axios
     .post("/api/comments", comment)
-    .then(res => {
-    	console.log(res);
-    	console.log(comment);
-    })
     .catch(err => {
-    	console.log(err);
   		dispatch({
   			type: CREATE_COMMENT.ERROR,
   			payload: err.response.data

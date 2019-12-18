@@ -21,21 +21,14 @@ export class CommentList extends React.Component {
 		};
 	}
 
+	/*
+	 *	Call getComments action for rendering when component mounts
+	 */
 	componentDidMount()
 	{
 		this.props.getComments(this.props.prodId);
 	}
 
-	renderComment(comment)
-	{
-		return(
-			<Box display="flex" id="comment">
-				<p>{comment.user}</p>
-				<p>{comment.text}</p>
-				<p>{comment.rating}</p>
-			</Box>
-		)
-	}
 	render()
 	{
 		const { comments } = this.props;
