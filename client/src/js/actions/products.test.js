@@ -156,7 +156,7 @@ describe('actions/products', () => {
         it('dispatches FETCH_TRANSACTIONS.FETCHING', async () => {
             const dispatch = jest.fn()
             mock.mockResolvedValueOnce({})
-            await fetchTransactions()(dispatch);
+            await products.fetchTransactions()(dispatch);
             expect(dispatch).toHaveBeenCalledWith({
                 type: FETCH_TRANSACTIONS.FETCHING
             })
