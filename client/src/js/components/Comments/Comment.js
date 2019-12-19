@@ -1,17 +1,33 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { createComment } from '../../actions/comments';
+import { createComment, getComments } from '../../actions/comments';
+import { updateRating } from '../../actions/products';
 import { Box, Button, TextField } from "@material-ui/core";
 import Rating from '@material-ui/lab/Rating';
 
+/**
+ *	Comment component that allows user to create comment to save to MongoDB collection
+ *	@component
+ */
 export class Comment extends React.Component {
 	constructor()
 	{
 		super();
 		this.state = {
 			body: "",
-			rating: 5
+			rating: 5,
+			error: ""
 		};
+	}
+
+	/**
+	 *	Get sum of all ratings from comments
+	 *	@param {Array} comments - all comments associated with the prodId
+	 *	@returns {Number}
+	 */
+	getRatings(comments)
+	{
+		return comments.reduce((total, comment) => total + comment.rating, 0);
 	}
 	/** 
 	 *	Change state value to input based on event e
@@ -29,20 +45,32 @@ export class Comment extends React.Component {
 	onSubmit = e =>
 	{
 		e.preventDefault();
-		const data = {
-			user: this.props.name,
-			id: this.props.id,
-			product: this.props.prodId,
-			text: this.state.body,
-			rating: this.state.rating
+		if(this.props.auth.isAuthenticated)
+		{
+			const data = {
+				user: this.props.auth.user.name,
+				id: this.props.auth.user.id,
+				product: this.props.prodId,
+				text: this.state.body,
+				rating: this.state.rating
+			}
+			this.props.createComment(data);
+			this.props.getComments(this.props.prodId);
+			const sum = this.getRatings(this.props.comments);
+			const avg = (sum + this.state.rating)/(this.props.comments.length+1);
+			this.props.updateRating(this.props.prodId, avg);
+			window.location.reload(false);	
 		}
-		this.props.createComment(data);	
-		window.location.reload(false);	
+		else
+		{
+			this.setState({ error: "You must be logged in to comment."})
+		}
 	}
 	render()
 	{
 		return(
 			<form noValidate onSubmit={this.onSubmit}>
+				<span>{this.state.error}</span>
 				<Box display="flex">
 					<TextField
 						onChange={this.onChange}
@@ -74,11 +102,11 @@ export class Comment extends React.Component {
 }
 
 const mapStateToProps = state => ({
-	name: state.auth.user.name,
-	id: state.auth.user.id
+	auth: state.auth,
+	comments: state.comments
 });
 
 export default connect(
 	mapStateToProps,
-	{ createComment }
+	{ createComment, getComments, updateRating }
 )(Comment);

@@ -1,6 +1,11 @@
 import React, { Component } from "react";
 import styled from 'styled-components';
 import { Card, CardContent, CardMedia, Typography, Box, Button, TextField } from '@material-ui/core';
+import { Link } from 'react-router-dom';
+import { Card, CardContent, CardMedia, Typography, Box, Button } from '@material-ui/core';
+import { ListItem, ListItemAvatar, Avatar, ListItemText } from '@material-ui/core';
+import CheckIcon from '@material-ui/icons/Check';
+import CancelIcon from '@material-ui/icons/Cancel';
 import Rating from '@material-ui/lab/Rating';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
@@ -19,6 +24,15 @@ const SideBar = styled.div`
 
 const RightSide = styled.div`
   width: 3000px;
+`
+const FlexDiv = styled.div`
+  display: flex;
+  justify-content: space-between;
+`
+
+const UnstyledLink = styled(Link)`
+    color: inherit;
+    text-decoration: inherit;
 `
 
 class ProfileCard extends Component {
@@ -44,8 +58,14 @@ class ProfileCard extends Component {
 
 	onChange = async (e) => {
     this.setState({[e.target.id]:e.target.value});
+  }
+
+/*
+const ProfileCard = props => {
+    const { name, age, college , products, bio, wishlist, rating, email, transactions } = props;
 
   };
+*/
 
   onSubmit = async (e) => {
     e.preventDefault();
@@ -90,13 +110,34 @@ class ProfileCard extends Component {
       </li>
     });
 
+    const transactions_li = transactions.map(transaction => {
+      return  (
+        <FlexDiv>
+          <UnstyledLink to={`/products/${transaction.item}`}>
+            <ListItem>
+              <ListItemAvatar>
+                <Avatar>
+                </Avatar>
+              </ListItemAvatar>
+              <ListItemText
+                primary={transaction.item}
+              />
+            </ListItem>
+          </UnstyledLink>
+          <FlexDiv>
+            <CheckIcon />
+            <CancelIcon />
+          </FlexDiv>
+        </FlexDiv>
+      );
+    });
 
     return (
       <div style={{display: 'flex', flexDirection: 'row'}}>
       <SideBar>
       <Card>
         <CardMedia>
-          <img src="https://computerscience.johncabot.edu/mscaramastra/F2017/CS131-1/Scopece/CS130/SCOPECE%20FINAL/griffin%20photo/pet.jpg"  width="350" height="350" alt="profile_image" />
+          <img src="https://icon-library.net/images/default-profile-icon/default-profile-icon-24.jpg"  width="350" height="350" alt="profile_image" />
         </CardMedia>
         <CardContent>
           <Typography variant="body2" color="textSecondary" component="p">
@@ -204,6 +245,14 @@ class ProfileCard extends Component {
               Edit Wishist
             </Button> 
           </Typography>
+          <Typography gutterBottom variant="h4" component="h2">
+            Transactions
+            <br/>
+            
+          </Typography>
+          <div>
+            {transactions_li}
+          </div>
           </CardContent>
         </Card>
       </RightSide>
@@ -211,5 +260,6 @@ class ProfileCard extends Component {
     );
   };
 }
-  export default ProfileCard;
+
+export default ProfileCard;
   

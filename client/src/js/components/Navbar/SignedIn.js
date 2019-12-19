@@ -31,7 +31,7 @@ export const SignedIn = (props) => {
             
             <UnstyledLink id="add-item" to='#' onClick={e => setOpenModal(true)}>Add Item</UnstyledLink>
             <UnstyledLink id='products' to='/products'>Products</UnstyledLink>
-            <UnstyledLink id='profile' to={ '/profile/'+userProfileId}><Avatar src='https://avatars1.githubusercontent.com/u/619960?s=460&v=4'/> </UnstyledLink>
+            <UnstyledLink id='profile' to={ '/profile/'+userProfileId}><Avatar src='https://icon-library.net/images/default-profile-icon/default-profile-icon-24.jpg'/> </UnstyledLink>
             <UnstyledLink id='sign-out' to='#' onClick={onClick}>Sign Out</UnstyledLink>
         </Toolbar>
     )

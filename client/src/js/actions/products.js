@@ -3,7 +3,9 @@ import {
     FETCH_PRODUCTS,
     FETCH_PRODUCT,
     SEARCH_PRODUCTS,
-    REQUEST_BORROW_PRODUCT
+    REQUEST_BORROW_PRODUCT,
+    FETCH_TRANSACTIONS,
+    UPDATE_RATING
 } from './types'
 
 /**
@@ -21,13 +23,17 @@ export const requestBorrowProductFetch = (item, msg) => async (dispatch, getStat
     const state = getState()
     const body = {
         borrowerId: state.auth.user.id,
-        lender: item.user,
+        lenderId: item.user,
         itemId: item._id,
         msg
     }
     return axios.post(`/api/transactions`, body)
-        .then(({ data }) => dispatch({ type: REQUEST_BORROW_PRODUCT.FINISHED, payload: data }))
-        .catch(err => dispatch({ type: REQUEST_BORROW_PRODUCT.ERROR, payload: err.response.data }))
+        .then(({ data }) => {
+            dispatch({ type: REQUEST_BORROW_PRODUCT.FINISHED, payload: data })
+        })
+        .catch(err => {
+            dispatch({ type: REQUEST_BORROW_PRODUCT.ERROR, payload: err.response.data })
+        })
 }
 
 /**
@@ -78,3 +84,45 @@ export const searchProducts = query =>
         });
   };
 
+  /**
+ * Get all current user transactions
+ * 
+ * @param {Object} id - The user id
+ * @returns {Function} dispatch - used to dispatch actions
+ */
+
+ export const fetchTransactions = (id) => 
+  /**
+   *  @param {Function} dispatch - used to dispatch actions
+   *  @returns {Promise<Object>} - response from an {@link Action}
+   */
+  dispatch => {
+    dispatch({ type: FETCH_TRANSACTIONS.FETCHING })
+    return axios.post('/api/transactions/getTransactions', {userId : id})
+        .then(res => dispatch({ type: FETCH_TRANSACTIONS.FINISHED, payload: res.data }))
+        .catch(err => dispatch({ type: FETCH_TRANSACTIONS.ERROR, payload: err.response.data }))
+ }
+
+/**
+ * Update rating of product
+ * 
+ * @param {Object} itemId - The id of the item to retrieve
+ * @param {Number} rating - The new rating to assign to the item
+ * @returns {DispatchFunction}
+ */
+export const updateRating = (itemId, rating) => dispatch => {
+  return axios
+    .get(`/api/items/${itemId}/updateRating/${rating}`)
+    .then(res => {
+      dispatch({ 
+        type: UPDATE_RATING.FINISHED,
+        payload: res.data 
+      });
+    })
+    .catch(err => {
+      dispatch({
+        type: UPDATE_RATING.ERROR,
+        payload: err.response.data
+      })
+    })
+};

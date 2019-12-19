@@ -12,6 +12,7 @@ describe('ProfileCard', () => {
         <ProfileCard
         products ={[]}
         wishlist = {[]}
+        transactions = {[]}
         />);
     
     it('render list', () =>{
@@ -24,6 +25,7 @@ describe('ProfileCard', () => {
         <ProfileCard
         products ={[]}
         wishlist = {[]}
+        transactions = {[]}
         />);
 		let tree = component.toJSON();
 		expect(tree).toMatchSnapshot();

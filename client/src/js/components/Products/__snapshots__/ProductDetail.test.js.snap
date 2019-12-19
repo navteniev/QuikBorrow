@@ -5,13 +5,13 @@ exports[`Product Detail renders 1`] = `
   className="MuiContainer-root MuiContainer-maxWidthLg"
 >
   <div
-    className="MuiPaper-root MuiPaper-elevation1 MuiCard-root sc-bdVaJa jFJDry MuiPaper-rounded"
+    className="MuiPaper-root MuiPaper-elevation1 MuiCard-root sc-bdVaJa gdIaes MuiPaper-rounded"
   >
     <div
       className="MuiCardMedia-root sc-bwzfXH fQtfNt"
       style={
         Object {
-          "backgroundImage": "url(\\"https://patch.com/img/cdn/users/1142384/2013/09/raw/77d3e8242e7562885116ebff68689271.jpg\\")",
+          "backgroundImage": "url(\\"https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/No_picture_available.png/602px-No_picture_available.png\\")",
         }
       }
     />
@@ -73,7 +73,7 @@ exports[`Product Detail renders 1`] = `
               htmlFor="half-rating-0-5"
             >
               <span
-                className="MuiRating-icon MuiRating-iconFilled"
+                className="MuiRating-icon MuiRating-iconEmpty"
                 style={
                   Object {
                     "overflow": "hidden",
@@ -117,7 +117,7 @@ exports[`Product Detail renders 1`] = `
               htmlFor="half-rating-1"
             >
               <span
-                className="MuiRating-icon MuiRating-iconFilled"
+                className="MuiRating-icon MuiRating-iconEmpty"
                 style={Object {}}
               >
                 <svg
@@ -158,7 +158,7 @@ exports[`Product Detail renders 1`] = `
               htmlFor="half-rating-1-5"
             >
               <span
-                className="MuiRating-icon MuiRating-iconFilled"
+                className="MuiRating-icon MuiRating-iconEmpty"
                 style={
                   Object {
                     "overflow": "hidden",
@@ -202,7 +202,7 @@ exports[`Product Detail renders 1`] = `
               htmlFor="half-rating-2"
             >
               <span
-                className="MuiRating-icon MuiRating-iconFilled"
+                className="MuiRating-icon MuiRating-iconEmpty"
                 style={Object {}}
               >
                 <svg
@@ -243,12 +243,12 @@ exports[`Product Detail renders 1`] = `
               htmlFor="half-rating-2-5"
             >
               <span
-                className="MuiRating-icon MuiRating-iconFilled"
+                className="MuiRating-icon MuiRating-iconEmpty"
                 style={
                   Object {
                     "overflow": "hidden",
                     "position": "absolute",
-                    "width": "50%",
+                    "width": "0%",
                     "zIndex": 1,
                   }
                 }
@@ -272,7 +272,7 @@ exports[`Product Detail renders 1`] = `
               </span>
             </label>
             <input
-              checked={true}
+              checked={false}
               className="MuiRating-visuallyhidden"
               id="half-rating-2-5"
               name="half-rating"
@@ -557,29 +557,6 @@ exports[`Product Detail renders 1`] = `
           className="sc-ifAKCX fOGIFb"
         >
           <button
-            className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary Mui-disabled Mui-disabled"
-            disabled={true}
-            onBlur={[Function]}
-            onDragLeave={[Function]}
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            onKeyUp={[Function]}
-            onMouseDown={[Function]}
-            onMouseLeave={[Function]}
-            onMouseUp={[Function]}
-            onTouchEnd={[Function]}
-            onTouchMove={[Function]}
-            onTouchStart={[Function]}
-            tabIndex={-1}
-            type="button"
-          >
-            <span
-              className="MuiButton-label"
-            >
-              Add to Cart
-            </span>
-          </button>
-          <button
             className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary"
             disabled={false}
             onBlur={[Function]}
@@ -612,17 +589,48 @@ exports[`Product Detail renders 1`] = `
               </svg>
               Add to Wishlist
             </span>
+            <span
+              className="MuiTouchRipple-root"
+            />
+          </button>
+          <button
+            className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary Mui-disabled Mui-disabled"
+            data-testid="request-btn"
+            disabled={true}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onDragLeave={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            onTouchEnd={[Function]}
+            onTouchMove={[Function]}
+            onTouchStart={[Function]}
+            tabIndex={-1}
+            type="button"
+          >
+            <span
+              className="MuiButton-label"
+            >
+              Request to Borrow
+            </span>
           </button>
         </div>
       </div>
     </div>
     <div
-      className="sc-bxivhb gNLXtS"
+      className="sc-bxivhb gMxyjI"
     >
       <form
         noValidate={true}
         onSubmit={[Function]}
       >
+        <span>
+          
+        </span>
         <div
           className="MuiBox-root MuiBox-root-126"
         >
@@ -896,6 +904,9 @@ exports[`Product Detail renders 1`] = `
           >
             Comment
           </span>
+          <span
+            className="MuiTouchRipple-root"
+          />
         </button>
       </form>
       <div

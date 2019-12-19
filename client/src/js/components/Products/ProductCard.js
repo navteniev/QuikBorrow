@@ -70,7 +70,7 @@ const ProductCard = props => {
 
   return (
     <FlexCard>
-      <FlexCardImage image={imagePath || 'https://patch.com/img/cdn/users/1142384/2013/09/raw/77d3e8242e7562885116ebff68689271.jpg'} title='image' />
+      <FlexCardImage image={imagePath || 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/No_picture_available.png/602px-No_picture_available.png'} title='image' />
       <FlexCardContent>
         <div>
           <SpaceBetween>
@@ -86,31 +86,15 @@ const ProductCard = props => {
           </TruncatedText>
         </div>
         <SpaceBetween>
-          <ButtonGroup>
-            <Button variant='outlined' onClick={e => history.push(`/products/${id}`)}>
+          {availability
+            ? <div />
+            : <Button variant='outlined'>
+              Get Notified
+            </Button>
+          }
+          <Button variant='outlined' onClick={e => history.push(`/products/${id}`)}>
               Details
             </Button>
-            {availability
-              ? null
-              : <Button variant='outlined'>
-                Get Notified
-              </Button>
-            }
-          </ButtonGroup>
-          {
-            availability
-            ? <Button color='primary' variant='contained'>
-            Request
-          </Button>
-          : <Tooltip title='Unavailable'>
-              <span>
-                <Button color='primary' disabled variant='outlined'>
-                  Request
-                </Button>
-              </span>
-          </Tooltip>
-          }
-          
         </SpaceBetween>
       </FlexCardContent>
       

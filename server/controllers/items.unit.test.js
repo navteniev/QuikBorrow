@@ -44,4 +44,14 @@ describe('controller/items', function() {
       expect(response.json).toHaveBeenCalledWith(items);
     });
   });
+  describe('updateRating', function() {
+    it('update rating for items', async function() {
+      const request = {params: {itemId: '2qw3eit8ghj1', rating: 4}};
+      const response = {json: jest.fn()};
+      const item = {a: 'ba'};
+      itemServices.updateRating.mockResolvedValueOnce(item);
+      await itemsController.updateRating(request, response);
+      expect(response.json).toHaveBeenCalledWith(item);
+    });
+  });
 });

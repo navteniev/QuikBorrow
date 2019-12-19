@@ -13,19 +13,6 @@ describe('CommentList', () => {
 		wrapper = shallow(<CommentList getComments = {getComments} comments = {[]} />);
 	});
 
-	const comment = {
-		user: 'a',
-		id: 'b',
-		product: 'c',
-		text: 'd',
-		rating: 5
-	}
-
-	test('renderComment', () => {
-		const renderComment = shallow(wrapper.instance().renderComment(comment));
-		expect(renderComment.find('#comment')).toHaveLength(1);
-	});
-
 	test('render all comments', () => {
 		const arr = [
 			{
