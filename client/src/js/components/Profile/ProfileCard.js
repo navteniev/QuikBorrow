@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import styled from 'styled-components';
 import { Card, CardContent, CardMedia, Typography, Box, Button, TextField } from '@material-ui/core';
 import { Link } from 'react-router-dom';
-import { Card, CardContent, CardMedia, Typography, Box, Button } from '@material-ui/core';
 import { ListItem, ListItemAvatar, Avatar, ListItemText } from '@material-ui/core';
 import CheckIcon from '@material-ui/icons/Check';
 import CancelIcon from '@material-ui/icons/Cancel';
@@ -12,6 +11,9 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
+import axios from 'axios';
+import { getUserProfile } from "../../actions/users";
+import { connect } from "react-redux";
 
 
 const SideBar = styled.div`
@@ -40,13 +42,9 @@ class ProfileCard extends Component {
     super(props);
     this.state = {
       _editing: false,
-      id : this.props.id, 
-      Age: this.props.age,
-      College: this.props.college,
-      Bio : this.props.bio,
       tempAge: '',
       tempCollege: '',
-      tempBio: ''
+      tempBio: '',
     }
   }
   
@@ -70,34 +68,24 @@ const ProfileCard = props => {
   onSubmit = async (e) => {
     e.preventDefault();
     const updateInfo = {
-			Age : this.state.tempAge,
-		  College :this.state.tempCollege,
-      Bio : this.state.tempBio,
+			age : this.state.tempAge,
+		  college :this.state.tempCollege,
+      bio : this.state.tempBio,
   }
-    this.setState(updateInfo)
+   // this.setState(updateInfo)
     this.toggle_Editing()
     // save the updateInfo to the database
-    fetch('http://localhost:8081/api/users/'+this.state.id, {
-      method: 'PATCH',
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-        "Access-Control-Allow-Origin": "*"
-      },
-      body: JSON.stringify(updateInfo)
-    })
-    .then((response) => {
-      return console.log(response.json())
-    })
-    .catch((error) => {
-      return console.log(error)
-    })
+    axios.post(`/api/users/${this.props.id}/edit`, updateInfo)
+  .then(() => 
+    this.props.getUserProfile(this.props.id))
+  .catch(console.log)
+
   };
 
-  render() {
-    const { id, name, age, college , products, bio, wishlist,rating,email} = this.props;
+  render() { 
+    console.log(this.props)
+    const {age, college, bio , transactions, email, products, wishlist, rating, name} = this.props
 
-    
     const products_li = products.map((items, index) => {
       return <li key={items._id + index}>
         {items.name}
@@ -142,9 +130,9 @@ const ProfileCard = props => {
         <CardContent>
           <Typography variant="body2" color="textSecondary" component="p">
             {email} <br/>
-            {this.state.College} <br/>
-            {this.state.Age} years old<br/>
-            {this.state.Bio}<br></br>
+            {college} <br/>
+            {age} years old<br/>
+            {bio}<br></br>
           </Typography>
           <Button align="center" variant="outlined" color="primary" focusVisible onClick={(this.toggle_Editing)}>
                       Edit Profile 
@@ -160,7 +148,7 @@ const ProfileCard = props => {
                 <form  onSubmit={this.onSubmit}>
                   <TextField
                     onChange={this.onChange}
-                    value={this.state.tempAge || this.state.Age}
+                    value={this.state.tempAge || age}
                     id="tempAge"
                     label="Age"
                     type="number"
@@ -170,7 +158,7 @@ const ProfileCard = props => {
 					        <br/>
                   <TextField
                     onChange={this.onChange}
-                    value={this.state.tempCollege || this.state.College}
+                    value={this.state.tempCollege || college}
                     id="tempCollege"
                     label="College"
                     type="text"
@@ -180,7 +168,7 @@ const ProfileCard = props => {
 					        <br/>
                   <TextField
                     onChange={this.onChange}
-                    value={this.state.tempBio || this.state.Bio}
+                    value={this.state.tempBio || bio}
                     id="tempBio"
                     type="text"
                     label="Bio"
@@ -261,5 +249,5 @@ const ProfileCard = props => {
   };
 }
 
-export default ProfileCard;
-  
+
+export default connect(undefined,{getUserProfile})(ProfileCard);

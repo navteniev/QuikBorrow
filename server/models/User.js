@@ -26,11 +26,13 @@ const UserSchema = new Schema({
   age: {
     type: Number,
   },
+  college: {
+    type: String,
+  },
   wishlist: [{
     type: String,
   }],
 
-
 });
-
+mongoose.set('debug', true);
 module.exports = mongoose.model('users', UserSchema);

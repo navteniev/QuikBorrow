@@ -65,15 +65,19 @@ router.get('/:userId', [
  * Update a user
  *
  * @memberof module:api/users
- * @name PATCH /:userId
+ * @name POST /:userId/edit
  */
-router.patch('/:userId', [
+
+router.post('/:userId/edit', [
   param('userId', 'Invalid UserId')
       .custom(validObjectId),
-  check('name').isLength({min : 3}),
-  check('email').isEmail,
   validatorErrors,
 ], userController.edit);
+
+/*
+  check('name').isLength({min : 3}),
+  check('email').isEmail(),
+*/
 
 /**
  * Get the items of a user

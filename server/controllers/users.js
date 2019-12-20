@@ -40,18 +40,17 @@ const get = (req, res, next) => {
 
 /** @type {RequestHandler} */
 const edit = (req, res, next) => {
-  const updatedUser = {
-    name: req.body.name, 
-    email: req.body.email, 
-    rating: req.body.rating,  
-    bio: req.body.bio,  
-    age: req.body.age,  
-    wishlist: req.body.wishlist, 
+  const toUpdate = {};
+  for (const key in req.body) {
+    if (req.body[key] !== undefined && req.body[key] !== null) {
+      toUpdate[key] = req.body[key];
+    }
   }
-  userServices.editUser(req.params.userId, updatedUser)
+  console.log(req.body, 'reached the terminal 1 ');
+  userServices.editUser(req.params.userId, toUpdate)
       .then((user) => {
-        console.log(user)
-         res.json(user)
+        console.log(req.body, 'reached the terminal 2 ');
+        res.json(user);
       })
       .catch(next);
 };

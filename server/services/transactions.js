@@ -54,21 +54,11 @@ const rejectTransaction = async (id) => {
 
 /**
  * Gets Transactions based on
-<<<<<<< Updated upstream
  *
  * @param {string} userId - The id for the user
  * @param {('borrower'|'lender')} type - The type between borrower or lender
  * @param {boolean} isProcessed - Processed filter for transactions
  * @returns {MongooseDocument[]} - The retrieved documents
-=======
-- userId
-- type
-- processed
- *
- * @param userId
- * @param type
- * @param isProcessed
->>>>>>> Stashed changes
  */
 const getTransactions = async (userId, type, isProcessed) => {
   let query;
