@@ -37,7 +37,7 @@ const UnstyledLink = styled(Link)`
     text-decoration: inherit;
 `
 
-class ProfileCard extends Component {
+export class ProfileCard extends Component {
   constructor(props) {
     super(props);
     this.state = {

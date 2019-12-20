@@ -38,13 +38,14 @@ exports[`ProfileCard render ProfileCard 1`] = `
            years old
           <br />
           <br />
-          <br />
-          <br />
         </p>
         <button
+          align="center"
           className="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary"
           disabled={false}
+          focusVisible={true}
           onBlur={[Function]}
+          onClick={[Function]}
           onDragLeave={[Function]}
           onFocus={[Function]}
           onKeyDown={[Function]}

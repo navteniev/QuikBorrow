@@ -33,21 +33,19 @@ exports[`Profile render mylist 1`] = `
         >
            
           <br />
-          City College of New York
            
           <br />
-          21
            years old
-          <br />
-          <br />
-          Currently a student looking for a full time job
           <br />
           <br />
         </p>
         <button
+          align="center"
           className="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary"
           disabled={false}
+          focusVisible={true}
           onBlur={[Function]}
+          onClick={[Function]}
           onDragLeave={[Function]}
           onFocus={[Function]}
           onKeyDown={[Function]}
@@ -307,21 +305,19 @@ exports[`Profile render when user match 1`] = `
         >
            
           <br />
-          City College of New York
            
           <br />
-          21
            years old
-          <br />
-          <br />
-          Currently a student looking for a full time job
           <br />
           <br />
         </p>
         <button
+          align="center"
           className="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary"
           disabled={false}
+          focusVisible={true}
           onBlur={[Function]}
+          onClick={[Function]}
           onDragLeave={[Function]}
           onFocus={[Function]}
           onKeyDown={[Function]}
