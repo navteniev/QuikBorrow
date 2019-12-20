@@ -1,9 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 import Profile from './Profile';
-import Enzyme, { shallow } from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
-Enzyme.configure({ adapter: new Adapter() });
 import { Provider } from 'react-redux';
 import configureMockStore from 'redux-mock-store';
 
@@ -19,9 +16,8 @@ jest.mock('../../actions/users', () => ({
 
 
 describe('Profile', () => {
-    const user = {_id:'111'}
     const match = { params: { profileId: 'foo' } }
-    const auth = {user: {id: '001'}};
+    
     
     test('render when user match', () => {
         const store = createStore({
