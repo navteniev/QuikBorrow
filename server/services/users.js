@@ -65,8 +65,7 @@ const findUser = async (id) => {
  * @returns {mongoose.Document} - The found Document
  */
 const editUser = async (id, updated) =>{
-  return await User.findByIdAndUpdate(id,
-      {name: updated.name, email: updated.email}, {new: true});
+  return await User.findByIdAndUpdate(id, updated, {new: true});
 };
 
 /**

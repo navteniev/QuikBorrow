@@ -8,9 +8,6 @@ export class Profile extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            age: 21,
-            college:'City College of New York',
-            bio: 'Currently a student looking for a full time job',
             wishlist: [{
                 _id:1,
                 item:"pokemon cards"
@@ -21,6 +18,12 @@ export class Profile extends Component {
         }
     }
 
+/*
+  age: 21,
+            college:'City College of New York',
+            bio: 'Currently a student looking for a full time job',
+*/
+
     componentDidMount(){
         this.props.getUserProfile(this.props.match.params.profileId) // getting userProfile based on Id
         this.props.fetchProducts()
@@ -29,8 +32,8 @@ export class Profile extends Component {
     }
 
     render() {
-        let {age , college,bio, wishlist } = this.state
-        let {_id, name, rating, email} = this.props.user 
+       // let {age , college,bio, wishlist } = this.state
+        let {_id, name, rating, email, age, college, bio } = this.props.user 
         let mylist = this.props.products
         
         const lendinglist = []
@@ -52,9 +55,10 @@ export class Profile extends Component {
             college={college}
             products={lendinglist}
             bio={bio}
-            wishlist={wishlist}
+            wishlist={this.state.wishlist}
             rating={rating}
             email={email}
+            id = {_id}
             transactions={this.props.transactions}
             />
                 )

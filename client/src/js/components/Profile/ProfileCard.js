@@ -1,11 +1,19 @@
-import React from "react";
+import React, { Component } from "react";
 import styled from 'styled-components';
+import { Card, CardContent, CardMedia, Typography, Box, Button, TextField } from '@material-ui/core';
 import { Link } from 'react-router-dom';
-import { Card, CardContent, CardMedia, Typography, Box, Button } from '@material-ui/core';
 import { ListItem, ListItemAvatar, Avatar, ListItemText } from '@material-ui/core';
 import CheckIcon from '@material-ui/icons/Check';
 import CancelIcon from '@material-ui/icons/Cancel';
 import Rating from '@material-ui/lab/Rating';
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle';
+import axios from 'axios';
+import { getUserProfile } from "../../actions/users";
+import { connect } from "react-redux";
 
 
 const SideBar = styled.div`
@@ -19,7 +27,6 @@ const SideBar = styled.div`
 const RightSide = styled.div`
   width: 3000px;
 `
-
 const FlexDiv = styled.div`
   display: flex;
   justify-content: space-between;
@@ -30,8 +37,54 @@ const UnstyledLink = styled(Link)`
     text-decoration: inherit;
 `
 
+export class ProfileCard extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      _editing: false,
+      tempAge: '',
+      tempCollege: '',
+      tempBio: '',
+    }
+  }
+  
+  toggle_Editing = async() => {
+    this.setState(prevState => ({
+      _editing: !prevState._editing
+    }));
+  }
+
+	onChange = async (e) => {
+    this.setState({[e.target.id]:e.target.value});
+  }
+
+/*
 const ProfileCard = props => {
     const { name, age, college , products, bio, wishlist, rating, email, transactions } = props;
+
+  };
+*/
+
+  onSubmit = async (e) => {
+    e.preventDefault();
+    const updateInfo = {
+			age : this.state.tempAge,
+		  college :this.state.tempCollege,
+      bio : this.state.tempBio,
+  }
+   // this.setState(updateInfo)
+    this.toggle_Editing()
+    // save the updateInfo to the database
+    axios.post(`/api/users/${this.props.id}/edit`, updateInfo)
+  .then(() => 
+    this.props.getUserProfile(this.props.id))
+  .catch(console.log)
+
+  };
+
+  render() { 
+    console.log(this.props)
+    const {age, college, bio , transactions, email, products, wishlist, rating, name} = this.props
 
     const products_li = products.map((items, index) => {
       return <li key={items._id + index}>
@@ -79,12 +132,66 @@ const ProfileCard = props => {
             {email} <br/>
             {college} <br/>
             {age} years old<br/>
-            <br></br>
-            {bio}<br/><br/>
+            {bio}<br></br>
           </Typography>
-          <Button variant="outlined" color="primary">
-            Edit Profile 
-          </Button>   
+          <Button align="center" variant="outlined" color="primary" focusVisible onClick={(this.toggle_Editing)}>
+                      Edit Profile 
+          </Button>  
+          {this.state._editing === true ? 
+          <div>
+            <Dialog open={this.state._editing} onClose={this.toggle_Editing} aria-labelledby="form-dialog-title">
+            <DialogTitle id="form-dialog-title">Edit Profile</DialogTitle>
+            <DialogContent>
+              <DialogContentText>
+                Edit your profile and press submit to save your changes
+              </DialogContentText>
+                <form  onSubmit={this.onSubmit}>
+                  <TextField
+                    onChange={this.onChange}
+                    value={this.state.tempAge || age}
+                    id="tempAge"
+                    label="Age"
+                    type="number"
+                    margin="normal"
+                    fullWidth
+                  />
+					        <br/>
+                  <TextField
+                    onChange={this.onChange}
+                    value={this.state.tempCollege || college}
+                    id="tempCollege"
+                    label="College"
+                    type="text"
+                    margin="normal"
+                    fullWidth
+                  />
+					        <br/>
+                  <TextField
+                    onChange={this.onChange}
+                    value={this.state.tempBio || bio}
+                    id="tempBio"
+                    type="text"
+                    label="Bio"
+                    margin="normal"
+                    fullWidth
+                  />
+					        <br/>
+                    <div>
+                    <DialogActions>
+                  <Button type="reset" onClick={this.toggle_Editing} color="primary">
+                    Cancel
+                  </Button>
+                  <Button type="submit"  color="primary">
+                    Submit
+                  </Button>
+                </DialogActions>
+                    </div>
+              </form>
+          </DialogContent>
+          </Dialog>
+          </div> 
+          : null }
+        
         </CardContent>
       </Card>
     </SideBar>
@@ -140,6 +247,7 @@ const ProfileCard = props => {
     </div>
     );
   };
-  
-  export default ProfileCard;
-  
+}
+
+
+export default connect(undefined,{getUserProfile})(ProfileCard);
